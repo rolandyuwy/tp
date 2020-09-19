@@ -48,7 +48,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
   e.g. in `add d/DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add d/cucumber`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/DESCRIPTION e/EXPIRY_DATE [t/DESCRIPTION]` can be used as `d/bread e/30-09-2020 p/low` or as `d/bread e/30-09-2020`.
+  e.g `d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` can be used as `d/bread e/30-09-2020 p/low` or as `d/bread e/30-09-2020`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
@@ -68,7 +68,7 @@ Format: `help`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/DESCRIPTION]`
+Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]`
 
 * Adds a food item based on its description and expiry date.
 * Description and expiry date fields are compulsory.
@@ -77,7 +77,7 @@ Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/DESCRIPTION]`
 
 Examples:
 * `add d/canned tuna e/01-01-2021 p/low`
-* `add n/mushroom e/11-10-2020`
+* `add d/mushroom e/11-10-2020`
 
 ### Listing all persons : `list`
 
