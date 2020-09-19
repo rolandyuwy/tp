@@ -1,5 +1,7 @@
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-F13-4/tp/actions)
-![SimplyKitchen Logo](https://github.com/bchenghi/tp/blob/update-readme/docs/images/Logo.png)
+
+<img src = "https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/images/Logo.png" width = 700>
+
 # SimplyKitchen
 With SimplyKitchen, food inventory management is made easy.
 
