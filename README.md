@@ -6,6 +6,9 @@
      
 With SimplyKitchen, food inventory management is made easy.
 
+## About
+SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, SimplyKitchen can get your food management tasks done faster than traditional GUI apps.
+
 ## User Interface
 ![alt text](https://github.com/bchenghi/tp/blob/update-readme/docs/images/Ui.png?raw=true)
 
