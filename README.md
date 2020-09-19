@@ -2,7 +2,7 @@
 
 # SimplyKitchen
 <img src="https://github.com/bchenghi/tp/blob/update-readme/docs/images/Logo.jpg" align="right"
-     alt="SimplyKitchen Logo" width="120" height="178">
+     alt="SimplyKitchen Logo" width="120" height="120">
      
 With SimplyKitchen, food inventory management is made easy.
 
