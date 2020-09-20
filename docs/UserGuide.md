@@ -104,23 +104,26 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Searching for a food item: `find`
 
-Finds persons whose names contain any of the given keywords.
+Searches for a food item inside the inventory tracker according to `KEYWORD`, `PRIORITY` or `EXPIRY_DATE`.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find k/KEYWORD p/PRIORITY e/EXPIRY_DATE`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* A minimum of 1 type of field must be specified.
+* The search is case-insensitive. e.g as an input in the keyword field, `fish` will match `Fish`
+* If more than 1 field is specified, the search results will be based on all the specified fields e.g. `find k/rice p/high` will match food items with description containing `rice` and having `high` priority.
+* For `k/KEYWORD`, fields can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
+* For `k/KEYWORD`, the order of the keywords does not matter. e.g. `Tuna Fish` will match `Fish Tuna`.
+* For `k/KEYWORD`, only full words will be matched. e.g. `Fish` will not match `Fishes`.
+* For `k/KEYWORD`, food items matching at least one keyword will be returned (i.e. OR search). e.g. `Salty Fish` will return `Salty Rice`, `Tuna Fish`
+* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
+
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find k/medium packet rice` returns `chicken rice` and `Packet Noodles`
+* `find p/high` 
+* `find k/tuna e/01-01-2021` 
 
 ### Deleting a person : `delete`
 
