@@ -256,8 +256,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | delete items from the app       |                                                                       |
 | `* * *`  | user                                       | search for items based on expiry date | know which food items are expiring soon                         |
 | `* * *`  | busy working adult                         | be able to view a list of all food items sorted by expiry date | have a complete display of all my food items |
-| `* * *`  | user                                       | Search for items based on keywords | find them easily                                                   |
-| `* * *`  | user who likes efficiency                  | Search for items based on priority | find high priority items                                           |
+| `* * *`  | user                                       | search for items based on keywords | find them easily                                                   |
+| `* * *`  | user who likes efficiency                  | search for items based on priority | find high priority items                                           |
 | `* * *`  | user  who cares about some food items more | add the priority of the food items | prioritise some food items                                         |
 | `* * *`  | user                                       | add a storage place for input items | locate my items easily                                            |
 | `* * *`  | user                                       | remember where I stored my food| spend less time searching through my kitchen                           |
@@ -288,7 +288,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User inputs a food item.
-2.  System reads the input and adds the food item.
+2.  System reads the input and adds the food item.  
     Use case ends.
 
 **Extensions**
@@ -305,18 +305,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
      Use case resumes from step 2.
  
+<br/>
 
 **Use case: Delete a food item (UC02)**
 
 **Preconditions: The food item to be deleted is in the system.**
+
 **Guarantees: The food item is deleted from the system.** 
 
 **MSS**
 
-1. User requests to <ins>list food items (UC03, UC04)</ins.>.
+1. User requests to <ins>list food items (UC03, UC04)</ins>.
 2. System shows a list of food items.
 3. User requests to delete a specific food item from the list.
-4. System deletes the food item.
+4. System deletes the food item.  
    Use Case ends.
 
 **Extensions**
@@ -329,7 +331,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
      	
    * 3a1. System displays an error message.
    
-   * 3a2. User re-enters the food item to be added again.
+   * 3a2. User re-enters the food item to be deleted again.
      	
    * 3a3. System checks the user’s new input.
      
@@ -337,13 +339,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       	
      Use case resumes from step 4.
 
+<br/>
 
 **Use case: Find a food item (UC03)**
 
 **MSS**
 
 1. User enters keyword, priority or expiry date as query.
-2. System displays all food items that match the query.
+2. System displays all food items that match the query.  
 	Use case ends.
 
 **Extensions**
@@ -358,6 +361,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 	  
      Use case resumes at 2.
 
+<br/>
 
 **Use case: List all food items (UC04)**
 
@@ -366,7 +370,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User gives the list command.
-2. System reads the input and lists all food items in the system.
+2. System reads the input and lists all food items in the system.  
 	Use case ends.
 
 *{More to be added}*
@@ -383,8 +387,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-
-*{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
 
