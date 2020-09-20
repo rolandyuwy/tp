@@ -124,7 +124,7 @@ Examples:
 
 ### Deleting a food item : `delete`
 
-Deletes the specified food item from the inventory tracker.
+Deletes the specified food item from the food inventory.
 
 Format: `delete INDEX`
 
@@ -133,7 +133,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd food item in the inventory system.
+* `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
 * `find k/tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
 ### Clearing all entries : `clear`
