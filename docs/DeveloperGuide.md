@@ -236,71 +236,155 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage kitchen food items
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+
+**Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                                     | I want to …​                     | So that I can…​                                                        |
+| -------- | ------------------------------------------ | ------------------------------  | --------------------------------------------------------------------- |
+| `* * *`  | user                                       | add items to the app (with their description, expiry date and priority tag) |                           |
+| `* * *`  | user                                       | delete items from the app       |                                                                       |
+| `* * *`  | user                                       | search for items based on expiry date | know which food items are expiring soon                         |
+| `* * *`  | busy working adult                         | be able to view a list of all food items sorted by expiry date | have a complete display of all my food items |
+| `* * *`  | user                                       | Search for items based on keywords | find them easily                                                   |
+| `* * *`  | user who likes efficiency                  | Search for items based on priority | find high priority items                                           |
+| `* * *`  | user  who cares about some food items more | add the priority of the food items | prioritise some food items                                         |
+| `* * *`  | user                                       | add a storage place for input items | locate my items easily                                            |
+| `* * *`  | user                                       | remember where I stored my food| spend less time searching through my kitchen                           |
+| `* * *`  | messy user                                 | be informed of invalid expiration dates | check the item again and re input the correct entry           |
+| `* * *`  | tech-savvy person                          | be able to use more intuitive commands  | be more comfortable with using the product                    |
+| `* * *`  | user                                       | update when I use up ingredients   | have an updated record of food available in my kitchen             |
+| `* *`    | user                                       | be able to undo and redo           | easily fix mistakes made when using the app                        |
+| `* *`    | forgetful adult even after seeing expired food on my dashboard | be notified of expired foods | delete them when receiving the notifications         |
+| `* *`    | user who only buys 1 brand for a specific item | update to the same item (quantity changes) | have no duplicate entries                              |
+| `* *`    | user                                       | have a visual representation of food expiry dates |  easily understand the current status of expiry dates for my food items |
+| `*`      | potential user                             | see the app populated with some sample data | understand how the app would look like and what benefits it would give |
+| `*`      | user trying to be healthy                  | be able to select healthy food from my kitchen | stay healthy                                           |
+| `*`      | user trying to be healthy                  | able to know how nutritious my food is | buy better food                                                |
+| `*`      | person on a diet                           | know how much calories is in the meal I prepared | keep to my diet                                      |
+| `*`      | busy working adult                         | know which kind of food item I am running low on |  plan my grocery trips more effectively and avoid buying similar food items already in the house. (can reduce food wastage and spending) |
+| `*`      | helper for a family                        | tag items that belong to specific family members or pets |  easily note which item belongs to whom      |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a food item (UC01)**
+
+**Guarantees: The food item is added into the system.** 
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
+1.  User inputs a food item.
+2.  System reads the input and adds the food item.
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. System detects an error in the user's input.
+   
+   * 1a1. System displays an error message.
+     
+   * 1a2. User re-enters the food item to be added again.
+      
+   * 1a3. System checks the user’s new input.
+      
+     Repeat step 1a. until the user’s input is correct.
+      
+     Use case resumes from step 2.
+ 
 
+**Use case: Delete a food item (UC02)**
+
+**Preconditions: The food item to be deleted is in the system.**
+**Guarantees: The food item is deleted from the system.** 
+
+**MSS**
+
+1. User requests to <ins>list food items (UC03, UC04)</ins.>.
+2. System shows a list of food items.
+3. User requests to delete a specific food item from the list.
+4. System deletes the food item.
+   Use Case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+  
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The given index from the user is invalid.
+     	
+   * 3a1. System displays an error message.
+   
+   * 3a2. User re-enters the food item to be added again.
+     	
+   * 3a3. System checks the user’s new input.
+     
+     Repeat step 3a. until the user’s input is correct.
+      	
+     Use case resumes from step 4.
 
-    * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 2.
+**Use case: Find a food item (UC03)**
+
+**MSS**
+
+1. User enters keyword, priority or expiry date as query.
+2. System displays all food items that match the query.
+	Use case ends.
+
+**Extensions**
+
+* 1a. System detects an error in the user’s search query.
+   
+   * 1a1. System displays an error message.
+	
+   * 1a2. User re-enters the search query.
+	
+     Repeat step 1a. until the user’s search query is valid.
+	  
+     Use case resumes at 2.
+
+
+**Use case: List all food items (UC04)**
+
+**Guarantees: All food items in the system are listed.**
+
+**MSS**
+
+1. User gives the list command.
+2. System reads the input and lists all food items in the system.
+	Use case ends.
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  A user should be able to see food items clearly on the GUI to facilitate command typing.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+
+*{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
 
