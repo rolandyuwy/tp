@@ -40,10 +40,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jonah Tan
 
-<img src="images/jonahtan.png" width="200px">
+<img src="images/jonahtanjz.png" width="200px">
 
 [[github](http://github.com/jonahtanjz)]
-[[portfolio](team/jonahtan.md)]
+[[portfolio](team/jonahtanjz.md)]
 
 * Role: TBD
 * Responsibilities: TBD
