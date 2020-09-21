@@ -9,25 +9,44 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Sagar Sureka
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/sagarsureka.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/sagarsureka)]
+[[portfolio](team/sagarsureka.md)]
 
-* Role: Project Advisor
+* Role: TBD
+* Responsibilities: TBD
 
-### Jane Doe
+### Ang Song Yi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/songyi98.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/SONGYI98)]
+[[portfolio](team/songyi.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: TBD
+* Responsibilities: TBD
+
+### Roland Yu
+
+<img src="images/rolandyuwy.png" width="200px">
+
+[[github](http://github.com/rolandyuwy)] [[portfolio](team/johndoe.md)]
+
+* Role: TBD
+* Responsibilities: TBD
+
+### Jonah Tan
+
+<img src="images/jonahtanjz.png" width="200px">
+
+[[github](http://github.com/jonahtanjz)]
+[[portfolio](team/jonahtanjz.md)]
+
+* Role: TBD
+* Responsibilities: TBD
 
 ### Boh Cheng Hin
 
@@ -37,23 +56,3 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: TBD
 * Responsibilities: TBD
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: UI
