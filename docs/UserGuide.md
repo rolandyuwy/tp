@@ -72,8 +72,8 @@ Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]`
 
 * Adds a food item based on its description and expiry date.
 * Description and expiry date fields are compulsory.
-* The priority field is optional. If not specified the default priority is set to low.
-* For e/EXPIRY_DATE, the field only accepts a date in the format of `DD-mm-yyyy`.
+* The priority field is optional. If not specified the default priority is set to `low`.
+* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
 
 Examples:
 * `add d/canned tuna e/01-01-2021 p/low`
