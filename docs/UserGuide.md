@@ -26,7 +26,7 @@ SimplyKitchen is a desktop app for food inventory management, optimized for use 
 
    * **`list`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`add`**`d/canned tuna e/01-01-2021 p/low` : Adds a food item named `canned tuna` to the list.
 
    * **`delete`**`3` : Deletes the 3rd food item shown in the current list.
 
