@@ -9,51 +9,50 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Sagar Sureka
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/sagarsureka.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/sagarsureka)]
+[[portfolio](team/sagarsureka.md)]
 
-* Role: Project Advisor
+* Role: TBD
+* Responsibilities: TBD
 
-### Jane Doe
+### Ang Song Yi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/songyi98.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/SONGYI98)]
+[[portfolio](team/songyi.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: TBD
+* Responsibilities: TBD
 
-### Johnny Doe
+### Roland Yu
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/rolandyuwy.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/rolandyuwy)] [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: TBD
+* Responsibilities: TBD
 
-### Jean Doe
+### Jonah Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jonahtanjz.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jonahtanjz)]
+[[portfolio](team/jonahtanjz.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: TBD
+* Responsibilities: TBD
 
-### James Doe
+### Boh Cheng Hin
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/bchenghi.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/bchenghi)] [[portfolio](team/bchenghi.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: TBD
+* Responsibilities: TBD
