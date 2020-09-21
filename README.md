@@ -1,4 +1,4 @@
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-F13-4/tp/actions)
+[![Java CI](https://github.com/AY2021S1-CS2103T-F13-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-F13-4/tp/actions)
 
 <img src = "https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/images/Logo.png" width = 700>
 
