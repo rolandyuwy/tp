@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/rolandyuwy.png" width="200px">
 
-[[github](http://github.com/rolandyuwy)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/rolandyuwy)] [[portfolio](team/rolandyuwy.md)]
 
 * Role: Developer
 * Responsibilities: Data
