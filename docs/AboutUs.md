@@ -35,8 +35,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/rolandyuwy)] [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: TBD
+* Responsibilities: TBD
 
 ### Jonah Tan
 
@@ -48,12 +48,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: TBD
 * Responsibilities: TBD
 
-### James Doe
+### Boh Cheng Hin
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/bchenghi.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/bchenghi)] [[portfolio](team/bchenghi.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: TBD
+* Responsibilities: TBD
