@@ -9,21 +9,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
-
-<img src="images/sagars.png" width="200px">
-
-[[github](https://github.com/sagarsureka/)]
-[[portfolio](team/sagarsureka.md)]
-
-* Role: Project Advisor
-
 ### Sagar Sureka
 
 <img src="images/sagarsureka.png" width="200px">
 
 [[github](http://github.com/sagarsureka)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/sagarsureka.md)]
+
+* Role: TBD
+* Responsibilities: TBD
+
+### Ang Song Yi
+
+<img src="images/songyi98.png" width="200px">
+
+[[github](http://github.com/SONGYI98)]
+[[portfolio](team/songyi.md)]
 
 * Role: TBD
 * Responsibilities: TBD
@@ -37,15 +38,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Jonah Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jonahtan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jonahtanjz)]
+[[portfolio](team/jonahtan.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: TBD
+* Responsibilities: TBD
 
 ### James Doe
 
