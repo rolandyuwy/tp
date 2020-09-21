@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/bchenghi.png" width="200px">
 
-[[github](http://github.com/bchenghi)] [[portfolio](team/bohchenghin.md)]
+[[github](http://github.com/bchenghi)] [[portfolio](team/bchenghi.md)]
 
 * Role: TBD
 * Responsibilities: TBD
