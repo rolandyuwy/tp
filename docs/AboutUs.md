@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Boh Cheng Hin
 
-<img src="images/bohchenghin.png" width="200px">
+<img src="images/bchenghi.png" width="200px">
 
 [[github](http://github.com/bchenghi)] [[portfolio](team/bohchenghin.md)]
 
