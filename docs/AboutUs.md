@@ -38,15 +38,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Jonah Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jonahtan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jonahtanjz)]
+[[portfolio](team/jonahtan.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: TBD
+* Responsibilities: TBD
 
 ### James Doe
 
