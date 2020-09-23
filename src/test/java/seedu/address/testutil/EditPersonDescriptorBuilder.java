@@ -17,7 +17,6 @@ import seedu.address.model.tag.Tag;
  */
 public class EditPersonDescriptorBuilder {
 
-    public EditPersonDescriptorBuilder wi;
     private EditPersonDescriptor descriptor;
 
     public EditPersonDescriptorBuilder() {
