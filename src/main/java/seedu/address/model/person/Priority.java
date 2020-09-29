@@ -46,6 +46,7 @@ public class Priority {
      * Returns true if a given string is a valid priority number.
      */
     public static boolean isValidPriority(String priority) {
+        priority = priority.toLowerCase();
         return priority.equals("low") || priority.equals("medium") || priority.equals("high");
     }
 
