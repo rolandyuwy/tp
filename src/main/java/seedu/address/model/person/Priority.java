@@ -25,6 +25,7 @@ public class Priority {
      * @param priority A valid priority level.
      */
     public Priority(String priority) {
+        priority = priority.toLowerCase();
         requireNonNull(priority);
         checkArgument(isValidPriority(priority), MESSAGE_CONSTRAINTS);
         switch(priority) {
