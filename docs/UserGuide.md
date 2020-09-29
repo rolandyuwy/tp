@@ -144,12 +144,12 @@ Food Inventory data are saved in the hard disk automatically after any command t
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary [to be updated]
+## Command summary
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` <br> e.g., `add d/cereal e/31-10-2020 p/medium`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find** | `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`<br> e.g., `find k/cereal p/medium e/31-10-2020`
 **List** | `list`
