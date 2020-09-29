@@ -31,13 +31,7 @@ SimplyKitchen is a desktop app for food inventory management, optimized for use 
 
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
+### Viewing help : `help` [coming soon]
 
 ### Adding a food item: `add`
 
@@ -70,7 +64,7 @@ Format: `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`
 * A minimum of 1 type of field must be specified.
 * The search is case-insensitive. e.g as an input in the keyword field, `fish` will match `Fish`
 * If more than 1 field is specified, the search results will be based on all the specified fields e.g. `find k/rice p/high` will match food items with description containing `rice` and having `high` priority.
-* For `k/KEYWORD`, fields can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
+* For `k/KEYWORD`, the field can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
 * For `k/KEYWORD`, the order of the keywords does not matter. e.g. `Tuna Fish` will match `Fish Tuna`.
 * For `k/KEYWORD`, only full words will be matched. e.g. `Fish` will not match `Fishes`.
 * For `k/KEYWORD`, food items matching at least one keyword will be returned (i.e. OR search). e.g. `Salty Fish` will return `Salty Rice`, `Tuna Fish`
