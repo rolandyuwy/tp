@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Priority;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -33,13 +34,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label priority;
-    @FXML
     private Label address;
     @FXML
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane priority;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -49,12 +50,29 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        priority.setText("Priority: " + person.getPriority().toString());
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        if (person.getPriority().value != null) {
+            priority.getChildren().add(new Label("Priority: " + person.getPriority().toString()));
+            setPriorityColor(person);
+        }
+    }
+
+    private void setPriorityColor(Person person) {
+        String priorityColor = "";
+        if (person.getPriority().value == Priority.Level.LOW) {
+            priorityColor = "#00802b";
+        } else if (person.getPriority().value == Priority.Level.MEDIUM) {
+            priorityColor = "#cc7a00";
+        } else if (person.getPriority().value == Priority.Level.HIGH) {
+            priorityColor = "#cc0000";
+        } else {
+            priorityColor = "#000";
+        }
+        priority.setStyle("-fx-background-color: " + priorityColor + ";" );
     }
 
     @Override
