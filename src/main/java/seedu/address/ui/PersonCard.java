@@ -49,7 +49,7 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        priority.setText(person.getPriority().value.toString());
+        priority.setText("Priority: " + person.getPriority().toString());
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         person.getTags().stream()

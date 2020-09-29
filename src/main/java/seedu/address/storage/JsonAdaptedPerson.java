@@ -51,7 +51,7 @@ class JsonAdaptedPerson {
      */
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
-        priority = source.getPriority().value.toString();
+        priority = source.getPriority().toString();
         email = source.getEmail().value;
         address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
