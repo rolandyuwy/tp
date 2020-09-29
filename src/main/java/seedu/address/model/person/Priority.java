@@ -20,7 +20,7 @@ public class Priority {
     public final Level value;
 
     /**
-     * Constructs a {@code Phone}.
+     * Constructs a {@code Priority}.
      *
      * @param priority A valid priority level.
      */
@@ -43,7 +43,7 @@ public class Priority {
     }
 
     /**
-     * Returns true if a given string is a valid phone number.
+     * Returns true if a given string is a valid priority number.
      */
     public static boolean isValidPriority(String priority) {
         return priority.equals("low") || priority.equals("medium") || priority.equals("high");

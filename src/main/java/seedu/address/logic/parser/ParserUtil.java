@@ -52,18 +52,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String priority} into a {@code Priority}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException if the given {@code priority} is invalid.
      */
     public static Priority parsePriority(String priority) throws ParseException {
         requireNonNull(priority);
-        String trimmedPhone = priority.trim();
-        if (!Priority.isValidPriority(trimmedPhone)) {
+        String trimmedPriority = priority.trim();
+        if (!Priority.isValidPriority(trimmedPriority)) {
             throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
-        return new Priority(trimmedPhone);
+        return new Priority(trimmedPriority);
     }
 
     /**
