@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Food item priority level in the food inventory system.
- * Guarantees: immutable; is valid as declared in {@link #isValidPriority(Level)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidPriority(String)}
  */
 public class Priority {
     public enum Level {
@@ -24,17 +24,29 @@ public class Priority {
      *
      * @param priority A valid priority level.
      */
-    public Priority(Level priority) {
+    public Priority(String priority) {
         requireNonNull(priority);
         checkArgument(isValidPriority(priority), MESSAGE_CONSTRAINTS);
-        value = priority;
+        switch(priority) {
+        case "low":
+            value = Level.LOW;
+            break;
+        case "medium":
+            value = Level.MEDIUM;
+            break;
+        case "high":
+            value = Level.HIGH;
+            break;
+        default:
+            value = null;
+        }
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidPriority(Level priority) {
-        return priority == Level.HIGH || priority == Level.MEDIUM || priority == Level.LOW;
+    public static boolean isValidPriority(String priority) {
+        return priority.equals("low") || priority.equals("medium") || priority.equals("high");
     }
 
     @Override
