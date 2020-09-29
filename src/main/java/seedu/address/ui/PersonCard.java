@@ -74,7 +74,7 @@ public class PersonCard extends UiPart<Region> {
         } else {
             priorityColor = "#000";
         }
-        priority.setStyle("-fx-background-color: " + priorityColor + ";" );
+        priority.setStyle("-fx-background-color: " + priorityColor + ";");
     }
 
     @Override

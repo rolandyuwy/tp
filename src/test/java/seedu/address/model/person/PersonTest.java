@@ -32,7 +32,8 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(null));
 
         // different priority and email -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withPriority(VALID_PRIORITY_BOB).withEmail(VALID_EMAIL_BOB).build();
+        Person editedAlice = new PersonBuilder(ALICE).withPriority(VALID_PRIORITY_BOB)
+                .withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name -> returns false

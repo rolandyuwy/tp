@@ -16,7 +16,6 @@ public class Priority {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Priority should be either high, medium or low.";
-//    public static final String VALIDATION_REGEX = "\\d{3,}";
     public final Level value;
 
     /**
