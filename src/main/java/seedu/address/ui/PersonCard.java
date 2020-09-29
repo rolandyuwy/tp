@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -55,19 +56,20 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        if (person.getPriority().value != null) {
-            priority.getChildren().add(new Label("Priority: " + person.getPriority().toString()));
-            setPriorityColor(person);
-        }
+        Optional.ofNullable(person.getPriority().value)
+                .ifPresent(level -> {
+                    priority.getChildren().add(new Label("Priority: " + level));
+                    setPriorityColor(level);
+                });
     }
 
-    private void setPriorityColor(Person person) {
+    private void setPriorityColor(Priority.Level level) {
         String priorityColor = "";
-        if (person.getPriority().value == Priority.Level.LOW) {
+        if (level == Priority.Level.LOW) {
             priorityColor = "#00802b";
-        } else if (person.getPriority().value == Priority.Level.MEDIUM) {
+        } else if (level == Priority.Level.MEDIUM) {
             priorityColor = "#cc7a00";
-        } else if (person.getPriority().value == Priority.Level.HIGH) {
+        } else if (level == Priority.Level.HIGH) {
             priorityColor = "#cc0000";
         } else {
             priorityColor = "#000";
