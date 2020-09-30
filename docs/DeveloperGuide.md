@@ -279,7 +279,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless specified otherwise)
+(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified)
 
 **Use case: Add a food item (UC01)**
 
@@ -287,21 +287,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User inputs a food item.
-2.  System reads the input and adds the food item.  
+1.  User requests to add a food item.
+2.  SimplyKitchen displays changes to the food inventory.
     Use case ends.
 
 **Extensions**
 
-* 1a. System detects an error in the user's input.
+* 1a. SimplyKitchen detects an error in the user's input.
    
-   * 1a1. System displays an error message.
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
      
-   * 1a2. User re-enters the food item to be added again.
+   * 1a2. User enters a new food item.
       
-   * 1a3. System checks the user’s new input.
+   * 1a3. SimplyKitchen checks the user’s new input.
       
-     Repeat step 1a. until the user’s input is correct.
+     Steps 1a1-1a2 are repeated until the data entered are correct.
       
      Use case resumes from step 2.
  
@@ -309,17 +309,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Delete a food item (UC02)**
 
-**Preconditions: The food item to be deleted is in the system.**
+**Precondition: The food item to be deleted is in the system.**
 
 **Guarantees: The food item is deleted from the system.** 
 
 **MSS**
 
 1. User requests to <ins>list food items (UC03, UC04)</ins>.
-2. System shows a list of food items.
-3. User requests to delete a specific food item from the list.
-4. System deletes the food item.  
-   Use Case ends.
+2. SimplyKitchen displays the list of food items.
+3. User requests to delete a food item from the list.
+4. SimplyKitchen displays changes to the food inventory.
+   Use case ends.
 
 **Extensions**
 
@@ -327,15 +327,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
   Use case ends.
 
-* 3a. The given index from the user is invalid.
+* 3a. SimplyKitchen detects that the given index corresponding to the food item from the list from the user is invalid.
      	
-   * 3a1. System displays an error message.
+   * 3a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
    
-   * 3a2. User re-enters the food item to be deleted again.
-     	
-   * 3a3. System checks the user’s new input.
+   * 3a2. User enters a new food item.
      
-     Repeat step 3a. until the user’s input is correct.
+     Steps 3a1-3a2 are repeated until the data entered are correct.
       	
      Use case resumes from step 4.
 
@@ -343,23 +341,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Find a food item (UC03)**
 
+**Guarantees: All food items in the system that match the query are listed.**
+
 **MSS**
 
-1. User enters keyword, priority or expiry date as query.
-2. System displays all food items that match the query.  
+1. User requests to list food items according to description, priority or expiration date. 
+2. SimplyKitchen displays all food items that match the query.  
 	Use case ends.
 
 **Extensions**
 
-* 1a. System detects an error in the user’s search query.
+* 1a. SimplyKitchen detects an error in the user’s search query.
    
-   * 1a1. System displays an error message.
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
 	
-   * 1a2. User re-enters the search query.
+   * 1a2. User enters a new search query.
 	
-     Repeat step 1a. until the user’s search query is valid.
+     Steps 1a1-1a2 are repeated until the query entered is correct.
 	  
-     Use case resumes at 2.
+     Use case resumes at step 2.
 
 <br/>
 
@@ -369,8 +369,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User gives the list command.
-2. System reads the input and lists all food items in the system.  
+1. User requests to list all food items.
+2. SimplyKitchen displays all food items in the food inventory.  
 	Use case ends.
 
 *{More to be added}*
