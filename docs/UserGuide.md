@@ -5,36 +5,15 @@ title: User Guide
 
 SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, SimplyKitchen can get your food management tasks done faster than traditional GUI apps.
 
-* Table of Contents
-{:toc}
+Table of Contents:<br>
+* [Quick start](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#quick-start-coming-soon)
+* [Features](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features)
+* [FAQs](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#faq)
+* [Command Summary](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start [coming soon]
-
-1. Ensure you have Java `11` or above installed in your Computer.
-
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
-
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
-
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * **`list`** : Lists all food items. 
-
-   * **`add`**`d/canned tuna e/01-01-2021 p/low` : Adds a food item named `canned tuna` to the list.
-
-   * **`delete`**`3` : Deletes the 3rd food item shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
-
-   * **`exit`** : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -55,13 +34,7 @@ SimplyKitchen is a desktop app for food inventory management, optimized for use 
 
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
+### Viewing help : `help` [coming soon]
 
 ### Adding a food item: `add`
 
@@ -71,6 +44,7 @@ Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]`
 
 * Adds a food item based on its description and expiry date.
 * Description and expiry date fields are compulsory.
+* The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
 * For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
 
@@ -88,12 +62,12 @@ Format: `list`
 
 Searches for a food item inside the inventory tracker according to `KEYWORD`, `PRIORITY` or `EXPIRY_DATE`.
 
-Format: `find k/KEYWORD p/PRIORITY e/EXPIRY_DATE`
+Format: `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`
 
 * A minimum of 1 type of field must be specified.
 * The search is case-insensitive. e.g as an input in the keyword field, `fish` will match `Fish`
 * If more than 1 field is specified, the search results will be based on all the specified fields e.g. `find k/rice p/high` will match food items with description containing `rice` and having `high` priority.
-* For `k/KEYWORD`, fields can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
+* For `k/KEYWORD`, the field can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
 * For `k/KEYWORD`, the order of the keywords does not matter. e.g. `Tuna Fish` will match `Fish Tuna`.
 * For `k/KEYWORD`, only full words will be matched. e.g. `Fish` will not match `Fishes`.
 * For `k/KEYWORD`, food items matching at least one keyword will be returned (i.e. OR search). e.g. `Salty Fish` will return `Salty Rice`, `Tuna Fish`
@@ -144,12 +118,12 @@ Food Inventory data are saved in the hard disk automatically after any command t
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary [to be updated]
+## Command summary
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` <br> e.g., `add d/cereal e/31-10-2020 p/medium`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find** | `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`<br> e.g., `find k/cereal p/medium e/31-10-2020`
 **List** | `list`
