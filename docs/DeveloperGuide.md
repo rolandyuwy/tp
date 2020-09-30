@@ -299,8 +299,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
      
    * 1a2. User enters a new food item.
       
-   * 1a3. SimplyKitchen checks the user’s new input.
-      
      Steps 1a1-1a2 are repeated until the data entered are correct.
       
      Use case resumes from step 2.
