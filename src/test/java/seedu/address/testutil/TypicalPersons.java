@@ -57,7 +57,7 @@ public class TypicalPersons {
             .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
-    public static final String KEYWORD_MATCHING_LETTUCE = "Lettuce"; // A keyword that matches MEIER
+    public static final String KEYWORD_MATCHING_LETTUCE = "Lettuce"; // A keyword that matches LETTUCE
 
     private TypicalPersons() {} // prevents instantiation
 
