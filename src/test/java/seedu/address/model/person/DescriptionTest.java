@@ -14,27 +14,27 @@ public class DescriptionTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
-        String invalidName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Description(invalidName));
+    public void constructor_invalidDescription_throwsIllegalArgumentException() {
+        String invalidDescription = "";
+        assertThrows(IllegalArgumentException.class, () -> new Description(invalidDescription));
     }
 
     @Test
-    public void isValidName() {
-        // null name
+    public void isValidDescription() {
+        // null description
         assertThrows(NullPointerException.class, () -> Description.isValidDescription(null));
 
-        // invalid name
+        // invalid description
         assertFalse(Description.isValidDescription("")); // empty string
         assertFalse(Description.isValidDescription(" ")); // spaces only
         assertFalse(Description.isValidDescription("^")); // only non-alphanumeric characters
-        assertFalse(Description.isValidDescription("peter*")); // contains non-alphanumeric characters
+        assertFalse(Description.isValidDescription("peanut*")); // contains non-alphanumeric characters
 
-        // valid name
-        assertTrue(Description.isValidDescription("peter jack")); // alphabets only
+        // valid description
+        assertTrue(Description.isValidDescription("peanut butter")); // alphabets only
         assertTrue(Description.isValidDescription("12345")); // numbers only
-        assertTrue(Description.isValidDescription("peter the 2nd")); // alphanumeric characters
+        assertTrue(Description.isValidDescription("TWG 1864")); // alphanumeric characters
         assertTrue(Description.isValidDescription("Capital Tan")); // with capital letters
-        assertTrue(Description.isValidDescription("David Roger Jackson Ray Jr 2nd")); // long names
+        assertTrue(Description.isValidDescription("Lay's Sour Cream Flavoured Potato Chips")); // long description
     }
 }

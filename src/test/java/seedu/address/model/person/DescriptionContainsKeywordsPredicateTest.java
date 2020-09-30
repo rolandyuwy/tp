@@ -42,40 +42,40 @@ public class DescriptionContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_nameContainsKeywords_returnsTrue() {
+    public void test_descriptionContainsKeywords_returnsTrue() {
         // One keyword
         DescriptionContainsKeywordsPredicate predicate =
-                new DescriptionContainsKeywordsPredicate(Collections.singletonList("Alice"));
-        assertTrue(predicate.test(new PersonBuilder().withDescription("Alice Bob").build()));
+                new DescriptionContainsKeywordsPredicate(Collections.singletonList("Apple"));
+        assertTrue(predicate.test(new PersonBuilder().withDescription("Apple Bread").build()));
 
         // Multiple keywords
-        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new PersonBuilder().withDescription("Alice Bob").build()));
+        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Apple", "Bread"));
+        assertTrue(predicate.test(new PersonBuilder().withDescription("Apple Bread").build()));
 
         // Only one matching keyword
-        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new PersonBuilder().withDescription("Alice Carol").build()));
+        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Bread", "Carrot"));
+        assertTrue(predicate.test(new PersonBuilder().withDescription("Apple Carrot").build()));
 
         // Mixed-case keywords
-        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        assertTrue(predicate.test(new PersonBuilder().withDescription("Alice Bob").build()));
+        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("aPple", "bREad"));
+        assertTrue(predicate.test(new PersonBuilder().withDescription("Apple Bread").build()));
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
+    public void test_descriptionDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         DescriptionContainsKeywordsPredicate predicate =
                 new DescriptionContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new PersonBuilder().withDescription("Alice").build()));
+        assertFalse(predicate.test(new PersonBuilder().withDescription("Apple").build()));
 
         // Non-matching keyword
-        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Carol"));
-        assertFalse(predicate.test(new PersonBuilder().withDescription("Alice Bob").build()));
+        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Carrot"));
+        assertFalse(predicate.test(new PersonBuilder().withDescription("Apple Bread").build()));
 
         // Keywords match phone, email and address, but does not match name
         predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("12345",
                 "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PersonBuilder().withDescription("Alice").withPhone("12345")
+        assertFalse(predicate.test(new PersonBuilder().withDescription("Apple").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 }
