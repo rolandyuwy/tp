@@ -383,7 +383,7 @@ Then, create a test for the `execute` method.
 
 ![Creating a test for `execute`.](../images/add-remark/CreateTest.png)
 
-Following convention, let’s change the description of the generated method to `execute_addRemarkUnfilteredList_success`.
+Following convention, let’s change the name of the generated method to `execute_addRemarkUnfilteredList_success`.
 
 Let’s use the utility functions provided in `CommandTestUtil`. The functions ensure that commands produce the expected `CommandResult` and output the correct message. In this case, `CommandTestUtil#assertCommandSuccess` is the best fit as we are testing that a `RemarkCommand` will successfully add a `Remark`.
 
