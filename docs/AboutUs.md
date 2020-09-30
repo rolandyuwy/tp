@@ -2,6 +2,8 @@
 layout: page
 title: About Us
 ---
+#About Us
+
 SimplyKitchen was developed by CS2103-F13-4 team.
 
 We are a team of Year 2 Computer Science undergraduates based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
@@ -9,6 +11,17 @@ We are a team of Year 2 Computer Science undergraduates based in the [School of 
 You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
+
+### Roland Yu
+
+<img src="images/rolandyuwy.png" width="200px">
+
+[[github](http://github.com/rolandyuwy)] [[portfolio](team/rolandyuwy.md)]
+
+* Role: Team Lead
+* Responsibilities: 
+    * Scheduling and Tracking: Responsible for defining, assignment, and tracking all project tasks.
+    * Deliverables and Deadlines: Responsible for the project deliverables. 
 
 ### Ang Song Yi
 
@@ -44,17 +57,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: 
     * Testing: Responsible for proper testing 
     * Integration: Responsible for versioning of the code, maintaining the code repository and integrating various parts of the software to create a whole.
-
-### Roland Yu
-
-<img src="images/rolandyuwy.png" width="200px">
-
-[[github](http://github.com/rolandyuwy)] [[portfolio](team/rolandyuwy.md)]
-
-* Role: Developer
-* Responsibilities: 
-    * Scheduling and Tracking: Responsible for defining, assignment, and tracking all project tasks.
-    * Deliverables and Deadlines: Responsible for the project deliverables. 
 
 ### Sagar Sureka
 
