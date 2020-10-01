@@ -32,33 +32,35 @@ public class PersonTest {
         assertFalse(ANCHOVIES.isSamePerson(null));
 
         // different phone and email -> returns false
-        Person editedAlice = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ANCHOVIES.isSamePerson(editedAlice));
+        Person editedAnchovies = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB).build();
+        assertFalse(ANCHOVIES.isSamePerson(editedAnchovies));
 
         // different description -> returns false
-        editedAlice = new PersonBuilder(ANCHOVIES).withDescription(VALID_DESCRIPTION_BREAD).build();
-        assertFalse(ANCHOVIES.isSamePerson(editedAlice));
+        editedAnchovies = new PersonBuilder(ANCHOVIES).withDescription(VALID_DESCRIPTION_BREAD).build();
+        assertFalse(ANCHOVIES.isSamePerson(editedAnchovies));
 
         // same description, same phone, different attributes -> returns true
-        editedAlice = new PersonBuilder(ANCHOVIES).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedAnchovies = new PersonBuilder(ANCHOVIES).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ANCHOVIES.isSamePerson(editedAlice));
+        assertTrue(ANCHOVIES.isSamePerson(editedAnchovies));
 
         // same description, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedAnchovies = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ANCHOVIES.isSamePerson(editedAlice));
+        assertTrue(ANCHOVIES.isSamePerson(editedAnchovies));
 
         // same description, same phone, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ANCHOVIES.isSamePerson(editedAlice));
+        editedAnchovies = new PersonBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ANCHOVIES.isSamePerson(editedAnchovies));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Person aliceCopy = new PersonBuilder(ANCHOVIES).build();
-        assertTrue(ANCHOVIES.equals(aliceCopy));
+        Person anchoviesCopy = new PersonBuilder(ANCHOVIES).build();
+        assertTrue(ANCHOVIES.equals(anchoviesCopy));
 
         // same object -> returns true
         assertTrue(ANCHOVIES.equals(ANCHOVIES));
