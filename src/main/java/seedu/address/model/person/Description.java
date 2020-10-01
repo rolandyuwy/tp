@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's name in the address book.
+ * Represents a Person's description in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {
@@ -23,7 +23,7 @@ public class Description {
     /**
      * Constructs a {@code Description}.
      *
-     * @param description A valid name.
+     * @param description A valid description.
      */
     public Description(String description) {
         requireNonNull(description);
@@ -32,7 +32,7 @@ public class Description {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid description.
      */
     public static boolean isValidDescription(String test) {
         return test.matches(VALIDATION_REGEX);

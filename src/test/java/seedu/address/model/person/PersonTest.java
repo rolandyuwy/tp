@@ -35,21 +35,21 @@ public class PersonTest {
         Person editedAlice = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ANCHOVIES.isSamePerson(editedAlice));
 
-        // different name -> returns false
+        // different description -> returns false
         editedAlice = new PersonBuilder(ANCHOVIES).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(ANCHOVIES.isSamePerson(editedAlice));
 
-        // same name, same phone, different attributes -> returns true
+        // same description, same phone, different attributes -> returns true
         editedAlice = new PersonBuilder(ANCHOVIES).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ANCHOVIES.isSamePerson(editedAlice));
 
-        // same name, same email, different attributes -> returns true
+        // same description, same email, different attributes -> returns true
         editedAlice = new PersonBuilder(ANCHOVIES).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ANCHOVIES.isSamePerson(editedAlice));
 
-        // same name, same phone, same email, different attributes -> returns true
+        // same description, same phone, same email, different attributes -> returns true
         editedAlice = new PersonBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ANCHOVIES.isSamePerson(editedAlice));
     }
@@ -72,7 +72,7 @@ public class PersonTest {
         // different person -> returns false
         assertFalse(ANCHOVIES.equals(BREAD));
 
-        // different name -> returns false
+        // different description -> returns false
         Person editedAlice = new PersonBuilder(ANCHOVIES).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(ANCHOVIES.equals(editedAlice));
 

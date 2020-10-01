@@ -35,25 +35,25 @@ public class EditPersonDescriptorTest {
         // different values -> returns false
         assertFalse(DESC_APPLE_PIE.equals(DESC_BREAD));
 
-        // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_APPLE_PIE)
+        // different description -> returns false
+        EditPersonDescriptor editedApplePie = new EditPersonDescriptorBuilder(DESC_APPLE_PIE)
                 .withDescription(VALID_DESCRIPTION_BREAD).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedAmy));
+        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different phone -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedAmy));
+        editedApplePie = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withPhone(VALID_PHONE_BOB).build();
+        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedAmy));
+        editedApplePie = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withEmail(VALID_EMAIL_BOB).build();
+        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedAmy));
+        editedApplePie = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();
+        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedAmy));
+        editedApplePie = new EditPersonDescriptorBuilder(DESC_APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
     }
 }

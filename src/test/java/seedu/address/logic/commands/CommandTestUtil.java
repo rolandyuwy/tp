@@ -49,7 +49,7 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
-            + "James&"; // '&' not allowed in names
+            + "D&nut"; // '&' not allowed in descriptions
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
@@ -120,8 +120,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
 
         Person person = model.getFilteredPersonList().get(targetIndex.getZeroBased());
-        final String[] splitName = person.getDescription().fullDescription.split("\\s+");
-        model.updateFilteredPersonList(new DescriptionContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitDescription = person.getDescription().fullDescription.split("\\s+");
+        model.updateFilteredPersonList(new DescriptionContainsKeywordsPredicate(Arrays.asList(splitDescription[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }

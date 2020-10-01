@@ -72,7 +72,7 @@ public class DescriptionContainsKeywordsPredicateTest {
         predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Carrot"));
         assertFalse(predicate.test(new PersonBuilder().withDescription("Apple Bread").build()));
 
-        // Keywords match phone, email and address, but does not match name
+        // Keywords match phone, email and address, but does not match description
         predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("12345",
                 "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new PersonBuilder().withDescription("Apple").withPhone("12345")
