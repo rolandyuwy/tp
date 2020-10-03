@@ -38,7 +38,8 @@ public class Priority {
             value = Level.HIGH;
             break;
         default:
-            value = null;
+            value = Level.LOW;
+            break;
         }
     }
 
@@ -47,25 +48,19 @@ public class Priority {
      */
     public static boolean isValidPriority(String priority) {
         priority = priority.toLowerCase();
-        return priority.equals("low") || priority.equals("medium")
-                || priority.equals("high") || priority.equals("null");
+        return priority.equals("low") || priority.equals("medium") || priority.equals("high");
     }
 
     @Override
     public String toString() {
-        if (value != null) {
-            return value.toString();
-        } else {
-            return "NULL";
-        }
+        return value.toString();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Priority // instanceof handles nulls
-                && ((value == null && ((Priority) other).value == null)
-                || (value.equals(((Priority) other).value)))); // state check
+                && (value.equals(((Priority) other).value))); // state check
     }
 
     @Override

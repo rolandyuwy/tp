@@ -38,7 +38,7 @@
     "tagged" : [ ]
   }, {
     "name" : "George Best",
-    "priority": "NULL",
+    "priority": "LOW",
     "email" : "anna@example.com",
     "address" : "4th street",
     "tagged" : [ ]
