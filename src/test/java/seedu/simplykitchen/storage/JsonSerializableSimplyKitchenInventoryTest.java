@@ -32,7 +32,7 @@ public class JsonSerializableSimplyKitchenInventoryTest {
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
+    public void toModelType_invalidFoodFile_throwsIllegalValueException() throws Exception {
         JsonSerializableSimplyKitchenInventory dataFromFile = JsonUtil.readJsonFile(INVALID_FOOD_FILE,
                 JsonSerializableSimplyKitchenInventory.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
