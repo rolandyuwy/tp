@@ -39,9 +39,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
-    private FlowPane tags;
+    private Label priority;
     @FXML
-    private FlowPane priority;
+    private FlowPane tags;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -53,14 +53,11 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        priority.setText(person.getPriority().toString());
+        setPriorityColor(person.getPriority().value);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        Optional.ofNullable(person.getPriority().value)
-                .ifPresent(level -> {
-                    priority.getChildren().add(new Label("Priority: " + level));
-                    setPriorityColor(level);
-                });
     }
 
     private void setPriorityColor(Priority.Level level) {
