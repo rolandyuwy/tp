@@ -1,5 +1,7 @@
 package seedu.address.model.person;
 
+import seedu.address.model.person.exceptions.DuplicatePersonException;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -38,8 +40,7 @@ public class Priority {
             value = Level.HIGH;
             break;
         default:
-            value = Level.LOW;
-            break;
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
     }
 
