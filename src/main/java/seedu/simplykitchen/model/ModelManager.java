@@ -14,32 +14,32 @@ import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
 
 /**
- * Represents the in-memory model of the SimplyKitchen inventory data.
+ * Represents the in-memory model of the Food inventory data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final SimplyKitchenInventory simplyKitchenInventory;
+    private final FoodInventory foodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
 
     /**
-     * Initializes a ModelManager with the given simplyKitchenInventory and userPrefs.
+     * Initializes a ModelManager with the given Food Inventory and userPrefs.
      */
-    public ModelManager(ReadOnlySimplyKitchenInventory simplyKitchenInventory, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(simplyKitchenInventory, userPrefs);
+        requireAllNonNull(foodInventory, userPrefs);
 
-        logger.fine("Initializing with SimplyKitchen inventory: " + simplyKitchenInventory
+        logger.fine("Initializing with Food inventory: " + foodInventory
                 + " and user prefs " + userPrefs);
 
-        this.simplyKitchenInventory = new SimplyKitchenInventory(simplyKitchenInventory);
+        this.foodInventory = new FoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredFoods = new FilteredList<>(this.simplyKitchenInventory.getFoods());
+        filteredFoods = new FilteredList<>(this.foodInventory.getFoods());
     }
 
     public ModelManager() {
-        this(new SimplyKitchenInventory(), new UserPrefs());
+        this(new FoodInventory(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -67,42 +67,42 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getSimplyKitchenInventoryFilePath() {
-        return userPrefs.getSimplyKitchenInventoryFilePath();
+    public Path getFoodInventoryFilePath() {
+        return userPrefs.getFoodInventoryFilePath();
     }
 
     @Override
-    public void setSimplyKitchenInventoryFilePath(Path simplyKitchenInventoryFilePath) {
-        requireNonNull(simplyKitchenInventoryFilePath);
-        userPrefs.setSimplyKitchenInventoryFilePath(simplyKitchenInventoryFilePath);
+    public void setFoodInventoryFilePath(Path foodInventoryFilePath) {
+        requireNonNull(foodInventoryFilePath);
+        userPrefs.setFoodInventoryFilePath(foodInventoryFilePath);
     }
 
-    //=========== SimplyKitchenInventory ==========================================================================
+    //=========== FoodInventory ==========================================================================
 
     @Override
-    public void setSimplyKitchenInventory(ReadOnlySimplyKitchenInventory simplyKitchenInventory) {
-        this.simplyKitchenInventory.resetData(simplyKitchenInventory);
+    public void setFoodInventory(ReadOnlyFoodInventory foodInventory) {
+        this.foodInventory.resetData(foodInventory);
     }
 
     @Override
-    public ReadOnlySimplyKitchenInventory getSimplyKitchenInventory() {
-        return simplyKitchenInventory;
+    public ReadOnlyFoodInventory getFoodInventory() {
+        return foodInventory;
     }
 
     @Override
     public boolean hasFood(Food food) {
         requireNonNull(food);
-        return simplyKitchenInventory.hasFood(food);
+        return foodInventory.hasFood(food);
     }
 
     @Override
     public void deleteFood(Food target) {
-        simplyKitchenInventory.removeFood(target);
+        foodInventory.removeFood(target);
     }
 
     @Override
     public void addFood(Food food) {
-        simplyKitchenInventory.addFood(food);
+        foodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
     }
 
@@ -110,14 +110,14 @@ public class ModelManager implements Model {
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
 
-        simplyKitchenInventory.setFood(target, editedFood);
+        foodInventory.setFood(target, editedFood);
     }
 
     //=========== Filtered Food List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Food} backed by the internal list of
-     * {@code versionedSimplyKitchenInventory}
+     * {@code versionedFoodInventory}
      */
     @Override
     public ObservableList<Food> getFilteredFoodList() {
@@ -144,7 +144,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return simplyKitchenInventory.equals(other.simplyKitchenInventory)
+        return foodInventory.equals(other.foodInventory)
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods);
     }

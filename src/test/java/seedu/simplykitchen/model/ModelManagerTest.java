@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
-import seedu.simplykitchen.testutil.SimplyKitchenInventoryBuilder;
+import seedu.simplykitchen.testutil.FoodInventoryBuilder;
 
 public class ModelManagerTest {
 
@@ -26,8 +26,8 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new SimplyKitchenInventory(), new SimplyKitchenInventory(
-                modelManager.getSimplyKitchenInventory()));
+        assertEquals(new FoodInventory(), new FoodInventory(
+                modelManager.getFoodInventory()));
     }
 
     @Test
@@ -38,14 +38,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setSimplyKitchenInventoryFilePath(Paths.get("simplyKitchen/file/path"));
+        userPrefs.setFoodInventoryFilePath(Paths.get("foodInventory/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setSimplyKitchenInventoryFilePath(Paths.get("new/simplyKitchen/file/path"));
+        userPrefs.setFoodInventoryFilePath(Paths.get("new/foodInventory/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -62,15 +62,15 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setSimplyKitchenInventoryFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setSimplyKitchenInventoryFilePath(null));
+    public void setFoodInventoryFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setFoodInventoryFilePath(null));
     }
 
     @Test
-    public void setSimplyKitchenInventoryFilePath_validPath_setsSimplyKitchenInventoryFilePath() {
-        Path path = Paths.get("simplyKitchen/file/path");
-        modelManager.setSimplyKitchenInventoryFilePath(path);
-        assertEquals(path, modelManager.getSimplyKitchenInventoryFilePath());
+    public void setFoodInventoryFilePath_validPath_setsFoodInventoryFilePath() {
+        Path path = Paths.get("foodInventory/file/path");
+        modelManager.setFoodInventoryFilePath(path);
+        assertEquals(path, modelManager.getFoodInventoryFilePath());
     }
 
     @Test
@@ -79,12 +79,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasFood_foodNotInSimplyKitchenInventory_returnsFalse() {
+    public void hasFood_foodNotInFoodInventory_returnsFalse() {
         assertFalse(modelManager.hasFood(ALICE));
     }
 
     @Test
-    public void hasFood_foodInSimplyKitchenInventory_returnsTrue() {
+    public void hasFood_foodInFoodInventory_returnsTrue() {
         modelManager.addFood(ALICE);
         assertTrue(modelManager.hasFood(ALICE));
     }
@@ -96,14 +96,14 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        SimplyKitchenInventory simplyKitchenInventory = new SimplyKitchenInventoryBuilder()
+        FoodInventory foodInventory = new FoodInventoryBuilder()
                 .withFood(ALICE).withFood(BENSON).build();
-        SimplyKitchenInventory differentSimplyKitchenInventory = new SimplyKitchenInventory();
+        FoodInventory differentFoodInventory = new FoodInventory();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(simplyKitchenInventory, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(simplyKitchenInventory, userPrefs);
+        modelManager = new ModelManager(foodInventory, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(foodInventory, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -115,20 +115,20 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different simplyKitchenInventory -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentSimplyKitchenInventory, userPrefs)));
+        // different foodInventory -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentFoodInventory, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredFoodList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(simplyKitchenInventory, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(foodInventory, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setSimplyKitchenInventoryFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(simplyKitchenInventory, differentUserPrefs)));
+        differentUserPrefs.setFoodInventoryFilePath(Paths.get("differentFilePath"));
+        assertFalse(modelManager.equals(new ModelManager(foodInventory, differentUserPrefs)));
     }
 }

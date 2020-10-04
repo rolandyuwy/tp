@@ -2,22 +2,22 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
 
 /**
- * Clears the SimplyKitchen inventory.
+ * Clears the Food inventory.
  */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "SimplyKitchen inventory has been cleared!";
+    public static final String MESSAGE_SUCCESS = "Food inventory has been cleared!";
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setSimplyKitchenInventory(new SimplyKitchenInventory());
+        model.setFoodInventory(new FoodInventory());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

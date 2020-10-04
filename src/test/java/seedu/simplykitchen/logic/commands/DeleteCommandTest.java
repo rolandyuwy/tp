@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_SECOND_FOOD;
 
@@ -24,7 +24,7 @@ import seedu.simplykitchen.model.food.Food;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -33,7 +33,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_FOOD_SUCCESS, foodToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getSimplyKitchenInventory(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
         expectedModel.deleteFood(foodToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +56,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_FOOD_SUCCESS, foodToDelete);
 
-        Model expectedModel = new ModelManager(model.getSimplyKitchenInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
         expectedModel.deleteFood(foodToDelete);
         showNoFood(expectedModel);
 
@@ -69,7 +69,7 @@ public class DeleteCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_FOOD;
         // ensures that outOfBoundIndex is still in bounds of SimplyKitchen inventory list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getSimplyKitchenInventory().getFoods().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getFoodInventory().getFoods().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 

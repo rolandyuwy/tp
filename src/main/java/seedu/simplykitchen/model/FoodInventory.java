@@ -9,10 +9,10 @@ import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.UniqueFoodList;
 
 /**
- * Wraps all data at the SimplyKitchen-inventory level
+ * Wraps all data at the Food-inventory level
  * Duplicates are not allowed (by .isSameFood comparison)
  */
-public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
+public class FoodInventory implements ReadOnlyFoodInventory {
 
     private final UniqueFoodList foods;
 
@@ -27,12 +27,12 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
         foods = new UniqueFoodList();
     }
 
-    public SimplyKitchenInventory() {}
+    public FoodInventory() {}
 
     /**
-     * Creates an SimplyKitchenInventory using the Persons in the {@code toBeCopied}
+     * Creates an FoodInventory using the Persons in the {@code toBeCopied}
      */
-    public SimplyKitchenInventory(ReadOnlySimplyKitchenInventory toBeCopied) {
+    public FoodInventory(ReadOnlyFoodInventory toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -48,9 +48,9 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
     }
 
     /**
-     * Resets the existing data of this {@code SimplyKitchenInventory} with {@code newData}.
+     * Resets the existing data of this {@code FoodInventory} with {@code newData}.
      */
-    public void resetData(ReadOnlySimplyKitchenInventory newData) {
+    public void resetData(ReadOnlyFoodInventory newData) {
         requireNonNull(newData);
 
         setFoods(newData.getFoods());
@@ -59,7 +59,7 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
     //// food-level operations
 
     /**
-     * Returns true if a food item with the same identity as {@code food} exists in the SimplyKitchen inventory.
+     * Returns true if a food item with the same identity as {@code food} exists in the Food inventory.
      */
     public boolean hasFood(Food food) {
         requireNonNull(food);
@@ -67,8 +67,8 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
     }
 
     /**
-     * Adds a food item to the SimplyKitchen inventory.
-     * The food item must not already exist in the SimplyKitchen inventory.
+     * Adds a food item to the Food inventory.
+     * The food item must not already exist in the Food inventory.
      */
     public void addFood(Food food) {
         foods.add(food);
@@ -76,9 +76,9 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
 
     /**
      * Replaces the given food item {@code target} in the list with {@code editedFood}.
-     * {@code target} must exist in the SimplyKitchen inventory.
+     * {@code target} must exist in the Food inventory.
      * The food item identity of {@code editedFood} must not be the same as another existing food item
-     * in the SimplyKitchen inventory.
+     * in the Food inventory.
      */
     public void setFood(Food target, Food editedFood) {
         requireNonNull(editedFood);
@@ -87,8 +87,8 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
     }
 
     /**
-     * Removes {@code key} from this {@code SimplyKitchenInventory}.
-     * {@code key} must exist in the SimplyKitchen inventory.
+     * Removes {@code key} from this {@code FoodInventory}.
+     * {@code key} must exist in the Food inventory.
      */
     public void removeFood(Food key) {
         foods.remove(key);
@@ -110,8 +110,8 @@ public class SimplyKitchenInventory implements ReadOnlySimplyKitchenInventory {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof SimplyKitchenInventory // instanceof handles nulls
-                && foods.equals(((SimplyKitchenInventory) other).foods));
+                || (other instanceof FoodInventory // instanceof handles nulls
+                && foods.equals(((FoodInventory) other).foods));
     }
 
     @Override

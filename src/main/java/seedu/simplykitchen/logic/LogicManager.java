@@ -10,10 +10,10 @@ import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.logic.commands.Command;
 import seedu.simplykitchen.logic.commands.CommandResult;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
-import seedu.simplykitchen.logic.parser.SimplyKitchenParser;
+import seedu.simplykitchen.logic.parser.FoodInventoryParser;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.storage.Storage;
 
@@ -26,7 +26,7 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final SimplyKitchenParser simplyKitchenParser;
+    private final FoodInventoryParser foodInventoryParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        simplyKitchenParser = new SimplyKitchenParser();
+        foodInventoryParser = new FoodInventoryParser();
     }
 
     @Override
@@ -42,11 +42,11 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = simplyKitchenParser.parseCommand(commandText);
+        Command command = foodInventoryParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
-            storage.saveSimplyKitchenInventory(model.getSimplyKitchenInventory());
+            storage.saveFoodInventory(model.getFoodInventory());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -55,8 +55,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlySimplyKitchenInventory getSimplyKitchenInventory() {
-        return model.getSimplyKitchenInventory();
+    public ReadOnlyFoodInventory getFoodInventory() {
+        return model.getFoodInventory();
     }
 
     @Override
@@ -65,8 +65,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getSimplyKitchenInventoryFilePath() {
-        return model.getSimplyKitchenInventoryFilePath();
+    public Path getFoodInventoryFilePath() {
+        return model.getFoodInventoryFilePath();
     }
 
     @Override

@@ -13,9 +13,9 @@ public class UserPrefsTest {
     }
 
     @Test
-    public void setSimplyKitchenInventoryFilePath_nullPath_throwsNullPointerException() {
+    public void setFoodInventoryFilePath_nullPath_throwsNullPointerException() {
         UserPrefs userPrefs = new UserPrefs();
-        assertThrows(NullPointerException.class, () -> userPrefs.setSimplyKitchenInventoryFilePath(null));
+        assertThrows(NullPointerException.class, () -> userPrefs.setFoodInventoryFilePath(null));
     }
 
 }

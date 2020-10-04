@@ -2,7 +2,7 @@ package seedu.simplykitchen.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.nio.file.Path;
 
@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.simplykitchen.commons.core.GuiSettings;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
+import seedu.simplykitchen.model.FoodInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -24,9 +24,9 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonSimplyKitchenStorage simplyKitchenInventoryStorage = new JsonSimplyKitchenStorage(getTempFilePath("ab"));
+        JsonFoodInventoryStorage foodInventoryStorage = new JsonFoodInventoryStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(simplyKitchenInventoryStorage, userPrefsStorage);
+        storageManager = new StorageManager(foodInventoryStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -48,22 +48,22 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void simplyKitchenInventoryReadSave() throws Exception {
+    public void foodInventoryReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonSimplyKitchenStorage} class.
+         * {@link JsonFoodInventoryStorage} class.
          * More extensive testing of UserPref saving/reading is done in
-         * {@link JsonSimplyKitchenInventoryStorageTest} class.
+         * {@link JsonFoodInventoryStorageTest} class.
          */
-        SimplyKitchenInventory original = getTypicalSimplyKitchenInventory();
-        storageManager.saveSimplyKitchenInventory(original);
-        ReadOnlySimplyKitchenInventory retrieved = storageManager.readSimplyKitchenInventory().get();
-        assertEquals(original, new SimplyKitchenInventory(retrieved));
+        FoodInventory original = getTypicalFoodInventory();
+        storageManager.saveFoodInventory(original);
+        ReadOnlyFoodInventory retrieved = storageManager.readFoodInventory().get();
+        assertEquals(original, new FoodInventory(retrieved));
     }
 
     @Test
-    public void getSimplyKitchenInventoryFilePath() {
-        assertNotNull(storageManager.getSimplyKitchenInventoryFilePath());
+    public void getFoodInventoryFilePath() {
+        assertNotNull(storageManager.getFoodInventoryFilePath());
     }
 
 }

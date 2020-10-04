@@ -2,7 +2,7 @@ package seedu.simplykitchen.logic.commands;
 
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,14 +22,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
+        model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
     }
 
     @Test
     public void execute_newFood_success() {
         Food validFood = new FoodBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getSimplyKitchenInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
         expectedModel.addFood(validFood);
 
         assertCommandSuccess(new AddCommand(validFood), model,
@@ -38,7 +38,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicateFood_throwsCommandException() {
-        Food foodInList = model.getSimplyKitchenInventory().getFoods().get(0);
+        Food foodInList = model.getFoodInventory().getFoods().get(0);
         assertCommandFailure(new AddCommand(foodInList), model, AddCommand.MESSAGE_DUPLICATE_FOOD);
     }
 

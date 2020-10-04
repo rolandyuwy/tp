@@ -14,7 +14,7 @@ import seedu.simplykitchen.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path simplyKitchenInventoryFilePath = Paths.get("data" , "simplykitchen.json");
+    private Path foodInventoryFilePath = Paths.get("data" , "foodInventory.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -35,7 +35,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setSimplyKitchenInventoryFilePath(newUserPrefs.getSimplyKitchenInventoryFilePath());
+        setFoodInventoryFilePath(newUserPrefs.getFoodInventoryFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -47,13 +47,13 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getSimplyKitchenInventoryFilePath() {
-        return simplyKitchenInventoryFilePath;
+    public Path getFoodInventoryFilePath() {
+        return foodInventoryFilePath;
     }
 
-    public void setSimplyKitchenInventoryFilePath(Path simplyKitchenInventoryFilePath) {
-        requireNonNull(simplyKitchenInventoryFilePath);
-        this.simplyKitchenInventoryFilePath = simplyKitchenInventoryFilePath;
+    public void setFoodInventoryFilePath(Path foodInventoryFilePath) {
+        requireNonNull(foodInventoryFilePath);
+        this.foodInventoryFilePath = foodInventoryFilePath;
     }
 
     @Override
@@ -68,19 +68,19 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && simplyKitchenInventoryFilePath.equals(o.simplyKitchenInventoryFilePath);
+                && foodInventoryFilePath.equals(o.foodInventoryFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, simplyKitchenInventoryFilePath);
+        return Objects.hash(guiSettings, foodInventoryFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + simplyKitchenInventoryFilePath);
+        sb.append("\nLocal data file location : " + foodInventoryFilePath);
         return sb.toString();
     }
 

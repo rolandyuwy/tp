@@ -24,10 +24,10 @@ import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.UserPrefs;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.storage.JsonSimplyKitchenStorage;
+import seedu.simplykitchen.storage.JsonFoodInventoryStorage;
 import seedu.simplykitchen.storage.JsonUserPrefsStorage;
 import seedu.simplykitchen.storage.StorageManager;
 import seedu.simplykitchen.testutil.FoodBuilder;
@@ -43,8 +43,8 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonSimplyKitchenStorage simplyKitchenStorage =
-                new JsonSimplyKitchenStorage(temporaryFolder.resolve("simplyKitchen.json"));
+        JsonFoodInventoryStorage simplyKitchenStorage =
+                new JsonFoodInventoryStorage(temporaryFolder.resolve("simplyKitchen.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(simplyKitchenStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
@@ -70,9 +70,9 @@ public class LogicManagerTest {
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
-        // Setup LogicManager with JsonSimplyKitchenIoExceptionThrowingStub
-        JsonSimplyKitchenStorage simplyKitchenStorage =
-                new JsonSimplyKitchenIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionSimplyKitchen.json"));
+        // Setup LogicManager with JsonFoodInventoryIoExceptionThrowingStub
+        JsonFoodInventoryStorage simplyKitchenStorage =
+                new JsonFoodInventoryIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionSimplyKitchen.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(simplyKitchenStorage, userPrefsStorage);
@@ -129,7 +129,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getSimplyKitchenInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -149,13 +149,13 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonSimplyKitchenIoExceptionThrowingStub extends JsonSimplyKitchenStorage {
-        private JsonSimplyKitchenIoExceptionThrowingStub(Path filePath) {
+    private static class JsonFoodInventoryIoExceptionThrowingStub extends JsonFoodInventoryStorage {
+        private JsonFoodInventoryIoExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
 
         @Override
-        public void saveSimplyKitchenInventory(ReadOnlySimplyKitchenInventory simplyKitchenInventory, Path filePath)
+        public void saveFoodInventory(ReadOnlyFoodInventory foodInventory, Path filePath)
                 throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }

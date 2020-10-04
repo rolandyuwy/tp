@@ -11,7 +11,7 @@ import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.Food;
 
 /**
- * Deletes a food item identified using it's displayed index from the SimplyKitchen inventory.
+ * Deletes a food item identified using it's displayed index from the Food inventory.
  */
 public class DeleteCommand extends Command {
 

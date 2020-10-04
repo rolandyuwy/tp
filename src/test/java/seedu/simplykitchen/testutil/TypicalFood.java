@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.simplykitchen.model.SimplyKitchenInventory;
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.food.Food;
 
 /**
@@ -60,10 +60,10 @@ public class TypicalFood {
     private TypicalFood() {} // prevents instantiation
 
     /**
-     * Returns an {@code SimplyKitchenInventory} with all the typical persons.
+     * Returns an {@code FoodInventory} with all the typical persons.
      */
-    public static SimplyKitchenInventory getTypicalSimplyKitchenInventory() {
-        SimplyKitchenInventory ab = new SimplyKitchenInventory();
+    public static FoodInventory getTypicalFoodInventory() {
+        FoodInventory ab = new FoodInventory();
         for (Food food : getTypicalFood()) {
             ab.addFood(food);
         }

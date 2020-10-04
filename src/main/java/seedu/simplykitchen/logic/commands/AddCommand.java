@@ -12,13 +12,13 @@ import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.Food;
 
 /**
- * Adds a food item to the SimplyKitchen inventory.
+ * Adds a food item to the Food inventory.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a food to the SimplyKitchen inventory. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a food to the food inventory. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -34,7 +34,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New food item added: %1$s";
-    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the SimplyKitchen inventory";
+    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory";
 
     private final Food toAdd;
 

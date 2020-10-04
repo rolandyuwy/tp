@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Food's address in the SimplyKitchen inventory.
+ * Represents a Food's address in the Food inventory.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
 public class Address {

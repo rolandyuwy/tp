@@ -7,5 +7,5 @@
       "y" : 100
     }
   },
-  "simplyKitchenInventoryFilePath" : "simplyKitchen.json"
+  "foodInventoryFilePath" : "foodInventory.json"
 }

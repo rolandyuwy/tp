@@ -9,5 +9,5 @@
       "z" : 99
     }
   },
-  "simplyKitchenInventoryFilePath" : "simplyKitchen.json"
+  "foodInventoryFilePath" : "foodInventory.json"
 }

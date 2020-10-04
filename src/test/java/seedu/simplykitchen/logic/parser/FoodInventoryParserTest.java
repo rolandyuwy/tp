@@ -28,9 +28,9 @@ import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
 
-public class SimplyKitchenInventoryParserTest {
+public class FoodInventoryParserTest {
 
-    private final SimplyKitchenParser parser = new SimplyKitchenParser();
+    private final FoodInventoryParser parser = new FoodInventoryParser();
 
     @Test
     public void parseCommand_add() throws Exception {

@@ -8,7 +8,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSu
 import static seedu.simplykitchen.testutil.TypicalFood.CARL;
 import static seedu.simplykitchen.testutil.TypicalFood.ELLE;
 import static seedu.simplykitchen.testutil.TypicalFood.FIONA;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,8 +24,8 @@ import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
 
     @Test
     public void equals() {

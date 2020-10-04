@@ -15,16 +15,16 @@ import seedu.simplykitchen.commons.util.ConfigUtil;
 import seedu.simplykitchen.commons.util.StringUtil;
 import seedu.simplykitchen.logic.Logic;
 import seedu.simplykitchen.logic.LogicManager;
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.ReadOnlyUserPrefs;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
 import seedu.simplykitchen.model.UserPrefs;
 import seedu.simplykitchen.model.util.SampleDataUtil;
-import seedu.simplykitchen.storage.JsonSimplyKitchenStorage;
+import seedu.simplykitchen.storage.FoodInventoryStorage;
+import seedu.simplykitchen.storage.JsonFoodInventoryStorage;
 import seedu.simplykitchen.storage.JsonUserPrefsStorage;
-import seedu.simplykitchen.storage.SimplyKitchenStorage;
 import seedu.simplykitchen.storage.Storage;
 import seedu.simplykitchen.storage.StorageManager;
 import seedu.simplykitchen.storage.UserPrefsStorage;
@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing SimplyKitchenInventory ]===========================");
+        logger.info("=============================[ Initializing FoodInventory ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -56,9 +56,9 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        SimplyKitchenStorage simplyKitchenStorage =
-                new JsonSimplyKitchenStorage(userPrefs.getSimplyKitchenInventoryFilePath());
-        storage = new StorageManager(simplyKitchenStorage, userPrefsStorage);
+        FoodInventoryStorage foodInventoryStorage =
+                new JsonFoodInventoryStorage(userPrefs.getFoodInventoryFilePath());
+        storage = new StorageManager(foodInventoryStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -78,22 +78,22 @@ public class MainApp extends Application {
      * when reading {@code storage}'s SimplyKitchen inventory.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlySimplyKitchenInventory> simplyKitchenInventoryOptional;
-        ReadOnlySimplyKitchenInventory initialData;
+        Optional<ReadOnlyFoodInventory> simplyKitchenInventoryOptional;
+        ReadOnlyFoodInventory initialData;
         try {
-            simplyKitchenInventoryOptional = storage.readSimplyKitchenInventory();
+            simplyKitchenInventoryOptional = storage.readFoodInventory();
             if (!simplyKitchenInventoryOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample SimplyKitchenInventory");
+                logger.info("Data file not found. Will be starting with a sample FoodInventory");
             }
-            initialData = simplyKitchenInventoryOptional.orElseGet(SampleDataUtil::getSampleSimplyKitchenInventory);
+            initialData = simplyKitchenInventoryOptional.orElseGet(SampleDataUtil::getSampleFoodInventory);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. "
-                    + "Will be starting with an empty SimplyKitchenInventory");
-            initialData = new SimplyKitchenInventory();
+                    + "Will be starting with an empty FoodInventory");
+            initialData = new FoodInventory();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty SimplyKitchenInventory");
-            initialData = new SimplyKitchenInventory();
+                    + "Will be starting with an empty FoodInventory");
+            initialData = new FoodInventory();
         }
 
         return new ModelManager(initialData, userPrefs);
@@ -158,7 +158,7 @@ public class MainApp extends Application {
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty SimplyKitchenInventory");
+                    + "Will be starting with an empty FoodInventory");
             initializedPrefs = new UserPrefs();
         }
 
@@ -174,7 +174,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting SimplyKitchenInventory " + MainApp.VERSION);
+        logger.info("Starting FoodInventory " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 

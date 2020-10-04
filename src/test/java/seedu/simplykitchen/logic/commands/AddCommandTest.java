@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.ReadOnlyUserPrefs;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.testutil.FoodBuilder;
 
@@ -99,12 +99,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getSimplyKitchenInventoryFilePath() {
+        public Path getFoodInventoryFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setSimplyKitchenInventoryFilePath(Path simplyKitchenInventoryFilePath) {
+        public void setFoodInventoryFilePath(Path foodInventoryFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -114,12 +114,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setSimplyKitchenInventory(ReadOnlySimplyKitchenInventory newData) {
+        public void setFoodInventory(ReadOnlyFoodInventory foodInventory) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlySimplyKitchenInventory getSimplyKitchenInventory() {
+        public ReadOnlyFoodInventory getFoodInventory() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -186,8 +186,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlySimplyKitchenInventory getSimplyKitchenInventory() {
-            return new SimplyKitchenInventory();
+        public ReadOnlyFoodInventory getFoodInventory() {
+            return new FoodInventory();
         }
     }
 
