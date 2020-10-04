@@ -81,7 +81,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String expiry date} into an {@code ExpiryDate}.
+     * Parses a {@code String expiryDate} into an {@code ExpiryDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code expiryDate} is invalid.
