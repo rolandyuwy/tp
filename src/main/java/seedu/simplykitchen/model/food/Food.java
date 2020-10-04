@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
- * Represents a Food item in the SimplyKitchen inventory.
+ * Represents a Food item in the Food inventory.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Food {

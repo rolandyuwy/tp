@@ -15,8 +15,8 @@ import java.util.List;
 
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
@@ -104,12 +104,12 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        SimplyKitchenInventory expectedSimplyKitchenInventory =
-                new SimplyKitchenInventory(actualModel.getSimplyKitchenInventory());
+        FoodInventory expectedSimplyKitchenInventory =
+                new FoodInventory(actualModel.getFoodInventory());
         List<Food> expectedFilteredList = new ArrayList<>(actualModel.getFilteredFoodList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedSimplyKitchenInventory, actualModel.getSimplyKitchenInventory());
+        assertEquals(expectedSimplyKitchenInventory, actualModel.getFoodInventory());
         assertEquals(expectedFilteredList, actualModel.getFilteredFoodList());
     }
     /**

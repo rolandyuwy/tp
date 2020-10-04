@@ -27,7 +27,7 @@ import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
- * Edits the details of an existing food item in the SimplyKitchen inventory.
+ * Edits the details of an existing food item in the Food inventory.
  */
 public class EditCommand extends Command {
 
@@ -48,7 +48,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the SimplyKitchen inventory.";
+    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory.";
 
     private final Index index;
     private final EditFoodDescriptor editFoodDescriptor;

@@ -6,7 +6,7 @@ import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 import seedu.simplykitchen.model.Model;
 
 /**
- * Lists all food items in the SimplyKitchen inventory to the user.
+ * Lists all food items in the Food inventory to the user.
  */
 public class ListCommand extends Command {
 

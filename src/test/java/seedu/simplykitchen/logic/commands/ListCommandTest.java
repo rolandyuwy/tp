@@ -2,7 +2,7 @@ package seedu.simplykitchen.logic.commands;
 
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,8 +22,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
-        expectedModel = new ModelManager(model.getSimplyKitchenInventory(), new UserPrefs());
+        model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
+        expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
     }
 
     @Test

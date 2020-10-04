@@ -5,14 +5,14 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.simplykitchen.commons.exceptions.DataConversionException;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.ReadOnlyUserPrefs;
 import seedu.simplykitchen.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends SimplyKitchenStorage, UserPrefsStorage {
+public interface Storage extends FoodInventoryStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -21,12 +21,12 @@ public interface Storage extends SimplyKitchenStorage, UserPrefsStorage {
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getSimplyKitchenInventoryFilePath();
+    Path getFoodInventoryFilePath();
 
     @Override
-    Optional<ReadOnlySimplyKitchenInventory> readSimplyKitchenInventory() throws DataConversionException, IOException;
+    Optional<ReadOnlyFoodInventory> readFoodInventory() throws DataConversionException, IOException;
 
     @Override
-    void saveSimplyKitchenInventory(ReadOnlySimplyKitchenInventory simplyKitchenInventory) throws IOException;
+    void saveFoodInventory(ReadOnlyFoodInventory foodInventory) throws IOException;
 
 }

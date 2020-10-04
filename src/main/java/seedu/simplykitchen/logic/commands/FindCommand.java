@@ -7,7 +7,7 @@ import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
 
 /**
- * Finds and lists all food items in SimplyKitchen inventory whose name contains any of the argument keywords.
+ * Finds and lists all food items in Food inventory whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Tag in the SimplyKitchen inventory.
+ * Represents a Tag in the Food inventory.
  * Guarantees: immutable; name is valid as declared in {@link #isValidTagName(String)}
  */
 public class Tag {

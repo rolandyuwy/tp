@@ -35,45 +35,45 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' SimplyKitchen inventory file path.
+     * Returns the user prefs' Food inventory file path.
      */
-    Path getSimplyKitchenInventoryFilePath();
+    Path getFoodInventoryFilePath();
 
     /**
-     * Sets the user prefs' SimplyKitchen inventory file path.
+     * Sets the user prefs' Food inventory file path.
      */
-    void setSimplyKitchenInventoryFilePath(Path simplyKitchenInventoryFilePath);
+    void setFoodInventoryFilePath(Path foodInventoryFilePath);
 
     /**
-     * Replaces SimplyKitchen inventory data with the data in {@code simplyKitchenInventory}.
+     * Replaces Food inventory data with the data in {@code foodInventory}.
      */
-    void setSimplyKitchenInventory(ReadOnlySimplyKitchenInventory simplyKitchenInventory);
+    void setFoodInventory(ReadOnlyFoodInventory foodInventory);
 
-    /** Returns the SimplyKitchenInventory */
-    ReadOnlySimplyKitchenInventory getSimplyKitchenInventory();
+    /** Returns the FoodInventory */
+    ReadOnlyFoodInventory getFoodInventory();
 
     /**
-     * Returns true if a food item with the same identity as {@code food} exists in the SimplyKitchen inventory.
+     * Returns true if a food item with the same identity as {@code food} exists in the Food inventory.
      */
     boolean hasFood(Food food);
 
     /**
      * Deletes the given food item.
-     * The food item must exist in the SimplyKitchen inventory.
+     * The food item must exist in the Food inventory.
      */
     void deleteFood(Food target);
 
     /**
      * Adds the given food item.
-     * {@code food} must not already exist in the SimplyKitchen inventory.
+     * {@code food} must not already exist in the Food inventory.
      */
     void addFood(Food food);
 
     /**
      * Replaces the given food item {@code target} with {@code editedFood}.
-     * {@code target} must exist in the SimplyKitchen inventory.
+     * {@code target} must exist in the Food inventory.
      * The food item identity of {@code editedFood} must not be the same as another existing food item
-     * in the SimplyKitchen inventory.
+     * in the Food inventory.
      */
     void setFood(Food target, Food editedFood);
 

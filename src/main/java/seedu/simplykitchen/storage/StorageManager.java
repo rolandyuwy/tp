@@ -7,25 +7,25 @@ import java.util.logging.Logger;
 
 import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.commons.exceptions.DataConversionException;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.ReadOnlyUserPrefs;
 import seedu.simplykitchen.model.UserPrefs;
 
 /**
- * Manages storage of SimplyKitchenInventory data in local storage.
+ * Manages storage of FoodInventory data in local storage.
  */
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private SimplyKitchenStorage simplyKitchenStorage;
+    private FoodInventoryStorage foodInventoryStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code SimplyKitchenStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code FoodInventoryStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(SimplyKitchenStorage simplyKitchenStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(FoodInventoryStorage foodInventoryStorage, UserPrefsStorage userPrefsStorage) {
         super();
-        this.simplyKitchenStorage = simplyKitchenStorage;
+        this.foodInventoryStorage = foodInventoryStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -47,36 +47,36 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ SimplyKitchenInventory methods ==============================
+    // ================ FoodInventory methods ==============================
 
     @Override
-    public Path getSimplyKitchenInventoryFilePath() {
-        return simplyKitchenStorage.getSimplyKitchenInventoryFilePath();
+    public Path getFoodInventoryFilePath() {
+        return foodInventoryStorage.getFoodInventoryFilePath();
     }
 
     @Override
-    public Optional<ReadOnlySimplyKitchenInventory> readSimplyKitchenInventory()
+    public Optional<ReadOnlyFoodInventory> readFoodInventory()
             throws DataConversionException, IOException {
-        return readSimplyKitchenInventory(simplyKitchenStorage.getSimplyKitchenInventoryFilePath());
+        return readFoodInventory(foodInventoryStorage.getFoodInventoryFilePath());
     }
 
     @Override
-    public Optional<ReadOnlySimplyKitchenInventory> readSimplyKitchenInventory(Path filePath)
+    public Optional<ReadOnlyFoodInventory> readFoodInventory(Path filePath)
             throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return simplyKitchenStorage.readSimplyKitchenInventory(filePath);
+        return foodInventoryStorage.readFoodInventory(filePath);
     }
 
     @Override
-    public void saveSimplyKitchenInventory(ReadOnlySimplyKitchenInventory simplyKitchenInventory) throws IOException {
-        saveSimplyKitchenInventory(simplyKitchenInventory, simplyKitchenStorage.getSimplyKitchenInventoryFilePath());
+    public void saveFoodInventory(ReadOnlyFoodInventory foodInventory) throws IOException {
+        saveFoodInventory(foodInventory, foodInventoryStorage.getFoodInventoryFilePath());
     }
 
     @Override
-    public void saveSimplyKitchenInventory(ReadOnlySimplyKitchenInventory addressBook, Path filePath)
+    public void saveFoodInventory(ReadOnlyFoodInventory foodInventory, Path filePath)
             throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        simplyKitchenStorage.saveSimplyKitchenInventory(addressBook, filePath);
+        foodInventoryStorage.saveFoodInventory(foodInventory, filePath);
     }
 
 }

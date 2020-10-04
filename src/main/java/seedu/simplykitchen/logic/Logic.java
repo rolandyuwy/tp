@@ -7,7 +7,7 @@ import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.logic.commands.CommandResult;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.food.Food;
 
 /**
@@ -24,19 +24,19 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the SimplyKitchenInventory.
+     * Returns the FoodInventory.
      *
-     * @see seedu.simplykitchen.model.Model#getSimplyKitchenInventory()
+     * @see seedu.simplykitchen.model.Model#getFoodInventory()
      */
-    ReadOnlySimplyKitchenInventory getSimplyKitchenInventory();
+    ReadOnlyFoodInventory getFoodInventory();
 
     /** Returns an unmodifiable view of the filtered list of food items */
     ObservableList<Food> getFilteredFoodList();
 
     /**
-     * Returns the user prefs' SimplyKitchen inventory file path.
+     * Returns the user prefs' Food inventory file path.
      */
-    Path getSimplyKitchenInventoryFilePath();
+    Path getFoodInventoryFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

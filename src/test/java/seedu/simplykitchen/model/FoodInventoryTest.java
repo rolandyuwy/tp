@@ -7,7 +7,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_B
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,25 +22,25 @@ import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.exceptions.DuplicateFoodException;
 import seedu.simplykitchen.testutil.FoodBuilder;
 
-public class SimplyKitchenInventoryTest {
+public class FoodInventoryTest {
 
-    private final SimplyKitchenInventory simplyKitchenInventory = new SimplyKitchenInventory();
+    private final FoodInventory foodInventory = new FoodInventory();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), simplyKitchenInventory.getFoods());
+        assertEquals(Collections.emptyList(), foodInventory.getFoods());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> simplyKitchenInventory.resetData(null));
+        assertThrows(NullPointerException.class, () -> foodInventory.resetData(null));
     }
 
     @Test
-    public void resetData_withValidReadOnlySimplyKitchenInventory_replacesData() {
-        SimplyKitchenInventory newData = getTypicalSimplyKitchenInventory();
-        simplyKitchenInventory.resetData(newData);
-        assertEquals(newData, simplyKitchenInventory);
+    public void resetData_withValidReadOnlyFoodInventory_replacesData() {
+        FoodInventory newData = getTypicalFoodInventory();
+        foodInventory.resetData(newData);
+        assertEquals(newData, foodInventory);
     }
 
     @Test
@@ -49,47 +49,47 @@ public class SimplyKitchenInventoryTest {
         Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Food> newFoods = Arrays.asList(ALICE, editedAlice);
-        SimplyKitchenInventoryStub newData = new SimplyKitchenInventoryStub(newFoods);
+        FoodInventoryStub newData = new FoodInventoryStub(newFoods);
 
-        assertThrows(DuplicateFoodException.class, () -> simplyKitchenInventory.resetData(newData));
+        assertThrows(DuplicateFoodException.class, () -> foodInventory.resetData(newData));
     }
 
     @Test
     public void hasFood_nullFood_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> simplyKitchenInventory.hasFood(null));
+        assertThrows(NullPointerException.class, () -> foodInventory.hasFood(null));
     }
 
     @Test
-    public void hasFood_foodNotInSimplyKitchenInventory_returnsFalse() {
-        assertFalse(simplyKitchenInventory.hasFood(ALICE));
+    public void hasFood_foodNotInFoodInventory_returnsFalse() {
+        assertFalse(foodInventory.hasFood(ALICE));
     }
 
     @Test
-    public void hasFood_foodInSimplyKitchenInventory_returnsTrue() {
-        simplyKitchenInventory.addFood(ALICE);
-        assertTrue(simplyKitchenInventory.hasFood(ALICE));
+    public void hasFood_foodInFoodInventory_returnsTrue() {
+        foodInventory.addFood(ALICE);
+        assertTrue(foodInventory.hasFood(ALICE));
     }
 
     @Test
-    public void hasFood_foodWithSameIdentityFieldsInSimplyKitchenInventory_returnsTrue() {
-        simplyKitchenInventory.addFood(ALICE);
+    public void hasFood_foodWithSameIdentityFieldsInFoodInventory_returnsTrue() {
+        foodInventory.addFood(ALICE);
         Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(simplyKitchenInventory.hasFood(editedAlice));
+        assertTrue(foodInventory.hasFood(editedAlice));
     }
 
     @Test
     public void getFoodList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> simplyKitchenInventory.getFoods().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> foodInventory.getFoods().remove(0));
     }
 
     /**
-     * A stub ReadOnlySimplyKitchenInventory whose foods list can violate interface constraints.
+     * A stub ReadOnlyFoodInventory whose foods list can violate interface constraints.
      */
-    private static class SimplyKitchenInventoryStub implements ReadOnlySimplyKitchenInventory {
+    private static class FoodInventoryStub implements ReadOnlyFoodInventory {
         private final ObservableList<Food> foods = FXCollections.observableArrayList();
 
-        SimplyKitchenInventoryStub(Collection<Food> foods) {
+        FoodInventoryStub(Collection<Food> foods) {
             this.foods.setAll(foods);
         }
 

@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.simplykitchen.model.ReadOnlySimplyKitchenInventory;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
+import seedu.simplykitchen.model.FoodInventory;
+import seedu.simplykitchen.model.ReadOnlyFoodInventory;
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Email;
 import seedu.simplykitchen.model.food.Food;
@@ -14,7 +14,7 @@ import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code SimplyKitchenInventory} with sample data.
+ * Contains utility methods for populating {@code FoodInventory} with sample data.
  */
 public class SampleDataUtil {
     public static Food[] getSampleFoods() {
@@ -40,12 +40,12 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlySimplyKitchenInventory getSampleSimplyKitchenInventory() {
-        SimplyKitchenInventory sampleSimplyKitchenInventory = new SimplyKitchenInventory();
+    public static ReadOnlyFoodInventory getSampleFoodInventory() {
+        FoodInventory sampleFoodInventory = new FoodInventory();
         for (Food sampleFood : getSampleFoods()) {
-            sampleSimplyKitchenInventory.addFood(sampleFood);
+            sampleFoodInventory.addFood(sampleFood);
         }
-        return sampleSimplyKitchenInventory;
+        return sampleFoodInventory;
     }
 
     /**

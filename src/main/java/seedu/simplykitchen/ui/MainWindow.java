@@ -116,7 +116,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getSimplyKitchenInventoryFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getFoodInventoryFilePath());
         statusBarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);

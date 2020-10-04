@@ -10,7 +10,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBA
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalSimplyKitchenInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_SECOND_FOOD;
 
@@ -19,9 +19,9 @@ import org.junit.jupiter.api.Test;
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
+import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.SimplyKitchenInventory;
 import seedu.simplykitchen.model.UserPrefs;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
@@ -32,7 +32,7 @@ import seedu.simplykitchen.testutil.FoodBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalSimplyKitchenInventory(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -43,7 +43,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);
 
         Model expectedModel = new ModelManager(
-                new SimplyKitchenInventory(model.getSimplyKitchenInventory()), new UserPrefs());
+                new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(model.getFilteredFoodList().get(0), editedFood);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -65,7 +65,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);
 
         Model expectedModel = new ModelManager(
-                new SimplyKitchenInventory(model.getSimplyKitchenInventory()), new UserPrefs());
+                new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(lastFood, editedFood);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -79,7 +79,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);
 
         Model expectedModel = new ModelManager(
-                new SimplyKitchenInventory(model.getSimplyKitchenInventory()), new UserPrefs());
+                new FoodInventory(model.getFoodInventory()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -96,7 +96,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);
 
         Model expectedModel = new ModelManager(
-                new SimplyKitchenInventory(model.getSimplyKitchenInventory()), new UserPrefs());
+                new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(model.getFilteredFoodList().get(0), editedFood);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -116,7 +116,7 @@ public class EditCommandTest {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
 
         // edit food in filtered list into a duplicate in SimplyKitchen inventory
-        Food foodInList = model.getSimplyKitchenInventory().getFoods().get(INDEX_SECOND_FOOD.getZeroBased());
+        Food foodInList = model.getFoodInventory().getFoods().get(INDEX_SECOND_FOOD.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_FOOD,
                 new EditFoodDescriptorBuilder(foodInList).build());
 
@@ -141,7 +141,7 @@ public class EditCommandTest {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
         Index outOfBoundIndex = INDEX_SECOND_FOOD;
         // ensures that outOfBoundIndex is still in bounds of SimplyKitchen inventory list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getSimplyKitchenInventory().getFoods().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getFoodInventory().getFoods().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditFoodDescriptorBuilder().withName(VALID_NAME_BOB).build());

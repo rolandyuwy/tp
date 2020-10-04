@@ -4,9 +4,9 @@ import javafx.collections.ObservableList;
 import seedu.simplykitchen.model.food.Food;
 
 /**
- * Unmodifiable view of a SimplyKitchen inventory.
+ * Unmodifiable view of a Food inventory.
  */
-public interface ReadOnlySimplyKitchenInventory {
+public interface ReadOnlyFoodInventory {
 
     /**
      * Returns an unmodifiable view of the food list.

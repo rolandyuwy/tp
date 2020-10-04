@@ -20,7 +20,7 @@ import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 /**
  * Parses user input.
  */
-public class SimplyKitchenParser {
+public class FoodInventoryParser {
 
     /**
      * Used for initial separation of command word and args.
