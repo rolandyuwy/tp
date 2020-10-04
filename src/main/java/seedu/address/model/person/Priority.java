@@ -15,7 +15,7 @@ public class Priority {
     }
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Priority should be either high, medium or low.";
+            "Priorities should be either high, medium or low.";
     public final Level value;
 
     /**
@@ -43,7 +43,7 @@ public class Priority {
     }
 
     /**
-     * Returns true if a given string is a valid priority number.
+     * Returns true if a given string is a valid priority level.
      */
     public static boolean isValidPriority(String priority) {
         priority = priority.toLowerCase();

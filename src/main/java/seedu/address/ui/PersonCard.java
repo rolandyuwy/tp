@@ -60,15 +60,19 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private void setPriorityColor(Priority.Level level) {
-        String priorityColor = "";
-        if (level == Priority.Level.LOW) {
+        String priorityColor;
+        switch(level) {
+        case LOW:
             priorityColor = "#00802b";
-        } else if (level == Priority.Level.MEDIUM) {
+            break;
+        case MEDIUM:
             priorityColor = "#cc7a00";
-        } else if (level == Priority.Level.HIGH) {
+            break;
+        case HIGH:
             priorityColor = "#cc0000";
-        } else {
-            priorityColor = "#000";
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid priority level");
         }
         priority.setStyle("-fx-background-color: " + priorityColor + ";");
     }
