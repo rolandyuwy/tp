@@ -12,10 +12,10 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORIT
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_AMY;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;

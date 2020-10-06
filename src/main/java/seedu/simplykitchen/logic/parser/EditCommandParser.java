@@ -1,7 +1,6 @@
 package seedu.simplykitchen.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
