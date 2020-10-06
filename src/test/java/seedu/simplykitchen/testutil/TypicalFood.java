@@ -52,8 +52,8 @@ public class TypicalFood {
     public static final Food AMY = new FoodBuilder().withName(VALID_NAME_AMY).withPriority(VALID_PRIORITY_AMY)
             .withExpiryDate(VALID_EXPIRYDATE_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Food BOB = new FoodBuilder().withName(VALID_NAME_BOB).withPriority(VALID_PRIORITY_BOB)
-            .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

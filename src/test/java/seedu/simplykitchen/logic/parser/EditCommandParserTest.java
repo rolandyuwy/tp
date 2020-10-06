@@ -179,8 +179,8 @@ public class EditCommandParserTest {
                 + PRIORITY_DESC_BOB + ADDRESS_DESC_BOB + EXPIRYDATE_DESC_BOB + TAG_DESC_HUSBAND;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BOB)
-                .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .build();
+                .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
