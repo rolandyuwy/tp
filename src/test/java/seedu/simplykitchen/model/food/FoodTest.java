@@ -2,7 +2,12 @@ package seedu.simplykitchen.model.food;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.*;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
 import static seedu.simplykitchen.testutil.TypicalFood.BREAD;
