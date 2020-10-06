@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
  */
 public class ExpiryDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format dd-MM-yyyy or dd/MM/yyyy. ";
+    public static final String MESSAGE_CONSTRAINTS = "Expiry dates should be of the format dd-MM-yyyy or dd/MM/yyyy. ";
     public static final String DATE_PATTERN = "d-M-yyyy";
 
     public final String value;

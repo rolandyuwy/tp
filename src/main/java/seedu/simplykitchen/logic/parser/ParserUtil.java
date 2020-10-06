@@ -66,7 +66,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses an {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code address} is invalid.
@@ -81,7 +81,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String expiryDate} into an {@code ExpiryDate}.
+     * Parses an {@code String expiryDate} into an {@code ExpiryDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code expiryDate} is invalid.
