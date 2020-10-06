@@ -1,39 +1,39 @@
 {
   "_comment": "SimplyKitchen saves file which contains the same Food values as in TypicalFood#getTypicalFoodInventory()",
   "foods" : [ {
-    "name" : "Alice Pauline",
-    "phone" : "94351253",
-    "email" : "alice@example.com",
+    "description" : "Anchovies",
+    "priority": "LOW",
+    "expiryDate" : "1-1-2021",
     "tagged" : [ "friends" ]
   }, {
-    "name" : "Benson Meier",
-    "phone" : "98765432",
-    "email" : "johnd@example.com",
+      "description": "Bagel",
+    "priority": "LOW",
+    "expiryDate" : "31-1-2021",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
-    "name" : "Carl Kurz",
-    "phone" : "95352563",
-    "email" : "heinz@example.com",
+    "description": "Carrot Cake",
+    "priority": "LOW",
+    "expiryDate" : "1-1-2020",
     "tagged" : [ ]
   }, {
-    "name" : "Daniel Meier",
-    "phone" : "87652533",
-    "email" : "cornelia@example.com",
+    "description": "Dark Chocolate",
+    "priority": "HIGH",
+    "expiryDate" : "1-12-2020",
     "tagged" : [ "friends" ]
   }, {
-    "name" : "Elle Meyer",
-    "phone" : "9482224",
-    "email" : "werner@example.com",
+    "description": "Eggs",
+    "priority": "HIGH",
+    "expiryDate" : "31-1-2020",
     "tagged" : [ ]
   }, {
-    "name" : "Fiona Kunz",
-    "phone" : "9482427",
-    "email" : "lydia@example.com",
+    "description": "French Fries",
+    "priority": "LOW",
+    "expiryDate" : "31-12-2020",
     "tagged" : [ ]
   }, {
-    "name" : "George Best",
-    "phone" : "9482442",
-    "email" : "anna@example.com",
+    "description": "Ginger",
+    "priority": "LOW",
+    "expiryDate" : "1-10-2020",
     "tagged" : [ ]
   } ]
 }

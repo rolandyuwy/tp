@@ -1,12 +1,12 @@
 {
   "foods": [ {
-    "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "alice@example.com",
+    "description": "Anchovies",
+    "priority": "LOW",
+    "expiryDate": "1-12-2021",
     "tagged": [ "friends" ]
   }, {
-    "name": "Alice Pauline",
-    "phone": "94351253",
-    "email": "pauline@example.com"
+    "description": "Anchovies",
+    "priority": "LOW",
+    "expiryDate": "1-12-2021"
   } ]
 }

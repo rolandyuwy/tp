@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.simplykitchen.commons.exceptions.IllegalValueException;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -23,21 +23,21 @@ class JsonAdaptedFood {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Food's %s field is missing!";
 
-    private final String name;
-    private final String phone;
-    private final String email;
+    private final String description;
+    private final String priority;
+    private final String expiryDate;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedFood} with the given food details.
      */
     @JsonCreator
-    public JsonAdaptedFood(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-                           @JsonProperty("email") String email,
+    public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("priority") String priority,
+                           @JsonProperty("expiryDate") String expiryDate,
                            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
+        this.description = description;
+        this.priority = priority;
+        this.expiryDate = expiryDate;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -47,9 +47,9 @@ class JsonAdaptedFood {
      * Converts a given {@code Food} into this class for Jackson use.
      */
     public JsonAdaptedFood(Food source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
+        description = source.getDescription().fullDescription;
+        priority = source.getPriority().toString();
+        expiryDate = source.getExpiryDate().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -61,37 +61,40 @@ class JsonAdaptedFood {
      * @throws IllegalValueException if there were any data constraints violated in the adapted food.
      */
     public Food toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> foodTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            foodTags.add(tag.toModelType());
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Description modelDescription = new Description(description);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        if (priority == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Priority.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Priority.isValidPriority(priority)) {
+            throw new IllegalValueException(Priority.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Priority modelPriority = new Priority(priority);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (expiryDate == null) {
+            throw new IllegalValueException(String.format(
+                    MISSING_FIELD_MESSAGE_FORMAT, ExpiryDate.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!ExpiryDate.isValidExpiryDate(expiryDate)) {
+            throw new IllegalValueException(ExpiryDate.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final ExpiryDate modelExpiryDate = new ExpiryDate(expiryDate);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Food(modelName, modelPhone, modelEmail, modelTags);
+        final Set<Tag> modelTags = new HashSet<>(foodTags);
+
+        return new Food(modelDescription, modelPriority, modelExpiryDate, modelTags);
     }
-
 }

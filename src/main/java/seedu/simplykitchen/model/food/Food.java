@@ -16,9 +16,9 @@ import seedu.simplykitchen.model.tag.Tag;
 public class Food {
 
     // Identity fields
-    private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final Description description;
+    private final Priority priority;
+    private final ExpiryDate expiryDate;
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -26,24 +26,24 @@ public class Food {
     /**
      * Every field must be present and not null.
      */
-    public Food(Name name, Phone phone, Email email, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
+    public Food(Description description, Priority priority, ExpiryDate expiryDate, Set<Tag> tags) {
+        requireAllNonNull(description, priority, expiryDate, tags);
+        this.description = description;
+        this.priority = priority;
+        this.expiryDate = expiryDate;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Description getDescription() {
+        return description;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Priority getPriority() {
+        return priority;
     }
 
-    public Email getEmail() {
-        return email;
+    public ExpiryDate getExpiryDate() {
+        return expiryDate;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Food {
     }
 
     /**
-     * Returns true if both food items of the same name have at least one other identity field that is the same.
+     * Returns true if both food items of the same description have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two food items.
      */
     public boolean isSameFood(Food otherFood) {
@@ -64,8 +64,8 @@ public class Food {
         }
 
         return otherFood != null
-                && otherFood.getName().equals(getName())
-                && (otherFood.getPhone().equals(getPhone()) || otherFood.getEmail().equals(getEmail()));
+                && otherFood.getDescription().equals(getDescription())
+                && (otherFood.getPriority().equals(getPriority()) || otherFood.getExpiryDate().equals(getExpiryDate()));
     }
 
     /**
@@ -83,26 +83,26 @@ public class Food {
         }
 
         Food otherFood = (Food) other;
-        return otherFood.getName().equals(getName())
-                && otherFood.getPhone().equals(getPhone())
-                && otherFood.getEmail().equals(getEmail())
+        return otherFood.getDescription().equals(getDescription())
+                && otherFood.getPriority().equals(getPriority())
+                && otherFood.getExpiryDate().equals(getExpiryDate())
                 && otherFood.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, tags);
+        return Objects.hash(description, priority, expiryDate, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
+        builder.append(getDescription())
+                .append(" Priority: ")
+                .append(getPriority())
+                .append(" ExpiryDate: ")
+                .append(getExpiryDate())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

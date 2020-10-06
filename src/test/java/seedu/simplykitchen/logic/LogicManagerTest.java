@@ -3,11 +3,11 @@ package seedu.simplykitchen.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_APPLE_PIE;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.AMY;
+import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -78,8 +78,10 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
-        Food expectedFood = new FoodBuilder(AMY).withTags().build();
+        String addCommand = AddCommand.COMMAND_WORD + DESCRIPTION_DESC_APPLE_PIE
+                + PRIORITY_DESC_APPLE_PIE + EXPIRYDATE_DESC_APPLE_PIE;
+
+        Food expectedFood = new FoodBuilder(APPLE_PIE).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFood(expectedFood);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

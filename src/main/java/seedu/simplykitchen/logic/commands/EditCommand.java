@@ -1,9 +1,9 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 
@@ -18,10 +18,10 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.CollectionUtil;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -35,13 +35,13 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed food list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
+            + "[" + PREFIX_EXPIRYDATE + "EXPIRY DATE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_PRIORITY + "high "
+            + PREFIX_EXPIRYDATE + "1-11-2021";
 
     public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -90,12 +90,11 @@ public class EditCommand extends Command {
     private static Food createEditedFood(Food foodToEdit, EditFoodDescriptor editFoodDescriptor) {
         assert foodToEdit != null;
 
-        Name updatedName = editFoodDescriptor.getName().orElse(foodToEdit.getName());
-        Phone updatedPhone = editFoodDescriptor.getPhone().orElse(foodToEdit.getPhone());
-        Email updatedEmail = editFoodDescriptor.getEmail().orElse(foodToEdit.getEmail());
+        Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
+        Priority updatedPriority = editFoodDescriptor.getPriority().orElse(foodToEdit.getPriority());
+        ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
-
-        return new Food(updatedName, updatedPhone, updatedEmail, updatedTags);
+        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updatedTags);
     }
 
     @Override
@@ -121,9 +120,9 @@ public class EditCommand extends Command {
      * corresponding field value of the food item.
      */
     public static class EditFoodDescriptor {
-        private Name name;
-        private Phone phone;
-        private Email email;
+        private Description description;
+        private Priority priority;
+        private ExpiryDate expiryDate;
         private Set<Tag> tags;
 
         public EditFoodDescriptor() {}
@@ -133,9 +132,9 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditFoodDescriptor(EditFoodDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
+            setDescription(toCopy.description);
+            setPriority(toCopy.priority);
+            setExpiryDate(toCopy.expiryDate);
             setTags(toCopy.tags);
         }
 
@@ -143,31 +142,31 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
+            return CollectionUtil.isAnyNonNull(description, priority, expiryDate, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setDescription(Description description) {
+            this.description = description;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Description> getDescription() {
+            return Optional.ofNullable(description);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setPriority(Priority priority) {
+            this.priority = priority;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setExpiryDate(ExpiryDate expiryDate) {
+            this.expiryDate = expiryDate;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<ExpiryDate> getExpiryDate() {
+            return Optional.ofNullable(expiryDate);
         }
 
         /**
@@ -202,9 +201,9 @@ public class EditCommand extends Command {
             // state check
             EditFoodDescriptor e = (EditFoodDescriptor) other;
 
-            return getName().equals(e.getName())
-                    && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+            return getDescription().equals(e.getDescription())
+                    && getPriority().equals(e.getPriority())
+                    && getExpiryDate().equals(e.getExpiryDate())
                     && getTags().equals(e.getTags());
         }
     }

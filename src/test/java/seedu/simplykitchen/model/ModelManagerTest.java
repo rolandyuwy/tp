@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
-import static seedu.simplykitchen.testutil.TypicalFood.BENSON;
+import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
+import static seedu.simplykitchen.testutil.TypicalFood.BAGEL;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.commons.core.GuiSettings;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 import seedu.simplykitchen.testutil.FoodInventoryBuilder;
 
 public class ModelManagerTest {
@@ -80,13 +80,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasFood_foodNotInFoodInventory_returnsFalse() {
-        assertFalse(modelManager.hasFood(ALICE));
+        assertFalse(modelManager.hasFood(ANCHOVIES));
     }
 
     @Test
     public void hasFood_foodInFoodInventory_returnsTrue() {
-        modelManager.addFood(ALICE);
-        assertTrue(modelManager.hasFood(ALICE));
+        modelManager.addFood(ANCHOVIES);
+        assertTrue(modelManager.hasFood(ANCHOVIES));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class ModelManagerTest {
     @Test
     public void equals() {
         FoodInventory foodInventory = new FoodInventoryBuilder()
-                .withFood(ALICE).withFood(BENSON).build();
+                .withFood(ANCHOVIES).withFood(BAGEL).build();
         FoodInventory differentFoodInventory = new FoodInventory();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -119,8 +119,8 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentFoodInventory, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredFoodList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        String[] keywords = ANCHOVIES.getDescription().fullDescription.split("\\s+");
+        modelManager.updateFilteredFoodList(new DescriptionContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(foodInventory, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

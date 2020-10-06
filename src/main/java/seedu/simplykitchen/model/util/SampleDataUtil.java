@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.ReadOnlyFoodInventory;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -18,18 +18,19 @@ import seedu.simplykitchen.model.tag.Tag;
 public class SampleDataUtil {
     public static Food[] getSampleFoods() {
         return new Food[] {
-            new Food(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                getTagSet("friends")),
-            new Food(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                getTagSet("colleagues", "friends")),
-            new Food(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                getTagSet("neighbours")),
-            new Food(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                getTagSet("family")),
-            new Food(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                getTagSet("classmates")),
-            new Food(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                getTagSet("colleagues"))
+            new Food(new Description("Apple Pie"), new Priority("high"), new ExpiryDate("30-9-2020"),
+                    getTagSet("friends")),
+            new Food(new Description("Bread"), new Priority("medium"), new ExpiryDate("1-10-2020"),
+                    getTagSet("colleagues", "friends")),
+            new Food(new Description("Chocolate Cake"), new Priority("high"), new ExpiryDate("1-1-2021"),
+                    getTagSet("neighbours")),
+            new Food(new Description("Donuts"), new Priority("low"), new ExpiryDate("1-11-2021"),
+                    getTagSet("family")),
+            new Food(new Description("Ice Cream"), new Priority("low"), new ExpiryDate("15-6-2021"),
+                    getTagSet("classmates")),
+            new Food(new Description("Raspberry Jam"), new Priority("medium"),
+                    new ExpiryDate("12-12-2021"),
+                    getTagSet("colleagues"))
         };
     }
 

@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_FOODS_LISTED_OVERVIEW;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.simplykitchen.testutil.TypicalFood.CARL;
-import static seedu.simplykitchen.testutil.TypicalFood.ELLE;
-import static seedu.simplykitchen.testutil.TypicalFood.FIONA;
+import static seedu.simplykitchen.testutil.TypicalFood.CARROT_CAKE;
+import static seedu.simplykitchen.testutil.TypicalFood.DARK_CHOCOLATE;
+import static seedu.simplykitchen.testutil.TypicalFood.EGGS;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
 import seedu.simplykitchen.model.UserPrefs;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -29,10 +29,10 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
-        NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+        DescriptionContainsKeywordsPredicate firstPredicate =
+                new DescriptionContainsKeywordsPredicate(Collections.singletonList("first"));
+        DescriptionContainsKeywordsPredicate secondPredicate =
+                new DescriptionContainsKeywordsPredicate(Collections.singletonList("second"));
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
@@ -57,7 +57,7 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noFoodFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        DescriptionContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFoodList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -67,17 +67,18 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleFoodsFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 3);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        DescriptionContainsKeywordsPredicate predicate = preparePredicate("Cake Dark Eggs");
+
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFoodList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredFoodList());
+        assertEquals(Arrays.asList(CARROT_CAKE, DARK_CHOCOLATE, EGGS), model.getFilteredFoodList());
     }
 
     /**
-     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code DescriptionContainsKeywordsPredicate}.
      */
-    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    private DescriptionContainsKeywordsPredicate preparePredicate(String userInput) {
+        return new DescriptionContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }

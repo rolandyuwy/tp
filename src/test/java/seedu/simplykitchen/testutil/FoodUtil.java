@@ -1,8 +1,8 @@
 package seedu.simplykitchen.testutil;
 
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -29,9 +29,9 @@ public class FoodUtil {
      */
     public static String getFoodDetails(Food food) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + food.getName().fullName + " ");
-        sb.append(PREFIX_PHONE + food.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + food.getEmail().value + " ");
+        sb.append(PREFIX_DESCRIPTION + food.getDescription().fullDescription + " ");
+        sb.append(PREFIX_PRIORITY + food.getPriority().toString() + " ");
+        sb.append(PREFIX_EXPIRYDATE + food.getExpiryDate().value + " ");
         food.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -43,9 +43,12 @@ public class FoodUtil {
      */
     public static String getEditFoodDescriptorDetails(EditCommand.EditFoodDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
-        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
+        descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESCRIPTION)
+                .append(description.fullDescription).append(" "));
+        descriptor.getPriority().ifPresent(priority -> sb.append(PREFIX_PRIORITY)
+                .append(priority.toString()).append(" "));
+        descriptor.getExpiryDate().ifPresent(expiryDate -> sb.append(PREFIX_EXPIRYDATE).append(expiryDate.value)
+                .append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

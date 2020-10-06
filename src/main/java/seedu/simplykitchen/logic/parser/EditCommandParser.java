@@ -2,9 +2,9 @@ package seedu.simplykitchen.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -31,7 +31,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY, PREFIX_EXPIRYDATE, PREFIX_TAG);
 
         Index index;
 
@@ -42,14 +42,18 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         EditFoodDescriptor editFoodDescriptor = new EditCommand.EditFoodDescriptor();
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editFoodDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
+            editFoodDescriptor.setDescription(ParserUtil.parseDescription(argMultimap
+                    .getValue(PREFIX_DESCRIPTION).get()));
         }
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editFoodDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            editFoodDescriptor.setPriority(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
         }
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editFoodDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+
+        if (argMultimap.getValue(PREFIX_EXPIRYDATE).isPresent()) {
+            editFoodDescriptor.setExpiryDate(ParserUtil.parseExpiryDate(
+                    argMultimap.getValue(PREFIX_EXPIRYDATE).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFoodDescriptor::setTags);
 

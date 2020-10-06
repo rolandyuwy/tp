@@ -22,8 +22,8 @@ import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
@@ -72,7 +72,7 @@ public class FoodInventoryParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindCommand(new DescriptionContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

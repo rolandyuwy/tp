@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
+import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.util.Arrays;
@@ -45,9 +45,8 @@ public class FoodInventoryTest {
     @Test
     public void resetData_withDuplicateFoods_throwsDuplicateFoodException() {
         // Two foods with the same identity fields
-        Food editedAlice = new FoodBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
-                .build();
-        List<Food> newFoods = Arrays.asList(ALICE, editedAlice);
+        Food editedAlice = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        List<Food> newFoods = Arrays.asList(APPLE_PIE, editedAlice);
         FoodInventoryStub newData = new FoodInventoryStub(newFoods);
 
         assertThrows(DuplicateFoodException.class, () -> foodInventory.resetData(newData));
@@ -60,21 +59,20 @@ public class FoodInventoryTest {
 
     @Test
     public void hasFood_foodNotInFoodInventory_returnsFalse() {
-        assertFalse(foodInventory.hasFood(ALICE));
+        assertFalse(foodInventory.hasFood(APPLE_PIE));
     }
 
     @Test
     public void hasFood_foodInFoodInventory_returnsTrue() {
-        foodInventory.addFood(ALICE);
-        assertTrue(foodInventory.hasFood(ALICE));
+        foodInventory.addFood(APPLE_PIE);
+        assertTrue(foodInventory.hasFood(APPLE_PIE));
     }
 
     @Test
     public void hasFood_foodWithSameIdentityFieldsInFoodInventory_returnsTrue() {
-        foodInventory.addFood(ALICE);
-        Food editedAlice = new FoodBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
-                .build();
-        assertTrue(foodInventory.hasFood(editedAlice));
+        foodInventory.addFood(APPLE_PIE);
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(foodInventory.hasFood(editedApplePie));
     }
 
     @Test

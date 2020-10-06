@@ -6,10 +6,10 @@ import java.util.stream.Stream;
 
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -32,33 +32,33 @@ public class EditFoodDescriptorBuilder {
      */
     public EditFoodDescriptorBuilder(Food food) {
         descriptor = new EditFoodDescriptor();
-        descriptor.setName(food.getName());
-        descriptor.setPhone(food.getPhone());
-        descriptor.setEmail(food.getEmail());
+        descriptor.setDescription(food.getDescription());
+        descriptor.setPriority(food.getPriority());
+        descriptor.setExpiryDate(food.getExpiryDate());
         descriptor.setTags(food.getTags());
     }
 
     /**
-     * Sets the {@code Name} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code Description} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+    public EditFoodDescriptorBuilder withDescription(String description) {
+        descriptor.setDescription(new Description(description));
         return this;
     }
 
     /**
-     * Sets the {@code Phone} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code Priority} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new Phone(phone));
+    public EditFoodDescriptorBuilder withPriority(String priority) {
+        descriptor.setPriority(new Priority(priority));
         return this;
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code ExpiryDate} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
+    public EditFoodDescriptorBuilder withExpiryDate(String expiryDate) {
+        descriptor.setExpiryDate(new ExpiryDate(expiryDate));
         return this;
     }
 
