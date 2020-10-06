@@ -2,7 +2,6 @@ package seedu.simplykitchen.model.food;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
@@ -43,16 +42,16 @@ public class FoodTest {
 
         // same description, same priority, different attributes -> returns true
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).withPriority("low")
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same email, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).withAddress(VALID_ADDRESS_BOB)
+        // same description, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, same priority, same email, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
     }
 
@@ -84,10 +83,6 @@ public class FoodTest {
 
         // different expiry date -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
-        assertFalse(APPLE_PIE.equals(editedApplePie));
-
-        // different address -> returns false
-        editedApplePie = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false

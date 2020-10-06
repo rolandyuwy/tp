@@ -1,6 +1,5 @@
 package seedu.simplykitchen.testutil;
 
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -33,7 +32,6 @@ public class FoodUtil {
         sb.append(PREFIX_DESCRIPTION + food.getDescription().fullDescription + " ");
         sb.append(PREFIX_PRIORITY + food.getPriority().toString() + " ");
         sb.append(PREFIX_EXPIRYDATE + food.getExpiryDate().value + " ");
-        sb.append(PREFIX_ADDRESS + food.getAddress().value + " ");
         food.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -51,7 +49,6 @@ public class FoodUtil {
                 .append(priority.toString()).append(" "));
         descriptor.getExpiryDate().ifPresent(expiryDate -> sb.append(PREFIX_EXPIRYDATE).append(expiryDate.value)
                 .append(" "));
-        descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

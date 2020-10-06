@@ -2,7 +2,6 @@ package seedu.simplykitchen.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -31,25 +30,22 @@ public class CommandTestUtil {
     public static final String VALID_PRIORITY_BREAD = "medium";
     public static final String VALID_EXPIRYDATE_APPLE_PIE = "1-1-2021";
     public static final String VALID_EXPIRYDATE_BREAD = "31-12-2021";
-    public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+
     public static final String DESCRIPTION_DESC_APPLE_PIE = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_APPLE_PIE;
     public static final String DESCRIPTION_DESC_BREAD = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_BREAD;
     public static final String PRIORITY_DESC_APPLE_PIE = " " + PREFIX_PRIORITY + VALID_PRIORITY_APPLE_PIE;
     public static final String PRIORITY_DESC_BREAD = " " + PREFIX_PRIORITY + VALID_PRIORITY_BREAD;
     public static final String EXPIRYDATE_DESC_APPLE_PIE = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_APPLE_PIE;
     public static final String EXPIRYDATE_DESC_BREAD = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_BREAD;
-    public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
-    public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
+
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
             + "D&nut"; // '&' not allowed in descriptions
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "lower"; // 'lower' not valid priority
     public static final String INVALID_EXPIRYDATE_DESC = " " + PREFIX_EXPIRYDATE + "1-13-2021"; // invalid month
-    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -61,10 +57,10 @@ public class CommandTestUtil {
     static {
         DESC_APPLE_PIE = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
                 .withPriority(VALID_PRIORITY_APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE)
-                .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_FRIEND).build();
         DESC_BREAD = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_BREAD)
                 .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRYDATE_BREAD)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 
     /**

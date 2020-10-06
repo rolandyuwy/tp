@@ -35,8 +35,6 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label address;
-    @FXML
     private Label expiryDate;
     @FXML
     private Label priority;
@@ -53,7 +51,6 @@ public class FoodCard extends UiPart<Region> {
         description.setText(food.getDescription().fullDescription);
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
-        address.setText(food.getAddress().value);
         expiryDate.setText(food.getExpiryDate().value);
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

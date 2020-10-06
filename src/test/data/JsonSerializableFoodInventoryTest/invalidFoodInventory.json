@@ -2,7 +2,6 @@
   "foods": [ {
     "description": "Ham",
     "priority": "LOW",
-    "expiryDate": "1-13-2021",
-    "address": "4th street"
+    "expiryDate": "1-13-2021"
   } ]
 }

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
@@ -45,10 +44,6 @@ public class EditFoodDescriptorTest {
 
         // different expiry date -> returns false
         editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
-        assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
-
-        // different address -> returns false
-        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false

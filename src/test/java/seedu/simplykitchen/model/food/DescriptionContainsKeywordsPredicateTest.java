@@ -72,10 +72,9 @@ public class DescriptionContainsKeywordsPredicateTest {
         predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("Carrot"));
         assertFalse(predicate.test(new FoodBuilder().withDescription("Apple Bread").build()));
 
-        // Keywords match priority, expiry date and address, but does not match description
-        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("12345",
-                "alice@email.com", "Main", "Street"));
+        // Keywords match priority and expiry date, but does not match description
+        predicate = new DescriptionContainsKeywordsPredicate(Arrays.asList("low", "31-1-2021"));
         assertFalse(predicate.test(new FoodBuilder().withDescription("Apple").withPriority("low")
-                .withExpiryDate("31-1-2021").withAddress("Main Street").build()));
+                .withExpiryDate("31-1-2021").build()));
     }
 }

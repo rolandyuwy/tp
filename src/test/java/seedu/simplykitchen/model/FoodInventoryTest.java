@@ -3,7 +3,6 @@ package seedu.simplykitchen.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
@@ -46,8 +45,7 @@ public class FoodInventoryTest {
     @Test
     public void resetData_withDuplicateFoods_throwsDuplicateFoodException() {
         // Two foods with the same identity fields
-        Food editedAlice = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Food editedAlice = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
         List<Food> newFoods = Arrays.asList(APPLE_PIE, editedAlice);
         FoodInventoryStub newData = new FoodInventoryStub(newFoods);
 
@@ -73,9 +71,8 @@ public class FoodInventoryTest {
     @Test
     public void hasFood_foodWithSameIdentityFieldsInFoodInventory_returnsTrue() {
         foodInventory.addFood(APPLE_PIE);
-        Food editedAlice = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
-        assertTrue(foodInventory.hasFood(editedAlice));
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(foodInventory.hasFood(editedApplePie));
     }
 
     @Test

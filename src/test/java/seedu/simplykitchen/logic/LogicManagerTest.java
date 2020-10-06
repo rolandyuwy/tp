@@ -3,7 +3,6 @@ package seedu.simplykitchen.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_APPLE_PIE;
@@ -80,8 +79,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + DESCRIPTION_DESC_APPLE_PIE
-                + PRIORITY_DESC_APPLE_PIE + EXPIRYDATE_DESC_APPLE_PIE
-                + ADDRESS_DESC_AMY;
+                + PRIORITY_DESC_APPLE_PIE + EXPIRYDATE_DESC_APPLE_PIE;
 
         Food expectedFood = new FoodBuilder(APPLE_PIE).withTags().build();
         ModelManager expectedModel = new ModelManager();

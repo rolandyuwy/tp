@@ -3,7 +3,6 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
@@ -42,8 +41,7 @@ public class UniqueFoodListTest {
     @Test
     public void contains_foodWithSameIdentityFieldsInList_returnsTrue() {
         uniqueFoodList.add(ANCHOVIES);
-        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(uniqueFoodList.contains(editedAnchovies));
     }
 
@@ -85,8 +83,7 @@ public class UniqueFoodListTest {
     @Test
     public void setFood_editedFoodHasSameIdentity_success() {
         uniqueFoodList.add(ANCHOVIES);
-        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withTags(VALID_TAG_HUSBAND).build();
         uniqueFoodList.setFood(ANCHOVIES, editedAnchovies);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
         expectedUniqueFoodList.add(editedAnchovies);

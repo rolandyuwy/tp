@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.simplykitchen.commons.exceptions.IllegalValueException;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
@@ -27,7 +26,6 @@ class JsonAdaptedFood {
     private final String description;
     private final String priority;
     private final String expiryDate;
-    private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -35,12 +33,11 @@ class JsonAdaptedFood {
      */
     @JsonCreator
     public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("priority") String priority,
-                           @JsonProperty("expiryDate") String expiryDate, @JsonProperty("address") String address,
+                           @JsonProperty("expiryDate") String expiryDate,
                            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.description = description;
         this.priority = priority;
         this.expiryDate = expiryDate;
-        this.address = address;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -53,7 +50,6 @@ class JsonAdaptedFood {
         description = source.getDescription().fullDescription;
         priority = source.getPriority().toString();
         expiryDate = source.getExpiryDate().value;
-        address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -97,17 +93,8 @@ class JsonAdaptedFood {
         }
         final ExpiryDate modelExpiryDate = new ExpiryDate(expiryDate);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
         final Set<Tag> modelTags = new HashSet<>(foodTags);
 
-        return new Food(modelDescription, modelPriority, modelExpiryDate, modelAddress, modelTags);
+        return new Food(modelDescription, modelPriority, modelExpiryDate, modelTags);
     }
-
 }

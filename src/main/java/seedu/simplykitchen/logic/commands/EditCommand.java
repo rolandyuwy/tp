@@ -1,7 +1,6 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -19,7 +18,6 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.CollectionUtil;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
@@ -40,7 +38,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EXPIRYDATE + "EXPIRY DATE] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
@@ -92,12 +89,12 @@ public class EditCommand extends Command {
      */
     private static Food createEditedFood(Food foodToEdit, EditFoodDescriptor editFoodDescriptor) {
         assert foodToEdit != null;
+
         Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
         Priority updatedPriority = editFoodDescriptor.getPriority().orElse(foodToEdit.getPriority());
         ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
-        Address updatedAddress = editFoodDescriptor.getAddress().orElse(foodToEdit.getAddress());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
-        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updatedAddress, updatedTags);
+        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updatedTags);
     }
 
     @Override
@@ -126,7 +123,6 @@ public class EditCommand extends Command {
         private Description description;
         private Priority priority;
         private ExpiryDate expiryDate;
-        private Address address;
         private Set<Tag> tags;
 
         public EditFoodDescriptor() {}
@@ -139,7 +135,6 @@ public class EditCommand extends Command {
             setDescription(toCopy.description);
             setPriority(toCopy.priority);
             setExpiryDate(toCopy.expiryDate);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
@@ -147,7 +142,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(description, priority, expiryDate, address, tags);
+            return CollectionUtil.isAnyNonNull(description, priority, expiryDate, tags);
         }
 
         public void setDescription(Description description) {
@@ -172,14 +167,6 @@ public class EditCommand extends Command {
 
         public Optional<ExpiryDate> getExpiryDate() {
             return Optional.ofNullable(expiryDate);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
         }
 
         /**
@@ -213,10 +200,10 @@ public class EditCommand extends Command {
 
             // state check
             EditFoodDescriptor e = (EditFoodDescriptor) other;
+
             return getDescription().equals(e.getDescription())
                     && getPriority().equals(e.getPriority())
                     && getExpiryDate().equals(e.getExpiryDate())
-                    && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }
     }

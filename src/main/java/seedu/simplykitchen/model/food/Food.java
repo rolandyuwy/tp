@@ -21,18 +21,16 @@ public class Food {
     private final ExpiryDate expiryDate;
 
     // Data fields
-    private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Food(Description description, Priority priority, ExpiryDate expiryDate, Address address, Set<Tag> tags) {
-        requireAllNonNull(description, priority, expiryDate, address, tags);
+    public Food(Description description, Priority priority, ExpiryDate expiryDate, Set<Tag> tags) {
+        requireAllNonNull(description, priority, expiryDate, tags);
         this.description = description;
         this.priority = priority;
         this.expiryDate = expiryDate;
-        this.address = address;
         this.tags.addAll(tags);
     }
 
@@ -46,10 +44,6 @@ public class Food {
 
     public ExpiryDate getExpiryDate() {
         return expiryDate;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 
     /**
@@ -92,14 +86,13 @@ public class Food {
         return otherFood.getDescription().equals(getDescription())
                 && otherFood.getPriority().equals(getPriority())
                 && otherFood.getExpiryDate().equals(getExpiryDate())
-                && otherFood.getAddress().equals(getAddress())
                 && otherFood.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(description, priority, expiryDate, address, tags);
+        return Objects.hash(description, priority, expiryDate, tags);
     }
 
     @Override
@@ -110,8 +103,6 @@ public class Food {
                 .append(getPriority())
                 .append(" ExpiryDate: ")
                 .append(getExpiryDate())
-                .append(" Address: ")
-                .append(getAddress())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

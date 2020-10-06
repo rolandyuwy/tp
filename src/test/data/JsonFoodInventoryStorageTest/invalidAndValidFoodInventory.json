@@ -2,12 +2,10 @@
   "foods": [ {
     "description": "Valid Food",
     "priority": "MEDIUM",
-    "expiryDate": "1-1-2021",
-    "address": "4th street"
+    "expiryDate": "1-1-2021"
   }, {
     "description": "Food With Invalid Priority Field",
     "priority": "VERY VERY LOW",
-    "expiryDate": "1-1-2021",
-    "address": "4th street"
+    "expiryDate": "1-1-2021"
   } ]
 }

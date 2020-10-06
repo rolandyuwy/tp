@@ -9,7 +9,6 @@ import java.util.Set;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.StringUtil;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
@@ -65,20 +64,6 @@ public class ParserUtil {
         return new Priority(trimmedPriority);
     }
 
-    /**
-     * Parses an {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
-        }
-        return new Address(trimmedAddress);
-    }
 
     /**
      * Parses an {@code String expiryDate} into an {@code ExpiryDate}.

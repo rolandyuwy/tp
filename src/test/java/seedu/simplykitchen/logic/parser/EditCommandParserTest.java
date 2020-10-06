@@ -1,12 +1,9 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRYDATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
@@ -15,8 +12,6 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_A
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
@@ -36,7 +31,6 @@ import org.junit.jupiter.api.Test;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
@@ -87,7 +81,6 @@ public class EditCommandParserTest {
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
         assertParseFailure(parser, "1" + INVALID_EXPIRYDATE_DESC,
                 ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
-        assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid priority followed by valid expiry date
@@ -109,7 +102,7 @@ public class EditCommandParserTest {
                 Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRYDATE_DESC + VALID_ADDRESS_AMY
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRYDATE_DESC
                 + VALID_PRIORITY_APPLE_PIE, Description.MESSAGE_CONSTRAINTS);
     }
 
@@ -117,11 +110,10 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_BREAD + TAG_DESC_HUSBAND
-                + EXPIRYDATE_DESC_APPLE_PIE + ADDRESS_DESC_AMY + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FRIEND;
+                + EXPIRYDATE_DESC_APPLE_PIE + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FRIEND;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
                 .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE)
-                .withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -162,12 +154,6 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // address
-        userInput = targetIndex.getOneBased() + ADDRESS_DESC_AMY;
-        descriptor = new EditFoodDescriptorBuilder().withAddress(VALID_ADDRESS_AMY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
         descriptor = new EditFoodDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
@@ -178,13 +164,13 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_FOOD;
-        String userInput = targetIndex.getOneBased() + PRIORITY_DESC_APPLE_PIE + ADDRESS_DESC_AMY
-                + EXPIRYDATE_DESC_APPLE_PIE + TAG_DESC_FRIEND + PRIORITY_DESC_APPLE_PIE + ADDRESS_DESC_AMY
-                + EXPIRYDATE_DESC_APPLE_PIE + TAG_DESC_FRIEND + PRIORITY_DESC_BREAD + ADDRESS_DESC_BOB
+        String userInput = targetIndex.getOneBased() + PRIORITY_DESC_APPLE_PIE
+                + EXPIRYDATE_DESC_APPLE_PIE + TAG_DESC_FRIEND + PRIORITY_DESC_APPLE_PIE
+                + EXPIRYDATE_DESC_APPLE_PIE + TAG_DESC_FRIEND + PRIORITY_DESC_BREAD
                 + EXPIRYDATE_DESC_BREAD + TAG_DESC_HUSBAND;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
-                .withExpiryDate(VALID_EXPIRYDATE_BREAD).withAddress(VALID_ADDRESS_BOB)
+                .withExpiryDate(VALID_EXPIRYDATE_BREAD)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -202,10 +188,9 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
-        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_BREAD + INVALID_PRIORITY_DESC + ADDRESS_DESC_BOB
-                + PRIORITY_DESC_BREAD;
+        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_BREAD + INVALID_PRIORITY_DESC + PRIORITY_DESC_BREAD;
         descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
-                .withExpiryDate(VALID_EXPIRYDATE_BREAD).withAddress(VALID_ADDRESS_BOB).build();
+                .withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

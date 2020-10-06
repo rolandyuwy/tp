@@ -3,7 +3,6 @@ package seedu.simplykitchen.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
@@ -18,12 +17,10 @@ public class FoodBuilder {
     public static final String DEFAULT_DESCRIPTION = "Anchovies";
     public static final String DEFAULT_PRIORITY = "medium";
     public static final String DEFAULT_EXPIRYDATE = "1-1-2020";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Description description;
     private Priority priority;
     private ExpiryDate expiryDate;
-    private Address address;
     private Set<Tag> tags;
 
     /**
@@ -33,7 +30,6 @@ public class FoodBuilder {
         description = new Description(DEFAULT_DESCRIPTION);
         priority = new Priority(DEFAULT_PRIORITY);
         expiryDate = new ExpiryDate(DEFAULT_EXPIRYDATE);
-        address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
 
@@ -44,7 +40,6 @@ public class FoodBuilder {
         description = foodToCopy.getDescription();
         priority = foodToCopy.getPriority();
         expiryDate = foodToCopy.getExpiryDate();
-        address = foodToCopy.getAddress();
         tags = new HashSet<>(foodToCopy.getTags());
     }
 
@@ -65,14 +60,6 @@ public class FoodBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Food} that we are building.
-     */
-    public FoodBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
      * Sets the {@code Priority} of the {@code Food} that we are building.
      */
     public FoodBuilder withPriority(String priority) {
@@ -89,7 +76,7 @@ public class FoodBuilder {
     }
 
     public Food build() {
-        return new Food(description, priority, expiryDate, address, tags);
+        return new Food(description, priority, expiryDate, tags);
     }
 
 }
