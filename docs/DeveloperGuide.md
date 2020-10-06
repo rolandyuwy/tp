@@ -82,7 +82,7 @@ The `UI` component,
 
 1. `Logic` uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a food item).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
@@ -129,13 +129,13 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Implementation** [to be updated]
 
 This section describes some noteworthy details on how certain features are implemented.
 
 ### \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+#### Proposed Implementation 
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
@@ -279,7 +279,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless specified otherwise)
+(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified)
 
 **Use case: Add a food item (UC01)**
 
@@ -287,21 +287,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User inputs a food item.
-2.  System reads the input and adds the food item.  
+1.  User requests to add a food item.
+2.  SimplyKitchen displays changes to the food inventory.
     Use case ends.
 
 **Extensions**
 
-* 1a. System detects an error in the user's input.
+* 1a. SimplyKitchen detects an error in the user's input.
    
-   * 1a1. System displays an error message.
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
      
-   * 1a2. User re-enters the food item to be added again.
+   * 1a2. User enters a new food item.
       
-   * 1a3. System checks the user’s new input.
-      
-     Repeat step 1a. until the user’s input is correct.
+     Steps 1a1-1a2 are repeated until the data entered are correct.
       
      Use case resumes from step 2.
  
@@ -309,17 +307,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Delete a food item (UC02)**
 
-**Preconditions: The food item to be deleted is in the system.**
+**Precondition: The food item to be deleted is in the system.**
 
 **Guarantees: The food item is deleted from the system.** 
 
 **MSS**
 
 1. User requests to <ins>list food items (UC03, UC04)</ins>.
-2. System shows a list of food items.
-3. User requests to delete a specific food item from the list.
-4. System deletes the food item.  
-   Use Case ends.
+2. SimplyKitchen displays the list of food items.
+3. User requests to delete a food item from the list.
+4. SimplyKitchen displays changes to the food inventory.
+   Use case ends.
 
 **Extensions**
 
@@ -327,15 +325,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
   Use case ends.
 
-* 3a. The given index from the user is invalid.
+* 3a. SimplyKitchen detects that the given index corresponding to the food item from the list from the user is invalid.
      	
-   * 3a1. System displays an error message.
+   * 3a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
    
-   * 3a2. User re-enters the food item to be deleted again.
-     	
-   * 3a3. System checks the user’s new input.
+   * 3a2. User enters a new food item.
      
-     Repeat step 3a. until the user’s input is correct.
+     Steps 3a1-3a2 are repeated until the data entered are correct.
       	
      Use case resumes from step 4.
 
@@ -343,23 +339,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: Find a food item (UC03)**
 
+**Guarantees: All food items in the system that match the query are listed.**
+
 **MSS**
 
-1. User enters keyword, priority or expiry date as query.
-2. System displays all food items that match the query.  
+1. User requests to list food items according to description, priority or expiration date. 
+2. SimplyKitchen displays all food items that match the query.  
 	Use case ends.
 
 **Extensions**
 
-* 1a. System detects an error in the user’s search query.
+* 1a. SimplyKitchen detects an error in the user’s search query.
    
-   * 1a1. System displays an error message.
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
 	
-   * 1a2. User re-enters the search query.
+   * 1a2. User enters a new search query.
 	
-     Repeat step 1a. until the user’s search query is valid.
+     Steps 1a1-1a2 are repeated until the query entered is correct.
 	  
-     Use case resumes at 2.
+     Use case resumes at step 2.
 
 <br/>
 
@@ -369,8 +367,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User gives the list command.
-2. System reads the input and lists all food items in the system.  
+1. User requests to list all food items.
+2. SimplyKitchen displays all food items in the food inventory.  
 	Use case ends.
 
 *{More to be added}*
@@ -416,17 +414,17 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a food item
 
-1. Deleting a person while all persons are being shown
+1. Deleting a food item while all food items are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all food items using the `list` command. Multiple food items in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No food item is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
