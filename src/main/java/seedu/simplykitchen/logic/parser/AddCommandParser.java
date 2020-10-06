@@ -3,7 +3,7 @@ package seedu.simplykitchen.logic.parser;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -14,7 +14,7 @@ import seedu.simplykitchen.logic.commands.AddCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
@@ -31,21 +31,22 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION,
-                        PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PHONE, PREFIX_EXPIRYDATE, PREFIX_ADDRESS,
+                        PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DESCRIPTION, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_DESCRIPTION, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EXPIRYDATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        ExpiryDate expiryDate = ParserUtil.parseExpiryDate(argMultimap.getValue(PREFIX_EXPIRYDATE).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Food food = new Food(description, phone, email, address, tagList);
+        Food food = new Food(description, phone, expiryDate, address, tagList);
+
 
         return new AddCommand(food);
     }

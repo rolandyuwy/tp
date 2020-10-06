@@ -6,7 +6,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
@@ -43,9 +43,10 @@ public class EditFoodDescriptorTest {
         editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withPhone(VALID_PHONE_BOB).build();
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
-        // different email -> returns false
-        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withEmail(VALID_EMAIL_BOB).build();
+        // different expiry date -> returns false
+        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
+
 
         // different address -> returns false
         editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();

@@ -5,7 +5,7 @@ import java.util.Set;
 
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
@@ -18,12 +18,12 @@ public class FoodBuilder {
 
     public static final String DEFAULT_DESCRIPTION = "Anchovies";
     public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "alice@gmail.com";
+    public static final String DEFAULT_EXPIRYDATE = "1-1-2020";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Description description;
     private Phone phone;
-    private Email email;
+    private ExpiryDate expiryDate;
     private Address address;
     private Set<Tag> tags;
 
@@ -33,7 +33,7 @@ public class FoodBuilder {
     public FoodBuilder() {
         description = new Description(DEFAULT_DESCRIPTION);
         phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
+        expiryDate = new ExpiryDate(DEFAULT_EXPIRYDATE);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
@@ -44,7 +44,7 @@ public class FoodBuilder {
     public FoodBuilder(Food foodToCopy) {
         description = foodToCopy.getDescription();
         phone = foodToCopy.getPhone();
-        email = foodToCopy.getEmail();
+        expiryDate = foodToCopy.getExpiryDate();
         address = foodToCopy.getAddress();
         tags = new HashSet<>(foodToCopy.getTags());
     }
@@ -82,15 +82,15 @@ public class FoodBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Food} that we are building.
+     * Sets the {@code ExpiryDate} of the {@code Food} that we are building.
      */
-    public FoodBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public FoodBuilder withExpiryDate(String expiryDate) {
+        this.expiryDate = new ExpiryDate(expiryDate);
         return this;
     }
 
     public Food build() {
-        return new Food(description, phone, email, address, tags);
+        return new Food(description, phone, expiryDate, address, tags);
     }
 
 }

@@ -2,13 +2,13 @@
   "foods": [ {
     "description": "Anchovies",
     "phone": "94351253",
-    "email": "alice@example.com",
+    "expiryDate": "1-12-2021",
     "address": "123, Jurong West Ave 6, #08-111",
     "tagged": [ "friends" ]
   }, {
     "description": "Anchovies",
     "phone": "94351253",
-    "email": "pauline@example.com",
+    "expiryDate": "1-12-2021",
     "address": "4th street"
   } ]
 }

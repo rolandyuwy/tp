@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 
@@ -24,13 +24,13 @@ public class ParserUtilTest {
     private static final String INVALID_DESCRIPTION = "R@spberry";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";
-    private static final String INVALID_EMAIL = "example.com";
+    private static final String INVALID_EXPIRYDATE = "32-9-2020";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
-    private static final String VALID_EMAIL = "rachel@example.com";
+    private static final String VALID_EXPIRYDATE = "1-1-2020";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
 
@@ -126,26 +126,26 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+    public void parseExpiryDate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseExpiryDate((String) null));
     }
 
     @Test
-    public void parseEmail_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
+    public void parseExpiryDate_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseExpiryDate(INVALID_EXPIRYDATE));
     }
 
     @Test
-    public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));
+    public void parseExpiryDate_validValueWithoutWhitespace_returnsExpiryDate() throws Exception {
+        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRYDATE);
+        assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(VALID_EXPIRYDATE));
     }
 
     @Test
-    public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
-        String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    public void parseExpiryDate_validValueWithWhitespace_returnsTrimmedExpiryDate() throws Exception {
+        String expiryDateWithWhitespace = WHITESPACE + VALID_EXPIRYDATE + WHITESPACE;
+        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRYDATE);
+        assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(expiryDateWithWhitespace));
     }
 
     @Test

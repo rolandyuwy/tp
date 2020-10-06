@@ -3,7 +3,7 @@ package seedu.simplykitchen.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
@@ -21,7 +21,7 @@ import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
@@ -39,12 +39,12 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_EXPIRYDATE + "EXPIRY DATE] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_EXPIRYDATE + "1-11-2021";
 
     public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -95,11 +95,13 @@ public class EditCommand extends Command {
 
         Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
         Phone updatedPhone = editFoodDescriptor.getPhone().orElse(foodToEdit.getPhone());
-        Email updatedEmail = editFoodDescriptor.getEmail().orElse(foodToEdit.getEmail());
+        ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
         Address updatedAddress = editFoodDescriptor.getAddress().orElse(foodToEdit.getAddress());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
 
-        return new Food(updatedDescription, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+
+        return new Food(updatedDescription, updatedPhone, updatedExpiryDate, updatedAddress, updatedTags);
+
     }
 
     @Override
@@ -127,7 +129,7 @@ public class EditCommand extends Command {
     public static class EditFoodDescriptor {
         private Description description;
         private Phone phone;
-        private Email email;
+        private ExpiryDate expiryDate;
         private Address address;
         private Set<Tag> tags;
 
@@ -140,7 +142,7 @@ public class EditCommand extends Command {
         public EditFoodDescriptor(EditFoodDescriptor toCopy) {
             setDescription(toCopy.description);
             setPhone(toCopy.phone);
-            setEmail(toCopy.email);
+            setExpiryDate(toCopy.expiryDate);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
@@ -149,7 +151,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(description, phone, email, address, tags);
+
+            return CollectionUtil.isAnyNonNull(description, phone, expiryDate, address, tags);
         }
 
         public void setDescription(Description description) {
@@ -168,12 +171,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(phone);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setExpiryDate(ExpiryDate expiryDate) {
+            this.expiryDate = expiryDate;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<ExpiryDate> getExpiryDate() {
+            return Optional.ofNullable(expiryDate);
         }
 
         public void setAddress(Address address) {
@@ -218,7 +221,7 @@ public class EditCommand extends Command {
 
             return getDescription().equals(e.getDescription())
                     && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
+                    && getExpiryDate().equals(e.getExpiryDate())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }

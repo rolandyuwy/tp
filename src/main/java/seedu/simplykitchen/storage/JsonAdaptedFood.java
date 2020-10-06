@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.simplykitchen.commons.exceptions.IllegalValueException;
 import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
@@ -26,7 +26,7 @@ class JsonAdaptedFood {
 
     private final String description;
     private final String phone;
-    private final String email;
+    private final String expiryDate;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -34,12 +34,13 @@ class JsonAdaptedFood {
      * Constructs a {@code JsonAdaptedFood} with the given food details.
      */
     @JsonCreator
+
     public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("phone") String phone,
-                           @JsonProperty("email") String email, @JsonProperty("address") String address,
+                            @JsonProperty("expiryDate") String expiryDate, @JsonProperty("address") String address,
                            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.description = description;
         this.phone = phone;
-        this.email = email;
+        this.expiryDate = expiryDate;
         this.address = address;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -52,7 +53,7 @@ class JsonAdaptedFood {
     public JsonAdaptedFood(Food source) {
         description = source.getDescription().fullDescription;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
+        expiryDate = source.getExpiryDate().value;
         address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -87,13 +88,14 @@ class JsonAdaptedFood {
         }
         final Phone modelPhone = new Phone(phone);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (expiryDate == null) {
+            throw new IllegalValueException(String.format(
+                    MISSING_FIELD_MESSAGE_FORMAT, ExpiryDate.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!ExpiryDate.isValidExpiryDate(expiryDate)) {
+            throw new IllegalValueException(ExpiryDate.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final ExpiryDate modelExpiryDate = new ExpiryDate(expiryDate);
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
@@ -105,7 +107,7 @@ class JsonAdaptedFood {
 
         final Set<Tag> modelTags = new HashSet<>(foodTags);
 
-        return new Food(modelDescription, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Food(modelDescription, modelPhone, modelExpiryDate, modelAddress, modelTags);
     }
 
 }

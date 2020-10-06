@@ -3,43 +3,43 @@
   "foods" : [ {
     "description" : "Anchovies",
     "phone" : "94351253",
-    "email" : "alice@example.com",
+    "expiryDate" : "1-1-2021",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tagged" : [ "friends" ]
   }, {
     "description": "Bagel",
     "phone" : "98765432",
-    "email" : "johnd@example.com",
+    "expiryDate" : "31-1-2021",
     "address" : "311, Clementi Ave 2, #02-25",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
     "description": "Carrot Cake",
     "phone" : "95352563",
-    "email" : "heinz@example.com",
+    "expiryDate" : "1-1-2020",
     "address" : "wall street",
     "tagged" : [ ]
   }, {
     "description": "Dark Chocolate",
     "phone" : "87652533",
-    "email" : "cornelia@example.com",
+    "expiryDate" : "1-12-2020",
     "address" : "10th street",
     "tagged" : [ "friends" ]
   }, {
     "description": "Eggs",
     "phone" : "9482224",
-    "email" : "werner@example.com",
+    "expiryDate" : "31-1-2020",
     "address" : "michegan ave",
     "tagged" : [ ]
   }, {
     "description": "French Fries",
     "phone" : "9482427",
-    "email" : "lydia@example.com",
+    "expiryDate" : "31-12-2020",
     "address" : "little tokyo",
     "tagged" : [ ]
   }, {
     "description": "Ginger",
     "phone" : "9482442",
-    "email" : "anna@example.com",
+    "expiryDate" : "1-10-2020",
     "address" : "4th street",
     "tagged" : [ ]
   } ]

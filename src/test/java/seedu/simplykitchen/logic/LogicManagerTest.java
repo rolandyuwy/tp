@@ -5,7 +5,7 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DIS
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
@@ -79,7 +79,8 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + DESCRIPTION_DESC_APPLE_PIE + PHONE_DESC_AMY + EMAIL_DESC_AMY
+        String addCommand = AddCommand.COMMAND_WORD + DESCRIPTION_DESC_APPLE_PIE
+                + PHONE_DESC_AMY + EXPIRYDATE_DESC_APPLE_PIE
                 + ADDRESS_DESC_AMY;
 
         Food expectedFood = new FoodBuilder(APPLE_PIE).withTags().build();
