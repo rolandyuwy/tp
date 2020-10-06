@@ -1,7 +1,6 @@
 package seedu.simplykitchen.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;

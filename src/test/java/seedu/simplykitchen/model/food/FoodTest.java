@@ -32,7 +32,8 @@ public class FoodTest {
         assertFalse(ALICE.isSameFood(null));
 
         // different phone and email -> returns false
-        Food editedAlice = new FoodBuilder(ALICE).withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BOB).build();
+        Food editedAlice = new FoodBuilder(ALICE).withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BOB)
+                .build();
         assertFalse(ALICE.isSameFood(editedAlice));
 
         // different name -> returns false
