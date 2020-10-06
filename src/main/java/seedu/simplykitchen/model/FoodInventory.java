@@ -30,7 +30,7 @@ public class FoodInventory implements ReadOnlyFoodInventory {
     public FoodInventory() {}
 
     /**
-     * Creates an FoodInventory using the Persons in the {@code toBeCopied}
+     * Creates an FoodInventory using the foods in the {@code toBeCopied}
      */
     public FoodInventory(ReadOnlyFoodInventory toBeCopied) {
         this();
