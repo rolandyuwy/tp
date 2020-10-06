@@ -4,8 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
@@ -31,8 +32,8 @@ public class FoodTest {
         // null -> returns false
         assertFalse(APPLE_PIE.isSameFood(null));
 
-        // different phone and expiry date -> returns false
-        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB)
+        // different priorities and expiry date -> returns false
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
                 .withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
@@ -40,18 +41,17 @@ public class FoodTest {
         editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-
-        // same description, same phone, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD)
+        // same description, same priority, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).withPriority("low")
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, same email, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same phone, same email, different attributes -> returns true
+        // same description, same priority, same email, different attributes -> returns true
         editedApplePie = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
     }
@@ -78,8 +78,8 @@ public class FoodTest {
         Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
-        // different phone -> returns false
-        editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB).build();
+        // different priority -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different expiry date -> returns false

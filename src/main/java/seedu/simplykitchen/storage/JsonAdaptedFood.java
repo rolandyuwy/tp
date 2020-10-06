@@ -14,7 +14,7 @@ import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -25,7 +25,7 @@ class JsonAdaptedFood {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Food's %s field is missing!";
 
     private final String description;
-    private final String phone;
+    private final String priority;
     private final String expiryDate;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
@@ -34,12 +34,11 @@ class JsonAdaptedFood {
      * Constructs a {@code JsonAdaptedFood} with the given food details.
      */
     @JsonCreator
-
-    public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("phone") String phone,
-                            @JsonProperty("expiryDate") String expiryDate, @JsonProperty("address") String address,
+    public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("priority") String priority,
+                           @JsonProperty("expiryDate") String expiryDate, @JsonProperty("address") String address,
                            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.description = description;
-        this.phone = phone;
+        this.priority = priority;
         this.expiryDate = expiryDate;
         this.address = address;
         if (tagged != null) {
@@ -52,7 +51,7 @@ class JsonAdaptedFood {
      */
     public JsonAdaptedFood(Food source) {
         description = source.getDescription().fullDescription;
-        phone = source.getPhone().value;
+        priority = source.getPriority().toString();
         expiryDate = source.getExpiryDate().value;
         address = source.getAddress().value;
         tagged.addAll(source.getTags().stream()
@@ -80,13 +79,14 @@ class JsonAdaptedFood {
         }
         final Description modelDescription = new Description(description);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        if (priority == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Priority.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Priority.isValidPriority(priority)) {
+            throw new IllegalValueException(Priority.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Priority modelPriority = new Priority(priority);
 
         if (expiryDate == null) {
             throw new IllegalValueException(String.format(
@@ -107,7 +107,7 @@ class JsonAdaptedFood {
 
         final Set<Tag> modelTags = new HashSet<>(foodTags);
 
-        return new Food(modelDescription, modelPhone, modelExpiryDate, modelAddress, modelTags);
+        return new Food(modelDescription, modelPriority, modelExpiryDate, modelAddress, modelTags);
     }
 
 }

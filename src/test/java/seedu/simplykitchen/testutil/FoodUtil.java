@@ -3,7 +3,7 @@ package seedu.simplykitchen.testutil;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -31,7 +31,7 @@ public class FoodUtil {
     public static String getFoodDetails(Food food) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_DESCRIPTION + food.getDescription().fullDescription + " ");
-        sb.append(PREFIX_PHONE + food.getPhone().value + " ");
+        sb.append(PREFIX_PRIORITY + food.getPriority().toString() + " ");
         sb.append(PREFIX_EXPIRYDATE + food.getExpiryDate().value + " ");
         sb.append(PREFIX_ADDRESS + food.getAddress().value + " ");
         food.getTags().stream().forEach(
@@ -47,7 +47,8 @@ public class FoodUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESCRIPTION)
                 .append(description.fullDescription).append(" "));
-        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
+        descriptor.getPriority().ifPresent(priority -> sb.append(PREFIX_PRIORITY)
+                .append(priority.toString()).append(" "));
         descriptor.getExpiryDate().ifPresent(expiryDate -> sb.append(PREFIX_EXPIRYDATE).append(expiryDate.value)
                 .append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));

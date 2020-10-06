@@ -10,7 +10,7 @@ import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -34,7 +34,7 @@ public class EditFoodDescriptorBuilder {
     public EditFoodDescriptorBuilder(Food food) {
         descriptor = new EditFoodDescriptor();
         descriptor.setDescription(food.getDescription());
-        descriptor.setPhone(food.getPhone());
+        descriptor.setPriority(food.getPriority());
         descriptor.setExpiryDate(food.getExpiryDate());
         descriptor.setAddress(food.getAddress());
         descriptor.setTags(food.getTags());
@@ -49,10 +49,10 @@ public class EditFoodDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code Priority} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new Phone(phone));
+    public EditFoodDescriptorBuilder withPriority(String priority) {
+        descriptor.setPriority(new Priority(priority));
         return this;
     }
 

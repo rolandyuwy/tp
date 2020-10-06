@@ -7,7 +7,7 @@ import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Phone;
+import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.model.util.SampleDataUtil;
 
@@ -15,14 +15,13 @@ import seedu.simplykitchen.model.util.SampleDataUtil;
  * A utility class to help with building Food objects.
  */
 public class FoodBuilder {
-
     public static final String DEFAULT_DESCRIPTION = "Anchovies";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_PRIORITY = "medium";
     public static final String DEFAULT_EXPIRYDATE = "1-1-2020";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Description description;
-    private Phone phone;
+    private Priority priority;
     private ExpiryDate expiryDate;
     private Address address;
     private Set<Tag> tags;
@@ -32,7 +31,7 @@ public class FoodBuilder {
      */
     public FoodBuilder() {
         description = new Description(DEFAULT_DESCRIPTION);
-        phone = new Phone(DEFAULT_PHONE);
+        priority = new Priority(DEFAULT_PRIORITY);
         expiryDate = new ExpiryDate(DEFAULT_EXPIRYDATE);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -43,7 +42,7 @@ public class FoodBuilder {
      */
     public FoodBuilder(Food foodToCopy) {
         description = foodToCopy.getDescription();
-        phone = foodToCopy.getPhone();
+        priority = foodToCopy.getPriority();
         expiryDate = foodToCopy.getExpiryDate();
         address = foodToCopy.getAddress();
         tags = new HashSet<>(foodToCopy.getTags());
@@ -74,10 +73,10 @@ public class FoodBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Food} that we are building.
+     * Sets the {@code Priority} of the {@code Food} that we are building.
      */
-    public FoodBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+    public FoodBuilder withPriority(String priority) {
+        this.priority = new Priority(priority);
         return this;
     }
 
@@ -90,7 +89,7 @@ public class FoodBuilder {
     }
 
     public Food build() {
-        return new Food(description, phone, expiryDate, address, tags);
+        return new Food(description, priority, expiryDate, address, tags);
     }
 
 }

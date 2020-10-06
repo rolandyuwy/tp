@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -55,12 +55,12 @@ public class EditCommandTest {
         Food lastFood = model.getFilteredFoodList().get(indexLastFood.getZeroBased());
 
         FoodBuilder foodInList = new FoodBuilder(lastFood);
-        Food editedFood = foodInList.withDescription(VALID_DESCRIPTION_BREAD).withPhone(VALID_PHONE_BOB)
+        Food editedFood = foodInList.withDescription(VALID_DESCRIPTION_BREAD).withPriority(VALID_PRIORITY_BREAD)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
                 .withDescription(VALID_DESCRIPTION_BREAD)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withPriority(VALID_PRIORITY_BREAD).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastFood, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);

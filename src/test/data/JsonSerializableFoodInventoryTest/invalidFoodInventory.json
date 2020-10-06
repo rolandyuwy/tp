@@ -1,7 +1,7 @@
 {
   "foods": [ {
     "description": "Ham",
-    "phone": "9482424",
+    "priority": "LOW",
     "expiryDate": "1-13-2021",
     "address": "4th street"
   } ]

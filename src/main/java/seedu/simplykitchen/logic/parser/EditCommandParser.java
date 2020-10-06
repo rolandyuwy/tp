@@ -5,7 +5,7 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -32,8 +32,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PHONE, PREFIX_EXPIRYDATE, PREFIX_ADDRESS,
-                        PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY, PREFIX_EXPIRYDATE,
+                PREFIX_ADDRESS, PREFIX_TAG);
 
         Index index;
 
@@ -48,8 +48,9 @@ public class EditCommandParser implements Parser<EditCommand> {
             editFoodDescriptor.setDescription(ParserUtil.parseDescription(argMultimap
                     .getValue(PREFIX_DESCRIPTION).get()));
         }
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editFoodDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            editFoodDescriptor.setPriority(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
         }
 
         if (argMultimap.getValue(PREFIX_EXPIRYDATE).isPresent()) {

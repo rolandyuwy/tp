@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.simplykitchen.model.food.Food;
+import seedu.simplykitchen.model.food.Priority;
 
 /**
  * An UI component that displays information of a {@code Food}.
@@ -34,11 +35,11 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
     private Label address;
     @FXML
     private Label expiryDate;
+    @FXML
+    private Label priority;
     @FXML
     private FlowPane tags;
 
@@ -50,12 +51,31 @@ public class FoodCard extends UiPart<Region> {
         this.food = food;
         id.setText(displayedIndex + ". ");
         description.setText(food.getDescription().fullDescription);
-        phone.setText(food.getPhone().value);
+        priority.setText(food.getPriority().toString());
+        setPriorityColor(food.getPriority().value);
         address.setText(food.getAddress().value);
         expiryDate.setText(food.getExpiryDate().value);
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    private void setPriorityColor(Priority.Level level) {
+        String priorityColor;
+        switch(level) {
+        case LOW:
+            priorityColor = "#00802b";
+            break;
+        case MEDIUM:
+            priorityColor = "#cc7a00";
+            break;
+        case HIGH:
+            priorityColor = "#cc0000";
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid priority level");
+        }
+        priority.setStyle("-fx-background-color: " + priorityColor + ";");
     }
 
     @Override

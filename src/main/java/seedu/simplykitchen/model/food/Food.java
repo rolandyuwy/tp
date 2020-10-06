@@ -17,7 +17,7 @@ public class Food {
 
     // Identity fields
     private final Description description;
-    private final Phone phone;
+    private final Priority priority;
     private final ExpiryDate expiryDate;
 
     // Data fields
@@ -27,10 +27,10 @@ public class Food {
     /**
      * Every field must be present and not null.
      */
-    public Food(Description description, Phone phone, ExpiryDate expiryDate, Address address, Set<Tag> tags) {
-        requireAllNonNull(description, phone, expiryDate, address, tags);
+    public Food(Description description, Priority priority, ExpiryDate expiryDate, Address address, Set<Tag> tags) {
+        requireAllNonNull(description, priority, expiryDate, address, tags);
         this.description = description;
-        this.phone = phone;
+        this.priority = priority;
         this.expiryDate = expiryDate;
         this.address = address;
         this.tags.addAll(tags);
@@ -40,8 +40,8 @@ public class Food {
         return description;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Priority getPriority() {
+        return priority;
     }
 
     public ExpiryDate getExpiryDate() {
@@ -71,7 +71,7 @@ public class Food {
 
         return otherFood != null
                 && otherFood.getDescription().equals(getDescription())
-                && (otherFood.getPhone().equals(getPhone()) || otherFood.getExpiryDate().equals(getExpiryDate()));
+                && (otherFood.getPriority().equals(getPriority()) || otherFood.getExpiryDate().equals(getExpiryDate()));
     }
 
     /**
@@ -90,7 +90,7 @@ public class Food {
 
         Food otherFood = (Food) other;
         return otherFood.getDescription().equals(getDescription())
-                && otherFood.getPhone().equals(getPhone())
+                && otherFood.getPriority().equals(getPriority())
                 && otherFood.getExpiryDate().equals(getExpiryDate())
                 && otherFood.getAddress().equals(getAddress())
                 && otherFood.getTags().equals(getTags());
@@ -99,15 +99,15 @@ public class Food {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(description, phone, expiryDate, address, tags);
+        return Objects.hash(description, priority, expiryDate, address, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDescription())
-                .append(" Phone: ")
-                .append(getPhone())
+                .append(" Priority: ")
+                .append(getPriority())
                 .append(" ExpiryDate: ")
                 .append(getExpiryDate())
                 .append(" Address: ")
