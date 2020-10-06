@@ -60,7 +60,7 @@ public class TypicalFood {
     private TypicalFood() {} // prevents instantiation
 
     /**
-     * Returns an {@code FoodInventory} with all the typical persons.
+     * Returns a {@code FoodInventory} with all the typical foods.
      */
     public static FoodInventory getTypicalFoodInventory() {
         FoodInventory ab = new FoodInventory();
