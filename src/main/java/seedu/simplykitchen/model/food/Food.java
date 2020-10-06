@@ -18,7 +18,7 @@ public class Food {
     // Identity fields
     private final Name name;
     private final Phone phone;
-    private final Email email;
+    private final ExpiryDate expiryDate;
 
     // Data fields
     private final Address address;
@@ -27,11 +27,11 @@ public class Food {
     /**
      * Every field must be present and not null.
      */
-    public Food(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Food(Name name, Phone phone, ExpiryDate expiryDate, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, phone, expiryDate, address, tags);
         this.name = name;
         this.phone = phone;
-        this.email = email;
+        this.expiryDate = expiryDate;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -44,8 +44,8 @@ public class Food {
         return phone;
     }
 
-    public Email getEmail() {
-        return email;
+    public ExpiryDate getExpiryDate() {
+        return expiryDate;
     }
 
     public Address getAddress() {
@@ -71,7 +71,7 @@ public class Food {
 
         return otherFood != null
                 && otherFood.getName().equals(getName())
-                && (otherFood.getPhone().equals(getPhone()) || otherFood.getEmail().equals(getEmail()));
+                && (otherFood.getPhone().equals(getPhone()) || otherFood.getExpiryDate().equals(getExpiryDate()));
     }
 
     /**
@@ -91,7 +91,7 @@ public class Food {
         Food otherFood = (Food) other;
         return otherFood.getName().equals(getName())
                 && otherFood.getPhone().equals(getPhone())
-                && otherFood.getEmail().equals(getEmail())
+                && otherFood.getExpiryDate().equals(getExpiryDate())
                 && otherFood.getAddress().equals(getAddress())
                 && otherFood.getTags().equals(getTags());
     }
@@ -99,7 +99,7 @@ public class Food {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, expiryDate, address, tags);
     }
 
     @Override
@@ -108,8 +108,8 @@ public class Food {
         builder.append(getName())
                 .append(" Phone: ")
                 .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
+                .append(" ExpiryDate: ")
+                .append(getExpiryDate())
                 .append(" Address: ")
                 .append(getAddress())
                 .append(" Tags: ");

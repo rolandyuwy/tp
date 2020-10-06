@@ -1,7 +1,7 @@
 package seedu.simplykitchen.testutil;
 
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
@@ -32,7 +32,7 @@ public class FoodUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + food.getName().fullName + " ");
         sb.append(PREFIX_PHONE + food.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + food.getEmail().value + " ");
+        sb.append(PREFIX_EXPIRYDATE + food.getExpiryDate().value + " ");
         sb.append(PREFIX_ADDRESS + food.getAddress().value + " ");
         food.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
@@ -47,7 +47,8 @@ public class FoodUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
+        descriptor.getExpiryDate().ifPresent(expiryDate -> sb.append(PREFIX_EXPIRYDATE).append(expiryDate.value)
+                .append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
