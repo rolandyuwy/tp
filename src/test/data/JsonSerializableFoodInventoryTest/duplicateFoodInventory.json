@@ -2,13 +2,13 @@
   "foods": [ {
     "name": "Alice Pauline",
     "priority": "LOW",
-    "email": "alice@example.com",
+    "expiryDate": "1-12-2021",
     "address": "123, Jurong West Ave 6, #08-111",
     "tagged": [ "friends" ]
   }, {
     "name": "Alice Pauline",
     "priority": "LOW",
-    "email": "pauline@example.com",
+    "expiryDate": "1-12-2021",
     "address": "4th street"
   } ]
 }

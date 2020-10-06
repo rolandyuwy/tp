@@ -70,6 +70,6 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match priority, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("low", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new FoodBuilder().withName("Alice").withPriority("low")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withExpiryDate("31-1-2021").withAddress("Main Street").build()));
     }
 }

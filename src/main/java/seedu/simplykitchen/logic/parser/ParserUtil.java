@@ -10,7 +10,7 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.StringUtil;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Address;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
@@ -66,7 +66,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses an {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code address} is invalid.
@@ -81,18 +81,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
+     * Parses an {@code String expiryDate} into an {@code ExpiryDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code email} is invalid.
+     * @throws ParseException if the given {@code expiryDate} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+    public static ExpiryDate parseExpiryDate(String expiryDate) throws ParseException {
+        requireNonNull(expiryDate);
+        String trimmedExpiryDate = expiryDate.trim();
+        if (!ExpiryDate.isValidExpiryDate(trimmedExpiryDate)) {
+            throw new ParseException(ExpiryDate.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new ExpiryDate(trimmedExpiryDate);
     }
 
     /**

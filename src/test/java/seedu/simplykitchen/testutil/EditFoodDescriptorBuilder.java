@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
 import seedu.simplykitchen.model.food.Address;
-import seedu.simplykitchen.model.food.Email;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Priority;
@@ -35,7 +35,7 @@ public class EditFoodDescriptorBuilder {
         descriptor = new EditFoodDescriptor();
         descriptor.setName(food.getName());
         descriptor.setPriority(food.getPriority());
-        descriptor.setEmail(food.getEmail());
+        descriptor.setExpiryDate(food.getExpiryDate());
         descriptor.setAddress(food.getAddress());
         descriptor.setTags(food.getTags());
     }
@@ -57,10 +57,10 @@ public class EditFoodDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code ExpiryDate} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
+    public EditFoodDescriptorBuilder withExpiryDate(String expiryDate) {
+        descriptor.setExpiryDate(new ExpiryDate(expiryDate));
         return this;
     }
 

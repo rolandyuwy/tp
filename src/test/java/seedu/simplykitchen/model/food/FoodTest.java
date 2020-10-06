@@ -3,7 +3,7 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -32,7 +32,8 @@ public class FoodTest {
         assertFalse(ALICE.isSameFood(null));
 
         // different priority and email -> returns false
-        Food editedAlice = new FoodBuilder(ALICE).withPriority(VALID_PRIORITY_BOB).withEmail(VALID_EMAIL_BOB).build();
+        Food editedAlice = new FoodBuilder(ALICE).withPriority(VALID_PRIORITY_BOB)
+                .withExpiryDate(VALID_EXPIRYDATE_BOB).build();
         assertFalse(ALICE.isSameFood(editedAlice));
 
         // different name -> returns false
@@ -40,7 +41,7 @@ public class FoodTest {
         assertFalse(ALICE.isSameFood(editedAlice));
 
         // same name, same priority, different attributes -> returns true
-        editedAlice = new FoodBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedAlice = new FoodBuilder(ALICE).withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameFood(editedAlice));
 
@@ -81,7 +82,7 @@ public class FoodTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new FoodBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        editedAlice = new FoodBuilder(ALICE).withExpiryDate(VALID_EXPIRYDATE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different address -> returns false

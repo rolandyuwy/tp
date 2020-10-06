@@ -37,7 +37,7 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
-    private Label email;
+    private Label expiryDate;
     @FXML
     private Label priority;
     @FXML
@@ -54,7 +54,7 @@ public class FoodCard extends UiPart<Region> {
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
         address.setText(food.getAddress().value);
-        email.setText(food.getEmail().value);
+        expiryDate.setText(food.getExpiryDate().value);
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

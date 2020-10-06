@@ -3,43 +3,43 @@
   "foods" : [ {
     "name" : "Alice Pauline",
     "priority": "LOW",
-    "email" : "alice@example.com",
+    "expiryDate" : "1-1-2021",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "priority": "LOW",
-    "email" : "johnd@example.com",
+    "expiryDate" : "31-1-2021",
     "address" : "311, Clementi Ave 2, #02-25",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "priority": "LOW",
-    "email" : "heinz@example.com",
+    "expiryDate" : "1-1-2020",
     "address" : "wall street",
     "tagged" : [ ]
   }, {
     "name" : "Daniel Meier",
     "priority": "HIGH",
-    "email" : "cornelia@example.com",
+    "expiryDate" : "1-12-2020",
     "address" : "10th street",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "priority": "HIGH",
-    "email" : "werner@example.com",
+    "expiryDate" : "31-1-2020",
     "address" : "michegan ave",
     "tagged" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "priority": "LOW",
-    "email" : "lydia@example.com",
+    "expiryDate" : "31-12-2020",
     "address" : "little tokyo",
     "tagged" : [ ]
   }, {
     "name" : "George Best",
     "priority": "LOW",
-    "email" : "anna@example.com",
+    "expiryDate" : "1-10-2020",
     "address" : "4th street",
     "tagged" : [ ]
   } ]
