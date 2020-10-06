@@ -30,7 +30,7 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label description;
     @FXML
     private Label id;
     @FXML
@@ -49,7 +49,7 @@ public class FoodCard extends UiPart<Region> {
         super(FXML);
         this.food = food;
         id.setText(displayedIndex + ". ");
-        name.setText(food.getName().fullName);
+        description.setText(food.getDescription().fullDescription);
         phone.setText(food.getPhone().value);
         address.setText(food.getAddress().value);
         expiryDate.setText(food.getExpiryDate().value);

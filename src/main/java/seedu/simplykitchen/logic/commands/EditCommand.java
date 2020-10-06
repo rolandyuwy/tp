@@ -2,8 +2,8 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
@@ -20,9 +20,9 @@ import seedu.simplykitchen.commons.util.CollectionUtil;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.Address;
+import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 
@@ -37,7 +37,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed food list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EXPIRYDATE + "EXPIRY DATE] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
@@ -93,13 +93,15 @@ public class EditCommand extends Command {
     private static Food createEditedFood(Food foodToEdit, EditFoodDescriptor editFoodDescriptor) {
         assert foodToEdit != null;
 
-        Name updatedName = editFoodDescriptor.getName().orElse(foodToEdit.getName());
+        Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
         Phone updatedPhone = editFoodDescriptor.getPhone().orElse(foodToEdit.getPhone());
         ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
         Address updatedAddress = editFoodDescriptor.getAddress().orElse(foodToEdit.getAddress());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
 
-        return new Food(updatedName, updatedPhone, updatedExpiryDate, updatedAddress, updatedTags);
+
+        return new Food(updatedDescription, updatedPhone, updatedExpiryDate, updatedAddress, updatedTags);
+
     }
 
     @Override
@@ -125,7 +127,7 @@ public class EditCommand extends Command {
      * corresponding field value of the food item.
      */
     public static class EditFoodDescriptor {
-        private Name name;
+        private Description description;
         private Phone phone;
         private ExpiryDate expiryDate;
         private Address address;
@@ -138,7 +140,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditFoodDescriptor(EditFoodDescriptor toCopy) {
-            setName(toCopy.name);
+            setDescription(toCopy.description);
             setPhone(toCopy.phone);
             setExpiryDate(toCopy.expiryDate);
             setAddress(toCopy.address);
@@ -149,15 +151,16 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, expiryDate, address, tags);
+
+            return CollectionUtil.isAnyNonNull(description, phone, expiryDate, address, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setDescription(Description description) {
+            this.description = description;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Description> getDescription() {
+            return Optional.ofNullable(description);
         }
 
         public void setPhone(Phone phone) {
@@ -216,7 +219,7 @@ public class EditCommand extends Command {
             // state check
             EditFoodDescriptor e = (EditFoodDescriptor) other;
 
-            return getName().equals(e.getName())
+            return getDescription().equals(e.getDescription())
                     && getPhone().equals(e.getPhone())
                     && getExpiryDate().equals(e.getExpiryDate())
                     && getAddress().equals(e.getAddress())

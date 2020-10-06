@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
 import seedu.simplykitchen.model.food.Address;
+import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 
@@ -33,7 +33,7 @@ public class EditFoodDescriptorBuilder {
      */
     public EditFoodDescriptorBuilder(Food food) {
         descriptor = new EditFoodDescriptor();
-        descriptor.setName(food.getName());
+        descriptor.setDescription(food.getDescription());
         descriptor.setPhone(food.getPhone());
         descriptor.setExpiryDate(food.getExpiryDate());
         descriptor.setAddress(food.getAddress());
@@ -41,10 +41,10 @@ public class EditFoodDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code EditFoodDescriptor} that we are building.
+     * Sets the {@code Description} of the {@code EditFoodDescriptor} that we are building.
      */
-    public EditFoodDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+    public EditFoodDescriptorBuilder withDescription(String description) {
+        descriptor.setDescription(new Description(description));
         return this;
     }
 

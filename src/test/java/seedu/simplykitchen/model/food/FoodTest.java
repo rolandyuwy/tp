@@ -3,13 +3,13 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
-import static seedu.simplykitchen.testutil.TypicalFood.BOB;
+import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
+import static seedu.simplykitchen.testutil.TypicalFood.BREAD;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,71 +26,72 @@ public class FoodTest {
     @Test
     public void isSameFood() {
         // same object -> returns true
-        assertTrue(ALICE.isSameFood(ALICE));
+        assertTrue(APPLE_PIE.isSameFood(APPLE_PIE));
 
         // null -> returns false
-        assertFalse(ALICE.isSameFood(null));
+        assertFalse(APPLE_PIE.isSameFood(null));
 
-        // different phone and email -> returns false
-        Food editedAlice = new FoodBuilder(ALICE).withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BOB)
-                .build();
-        assertFalse(ALICE.isSameFood(editedAlice));
+        // different phone and expiry date -> returns false
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB)
+                .withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // different name -> returns false
-        editedAlice = new FoodBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSameFood(editedAlice));
+        // different description -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same name, same phone, different attributes -> returns true
-        editedAlice = new FoodBuilder(ALICE).withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
+
+        // same description, same phone, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD)
+                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+
+        // same description, same email, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameFood(editedAlice));
+        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same name, same email, different attributes -> returns true
-        editedAlice = new FoodBuilder(ALICE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameFood(editedAlice));
-
-        // same name, same phone, same email, different attributes -> returns true
-        editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameFood(editedAlice));
+        // same description, same phone, same email, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Food aliceCopy = new FoodBuilder(ALICE).build();
-        assertTrue(ALICE.equals(aliceCopy));
+        Food aliceCopy = new FoodBuilder(APPLE_PIE).build();
+        assertTrue(APPLE_PIE.equals(aliceCopy));
 
         // same object -> returns true
-        assertTrue(ALICE.equals(ALICE));
+        assertTrue(APPLE_PIE.equals(APPLE_PIE));
 
         // null -> returns false
-        assertFalse(ALICE.equals(null));
+        assertFalse(APPLE_PIE.equals(null));
 
         // different type -> returns false
-        assertFalse(ALICE.equals(5));
+        assertFalse(APPLE_PIE.equals(5));
 
         // different food -> returns false
-        assertFalse(ALICE.equals(BOB));
+        assertFalse(APPLE_PIE.equals(BREAD));
 
-        // different name -> returns false
-        Food editedAlice = new FoodBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different description -> returns false
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different phone -> returns false
-        editedAlice = new FoodBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPhone(VALID_PHONE_BOB).build();
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
-        // different email -> returns false
-        editedAlice = new FoodBuilder(ALICE).withExpiryDate(VALID_EXPIRYDATE_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        // different expiry date -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different address -> returns false
-        editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        editedApplePie = new FoodBuilder(APPLE_PIE).withAddress(VALID_ADDRESS_BOB).build();
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
-        editedAlice = new FoodBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(ALICE.equals(editedAlice));
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        assertFalse(APPLE_PIE.equals(editedApplePie));
     }
 }

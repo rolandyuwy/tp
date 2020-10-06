@@ -3,9 +3,9 @@ package seedu.simplykitchen.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
-import static seedu.simplykitchen.testutil.TypicalFood.HOON;
-import static seedu.simplykitchen.testutil.TypicalFood.IDA;
+import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
+import static seedu.simplykitchen.testutil.TypicalFood.HUMMUS;
+import static seedu.simplykitchen.testutil.TypicalFood.ICEBERG_LETTUCE;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.io.IOException;
@@ -78,14 +78,14 @@ public class JsonFoodInventoryStorageTest {
         assertEquals(original, new FoodInventory(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addFood(HOON);
-        original.removeFood(ALICE);
+        original.addFood(HUMMUS);
+        original.removeFood(ANCHOVIES);
         jsonFoodInventoryStorage.saveFoodInventory(original, filePath);
         readBack = jsonFoodInventoryStorage.readFoodInventory(filePath).get();
         assertEquals(original, new FoodInventory(readBack));
 
         // Save and read without specifying file path
-        original.addFood(IDA);
+        original.addFood(ICEBERG_LETTUCE);
         jsonFoodInventoryStorage.saveFoodInventory(original); // file path not specified
         readBack = jsonFoodInventoryStorage.readFoodInventory().get(); // file path not specified
         assertEquals(original, new FoodInventory(readBack));

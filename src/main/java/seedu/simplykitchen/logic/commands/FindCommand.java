@@ -4,24 +4,25 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 
 /**
- * Finds and lists all food items in Food inventory whose name contains any of the argument keywords.
+ * Finds and lists all food items in Food inventory whose description contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all food items whose names contain any of "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all food items whose"
+            + " descriptions contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+            + "Example: " + COMMAND_WORD + " apple bread carrot";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final DescriptionContainsKeywordsPredicate predicate;
 
-    public FindCommand(NameContainsKeywordsPredicate predicate) {
+    public FindCommand(DescriptionContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 

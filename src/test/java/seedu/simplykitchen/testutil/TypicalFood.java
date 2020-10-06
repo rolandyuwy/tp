@@ -2,10 +2,10 @@ package seedu.simplykitchen.testutil;
 
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
@@ -23,44 +23,47 @@ import seedu.simplykitchen.model.food.Food;
  */
 public class TypicalFood {
 
-    public static final Food ALICE = new FoodBuilder().withName("Alice Pauline")
+    public static final Food ANCHOVIES = new FoodBuilder().withDescription("Anchovies")
             .withAddress("123, Jurong West Ave 6, #08-111").withExpiryDate("1-1-2021")
             .withPhone("94351253")
             .withTags("friends").build();
-    public static final Food BENSON = new FoodBuilder().withName("Benson Meier")
+    public static final Food BAGEL = new FoodBuilder().withDescription("Bagel")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withExpiryDate("31-1-2021").withPhone("98765432")
             .withTags("owesMoney", "friends").build();
-    public static final Food CARL = new FoodBuilder().withName("Carl Kurz").withPhone("95352563")
+    public static final Food CARROT_CAKE = new FoodBuilder().withDescription("Carrot Cake").withPhone("95352563")
             .withExpiryDate("1-1-2020").withAddress("wall street").build();
-    public static final Food DANIEL = new FoodBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withExpiryDate("1-12-2020").withAddress("10th street").withTags("friends").build();
-    public static final Food ELLE = new FoodBuilder().withName("Elle Meyer").withPhone("9482224")
+    public static final Food DARK_CHOCOLATE = new FoodBuilder().withDescription("Dark Chocolate")
+            .withPhone("87652533").withExpiryDate("1-12-2020")
+            .withAddress("10th street").withTags("friends").build();
+    public static final Food EGGS = new FoodBuilder().withDescription("Eggs").withPhone("9482224")
             .withExpiryDate("31-1-2020").withAddress("michegan ave").build();
-    public static final Food FIONA = new FoodBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Food FRENCH_FRIES = new FoodBuilder().withDescription("French Fries").withPhone("9482427")
             .withExpiryDate("31-12-2020").withAddress("little tokyo").build();
-    public static final Food GEORGE = new FoodBuilder().withName("George Best").withPhone("9482442")
+    public static final Food GINGER = new FoodBuilder().withDescription("Ginger").withPhone("9482442")
             .withExpiryDate("1-10-2020").withAddress("4th street").build();
 
     // Manually added
-    public static final Food HOON = new FoodBuilder().withName("Hoon Meier").withPhone("8482424")
+    public static final Food HUMMUS = new FoodBuilder().withDescription("Hummus").withPhone("8482424")
             .withExpiryDate("12-12-2020").withAddress("little india").build();
-    public static final Food IDA = new FoodBuilder().withName("Ida Mueller").withPhone("8482131")
+    public static final Food ICEBERG_LETTUCE = new FoodBuilder().withDescription("Iceberg Lettuce")
             .withExpiryDate("12-12-2021").withAddress("chicago ave").build();
 
     // Manually added - Food's details found in {@code CommandTestUtil}
-    public static final Food AMY = new FoodBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withExpiryDate(VALID_EXPIRYDATE_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
-    public static final Food BOB = new FoodBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
+    public static final Food APPLE_PIE = new FoodBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
+            .withPhone(VALID_PHONE_AMY).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).withAddress(VALID_ADDRESS_AMY)
+            .withTags(VALID_TAG_FRIEND).build();
+    public static final Food BREAD = new FoodBuilder().withDescription(VALID_DESCRIPTION_BREAD)
+            .withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BREAD).withAddress(VALID_ADDRESS_BOB)
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
+    public static final String KEYWORD_MATCHING_LETTUCE = "Lettuce"; // A keyword that matches LETTUCE
 
-    private TypicalFood() {} // prevents instantiation
+    private TypicalFood() {
+    } // prevents instantiation
 
     /**
-     * Returns a {@code FoodInventory} with all the typical foods.
+     * Returns an {@code FoodInventory} with all the typical Foods.
      */
     public static FoodInventory getTypicalFoodInventory() {
         FoodInventory ab = new FoodInventory();
@@ -71,6 +74,7 @@ public class TypicalFood {
     }
 
     public static List<Food> getTypicalFood() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(ANCHOVIES, BAGEL, CARROT_CAKE,
+                DARK_CHOCOLATE, EGGS, FRENCH_FRIES, GINGER));
     }
 }

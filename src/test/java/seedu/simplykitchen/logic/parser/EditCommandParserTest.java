@@ -3,23 +3,23 @@ package seedu.simplykitchen.logic.parser;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_BOB;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRYDATE_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_AMY;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BOB;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
@@ -37,8 +37,8 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
 import seedu.simplykitchen.model.food.Address;
+import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
-import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Phone;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
@@ -55,7 +55,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_DESCRIPTION_APPLE_PIE, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -67,10 +67,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -81,14 +81,15 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
+        assertParseFailure(parser, "1"
+                + INVALID_DESCRIPTION_DESC, Description.MESSAGE_CONSTRAINTS); // invalid description
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_EXPIRYDATE_DESC, ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid phone followed by valid expiry date
-        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EXPIRYDATE_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EXPIRYDATE_DESC_APPLE_PIE, Phone.MESSAGE_CONSTRAINTS);
 
         // valid phone followed by invalid phone. The test case for invalid phone followed by valid phone
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
@@ -101,18 +102,18 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EXPIRYDATE_DESC + VALID_ADDRESS_AMY
-                + VALID_PHONE_AMY, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRYDATE_DESC + VALID_ADDRESS_AMY
+                + VALID_PHONE_AMY, Description.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_HUSBAND
-                + EXPIRYDATE_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
+                + EXPIRYDATE_DESC_APPLE_PIE + ADDRESS_DESC_AMY + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FRIEND;
 
-        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_AMY).withAddress(VALID_ADDRESS_AMY)
+        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
+                .withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -122,10 +123,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST_FOOD;
-        String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EXPIRYDATE_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EXPIRYDATE_DESC_APPLE_PIE;
 
         EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPhone(VALID_PHONE_BOB)
-                .withExpiryDate(VALID_EXPIRYDATE_AMY).build();
+                .withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -133,10 +134,12 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_oneFieldSpecified_success() {
-        // name
+        // description
         Index targetIndex = INDEX_THIRD_FOOD;
-        String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_APPLE_PIE;
+        EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
+                .withDescription(VALID_DESCRIPTION_APPLE_PIE).build();
+
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -147,8 +150,8 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // expiry date
-        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_AMY;
-        descriptor = new EditFoodDescriptorBuilder().withExpiryDate(VALID_EXPIRYDATE_AMY).build();
+        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_APPLE_PIE;
+        descriptor = new EditFoodDescriptorBuilder().withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -168,12 +171,12 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_FOOD;
-        String userInput = targetIndex.getOneBased() + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EXPIRYDATE_DESC_AMY
-                + TAG_DESC_FRIEND + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EXPIRYDATE_DESC_AMY + TAG_DESC_FRIEND
-                + PHONE_DESC_BOB + ADDRESS_DESC_BOB + EXPIRYDATE_DESC_BOB + TAG_DESC_HUSBAND;
+        String userInput = targetIndex.getOneBased() + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EXPIRYDATE_DESC_APPLE_PIE
+                + TAG_DESC_FRIEND + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EXPIRYDATE_DESC_APPLE_PIE + TAG_DESC_FRIEND
+                + PHONE_DESC_BOB + ADDRESS_DESC_BOB + EXPIRYDATE_DESC_BREAD + TAG_DESC_HUSBAND;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPhone(VALID_PHONE_BOB)
-                .withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
+                .withExpiryDate(VALID_EXPIRYDATE_BREAD).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -190,9 +193,9 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
-        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_BOB + INVALID_PHONE_DESC + ADDRESS_DESC_BOB
+        userInput = targetIndex.getOneBased() + EXPIRYDATE_DESC_BREAD + INVALID_PHONE_DESC + ADDRESS_DESC_BOB
                 + PHONE_DESC_BOB;
-        descriptor = new EditFoodDescriptorBuilder().withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BOB)
+        descriptor = new EditFoodDescriptorBuilder().withPhone(VALID_PHONE_BOB).withExpiryDate(VALID_EXPIRYDATE_BREAD)
                 .withAddress(VALID_ADDRESS_BOB).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
