@@ -104,17 +104,17 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        FoodInventory expectedSimplyKitchenInventory =
+        FoodInventory expectedFoodInventory =
                 new FoodInventory(actualModel.getFoodInventory());
         List<Food> expectedFilteredList = new ArrayList<>(actualModel.getFilteredFoodList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedSimplyKitchenInventory, actualModel.getFoodInventory());
+        assertEquals(expectedFoodInventory, actualModel.getFoodInventory());
         assertEquals(expectedFilteredList, actualModel.getFilteredFoodList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the food at the given {@code targetIndex} in the
-     * {@code model}'s SimplyKitchen inventory.
+     * {@code model}'s food inventory.
      */
     public static void showFoodAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredFoodList().size());
