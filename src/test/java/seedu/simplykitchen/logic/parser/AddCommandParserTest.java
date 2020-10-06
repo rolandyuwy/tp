@@ -79,7 +79,7 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Food expectedFood = new FoodBuilder(AMY).withPriority("low").withTags().build();
-        assertParseSuccess(parser, NAME_DESC_AMY + PRIORITY_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY,
+        assertParseSuccess(parser, NAME_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY,
                 new AddCommand(expectedFood));
     }
 
