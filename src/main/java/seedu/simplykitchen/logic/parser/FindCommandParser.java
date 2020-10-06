@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -25,9 +25,9 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
+        String[] descriptionKeywords = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords)));
     }
 
 }

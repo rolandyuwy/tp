@@ -3,8 +3,8 @@ package seedu.simplykitchen.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
@@ -17,38 +17,36 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.NameContainsKeywordsPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
-
-    public static final String VALID_NAME_AMY = "Amy Bee";
-    public static final String VALID_NAME_BOB = "Bob Choo";
-    public static final String VALID_PRIORITY_AMY = "high";
-    public static final String VALID_PRIORITY_BOB = "medium";
-    public static final String VALID_EXPIRYDATE_AMY = "1-1-2021";
-    public static final String VALID_EXPIRYDATE_BOB = "31-12-2021";
+    public static final String VALID_DESCRIPTION_APPLE_PIE = "Apple Pie";
+    public static final String VALID_DESCRIPTION_BREAD = "Bread";
+    public static final String VALID_PRIORITY_APPLE_PIE = "high";
+    public static final String VALID_PRIORITY_BREAD = "medium";
+    public static final String VALID_EXPIRYDATE_APPLE_PIE = "1-1-2021";
+    public static final String VALID_EXPIRYDATE_BREAD = "31-12-2021";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
-    public static final String PRIORITY_DESC_AMY = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMY;
-    public static final String PRIORITY_DESC_BOB = " " + PREFIX_PRIORITY + VALID_PRIORITY_BOB;
-    public static final String EXPIRYDATE_DESC_AMY = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_AMY;
-    public static final String EXPIRYDATE_DESC_BOB = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_BOB;
+    public static final String DESCRIPTION_DESC_APPLE_PIE = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_APPLE_PIE;
+    public static final String DESCRIPTION_DESC_BREAD = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_BREAD;
+    public static final String PRIORITY_DESC_APPLE_PIE = " " + PREFIX_PRIORITY + VALID_PRIORITY_APPLE_PIE;
+    public static final String PRIORITY_DESC_BREAD = " " + PREFIX_PRIORITY + VALID_PRIORITY_BREAD;
+    public static final String EXPIRYDATE_DESC_APPLE_PIE = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_APPLE_PIE;
+    public static final String EXPIRYDATE_DESC_BREAD = " " + PREFIX_EXPIRYDATE + VALID_EXPIRYDATE_BREAD;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
-
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
+            + "D&nut"; // '&' not allowed in descriptions
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "lower"; // 'lower' not valid priority
     public static final String INVALID_EXPIRYDATE_DESC = " " + PREFIX_EXPIRYDATE + "1-13-2021"; // invalid month
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
@@ -57,16 +55,16 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditFoodDescriptor DESC_AMY;
-    public static final EditCommand.EditFoodDescriptor DESC_BOB;
+    public static final EditCommand.EditFoodDescriptor DESC_APPLE_PIE;
+    public static final EditCommand.EditFoodDescriptor DESC_BREAD;
 
     static {
-        DESC_AMY = new EditFoodDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPriority(VALID_PRIORITY_AMY).withExpiryDate(VALID_EXPIRYDATE_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditFoodDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPriority(VALID_PRIORITY_BOB).withExpiryDate(VALID_EXPIRYDATE_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_APPLE_PIE = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
+                .withPriority(VALID_PRIORITY_APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_APPLE_PIE)
+                .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+        DESC_BREAD = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_BREAD)
+                .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRYDATE_BREAD)
+                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 
     /**
@@ -120,8 +118,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredFoodList().size());
 
         Food food = model.getFilteredFoodList().get(targetIndex.getZeroBased());
-        final String[] splitName = food.getName().fullName.split("\\s+");
-        model.updateFilteredFoodList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitDescription = food.getDescription().fullDescription.split("\\s+");
+        model.updateFilteredFoodList(new DescriptionContainsKeywordsPredicate(Arrays.asList(splitDescription[0])));
 
         assertEquals(1, model.getFilteredFoodList().size());
     }

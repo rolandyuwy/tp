@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
-import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
-import static seedu.simplykitchen.testutil.TypicalFood.BOB;
+import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
+import static seedu.simplykitchen.testutil.TypicalFood.BREAD;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,21 +30,21 @@ public class UniqueFoodListTest {
 
     @Test
     public void contains_foodNotInList_returnsFalse() {
-        assertFalse(uniqueFoodList.contains(ALICE));
+        assertFalse(uniqueFoodList.contains(ANCHOVIES));
     }
 
     @Test
     public void contains_foodInList_returnsTrue() {
-        uniqueFoodList.add(ALICE);
-        assertTrue(uniqueFoodList.contains(ALICE));
+        uniqueFoodList.add(ANCHOVIES);
+        assertTrue(uniqueFoodList.contains(ANCHOVIES));
     }
 
     @Test
     public void contains_foodWithSameIdentityFieldsInList_returnsTrue() {
-        uniqueFoodList.add(ALICE);
-        Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        uniqueFoodList.add(ANCHOVIES);
+        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(uniqueFoodList.contains(editedAlice));
+        assertTrue(uniqueFoodList.contains(editedAnchovies));
     }
 
     @Test
@@ -54,59 +54,59 @@ public class UniqueFoodListTest {
 
     @Test
     public void add_duplicateFood_throwsDuplicateFoodException() {
-        uniqueFoodList.add(ALICE);
-        assertThrows(DuplicateFoodException.class, () -> uniqueFoodList.add(ALICE));
+        uniqueFoodList.add(ANCHOVIES);
+        assertThrows(DuplicateFoodException.class, () -> uniqueFoodList.add(ANCHOVIES));
     }
 
     @Test
     public void setFood_nullTargetFood_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueFoodList.setFood(null, ALICE));
+        assertThrows(NullPointerException.class, () -> uniqueFoodList.setFood(null, ANCHOVIES));
     }
 
     @Test
     public void setFood_nullEditedFood_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueFoodList.setFood(ALICE, null));
+        assertThrows(NullPointerException.class, () -> uniqueFoodList.setFood(ANCHOVIES, null));
     }
 
     @Test
     public void setFood_targetFoodNotInList_throwsFoodNotFoundException() {
-        assertThrows(FoodNotFoundException.class, () -> uniqueFoodList.setFood(ALICE, ALICE));
+        assertThrows(FoodNotFoundException.class, () -> uniqueFoodList.setFood(ANCHOVIES, ANCHOVIES));
     }
 
     @Test
     public void setFood_editedFoodIsSameFood_success() {
-        uniqueFoodList.add(ALICE);
-        uniqueFoodList.setFood(ALICE, ALICE);
+        uniqueFoodList.add(ANCHOVIES);
+        uniqueFoodList.setFood(ANCHOVIES, ANCHOVIES);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
-        expectedUniqueFoodList.add(ALICE);
+        expectedUniqueFoodList.add(ANCHOVIES);
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
 
     @Test
     public void setFood_editedFoodHasSameIdentity_success() {
-        uniqueFoodList.add(ALICE);
-        Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        uniqueFoodList.add(ANCHOVIES);
+        Food editedAnchovies = new FoodBuilder(ANCHOVIES).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        uniqueFoodList.setFood(ALICE, editedAlice);
+        uniqueFoodList.setFood(ANCHOVIES, editedAnchovies);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
-        expectedUniqueFoodList.add(editedAlice);
+        expectedUniqueFoodList.add(editedAnchovies);
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
 
     @Test
     public void setFood_editedFoodHasDifferentIdentity_success() {
-        uniqueFoodList.add(ALICE);
-        uniqueFoodList.setFood(ALICE, BOB);
+        uniqueFoodList.add(ANCHOVIES);
+        uniqueFoodList.setFood(ANCHOVIES, BREAD);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
-        expectedUniqueFoodList.add(BOB);
+        expectedUniqueFoodList.add(BREAD);
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
 
     @Test
     public void setFood_editedFoodHasNonUniqueIdentity_throwsDuplicateFoodException() {
-        uniqueFoodList.add(ALICE);
-        uniqueFoodList.add(BOB);
-        assertThrows(DuplicateFoodException.class, () -> uniqueFoodList.setFood(ALICE, BOB));
+        uniqueFoodList.add(ANCHOVIES);
+        uniqueFoodList.add(BREAD);
+        assertThrows(DuplicateFoodException.class, () -> uniqueFoodList.setFood(ANCHOVIES, BREAD));
     }
 
     @Test
@@ -116,13 +116,13 @@ public class UniqueFoodListTest {
 
     @Test
     public void remove_foodDoesNotExist_throwsFoodNotFoundException() {
-        assertThrows(FoodNotFoundException.class, () -> uniqueFoodList.remove(ALICE));
+        assertThrows(FoodNotFoundException.class, () -> uniqueFoodList.remove(ANCHOVIES));
     }
 
     @Test
     public void remove_existingFood_removesFood() {
-        uniqueFoodList.add(ALICE);
-        uniqueFoodList.remove(ALICE);
+        uniqueFoodList.add(ANCHOVIES);
+        uniqueFoodList.remove(ANCHOVIES);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
@@ -134,9 +134,9 @@ public class UniqueFoodListTest {
 
     @Test
     public void setFoods_uniqueFoodList_replacesOwnListWithProvidedUniqueFoodList() {
-        uniqueFoodList.add(ALICE);
+        uniqueFoodList.add(ANCHOVIES);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
-        expectedUniqueFoodList.add(BOB);
+        expectedUniqueFoodList.add(BREAD);
         uniqueFoodList.setFoods(expectedUniqueFoodList);
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
@@ -148,17 +148,17 @@ public class UniqueFoodListTest {
 
     @Test
     public void setFoods_list_replacesOwnListWithProvidedList() {
-        uniqueFoodList.add(ALICE);
-        List<Food> foodList = Collections.singletonList(BOB);
+        uniqueFoodList.add(ANCHOVIES);
+        List<Food> foodList = Collections.singletonList(BREAD);
         uniqueFoodList.setFoods(foodList);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
-        expectedUniqueFoodList.add(BOB);
+        expectedUniqueFoodList.add(BREAD);
         assertEquals(expectedUniqueFoodList, uniqueFoodList);
     }
 
     @Test
     public void setFoods_listWithDuplicateFoods_throwsDuplicateFoodException() {
-        List<Food> listWithDuplicateFoods = Arrays.asList(ALICE, ALICE);
+        List<Food> listWithDuplicateFoods = Arrays.asList(ANCHOVIES, ANCHOVIES);
         assertThrows(DuplicateFoodException.class, () -> uniqueFoodList.setFoods(listWithDuplicateFoods));
     }
 

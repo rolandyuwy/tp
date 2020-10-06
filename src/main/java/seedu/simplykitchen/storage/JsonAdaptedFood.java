@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.simplykitchen.commons.exceptions.IllegalValueException;
 import seedu.simplykitchen.model.food.Address;
+import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Name;
 import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.tag.Tag;
 
@@ -24,7 +24,7 @@ class JsonAdaptedFood {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Food's %s field is missing!";
 
-    private final String name;
+    private final String description;
     private final String priority;
     private final String expiryDate;
     private final String address;
@@ -34,10 +34,10 @@ class JsonAdaptedFood {
      * Constructs a {@code JsonAdaptedFood} with the given food details.
      */
     @JsonCreator
-    public JsonAdaptedFood(@JsonProperty("name") String name, @JsonProperty("priority") String priority,
+    public JsonAdaptedFood(@JsonProperty("description") String description, @JsonProperty("priority") String priority,
                            @JsonProperty("expiryDate") String expiryDate, @JsonProperty("address") String address,
                            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.name = name;
+        this.description = description;
         this.priority = priority;
         this.expiryDate = expiryDate;
         this.address = address;
@@ -50,7 +50,7 @@ class JsonAdaptedFood {
      * Converts a given {@code Food} into this class for Jackson use.
      */
     public JsonAdaptedFood(Food source) {
-        name = source.getName().fullName;
+        description = source.getDescription().fullDescription;
         priority = source.getPriority().toString();
         expiryDate = source.getExpiryDate().value;
         address = source.getAddress().value;
@@ -65,18 +65,19 @@ class JsonAdaptedFood {
      * @throws IllegalValueException if there were any data constraints violated in the adapted food.
      */
     public Food toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> foodTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            foodTags.add(tag.toModelType());
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Description modelDescription = new Description(description);
 
         if (priority == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -104,9 +105,9 @@ class JsonAdaptedFood {
         }
         final Address modelAddress = new Address(address);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<Tag> modelTags = new HashSet<>(foodTags);
 
-        return new Food(modelName, modelPriority, modelExpiryDate, modelAddress, modelTags);
+        return new Food(modelDescription, modelPriority, modelExpiryDate, modelAddress, modelTags);
     }
 
 }

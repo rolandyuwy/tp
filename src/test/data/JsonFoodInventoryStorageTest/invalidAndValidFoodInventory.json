@@ -1,11 +1,11 @@
 {
   "foods": [ {
-    "name": "Valid Person",
+    "description": "Valid Food",
     "priority": "MEDIUM",
     "expiryDate": "1-1-2021",
     "address": "4th street"
   }, {
-    "name": "Person With Invalid Phone Field",
+    "description": "Food With Invalid Phone Field",
     "priority": "VERY VERY LOW",
     "expiryDate": "1-1-2021",
     "address": "4th street"
