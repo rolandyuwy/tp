@@ -3,7 +3,6 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.ALICE;
@@ -42,7 +41,7 @@ public class UniqueFoodListTest {
     @Test
     public void contains_foodWithSameIdentityFieldsInList_returnsTrue() {
         uniqueFoodList.add(ALICE);
-        Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Food editedAlice = new FoodBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueFoodList.contains(editedAlice));
     }
@@ -85,8 +84,7 @@ public class UniqueFoodListTest {
     @Test
     public void setFood_editedFoodHasSameIdentity_success() {
         uniqueFoodList.add(ALICE);
-        Food editedAlice = new FoodBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
+        Food editedAlice = new FoodBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         uniqueFoodList.setFood(ALICE, editedAlice);
         UniqueFoodList expectedUniqueFoodList = new UniqueFoodList();
         expectedUniqueFoodList.add(editedAlice);

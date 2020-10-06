@@ -3,7 +3,6 @@ package seedu.simplykitchen.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
@@ -79,8 +78,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY;
+        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
         Food expectedFood = new FoodBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFood(expectedFood);

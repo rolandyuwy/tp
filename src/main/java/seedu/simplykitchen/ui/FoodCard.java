@@ -36,8 +36,6 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label address;
-    @FXML
     private Label email;
     @FXML
     private FlowPane tags;
@@ -51,7 +49,6 @@ public class FoodCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(food.getName().fullName);
         phone.setText(food.getPhone().value);
-        address.setText(food.getAddress().value);
         email.setText(food.getEmail().value);
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
