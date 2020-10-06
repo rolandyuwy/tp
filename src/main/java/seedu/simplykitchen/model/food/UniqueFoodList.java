@@ -14,7 +14,7 @@ import seedu.simplykitchen.model.food.exceptions.FoodNotFoundException;
 /**
  * A list of food items that enforces uniqueness between its elements and does not allow nulls.
  * A food is considered unique by comparing using {@code Food#isSameFood(Food)}. As such, adding and updating of
- * persons uses Food#isSameFood(Food) for equality so as to ensure that the food being added or updated is
+ * food items uses Food#isSameFood(Food) for equality so as to ensure that the food being added or updated is
  * unique in terms of identity in the UniqueFoodList. However, the removal of a food uses Food#equals(Object) so
  * as to ensure that the food with exactly the same fields will be removed.
  *
