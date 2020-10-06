@@ -42,6 +42,6 @@ public interface FoodInventoryStorage {
     /**
      * @see #saveFoodInventory(ReadOnlyFoodInventory)
      */
-    void saveFoodInventory(ReadOnlyFoodInventory addressBook, Path filePath) throws IOException;
+    void saveFoodInventory(ReadOnlyFoodInventory foodInventory, Path filePath) throws IOException;
 
 }
