@@ -1,6 +1,6 @@
 package seedu.simplykitchen.logic.commands.exceptions;
 
-import seedu.address.logic.commands.Command;
+import seedu.simplykitchen.logic.commands.Command;
 
 /**
  * Represents an error which occurs during execution of a {@link Command}.
