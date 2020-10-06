@@ -70,12 +70,12 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s SimplyKitchen inventory
+     * Returns a {@code ModelManager} with the data from {@code storage}'s food inventory
      * and {@code userPrefs}. <br>
-     * The data from the sample SimplyKitchen inventory will be used instead if
-     * {@code storage}'s SimplyKitchen inventory is not found,
-     * or an empty SimplyKitchen inventory will be used instead if errors occur
-     * when reading {@code storage}'s SimplyKitchen inventory.
+     * The data from the sample food inventory will be used instead if
+     * {@code storage}'s food inventory is not found,
+     * or an empty food inventory will be used instead if errors occur
+     * when reading {@code storage}'s food inventory.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyFoodInventory> simplyKitchenInventoryOptional;
