@@ -115,7 +115,7 @@ public class EditCommandTest {
     public void execute_duplicateFoodFilteredList_failure() {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
 
-        // edit food in filtered list into a duplicate in SimplyKitchen inventory
+        // edit food in filtered list into a duplicate in food inventory
         Food foodInList = model.getFoodInventory().getFoods().get(INDEX_SECOND_FOOD.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_FOOD,
                 new EditFoodDescriptorBuilder(foodInList).build());
@@ -140,7 +140,7 @@ public class EditCommandTest {
     public void execute_invalidFoodIndexFilteredList_failure() {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
         Index outOfBoundIndex = INDEX_SECOND_FOOD;
-        // ensures that outOfBoundIndex is still in bounds of SimplyKitchen inventory list
+        // ensures that outOfBoundIndex is still in bounds of food inventory list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFoodInventory().getFoods().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,

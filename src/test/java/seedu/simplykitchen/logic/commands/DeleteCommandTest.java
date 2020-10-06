@@ -68,7 +68,7 @@ public class DeleteCommandTest {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
 
         Index outOfBoundIndex = INDEX_SECOND_FOOD;
-        // ensures that outOfBoundIndex is still in bounds of SimplyKitchen inventory list
+        // ensures that outOfBoundIndex is still in bounds of food inventory list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getFoodInventory().getFoods().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
