@@ -53,6 +53,7 @@ public class FoodCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(food.getName().fullName);
         priority.setText(food.getPriority().toString());
+        setPriorityColor(food.getPriority().value);
         address.setText(food.getAddress().value);
         email.setText(food.getEmail().value);
         food.getTags().stream()
