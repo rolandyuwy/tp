@@ -1,7 +1,6 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -19,7 +18,6 @@ import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.CollectionUtil;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Email;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Name;
@@ -40,7 +38,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -96,10 +93,9 @@ public class EditCommand extends Command {
         Name updatedName = editFoodDescriptor.getName().orElse(foodToEdit.getName());
         Phone updatedPhone = editFoodDescriptor.getPhone().orElse(foodToEdit.getPhone());
         Email updatedEmail = editFoodDescriptor.getEmail().orElse(foodToEdit.getEmail());
-        Address updatedAddress = editFoodDescriptor.getAddress().orElse(foodToEdit.getAddress());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
 
-        return new Food(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Food(updatedName, updatedPhone, updatedEmail, updatedTags);
     }
 
     @Override
@@ -128,7 +124,6 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
-        private Address address;
         private Set<Tag> tags;
 
         public EditFoodDescriptor() {}
@@ -141,7 +136,6 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
@@ -149,7 +143,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, tags);
         }
 
         public void setName(Name name) {
@@ -174,14 +168,6 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
         }
 
         /**
@@ -219,7 +205,6 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
-                    && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags());
         }
     }

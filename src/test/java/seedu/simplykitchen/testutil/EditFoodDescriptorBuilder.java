@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
-import seedu.simplykitchen.model.food.Address;
 import seedu.simplykitchen.model.food.Email;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Name;
@@ -36,7 +35,6 @@ public class EditFoodDescriptorBuilder {
         descriptor.setName(food.getName());
         descriptor.setPhone(food.getPhone());
         descriptor.setEmail(food.getEmail());
-        descriptor.setAddress(food.getAddress());
         descriptor.setTags(food.getTags());
     }
 
@@ -61,14 +59,6 @@ public class EditFoodDescriptorBuilder {
      */
     public EditFoodDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code EditFoodDescriptor} that we are building.
-     */
-    public EditFoodDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
         return this;
     }
 
