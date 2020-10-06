@@ -29,7 +29,6 @@
       <FlowPane fx:id="tags" />
       <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" />
       <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate" />
->>>>>>> master
     </VBox>
   </GridPane>
 </HBox>
