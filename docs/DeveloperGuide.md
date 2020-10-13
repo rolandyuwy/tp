@@ -82,7 +82,7 @@ The `UI` component,
 
 1. `Logic` uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a food item).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
@@ -129,13 +129,13 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Implementation** [to be updated]
 
 This section describes some noteworthy details on how certain features are implemented.
 
 ### \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+#### Proposed Implementation 
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
@@ -236,71 +236,155 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage kitchen food items
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+
+**Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                                     | I want to …​                     | So that I can…​                                                        |
+| -------- | ------------------------------------------ | ------------------------------  | --------------------------------------------------------------------- |
+| `* * *`  | user                                       | add items to the app (with their description, expiry date and priority tag) |                           |
+| `* * *`  | user                                       | delete items from the app       |                                                                       |
+| `* * *`  | user                                       | search for items based on expiry date | know which food items are expiring soon                         |
+| `* * *`  | busy working adult                         | be able to view a list of all food items sorted by expiry date | have a complete display of all my food items |
+| `* * *`  | user                                       | search for items based on keywords | find them easily                                                   |
+| `* * *`  | user who likes efficiency                  | search for items based on priority | find high priority items                                           |
+| `* * *`  | user  who cares about some food items more | add the priority of the food items | prioritise some food items                                         |
+| `* * *`  | user                                       | add a storage place for input items | locate my items easily                                            |
+| `* * *`  | user                                       | remember where I stored my food| spend less time searching through my kitchen                           |
+| `* * *`  | messy user                                 | be informed of invalid expiration dates | check the item again and re input the correct entry           |
+| `* * *`  | tech-savvy person                          | be able to use more intuitive commands  | be more comfortable with using the product                    |
+| `* * *`  | user                                       | update when I use up ingredients   | have an updated record of food available in my kitchen             |
+| `* *`    | user                                       | be able to undo and redo           | easily fix mistakes made when using the app                        |
+| `* *`    | forgetful adult even after seeing expired food on my dashboard | be notified of expired foods | delete them when receiving the notifications         |
+| `* *`    | user who only buys 1 brand for a specific item | update to the same item (quantity changes) | have no duplicate entries                              |
+| `* *`    | user                                       | have a visual representation of food expiry dates |  easily understand the current status of expiry dates for my food items |
+| `*`      | potential user                             | see the app populated with some sample data | understand how the app would look like and what benefits it would give |
+| `*`      | user trying to be healthy                  | be able to select healthy food from my kitchen | stay healthy                                           |
+| `*`      | user trying to be healthy                  | able to know how nutritious my food is | buy better food                                                |
+| `*`      | person on a diet                           | know how much calories is in the meal I prepared | keep to my diet                                      |
+| `*`      | busy working adult                         | know which kind of food item I am running low on |  plan my grocery trips more effectively and avoid buying similar food items already in the house. (can reduce food wastage and spending) |
+| `*`      | helper for a family                        | tag items that belong to specific family members or pets |  easily note which item belongs to whom      |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified)
 
-**Use case: Delete a person**
+**Use case: Add a food item (UC01)**
+
+**Guarantees: The food item is added into the system.** 
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
+1.  User requests to add a food item.
+2.  SimplyKitchen displays changes to the food inventory.
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. SimplyKitchen detects an error in the user's input.
+   
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
+     
+   * 1a2. User enters a new food item.
+      
+     Steps 1a1-1a2 are repeated until the data entered are correct.
+      
+     Use case resumes from step 2.
+ 
+<br/>
 
+**Use case: Delete a food item (UC02)**
+
+**Precondition: The food item to be deleted is in the system.**
+
+**Guarantees: The food item is deleted from the system.** 
+
+**MSS**
+
+1. User requests to <ins>list food items (UC03, UC04)</ins>.
+2. SimplyKitchen displays the list of food items.
+3. User requests to delete a food item from the list.
+4. SimplyKitchen displays changes to the food inventory.
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+  
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. SimplyKitchen detects that the given index corresponding to the food item from the list from the user is invalid.
+     	
+   * 3a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
+   
+   * 3a2. User enters a new food item.
+     
+     Steps 3a1-3a2 are repeated until the data entered are correct.
+      	
+     Use case resumes from step 4.
 
-    * 3a1. AddressBook shows an error message.
+<br/>
 
-      Use case resumes at step 2.
+**Use case: Find a food item (UC03)**
+
+**Guarantees: All food items in the system that match the query are listed.**
+
+**MSS**
+
+1. User requests to list food items according to description, priority or expiration date. 
+2. SimplyKitchen displays all food items that match the query.  
+	Use case ends.
+
+**Extensions**
+
+* 1a. SimplyKitchen detects an error in the user’s search query.
+   
+   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
+	
+   * 1a2. User enters a new search query.
+	
+     Steps 1a1-1a2 are repeated until the query entered is correct.
+	  
+     Use case resumes at step 2.
+
+<br/>
+
+**Use case: List all food items (UC04)**
+
+**Guarantees: All food items in the system are listed.**
+
+**MSS**
+
+1. User requests to list all food items.
+2. SimplyKitchen displays all food items in the food inventory.  
+	Use case ends.
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  A user should be able to see food items clearly on the GUI to facilitate command typing.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -330,17 +414,17 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a food item
 
-1. Deleting a person while all persons are being shown
+1. Deleting a food item while all food items are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all food items using the `list` command. Multiple food items in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No food item is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
