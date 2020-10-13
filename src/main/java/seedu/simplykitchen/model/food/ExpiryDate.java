@@ -78,33 +78,35 @@ public class ExpiryDate {
      * @return A string describing the error message.
      */
     public static String generateErrorMessage(String invalidExpiryDateString) {
-        try {
-            formatExpiryDate(invalidExpiryDateString);
+        invalidExpiryDateString = replaceSlashWithDash(invalidExpiryDateString);
+        String[] split = invalidExpiryDateString.split("-");
+        if (split.length != 3) {
+            // invalid formatting of expiry date
+            return MESSAGE_CONSTRAINTS;
+        }
+        if (!isFourDigitYear(split[2])) {
+            // year of expiry date is not 4 digits long
+            return MESSAGE_SHORTENED_YEAR;
+        }
 
+        try {
             LocalDate expiryDate = parseExpiryDate(invalidExpiryDateString);
             if (isBeforeToday(expiryDate)) {
+                // expiry date is before today
                 return MESSAGE_PAST_EXPIRY_DATE;
             }
 
-            return MESSAGE_CONSTRAINTS;
-        } catch (ParseException e) {
-            return MESSAGE_CONSTRAINTS;
+            return MESSAGE_INVALID_DATE;
         } catch (DateTimeParseException e) {
-            if (!isFourDigitYear(invalidExpiryDateString)) {
-                return MESSAGE_SHORTENED_YEAR;
-            } else {
-                return MESSAGE_INVALID_DATE;
-            }
+            return MESSAGE_INVALID_DATE;
         }
     }
 
     /**
      * Guarantees: The date String is formatted correctly.
      */
-    private static boolean isFourDigitYear(String dateString) {
-        dateString = replaceSlashWithDash(dateString);
-        String[] split = dateString.split("-");
-        return split[2].length() == 4;
+    private static boolean isFourDigitYear(String yearString) {
+        return yearString.length() == 4;
     }
 
     /**

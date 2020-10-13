@@ -8,6 +8,9 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_PAST_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_SHORTENED_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -102,16 +105,28 @@ public class AddCommandParserTest {
                 + EXPIRY_DATE_DESC_BREAD
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
 
-        // invalid expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC
+        // invalid expiry date format
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_FORMAT_DESC
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_CONSTRAINTS);
+
+        // invalid past expiry date
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_PAST_DESC
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_PAST_EXPIRY_DATE);
+
+        // invalid shortened expiry date
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_SHORTENED_DESC
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_SHORTENED_YEAR);
+
+        // invalid non-existent expiry date
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_INVALID_DATE);
 
         // invalid tag
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_BREAD
                 + INVALID_TAG_DESC + VALID_TAG_FRIEND, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC,
+        assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_FORMAT_DESC,
                 Description.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
