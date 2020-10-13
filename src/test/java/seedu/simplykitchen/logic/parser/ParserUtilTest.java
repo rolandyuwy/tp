@@ -26,7 +26,7 @@ public class ParserUtilTest {
     private static final String INVALID_TAG = "#friend";
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
     private static final String VALID_PRIORITY = "MEDIUM";
-    private static final String VALID_EXPIRYDATE = "1-1-2020";
+    private static final String VALID_EXPIRYDATE = "1-1-2022";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
 

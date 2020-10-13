@@ -22,25 +22,25 @@ import seedu.simplykitchen.model.food.Food;
 public class TypicalFood {
 
     public static final Food ANCHOVIES = new FoodBuilder().withDescription("Anchovies")
-            .withExpiryDate("1-1-2021").withPriority("low").withTags("friends").build();
+            .withExpiryDate("1-1-2022").withPriority("low").withTags("friends").build();
     public static final Food BAGEL = new FoodBuilder().withDescription("Bagel")
-            .withExpiryDate("31-1-2021").withPriority("low").withTags("owesMoney", "friends").build();
+            .withExpiryDate("1-2-2022").withPriority("low").withTags("owesMoney", "friends").build();
     public static final Food CARROT_CAKE = new FoodBuilder().withDescription("Carrot Cake").withPriority("low")
-            .withExpiryDate("1-1-2020").build();
+            .withExpiryDate("1-3-2022").build();
     public static final Food DARK_CHOCOLATE = new FoodBuilder().withDescription("Dark Chocolate")
-            .withPriority("high").withExpiryDate("1-12-2020").withTags("friends").build();
+            .withPriority("high").withExpiryDate("1-6-2022").withTags("friends").build();
     public static final Food EGGS = new FoodBuilder().withDescription("Eggs").withPriority("high")
-            .withExpiryDate("31-1-2020").build();
+            .withExpiryDate("1-12-2022").build();
     public static final Food FRENCH_FRIES = new FoodBuilder().withDescription("French Fries").withPriority("low")
-            .withExpiryDate("31-12-2020").build();
+            .withExpiryDate("31-1-2022").build();
     public static final Food GINGER = new FoodBuilder().withDescription("Ginger").withPriority("low")
-            .withExpiryDate("1-10-2020").build();
+            .withExpiryDate("31-12-2022").build();
 
     // Manually added
     public static final Food HUMMUS = new FoodBuilder().withDescription("Hummus").withPriority("low")
-            .withExpiryDate("12-12-2020").build();
+            .withExpiryDate("12-12-2022").build();
     public static final Food ICEBERG_LETTUCE = new FoodBuilder().withDescription("Iceberg Lettuce").withPriority("high")
-            .withExpiryDate("12-12-2021").build();
+            .withExpiryDate("12-12-2022").build();
 
     // Manually added - Food's details found in {@code CommandTestUtil}
     public static final Food APPLE_PIE = new FoodBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)

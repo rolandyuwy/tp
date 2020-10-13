@@ -45,7 +45,7 @@ public class CommandTestUtil {
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
             + "D&nut"; // '&' not allowed in descriptions
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "lower"; // 'lower' not valid priority
-    public static final String INVALID_EXPIRYDATE_DESC = " " + PREFIX_EXPIRYDATE + "1-13-2021"; // invalid month
+    public static final String INVALID_EXPIRYDATE_DESC = " " + PREFIX_EXPIRYDATE + "1--1-2020"; // extra dash
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
