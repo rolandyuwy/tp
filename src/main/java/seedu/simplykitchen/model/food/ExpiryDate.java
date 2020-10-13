@@ -5,6 +5,8 @@ import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Represents a Food Item's expiry date in Simply Kitchen.
@@ -34,11 +36,18 @@ public class ExpiryDate {
     public static boolean isValidExpiryDate(String testExpiryDateString) {
         try {
             testExpiryDateString = replaceSlashWithDash(testExpiryDateString);
-            SimpleDateFormat inputFormatter = new SimpleDateFormat(DATE_PATTERN);
-            inputFormatter.setLenient(false);
-            inputFormatter.parse(testExpiryDateString);
+
+            // check for invalid dates
+            SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_PATTERN);
+            simpleDateFormatter.setLenient(false);
+            simpleDateFormatter.parse(testExpiryDateString);
+
+            // check for shortened year
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+            dateTimeFormatter.parse(testExpiryDateString);
+
             return true;
-        } catch (ParseException e) {
+        } catch (ParseException | DateTimeParseException e) {
             return false;
         }
     }
