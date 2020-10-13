@@ -15,7 +15,14 @@ import java.time.format.DateTimeParseException;
  */
 public class ExpiryDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Expiry dates should be of the format dd-MM-yyyy or dd/MM/yyyy. ";
+    public static final String MESSAGE_CONSTRAINTS =
+            "The expiry date should be of the format DD-MM-YYYY or DD/MM/YYYY. ";
+    public static final String MESSAGE_PAST_EXPIRY_DATE = "This food item has already expired! ";
+    public static final String MESSAGE_SHORTENED_YEAR = "The year should be 4 digits long. ";
+    public static final String MESSAGE_INVALID_DATE = "The expiry date does not exist. ";
+
+    // A date has three values - day, month and year
+    public static final int NUM_OF_VALUES = 3;
     public static final String DATE_PATTERN = "d-M-yyyy";
 
     public final String value;
@@ -48,15 +55,53 @@ public class ExpiryDate {
             LocalDate localDate = LocalDate.parse(testExpiryDateString, dateTimeFormatter);
 
             // check for past expiry date
-            return !isPastExpiryDate(localDate);
+            return !isBeforeToday(localDate);
         } catch (ParseException | DateTimeParseException e) {
             return false;
         }
     }
 
-    private static boolean isPastExpiryDate(LocalDate expiryDate) {
+    /**
+     * Generates an error message based on why the expiry date is invalid.
+     *
+     * @param invalidExpiryDateString An invalid expiry date.
+     * @return A string describing the error message.
+     */
+    public static String generateErrorMessage(String invalidExpiryDateString) {
+        invalidExpiryDateString = replaceSlashWithDash(invalidExpiryDateString);
+        String[] split = invalidExpiryDateString.split("-");
+
+        if (split.length != NUM_OF_VALUES) {
+            // the expiry date format is wrong
+            return MESSAGE_CONSTRAINTS;
+        } else if (isBeforeToday(invalidExpiryDateString)) {
+            // the expiry date is before today
+            return MESSAGE_PAST_EXPIRY_DATE;
+        } else if (!isFourDigitYear(split[2])) {
+            // the year is not 4 digits long
+            return MESSAGE_SHORTENED_YEAR;
+        } else {
+            // the expiry date does not exist
+            return MESSAGE_INVALID_DATE;
+        }
+    }
+
+    private static boolean isBeforeToday(LocalDate expiryDate) {
         LocalDate todayDate = LocalDate.now();
         return todayDate.isAfter(expiryDate);
+    }
+
+    /**
+     * Guarantees: the expiry date String is correctly formatted
+     */
+    private static boolean isBeforeToday(String expiryDateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+        LocalDate expiryDate = LocalDate.parse(expiryDateString, formatter);
+        return isBeforeToday(expiryDate);
+    }
+
+    private static boolean isFourDigitYear(String year) {
+        return year.length() == 4;
     }
 
     /**
