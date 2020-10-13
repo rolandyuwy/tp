@@ -4,10 +4,10 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_
 import static seedu.simplykitchen.logic.commands.AddCommand.MESSAGE_USAGE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_APPLE_PIE;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRYDATE_DESC_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRYDATE_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -17,7 +17,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_B
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -44,24 +44,24 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRYDATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
 
         // multiple descriptions - last description accepted
         assertParseSuccess(parser, DESCRIPTION_DESC_APPLE_PIE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRYDATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
 
         // multiple priorities - last priority accepted
         assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_APPLE_PIE + PRIORITY_DESC_BREAD
-                + EXPIRYDATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
 
         // multiple expiry dates - last expiry date accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRYDATE_DESC_APPLE_PIE
-                + EXPIRYDATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
+        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_APPLE_PIE
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_FRIEND, new AddCommand(expectedFood));
 
         // multiple tags - all accepted
         Food expectedFoodMultipleTags = new FoodBuilder(BREAD).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRYDATE_DESC_BREAD
+        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_BREAD
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedFoodMultipleTags));
     }
 
@@ -70,7 +70,7 @@ public class AddCommandParserTest {
         // zero tags
         Food expectedFood = new FoodBuilder(APPLE_PIE).withTags().build();
         assertParseSuccess(parser, DESCRIPTION_DESC_APPLE_PIE + PRIORITY_DESC_APPLE_PIE
-                + EXPIRYDATE_DESC_APPLE_PIE, new AddCommand(expectedFood));
+                + EXPIRY_DATE_DESC_APPLE_PIE, new AddCommand(expectedFood));
     }
 
     @Test
@@ -78,15 +78,15 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE);
 
         // missing description prefix
-        assertParseFailure(parser, VALID_DESCRIPTION_BREAD + PRIORITY_DESC_BREAD + EXPIRYDATE_DESC_BREAD,
+        assertParseFailure(parser, VALID_DESCRIPTION_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_BREAD,
                 expectedMessage);
 
         // missing expiry date prefix
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + VALID_EXPIRYDATE_BREAD,
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + VALID_EXPIRY_DATE_BREAD,
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_DESCRIPTION_BREAD + PRIORITY_DESC_BREAD + VALID_EXPIRYDATE_BREAD,
+        assertParseFailure(parser, VALID_DESCRIPTION_BREAD + PRIORITY_DESC_BREAD + VALID_EXPIRY_DATE_BREAD,
                 expectedMessage);
     }
 
@@ -94,29 +94,29 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid description
         assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD
-                + EXPIRYDATE_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Description.MESSAGE_CONSTRAINTS);
 
         // invalid priority
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + INVALID_PRIORITY_DESC
-                + EXPIRYDATE_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
 
         // invalid expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRYDATE_DESC
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_CONSTRAINTS);
 
         // invalid tag
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRYDATE_DESC_BREAD
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_BREAD
                 + INVALID_TAG_DESC + VALID_TAG_FRIEND, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD + INVALID_EXPIRYDATE_DESC,
+        assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC,
                 Description.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRYDATE_DESC_BREAD + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
     }
 }
