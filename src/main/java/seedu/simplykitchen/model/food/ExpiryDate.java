@@ -3,9 +3,8 @@ package seedu.simplykitchen.model.food;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * Represents a Food Item's expiry date in Simply Kitchen.
@@ -35,10 +34,11 @@ public class ExpiryDate {
     public static boolean isValidExpiryDate(String testExpiryDateString) {
         try {
             testExpiryDateString = replaceSlashWithDash(testExpiryDateString);
-            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-            LocalDate.parse(testExpiryDateString, inputFormatter);
+            SimpleDateFormat inputFormatter = new SimpleDateFormat(DATE_PATTERN);
+            inputFormatter.setLenient(false);
+            inputFormatter.parse(testExpiryDateString);
             return true;
-        } catch (DateTimeParseException e) {
+        } catch (ParseException e) {
             return false;
         }
     }
