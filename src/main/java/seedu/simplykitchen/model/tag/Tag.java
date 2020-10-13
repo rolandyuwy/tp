@@ -11,7 +11,7 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Tags names should only contain alphanumeric or these special characters: #$%&-()";
-    public static final String VALIDATION_REGEX = "[#$%&()\\-\\p{Alnum}]+";
+    public static final String VALIDATION_REGEX = "[#$%&()\\-\\s\\p{Alnum}]+";
 
     public final String tagName;
 
