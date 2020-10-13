@@ -5,6 +5,7 @@ import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -37,19 +38,25 @@ public class ExpiryDate {
         try {
             testExpiryDateString = replaceSlashWithDash(testExpiryDateString);
 
-            // check for invalid dates
+            // check for invalid expiry date
             SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_PATTERN);
             simpleDateFormatter.setLenient(false);
             simpleDateFormatter.parse(testExpiryDateString);
 
             // check for shortened year
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-            dateTimeFormatter.parse(testExpiryDateString);
+            LocalDate localDate = LocalDate.parse(testExpiryDateString, dateTimeFormatter);
 
-            return true;
+            // check for past expiry date
+            return !isPastExpiryDate(localDate);
         } catch (ParseException | DateTimeParseException e) {
             return false;
         }
+    }
+
+    private static boolean isPastExpiryDate(LocalDate expiryDate) {
+        LocalDate todayDate = LocalDate.now();
+        return todayDate.isAfter(expiryDate);
     }
 
     /**
