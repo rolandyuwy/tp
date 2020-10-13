@@ -6,7 +6,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
@@ -56,11 +56,11 @@ public class EditCommandTest {
 
         FoodBuilder foodInList = new FoodBuilder(lastFood);
         Food editedFood = foodInList.withDescription(VALID_DESCRIPTION_BREAD).withPriority(VALID_PRIORITY_BREAD)
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_WHOLEMEAL).build();
 
         EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
                 .withDescription(VALID_DESCRIPTION_BREAD)
-                .withPriority(VALID_PRIORITY_BREAD).withTags(VALID_TAG_HUSBAND).build();
+                .withPriority(VALID_PRIORITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
         EditCommand editCommand = new EditCommand(indexLastFood, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FOOD_SUCCESS, editedFood);

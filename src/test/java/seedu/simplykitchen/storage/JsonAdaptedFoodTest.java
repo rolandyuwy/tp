@@ -20,7 +20,7 @@ public class JsonAdaptedFoodTest {
     private static final String INVALID_DESCRIPTION = "T@na";
     private static final String INVALID_PRIORITY = "MEDIUM-HIGH";
     private static final String INVALID_EXPIRYDATE = "1-13-2020";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = BAGEL.getDescription().toString();
     private static final String VALID_PRIORITY = BAGEL.getPriority().toString();
     private static final String VALID_EXPIRYDATE = BAGEL.getExpiryDate().toString();
