@@ -46,17 +46,20 @@ Format: `help`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]`
+Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…​`  
 
 * Adds a food item based on its description and expiry date.
 * Description and expiry date fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
 * For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
+* The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
+* Tags with only whitespace(s) will not be allowed.
+* A food item can have any number of tags (including 0).
 
 Examples:
 * `add d/canned tuna e/01-01-2021 p/low`
-* `add d/mushroom e/11-10-2020`
+* `add d/apple pie e/11-10-2020 p/medium t/frozen t/$15 t/contains nuts`
 
 ### Listing all food items : `list`
 
@@ -142,7 +145,7 @@ Food Inventory data are saved in the hard disk automatically after any command t
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` <br> e.g., `add d/cereal e/31-10-2020 p/medium`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…` <br> e.g., `add d/cereal e/31-10-2020 p/medium t/corn flakes`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020`
