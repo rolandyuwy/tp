@@ -34,7 +34,13 @@ Table of Contents:<br>
 
 </div>
 
-### Viewing help : `help` [coming soon]
+### Viewing help : `help`
+
+Shows a help message explaining how to access the help page.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
 
 ### Adding a food item: `add`
 
@@ -60,24 +66,20 @@ Format: `list`
 
 ### Searching for a food item: `find`
 
-Searches for a food item inside the inventory tracker according to `KEYWORD`, `PRIORITY` or `EXPIRY_DATE`.
+Searches for food items in the inventory with descriptions matching any of the given keywords.
 
-Format: `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`
+Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* A minimum of 1 type of field must be specified.
-* The search is case-insensitive. e.g as an input in the keyword field, `fish` will match `Fish`
-* If more than 1 field is specified, the search results will be based on all the specified fields e.g. `find k/rice p/high` will match food items with description containing `rice` and having `high` priority.
-* For `k/KEYWORD`, the field can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
-* For `k/KEYWORD`, the order of the keywords does not matter. e.g. `Tuna Fish` will match `Fish Tuna`.
-* For `k/KEYWORD`, only full words will be matched. e.g. `Fish` will not match `Fishes`.
-* For `k/KEYWORD`, food items matching at least one keyword will be returned (i.e. OR search). e.g. `Salty Fish` will return `Salty Rice`, `Tuna Fish`
-* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
-
+* The search is case-insensitive. e.g `fish` will match `Fish`
+* The order of the keywords does not matter. e.g. `Cake Fish` will match `Fish Cake`
+* Only the description is searched.
+* Only full words will be matched e.g. `fis` will not match `fish`.
+* Food items matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`
 
 Examples:
-* `find k/medium packet rice` returns `chicken rice` and `Packet Noodles`
-* `find p/high` 
-* `find k/tuna e/01-01-2021` 
+* `find chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
+* `find apple tuna` returns `Apple Pie` and `Tuna Can`.
+  ![result for 'find apple tuna'](images/findAppleTunaResult.png)
 
 ### Deleting a food item : `delete`
 
@@ -91,7 +93,7 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
-* `find k/tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
+* `find tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
 ### Editing a food item : `edit`
 
@@ -144,5 +146,6 @@ Action | Format, Examples
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020`
-**Find** | `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`<br> e.g., `find k/cereal p/medium e/31-10-2020`
+**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
 **List** | `list`
+**Help** | `help`
