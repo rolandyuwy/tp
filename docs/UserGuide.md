@@ -102,7 +102,7 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 * Edits the food item at the specified `INDEX`. 
 * The index refers to the index number shown in the displayed food item list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the fields must be provided.
+* At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
 * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
