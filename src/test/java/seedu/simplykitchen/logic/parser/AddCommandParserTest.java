@@ -111,15 +111,15 @@ public class AddCommandParserTest {
 
         // invalid past expiry date
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_PAST_DESC
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_PAST_EXPIRY_DATE);
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_PAST_EXPIRY_DATE);
 
         // invalid shortened expiry date
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_SHORTENED_DESC
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_SHORTENED_YEAR);
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_SHORTENED_YEAR);
 
         // invalid non-existent expiry date
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, ExpiryDate.MESSAGE_INVALID_DATE);
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_INVALID_DATE);
 
         // invalid tag
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_BREAD
