@@ -66,7 +66,7 @@ Format: `list`
 
 ### Searching for a food item: `find`
 
-Searches inside the inventory tracker for food items which the descriptions contain any of the given keywords.
+Searches for food items in the inventory with descriptions matching any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
