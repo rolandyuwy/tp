@@ -95,7 +95,25 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
 * `find tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
-### Clearing all entries : `clear` [coming soon]
+### Editing a food item : `edit`
+
+Edits the details of an existing food item in the food inventory.
+
+Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
+
+* Edits the food item at the specified `INDEX`. 
+* The index refers to the index number shown in the displayed food item list. 
+* The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
+* You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
+
+Examples:
+* `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
+* `edit 2 d/canned tuna t/` Edits the food description of the 2nd food item to be `canned tuna` and clears all existing tags.
+
+### Clearing all entries : `clear` 
 
 Clears all entries from the food inventory.
 
@@ -127,6 +145,7 @@ Action | Format, Examples
 **Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` <br> e.g., `add d/cereal e/31-10-2020 p/medium`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
 **List** | `list`
 **Help** | `help`
