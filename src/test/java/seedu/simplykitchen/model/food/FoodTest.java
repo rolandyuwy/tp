@@ -6,7 +6,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTI
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
 import static seedu.simplykitchen.testutil.TypicalFood.BREAD;
@@ -42,16 +42,16 @@ public class FoodTest {
 
         // same description, same priority, different attributes -> returns true
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE).withPriority("low")
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_WHOLEMEAL).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, different attributes -> returns true
         editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_WHOLEMEAL).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, same priority, same email, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
     }
 
@@ -86,7 +86,7 @@ public class FoodTest {
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
-        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
     }
 }

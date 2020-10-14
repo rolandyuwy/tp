@@ -4,12 +4,12 @@
     "description" : "Anchovies",
     "priority": "LOW",
     "expiryDate" : "1-1-2022",
-    "tagged" : [ "friends" ]
+    "tagged" : [ "raw" ]
   }, {
       "description": "Bagel",
     "priority": "LOW",
     "expiryDate" : "1-2-2022",
-    "tagged" : [ "owesMoney", "friends" ]
+    "tagged" : [ "sugar-free", "cheese" ]
   }, {
     "description": "Carrot Cake",
     "priority": "LOW",
@@ -19,7 +19,7 @@
     "description": "Dark Chocolate",
     "priority": "HIGH",
     "expiryDate" : "1-6-2022",
-    "tagged" : [ "friends" ]
+    "tagged" : [ "85%" ]
   }, {
     "description": "Eggs",
     "priority": "HIGH",

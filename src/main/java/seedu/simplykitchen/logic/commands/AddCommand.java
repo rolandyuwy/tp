@@ -27,8 +27,8 @@ public class AddCommand extends Command {
             + PREFIX_DESCRIPTION + "Canned Tuna "
             + PREFIX_PRIORITY + "HIGH "
             + PREFIX_EXPIRY_DATE + "1-1-2020 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TAG + "frozen "
+            + PREFIX_TAG + "20g";
 
     public static final String MESSAGE_SUCCESS = "New food item added: %1$s";
     public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory";
