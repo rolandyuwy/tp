@@ -2,7 +2,7 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRYDATE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
@@ -37,11 +37,11 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            + "[" + PREFIX_EXPIRYDATE + "EXPIRY DATE] "
+            + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
-            + PREFIX_EXPIRYDATE + "1-11-2021";
+            + PREFIX_EXPIRY_DATE + "1-11-2021";
 
     public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
