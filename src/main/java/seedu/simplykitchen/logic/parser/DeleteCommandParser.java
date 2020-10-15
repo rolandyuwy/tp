@@ -4,6 +4,7 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_
 
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
+import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**

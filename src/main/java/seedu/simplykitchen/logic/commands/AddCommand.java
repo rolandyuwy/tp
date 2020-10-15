@@ -17,12 +17,11 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a food to the food inventory. "
-            + "Parameters: "
+    public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
             + PREFIX_PRIORITY + "PRIORITY "
             + PREFIX_EXPIRY_DATE + "EXPIRY DATE "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "Canned Tuna "
             + PREFIX_PRIORITY + "HIGH "
@@ -30,7 +29,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "frozen "
             + PREFIX_TAG + "20g";
 
-    public static final String MESSAGE_SUCCESS = "New food item added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New food item added!\n  %1$s";
     public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory";
 
     private final Food toAdd;
