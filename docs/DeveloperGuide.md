@@ -238,153 +238,208 @@ _{Explain here how the data archiving feature will be implemented}_
 
 * has a need to manage kitchen food items
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
+* can type fast
 * is reasonably comfortable using CLI apps
 
 
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
+### Glossary
+
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **GUI**: Graphical User Interface
+* **food inventory**: a complete list of food items stored in Simply Kitchen
+
+*{More to be added}*
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                     | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------  | --------------------------------------------------------------------- |
-| `* * *`  | user                                       | add items to the app (with their description, expiry date and priority tag) |                           |
-| `* * *`  | user                                       | delete items from the app       |                                                                       |
-| `* * *`  | user                                       | search for items based on expiry date | know which food items are expiring soon                         |
-| `* * *`  | busy working adult                         | be able to view a list of all food items sorted by expiry date | have a complete display of all my food items |
-| `* * *`  | user                                       | search for items based on keywords | find them easily                                                   |
-| `* * *`  | user who likes efficiency                  | search for items based on priority | find high priority items                                           |
-| `* * *`  | user  who cares about some food items more | add the priority of the food items | prioritise some food items                                         |
-| `* * *`  | user                                       | add a storage place for input items | locate my items easily                                            |
-| `* * *`  | user                                       | remember where I stored my food| spend less time searching through my kitchen                           |
-| `* * *`  | messy user                                 | be informed of invalid expiration dates | check the item again and re input the correct entry           |
-| `* * *`  | tech-savvy person                          | be able to use more intuitive commands  | be more comfortable with using the product                    |
-| `* * *`  | user                                       | update when I use up ingredients   | have an updated record of food available in my kitchen             |
-| `* *`    | user                                       | be able to undo and redo           | easily fix mistakes made when using the app                        |
-| `* *`    | forgetful adult even after seeing expired food on my dashboard | be notified of expired foods | delete them when receiving the notifications         |
-| `* *`    | user who only buys 1 brand for a specific item | update to the same item (quantity changes) | have no duplicate entries                              |
-| `* *`    | user                                       | have a visual representation of food expiry dates |  easily understand the current status of expiry dates for my food items |
-| `*`      | potential user                             | see the app populated with some sample data | understand how the app would look like and what benefits it would give |
-| `*`      | user trying to be healthy                  | be able to select healthy food from my kitchen | stay healthy                                           |
-| `*`      | user trying to be healthy                  | able to know how nutritious my food is | buy better food                                                |
-| `*`      | person on a diet                           | know how much calories is in the meal I prepared | keep to my diet                                      |
-| `*`      | busy working adult                         | know which kind of food item I am running low on |  plan my grocery trips more effectively and avoid buying similar food items already in the house. (can reduce food wastage and spending) |
-| `*`      | helper for a family                        | tag items that belong to specific family members or pets |  easily note which item belongs to whom      |
+| Priority | User role (As a …)                        | Function (I want to …)                                     | Benefit (So that I can …)                                    |
+| -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
+| `* * *`  | user                                      | add food items                                             |                                                              |
+| `* * *`  | user                                      | delete food items                                          |                                                              |
+| `* * *`  | user                                      | edit the fields of the food items                          | I can change the details of the food item after adding it    |
+| `* * *`  | user                                      | search for food items based on keywords of the description | I can find them easily                                       |
+| `* * *`  | user                                      | view a list of all food items I have added                 | I have a complete display of all my food items               |
+| `* * *`  | user                                      | clear all food items                                       |                                                              |
+| `* * *`  | user who cares about some food items more | have different priority for different food items           | I can prioritise some food items                             |
+| `* `     | user                                      | tag food items                                             | I can add additional information pertaining/relating to them |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified)
+For all use cases, the **System** is `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified.
 
-**Use case: Add a food item (UC01)**
+#### UC01: Add a food item
 
-**Guarantees: The food item is added into the system.** 
+**Guarantees:** The food item is added into the food inventory.
 
-**MSS**
+**MSS:**
 
-1.  User requests to add a food item.
-2.  SimplyKitchen displays changes to the food inventory.
-    Use case ends.
+**1.**  User requests to add a food item.
 
-**Extensions**
+**2.**  SimplyKitchen adds the food item to the food inventory and displays a success message.
 
-* 1a. SimplyKitchen detects an error in the user's input.
+Use case ends.
+
+**Extensions:**
+
+**1a.** SimplyKitchen detects an error in the user's food item.
    
-   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
+ * **1a1.** SimplyKitchen displays an error message and prompts the user to enter a correct food item.
      
-   * 1a2. User enters a new food item.
+ * **1a2.** User enters another food item.
       
-     Steps 1a1-1a2 are repeated until the data entered are correct.
-      
-     Use case resumes from step 2.
+   Steps **1a1.** - **1a2.** are repeated until the food item entered is correct.
+
+   Use case resumes from step **2**.
  
 <br/>
 
-**Use case: Delete a food item (UC02)**
+#### UC02: Delete a food item
 
-**Precondition: The food item to be deleted is in the system.**
+**Precondition:** The food item to be deleted is currently in the food inventory.
 
-**Guarantees: The food item is deleted from the system.** 
+**Guarantees:** If a food item is specified, the food item will be deleted from the food inventory.
 
-**MSS**
+**MSS:**
 
-1. User requests to <ins>list food items (UC03, UC04)</ins>.
-2. SimplyKitchen displays the list of food items.
-3. User requests to delete a food item from the list.
-4. SimplyKitchen displays changes to the food inventory.
-   Use case ends.
+**1.** User requests to <ins>find a food item (UC03)</ins> or <ins>list all food items (UC04)</ins>.
 
-**Extensions**
+**2.** SimplyKitchen displays a list of food items.
 
-* 2a. The list is empty.
-  
-  Use case ends.
+**3.** User requests to delete a food item from the list.
 
-* 3a. SimplyKitchen detects that the given index corresponding to the food item from the list from the user is invalid.
-     	
-   * 3a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
-   
-   * 3a2. User enters a new food item.
+**4.** SimplyKitchen deletes the food item from the food inventory and displays a success message.
+
+Use case ends.
+
+**Extensions:**
+
+**2a.** The list is empty.
+
+Use case ends.
+
+**3a.** SimplyKitchen detects an invalid index corresponding to the food item in the list.
+
+ * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct index.
      
-     Steps 3a1-3a2 are repeated until the data entered are correct.
-      	
-     Use case resumes from step 4.
+ * **3a2.** User requests to delete another index corresponding to the food item in the list.
+      
+   Steps **3a1.** - **3a2.** are repeated until the index entered is correct.
+
+   Use case resumes from step **4**.
 
 <br/>
 
-**Use case: Find a food item (UC03)**
+#### UC03: Edit a food item
 
-**Guarantees: All food items in the system that match the query are listed.**
+**Precondition:** The food item to be edited is currently in the food inventory.
 
-**MSS**
+**Guarantees:** The food item is edited from the food inventory.
 
-1. User requests to list food items according to description, priority or expiration date. 
-2. SimplyKitchen displays all food items that match the query.  
-	Use case ends.
+**MSS:**
 
-**Extensions**
+**1.** User requests to <ins>find a food item (UC03)</ins> or <ins>list all food items (UC04)</ins>.
 
-* 1a. SimplyKitchen detects an error in the user’s search query.
-   
-   * 1a1. SimplyKitchen displays an error message and prompts the user to enter a correct input.
-	
-   * 1a2. User enters a new search query.
-	
-     Steps 1a1-1a2 are repeated until the query entered is correct.
-	  
-     Use case resumes at step 2.
+**2.** SimplyKitchen displays a list of food items.
+
+**3.** User requests to edit a food item from the list.
+
+**4.** SimplyKitchen edits the food item in the food inventory and displays a success message.
+
+Use case ends.
+
+**Extensions:**
+
+**2a.** The list is empty.
+
+Use case ends.
+
+**3a.** SimplyKitchen detects an invalid index corresponding to the food item in the list.
+
+ * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct index.
+     
+ * **3a2.** User requests to edit another food item in the list.
+      
+   Steps **3a1.** - **3a2.** are repeated until the index entered is correct.
+
+   Use case resumes from step **4**.
+
+**3a.** SimplyKitchen detects an error in the user's edited food item.
+
+ * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct edited food item.
+     
+ * **3a2.** User enters another edited food item.
+      
+   Steps **3a1.** - **3a2.** are repeated until the edited food item entered is correct.
+
+   Use case resumes from step **4**.
 
 <br/>
 
-**Use case: List all food items (UC04)**
+#### UC04: Find a food item
 
-**Guarantees: All food items in the system are listed.**
+**Guarantees:**  All food items in the food inventory that match the query are listed.
 
-**MSS**
+**MSS:**
 
-1. User requests to list all food items.
-2. SimplyKitchen displays all food items in the food inventory.  
-	Use case ends.
+**1.** User requests to list food items according to the description, priority, expiration date and/or tag.
+
+**2.** SimplyKitchen displays all food items matching the search query.
+
+Use case ends.
+
+**Extensions:**
+
+**1a.** SimplyKitchen detects an error in the search query. 
+
+ * **1a1.** SimplyKitchen displays an error message and prompts the user to enter a correct search query.
+     
+ * **1a2.** User enters a new search query.
+      
+   Steps **1a1.** - **1a2.** are repeated until the search query entered is correct.
+
+   Use case resumes from step **2**.
+
+#### UC05: List all food items
+
+**Guarantees:**  All food items in the food inventory are listed.
+
+**MSS:**
+
+**1.** User requests to list all food items in the food inventory.
+
+**2.** SimplyKitchen displays all food items in the food inventory.
+
+Use case ends.
+
+#### UC06: Clear all food items
+
+**Guarantees:**  All food items in the food inventory are cleared.
+
+**MSS:**
+
+**1.** User requests to clear all food items in the food inventory.
+
+**2.** SimplyKitchen removes all food items in the food inventory and displays a success message.
+
+Use case ends.
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  A user should be able to see food items clearly on the GUI to facilitate command typing.
+* The app should work on any mainstream OS as long as it has Java 11 or above installed.
+* The app should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* A user should be able to see food items clearly on the GUI to facilitate command typing.
 
 *{More to be added}*
-
-### Glossary
-
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 --------------------------------------------------------------------------------------------------------------------
 
