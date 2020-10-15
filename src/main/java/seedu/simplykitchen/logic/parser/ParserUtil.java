@@ -75,7 +75,8 @@ public class ParserUtil {
         requireNonNull(expiryDate);
         String trimmedExpiryDate = expiryDate.trim();
         if (!ExpiryDate.isValidExpiryDate(trimmedExpiryDate)) {
-            throw new ParseException(ExpiryDate.MESSAGE_CONSTRAINTS);
+            String errorMessage = ExpiryDate.generateErrorMessage(trimmedExpiryDate);
+            throw new ParseException(errorMessage);
         }
         return new ExpiryDate(trimmedExpiryDate);
     }

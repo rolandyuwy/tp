@@ -34,23 +34,32 @@ Table of Contents:<br>
 
 </div>
 
-### Viewing help : `help` [coming soon]
+### Viewing help : `help`
+
+Shows a help message explaining how to access the help page.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
 
 ### Adding a food item: `add`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]`
+Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…​`  
 
 * Adds a food item based on its description and expiry date.
 * Description and expiry date fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
 * For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
+* The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
+* Tags with only whitespace(s) will not be allowed.
+* A food item can have any number of tags (including 0).
 
 Examples:
 * `add d/canned tuna e/01-01-2021 p/low`
-* `add d/mushroom e/11-10-2020`
+* `add d/apple pie e/11-10-2020 p/medium t/frozen t/$15 t/contains nuts`
 
 ### Listing all food items : `list`
 
@@ -60,24 +69,20 @@ Format: `list`
 
 ### Searching for a food item: `find`
 
-Searches for a food item inside the inventory tracker according to `KEYWORD`, `PRIORITY` or `EXPIRY_DATE`.
+Searches for food items in the inventory with descriptions matching any of the given keywords.
 
-Format: `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`
+Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* A minimum of 1 type of field must be specified.
-* The search is case-insensitive. e.g as an input in the keyword field, `fish` will match `Fish`
-* If more than 1 field is specified, the search results will be based on all the specified fields e.g. `find k/rice p/high` will match food items with description containing `rice` and having `high` priority.
-* For `k/KEYWORD`, the field can have multiple keywords. e.g `find k/canned fish` will match food items having any of `canned` or `fish` in their description.
-* For `k/KEYWORD`, the order of the keywords does not matter. e.g. `Tuna Fish` will match `Fish Tuna`.
-* For `k/KEYWORD`, only full words will be matched. e.g. `Fish` will not match `Fishes`.
-* For `k/KEYWORD`, food items matching at least one keyword will be returned (i.e. OR search). e.g. `Salty Fish` will return `Salty Rice`, `Tuna Fish`
-* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
-
+* The search is case-insensitive. e.g `fish` will match `Fish`
+* The order of the keywords does not matter. e.g. `Cake Fish` will match `Fish Cake`
+* Only the description is searched.
+* Only full words will be matched e.g. `fis` will not match `fish`.
+* Food items matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`
 
 Examples:
-* `find k/medium packet rice` returns `chicken rice` and `Packet Noodles`
-* `find p/high` 
-* `find k/tuna e/01-01-2021` 
+* `find chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
+* `find apple tuna` returns `Apple Pie` and `Tuna Can`.
+  ![result for 'find apple tuna'](images/findAppleTunaResult.png)
 
 ### Deleting a food item : `delete`
 
@@ -91,9 +96,27 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
-* `find k/tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
+* `find tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
-### Clearing all entries : `clear` [coming soon]
+### Editing a food item : `edit`
+
+Edits the details of an existing food item in the food inventory.
+
+Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
+
+* Edits the food item at the specified `INDEX`. 
+* The index refers to the index number shown in the displayed food item list. 
+* The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
+* You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
+
+Examples:
+* `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
+* `edit 2 d/canned tuna t/` Edits the food description of the 2nd food item to be `canned tuna` and clears all existing tags.
+
+### Clearing all entries : `clear` 
 
 Clears all entries from the food inventory.
 
@@ -122,8 +145,10 @@ Food Inventory data are saved in the hard disk automatically after any command t
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` <br> e.g., `add d/cereal e/31-10-2020 p/medium`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…` <br> e.g., `add d/cereal e/31-10-2020 p/medium t/corn flakes`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Find** | `find k/KEYWORD [MORE_KEYWORDS] p/PRIORITY e/EXPIRY_DATE`<br> e.g., `find k/cereal p/medium e/31-10-2020`
+**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020`
+**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
 **List** | `list`
+**Help** | `help`

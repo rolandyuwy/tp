@@ -19,18 +19,18 @@ public class SampleDataUtil {
     public static Food[] getSampleFoods() {
         return new Food[] {
             new Food(new Description("Apple Pie"), new Priority("high"), new ExpiryDate("30-9-2020"),
-                    getTagSet("friends")),
+                    getTagSet("Frozen")),
             new Food(new Description("Bread"), new Priority("medium"), new ExpiryDate("1-10-2020"),
-                    getTagSet("colleagues", "friends")),
+                    getTagSet("Wholemeal", "400g")),
             new Food(new Description("Chocolate Cake"), new Priority("high"), new ExpiryDate("1-1-2021"),
-                    getTagSet("neighbours")),
+                    getTagSet("$50")),
             new Food(new Description("Donuts"), new Priority("low"), new ExpiryDate("1-11-2021"),
-                    getTagSet("family")),
+                    getTagSet("Plain")),
             new Food(new Description("Ice Cream"), new Priority("low"), new ExpiryDate("15-6-2021"),
-                    getTagSet("classmates")),
+                    getTagSet("Strawberry-flavoured")),
             new Food(new Description("Raspberry Jam"), new Priority("medium"),
                     new ExpiryDate("12-12-2021"),
-                    getTagSet("colleagues"))
+                    getTagSet("Sugar-free"))
         };
     }
 
