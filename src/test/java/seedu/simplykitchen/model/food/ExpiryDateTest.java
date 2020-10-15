@@ -35,16 +35,15 @@ public class ExpiryDateTest {
         assertFalse(ExpiryDate.isValidExpiryDate("32-9-2020")); // day does not exist
         assertFalse(ExpiryDate.isValidExpiryDate("1-13-2020")); // month does not exist
         assertFalse(ExpiryDate.isValidExpiryDate("31-9-20202")); // year does not exist
-        assertFalse(ExpiryDate.isValidExpiryDate("1-1-2020")); // past expiry date
         assertFalse(ExpiryDate.isValidExpiryDate("30-02-2021")); // non-existent expiry date
         assertFalse(ExpiryDate.isValidExpiryDate("1--10-2020")); // extra dash
         assertFalse(ExpiryDate.isValidExpiryDate("1//10/2020")); // extra slash
         assertFalse(ExpiryDate.isValidExpiryDate("2020-1-1")); // wrong date format
 
         // valid expiry date
-        assertTrue(ExpiryDate.isValidExpiryDate("1-9-2022"));
+        assertTrue(ExpiryDate.isValidExpiryDate("1-9-2020"));
         assertTrue(ExpiryDate.isValidExpiryDate("01-09-2022"));
-        assertTrue(ExpiryDate.isValidExpiryDate("1/9/2022"));
+        assertTrue(ExpiryDate.isValidExpiryDate("1/9/2020"));
         assertTrue(ExpiryDate.isValidExpiryDate("01/09/2022"));
     }
 }
