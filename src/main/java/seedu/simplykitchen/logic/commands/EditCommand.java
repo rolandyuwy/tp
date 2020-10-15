@@ -31,19 +31,16 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the food item identified "
-            + "by the index number used in the displayed food list. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
             + PREFIX_EXPIRY_DATE + "1-11-2021";
 
-    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item: %1$s";
+    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item:\n  %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory.";
 
