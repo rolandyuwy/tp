@@ -17,7 +17,6 @@ public class ExpiryDate {
 
     public static final String MESSAGE_CONSTRAINTS =
             "The expiry date should be of the format DD-MM-YYYY or DD/MM/YYYY. ";
-    public static final String MESSAGE_PAST_EXPIRY_DATE = "This food item has already expired! ";
     public static final String MESSAGE_SHORTENED_YEAR = "The year should be 4 digits long. ";
     public static final String MESSAGE_INVALID_DATE = "The expiry date does not exist. ";
     public static final String DATE_PATTERN = "d-M-yyyy";
@@ -43,32 +42,18 @@ public class ExpiryDate {
             testExpiryDateString = replaceSlashWithDash(testExpiryDateString);
 
             // check for invalid formatting of expiry date
-            formatExpiryDate(testExpiryDateString);
+            SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_PATTERN);
+            simpleDateFormatter.setLenient(false);
+            simpleDateFormatter.parse(testExpiryDateString);
 
             // check for shortened year or invalid expiry date
-            LocalDate expiryDate = parseExpiryDate(testExpiryDateString);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+            LocalDate.parse(testExpiryDateString, formatter);
 
-            // check for past expiry date
-            return !isBeforeToday(expiryDate);
+            return true;
         } catch (ParseException | DateTimeParseException e) {
             return false;
         }
-    }
-
-    private static void formatExpiryDate(String expiryDateString) throws ParseException {
-        SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(DATE_PATTERN);
-        simpleDateFormatter.setLenient(false);
-        simpleDateFormatter.parse(expiryDateString);
-    }
-
-    private static LocalDate parseExpiryDate(String expiryDateString) throws DateTimeParseException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-        return LocalDate.parse(expiryDateString, formatter);
-    }
-
-    private static boolean isBeforeToday(LocalDate expiryDate) throws DateTimeParseException {
-        LocalDate todayDate = LocalDate.now();
-        return todayDate.isAfter(expiryDate);
     }
 
     /**
@@ -89,24 +74,8 @@ public class ExpiryDate {
             return MESSAGE_SHORTENED_YEAR;
         }
 
-        try {
-            LocalDate expiryDate = parseExpiryDate(invalidExpiryDateString);
-            if (isBeforeToday(expiryDate)) {
-                // expiry date is before today
-                return MESSAGE_PAST_EXPIRY_DATE;
-            }
-
-            return MESSAGE_INVALID_DATE;
-        } catch (DateTimeParseException e) {
-            return MESSAGE_INVALID_DATE;
-        }
-    }
-
-    /**
-     * Guarantees: The date String is formatted correctly.
-     */
-    private static boolean isFourDigitYear(String yearString) {
-        return yearString.length() == 4;
+        // expiry date does not exist
+        return MESSAGE_INVALID_DATE;
     }
 
     /**
@@ -114,6 +83,13 @@ public class ExpiryDate {
      */
     private static String replaceSlashWithDash(String expiryDateString) {
         return expiryDateString.replace('/', '-');
+    }
+
+    /**
+     * Guarantees: The date String is formatted correctly.
+     */
+    private static boolean isFourDigitYear(String yearString) {
+        return yearString.length() == 4;
     }
 
     @Override
