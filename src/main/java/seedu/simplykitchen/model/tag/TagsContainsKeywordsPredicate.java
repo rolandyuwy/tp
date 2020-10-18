@@ -1,6 +1,5 @@
 package seedu.simplykitchen.model.tag;
 
-import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -10,10 +9,10 @@ import seedu.simplykitchen.model.food.Food;
 /**
  * Tests that a {@code Food}'s {@code Description} matches any of the keywords given.
  */
-public class TagContainsKeywordsPredicate implements Predicate<Food> {
+public class TagsContainsKeywordsPredicate implements Predicate<Food> {
     private final Set<Tag> keywords;
 
-    public TagContainsKeywordsPredicate(Set<Tag> keywords) {
+    public TagsContainsKeywordsPredicate(Set<Tag> keywords) {
         this.keywords = keywords;
     }
 
@@ -33,8 +32,8 @@ public class TagContainsKeywordsPredicate implements Predicate<Food> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TagContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((TagContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof TagsContainsKeywordsPredicate // instanceof handles nulls
+                && keywords.equals(((TagsContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }

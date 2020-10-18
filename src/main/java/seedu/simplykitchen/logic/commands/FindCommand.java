@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.*;
-import seedu.simplykitchen.model.tag.TagContainsKeywordsPredicate;
+import seedu.simplykitchen.model.tag.TagsContainsKeywordsPredicate;
 
 import java.util.function.Predicate;
 
@@ -24,11 +24,11 @@ public class FindCommand extends Command {
     private final DescriptionContainsKeywordsPredicate descriptionPredicate;
     private final PrioritySearchPredicate priorityPredicate;
     private final ExpiryDateSearchPredicate expiryDatePredicate;
-    private final TagContainsKeywordsPredicate tagPredicate;
+    private final TagsContainsKeywordsPredicate tagPredicate;
 
     public FindCommand(DescriptionContainsKeywordsPredicate descriptionPredicate,
                        PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate,
-                       TagContainsKeywordsPredicate tagPredicate) {
+                       TagsContainsKeywordsPredicate tagPredicate) {
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
         this.expiryDatePredicate = expiryDatePredicate;
