@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.*;
+import seedu.simplykitchen.model.tag.TagContainsKeywordsPredicate;
 
 import java.util.function.Predicate;
 
@@ -23,12 +24,15 @@ public class FindCommand extends Command {
     private final DescriptionContainsKeywordsPredicate descriptionPredicate;
     private final PrioritySearchPredicate priorityPredicate;
     private final ExpiryDateSearchPredicate expiryDatePredicate;
+    private final TagContainsKeywordsPredicate tagPredicate;
 
     public FindCommand(DescriptionContainsKeywordsPredicate descriptionPredicate,
-                       PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate) {
+                       PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate,
+                       TagContainsKeywordsPredicate tagPredicate) {
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
         this.expiryDatePredicate = expiryDatePredicate;
+        this.tagPredicate = tagPredicate;
     }
 
     private Predicate<Food> combinePredicates() {
@@ -43,6 +47,10 @@ public class FindCommand extends Command {
 
         if (expiryDatePredicate != null) {
             predicate = predicate.and(expiryDatePredicate);
+        }
+
+        if (tagPredicate != null) {
+            predicate = predicate.and(tagPredicate);
         }
 
         return predicate;
