@@ -42,10 +42,6 @@ public class FindCommandParser implements Parser<FindCommand> {
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
             Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
             String trimmedArgs = description.toString().trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-            }
             String[] descriptionKeywords = trimmedArgs.split("\\s+");
             descriptionContainsKeywordsPredicate =
                     new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords));
@@ -72,6 +68,12 @@ public class FindCommandParser implements Parser<FindCommand> {
             tagsContainsKeywordsPredicate = new TagsContainsKeywordsPredicate(tagList);
         } else {
             tagsContainsKeywordsPredicate = null;
+        }
+
+        if (descriptionContainsKeywordsPredicate == null && prioritySearchPredicate == null &&
+                expiryDateSearchPredicate == null && tagsContainsKeywordsPredicate == null) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
         return new FindCommand(descriptionContainsKeywordsPredicate, prioritySearchPredicate,

@@ -17,22 +17,23 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = "Usage : " + COMMAND_WORD + " KEYWORD [MORE_KEYWORDS]...\n  "
-            + "Example: " + COMMAND_WORD + " apple bread carrot";
+    public static final String MESSAGE_USAGE = "Usage : " + COMMAND_WORD + " [d/DESCRIPTION [MORE_DESCRIPTIONS]...] " +
+            "[e/EXPIRY_DATE] [p/PRIORITY] [t/TAG]…\u200B\n  "
+            + "Example: " + COMMAND_WORD + " d/apple bread carrot e/30-09-2021 p/medium t/wholemeal t/fresh";
 
 
     private final DescriptionContainsKeywordsPredicate descriptionPredicate;
     private final PrioritySearchPredicate priorityPredicate;
     private final ExpiryDateSearchPredicate expiryDatePredicate;
-    private final TagsContainsKeywordsPredicate tagPredicate;
+    private final TagsContainsKeywordsPredicate tagsPredicate;
 
     public FindCommand(DescriptionContainsKeywordsPredicate descriptionPredicate,
                        PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate,
-                       TagsContainsKeywordsPredicate tagPredicate) {
+                       TagsContainsKeywordsPredicate tagsPredicate) {
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
         this.expiryDatePredicate = expiryDatePredicate;
-        this.tagPredicate = tagPredicate;
+        this.tagsPredicate = tagsPredicate;
     }
 
     private Predicate<Food> combinePredicates() {
@@ -49,8 +50,8 @@ public class FindCommand extends Command {
             predicate = predicate.and(expiryDatePredicate);
         }
 
-        if (tagPredicate != null) {
-            predicate = predicate.and(tagPredicate);
+        if (tagsPredicate != null) {
+            predicate = predicate.and(tagsPredicate);
         }
 
         return predicate;
@@ -69,6 +70,8 @@ public class FindCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof FindCommand // instanceof handles nulls
                 && descriptionPredicate.equals(((FindCommand) other).descriptionPredicate)
-                && priorityPredicate.equals(((FindCommand) other).priorityPredicate)); // state check
+                && priorityPredicate.equals(((FindCommand) other).priorityPredicate)
+                && expiryDatePredicate.equals(((FindCommand) other).expiryDatePredicate)
+                && tagsPredicate.equals(((FindCommand) other).tagsPredicate)); // state check
     }
 }
