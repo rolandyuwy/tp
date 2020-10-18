@@ -8,6 +8,7 @@ import seedu.simplykitchen.model.food.*;
 import seedu.simplykitchen.model.tag.TagsContainsKeywordsPredicate;
 
 import java.util.function.Predicate;
+import java.util.Optional;
 
 /**
  * Finds and lists all food items in Food inventory whose description contains any of the argument keywords.
@@ -22,14 +23,15 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " d/apple bread carrot e/30-09-2021 p/medium t/wholemeal t/fresh";
 
 
-    private final DescriptionContainsKeywordsPredicate descriptionPredicate;
-    private final PrioritySearchPredicate priorityPredicate;
-    private final ExpiryDateSearchPredicate expiryDatePredicate;
-    private final TagsContainsKeywordsPredicate tagsPredicate;
+    private final Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate;
+    private final Optional<PrioritySearchPredicate> priorityPredicate;
+    private final Optional<ExpiryDateSearchPredicate> expiryDatePredicate;
+    private final Optional<TagsContainsKeywordsPredicate> tagsPredicate;
 
-    public FindCommand(DescriptionContainsKeywordsPredicate descriptionPredicate,
-                       PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate,
-                       TagsContainsKeywordsPredicate tagsPredicate) {
+    public FindCommand(Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate,
+                       Optional<PrioritySearchPredicate> priorityPredicate,
+                       Optional<ExpiryDateSearchPredicate> expiryDatePredicate,
+                       Optional<TagsContainsKeywordsPredicate> tagsPredicate) {
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
         this.expiryDatePredicate = expiryDatePredicate;
@@ -38,20 +40,20 @@ public class FindCommand extends Command {
 
     private Predicate<Food> combinePredicates() {
         Predicate<Food> predicate = food -> true;
-        if (descriptionPredicate != null) {
-            predicate = predicate.and(descriptionPredicate);
+        if (descriptionPredicate.isPresent()) {
+            predicate = predicate.and(descriptionPredicate.get());
         }
 
-        if (priorityPredicate != null) {
-            predicate = predicate.and(priorityPredicate);
+        if (priorityPredicate.isPresent()) {
+            predicate = predicate.and(priorityPredicate.get());
         }
 
-        if (expiryDatePredicate != null) {
-            predicate = predicate.and(expiryDatePredicate);
+        if (expiryDatePredicate.isPresent()) {
+            predicate = predicate.and(expiryDatePredicate.get());
         }
 
-        if (tagsPredicate != null) {
-            predicate = predicate.and(tagsPredicate);
+        if (tagsPredicate.isPresent()) {
+            predicate = predicate.and(tagsPredicate.get());
         }
 
         return predicate;

@@ -7,6 +7,7 @@ import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.simplykitchen.logic.commands.FindCommand;
@@ -34,50 +35,65 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY, PREFIX_EXPIRY_DATE, PREFIX_TAG);
 
-        DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate;
-        PrioritySearchPredicate prioritySearchPredicate;
-        ExpiryDateSearchPredicate expiryDateSearchPredicate;
-        TagsContainsKeywordsPredicate tagsContainsKeywordsPredicate;
+        Optional<DescriptionContainsKeywordsPredicate> descriptionContainsKeywordsPredicate
+                = getDescriptionContainsKeywordsPredicate(argMultimap);
+        Optional<PrioritySearchPredicate> prioritySearchPredicate = getPrioritySearchPredicate(argMultimap);
+        Optional<ExpiryDateSearchPredicate> expiryDateSearchPredicate = getExpiryDateSearchPredicate(argMultimap);
+        Optional<TagsContainsKeywordsPredicate> tagsContainsKeywordsPredicate
+                = getTagsContainsKeywordsPredicate(argMultimap);
 
-        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-            String trimmedArgs = description.toString().trim();
-            String[] descriptionKeywords = trimmedArgs.split("\\s+");
-            descriptionContainsKeywordsPredicate =
-                    new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords));
-        } else {
-            descriptionContainsKeywordsPredicate = null;
-        }
-
-        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            Priority priority = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
-            prioritySearchPredicate = new PrioritySearchPredicate(priority.value);
-        } else {
-            prioritySearchPredicate = null;
-        }
-
-        if (argMultimap.getValue(PREFIX_EXPIRY_DATE).isPresent()) {
-            ExpiryDate expiryDate = ParserUtil.parseExpiryDate(argMultimap.getValue(PREFIX_EXPIRY_DATE).get());
-            expiryDateSearchPredicate = new ExpiryDateSearchPredicate(expiryDate.value);
-        } else {
-            expiryDateSearchPredicate = null;
-        }
-
-        if (argMultimap.getAllValues(PREFIX_TAG).size() != 0) {
-            Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-            tagsContainsKeywordsPredicate = new TagsContainsKeywordsPredicate(tagList);
-        } else {
-            tagsContainsKeywordsPredicate = null;
-        }
-
-        if (descriptionContainsKeywordsPredicate == null && prioritySearchPredicate == null &&
-                expiryDateSearchPredicate == null && tagsContainsKeywordsPredicate == null) {
+        if (descriptionContainsKeywordsPredicate.isEmpty()
+                && prioritySearchPredicate.isEmpty()
+                && expiryDateSearchPredicate.isEmpty()
+                && tagsContainsKeywordsPredicate.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
         return new FindCommand(descriptionContainsKeywordsPredicate, prioritySearchPredicate,
                 expiryDateSearchPredicate, tagsContainsKeywordsPredicate);
+    }
+
+    private Optional<DescriptionContainsKeywordsPredicate> getDescriptionContainsKeywordsPredicate(
+            ArgumentMultimap argMultimap) throws ParseException {
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
+            Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+            String trimmedArgs = description.toString().trim();
+            String[] descriptionKeywords = trimmedArgs.split("\\s+");
+            return Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords)));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private Optional<PrioritySearchPredicate> getPrioritySearchPredicate(ArgumentMultimap argMultimap)
+            throws ParseException {
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            Priority priority = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
+            return Optional.of(new PrioritySearchPredicate(priority.value));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private Optional<ExpiryDateSearchPredicate> getExpiryDateSearchPredicate(ArgumentMultimap argMultimap)
+            throws ParseException {
+        if (argMultimap.getValue(PREFIX_EXPIRY_DATE).isPresent()) {
+            ExpiryDate expiryDate = ParserUtil.parseExpiryDate(argMultimap.getValue(PREFIX_EXPIRY_DATE).get());
+            return Optional.of(new ExpiryDateSearchPredicate(expiryDate.value));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private Optional<TagsContainsKeywordsPredicate> getTagsContainsKeywordsPredicate(ArgumentMultimap argMultimap)
+            throws ParseException {
+        if (argMultimap.getAllValues(PREFIX_TAG).size() != 0) {
+            Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+            return Optional.of(new TagsContainsKeywordsPredicate(tagList));
+        } else {
+            return Optional.empty();
+        }
     }
 
 }
