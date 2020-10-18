@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
+import seedu.simplykitchen.commons.util.InvalidationListenerManager;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.UniqueFoodList;
 
@@ -15,6 +17,7 @@ import seedu.simplykitchen.model.food.UniqueFoodList;
 public class FoodInventory implements ReadOnlyFoodInventory {
 
     private final UniqueFoodList foods;
+    private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -92,6 +95,23 @@ public class FoodInventory implements ReadOnlyFoodInventory {
      */
     public void removeFood(Food key) {
         foods.remove(key);
+    }
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+        invalidationListenerManager.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+        invalidationListenerManager.removeListener(listener);
+    }
+
+    /**
+     * Notifies listeners that the address book has been modified.
+     */
+    protected void indicateModified() {
+        invalidationListenerManager.callListeners(this);
     }
 
     //// util methods
