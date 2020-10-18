@@ -4,9 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
-import seedu.simplykitchen.model.food.Priority;
-import seedu.simplykitchen.model.food.PrioritySearchPredicate;
+import seedu.simplykitchen.model.food.*;
+
+import java.util.function.Predicate;
 
 /**
  * Finds and lists all food items in Food inventory whose description contains any of the argument keywords.
@@ -19,19 +19,39 @@ public class FindCommand extends Command {
     public static final String MESSAGE_USAGE = "Usage : " + COMMAND_WORD + " KEYWORD [MORE_KEYWORDS]...\n  "
             + "Example: " + COMMAND_WORD + " apple bread carrot";
 
+
     private final DescriptionContainsKeywordsPredicate descriptionPredicate;
     private final PrioritySearchPredicate priorityPredicate;
+    private final ExpiryDateSearchPredicate expiryDatePredicate;
 
     public FindCommand(DescriptionContainsKeywordsPredicate descriptionPredicate,
-                       PrioritySearchPredicate priorityPredicate) {
+                       PrioritySearchPredicate priorityPredicate, ExpiryDateSearchPredicate expiryDatePredicate) {
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
+        this.expiryDatePredicate = expiryDatePredicate;
+    }
+
+    private Predicate<Food> combinePredicates() {
+        Predicate<Food> predicate = food -> true;
+        if (descriptionPredicate != null) {
+            predicate = predicate.and(descriptionPredicate);
+        }
+
+        if (priorityPredicate != null) {
+            predicate = predicate.and(priorityPredicate);
+        }
+
+        if (expiryDatePredicate != null) {
+            predicate = predicate.and(expiryDatePredicate);
+        }
+
+        return predicate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredFoodList(descriptionPredicate.and(priorityPredicate));
+        model.updateFilteredFoodList(combinePredicates());
         return new CommandResult(
                 String.format(Messages.MESSAGE_FOODS_LISTED_OVERVIEW, model.getFilteredFoodList().size()));
     }

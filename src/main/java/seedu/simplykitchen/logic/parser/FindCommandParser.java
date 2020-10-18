@@ -41,7 +41,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         String[] descriptionKeywords = trimmedArgs.split("\\s+");
 
         return new FindCommand(new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords)),
-                new PrioritySearchPredicate(priority.value));
+                new PrioritySearchPredicate(priority.value), new ExpiryDateSearchPredicate(expiryDate.value));
     }
 
 }
