@@ -14,7 +14,7 @@ public class PrioritySearchPredicate implements Predicate<Food> {
 
     @Override
     public boolean test(Food food) {
-        return food.getPriority().equals(prioritySearch);
+        return food.getPriority().value.equals(prioritySearch);
     }
 
     @Override
