@@ -19,7 +19,7 @@ import seedu.simplykitchen.model.food.Food;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final FoodInventory foodInventory;
+    private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
 
@@ -33,9 +33,9 @@ public class ModelManager implements Model {
         logger.fine("Initializing with Food inventory: " + foodInventory
                 + " and user prefs " + userPrefs);
 
-        this.foodInventory = new FoodInventory(foodInventory);
+        this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredFoods = new FilteredList<>(this.foodInventory.getFoods());
+        filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
     }
 
     public ModelManager() {
@@ -81,28 +81,28 @@ public class ModelManager implements Model {
 
     @Override
     public void setFoodInventory(ReadOnlyFoodInventory foodInventory) {
-        this.foodInventory.resetData(foodInventory);
+        versionedFoodInventory.resetData(foodInventory);
     }
 
     @Override
     public ReadOnlyFoodInventory getFoodInventory() {
-        return foodInventory;
+        return versionedFoodInventory;
     }
 
     @Override
     public boolean hasFood(Food food) {
         requireNonNull(food);
-        return foodInventory.hasFood(food);
+        return versionedFoodInventory.hasFood(food);
     }
 
     @Override
     public void deleteFood(Food target) {
-        foodInventory.removeFood(target);
+        versionedFoodInventory.removeFood(target);
     }
 
     @Override
     public void addFood(Food food) {
-        foodInventory.addFood(food);
+        versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
     }
 
@@ -110,7 +110,7 @@ public class ModelManager implements Model {
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
 
-        foodInventory.setFood(target, editedFood);
+        versionedFoodInventory.setFood(target, editedFood);
     }
 
     //=========== Filtered Food List Accessors =============================================================
@@ -144,7 +144,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return foodInventory.equals(other.foodInventory)
+        return versionedFoodInventory.equals(other.versionedFoodInventory)
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods);
     }
