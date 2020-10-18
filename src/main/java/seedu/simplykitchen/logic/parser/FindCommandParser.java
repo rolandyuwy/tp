@@ -18,7 +18,7 @@ import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
 import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.food.PrioritySearchPredicate;
 import seedu.simplykitchen.model.tag.Tag;
-import seedu.simplykitchen.model.tag.TagContainsKeywordsPredicate;
+import seedu.simplykitchen.model.tag.TagsContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -37,7 +37,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         DescriptionContainsKeywordsPredicate descriptionContainsKeywordsPredicate;
         PrioritySearchPredicate prioritySearchPredicate;
         ExpiryDateSearchPredicate expiryDateSearchPredicate;
-        TagContainsKeywordsPredicate tagContainsKeywordsPredicate;
+        TagsContainsKeywordsPredicate tagsContainsKeywordsPredicate;
 
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
             Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
@@ -69,13 +69,13 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         if (argMultimap.getAllValues(PREFIX_TAG).size() != 0) {
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-            tagContainsKeywordsPredicate = new TagContainsKeywordsPredicate(tagList);
+            tagsContainsKeywordsPredicate = new TagsContainsKeywordsPredicate(tagList);
         } else {
-            tagContainsKeywordsPredicate = null;
+            tagsContainsKeywordsPredicate = null;
         }
 
         return new FindCommand(descriptionContainsKeywordsPredicate, prioritySearchPredicate,
-                expiryDateSearchPredicate, tagContainsKeywordsPredicate);
+                expiryDateSearchPredicate, tagsContainsKeywordsPredicate);
     }
 
 }
