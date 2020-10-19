@@ -19,7 +19,7 @@ import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
 import seedu.simplykitchen.model.food.Priority;
 import seedu.simplykitchen.model.food.PrioritySearchPredicate;
 import seedu.simplykitchen.model.tag.Tag;
-import seedu.simplykitchen.model.tag.TagsContainsKeywordsPredicate;
+import seedu.simplykitchen.model.tag.TagSearchPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -39,19 +39,19 @@ public class FindCommandParser implements Parser<FindCommand> {
                 = getDescriptionContainsKeywordsPredicate(argMultimap);
         Optional<PrioritySearchPredicate> prioritySearchPredicate = getPrioritySearchPredicate(argMultimap);
         Optional<ExpiryDateSearchPredicate> expiryDateSearchPredicate = getExpiryDateSearchPredicate(argMultimap);
-        Optional<TagsContainsKeywordsPredicate> tagsContainsKeywordsPredicate
-                = getTagsContainsKeywordsPredicate(argMultimap);
+        Optional<TagSearchPredicate> tagSearchPredicate
+                = getTagSearchPredicate(argMultimap);
 
         if (descriptionContainsKeywordsPredicate.isEmpty()
                 && prioritySearchPredicate.isEmpty()
                 && expiryDateSearchPredicate.isEmpty()
-                && tagsContainsKeywordsPredicate.isEmpty()) {
+                && tagSearchPredicate.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
         return new FindCommand(descriptionContainsKeywordsPredicate, prioritySearchPredicate,
-                expiryDateSearchPredicate, tagsContainsKeywordsPredicate);
+                expiryDateSearchPredicate, tagSearchPredicate);
     }
 
     private Optional<DescriptionContainsKeywordsPredicate> getDescriptionContainsKeywordsPredicate(
@@ -86,11 +86,11 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
     }
 
-    private Optional<TagsContainsKeywordsPredicate> getTagsContainsKeywordsPredicate(ArgumentMultimap argMultimap)
+    private Optional<TagSearchPredicate> getTagSearchPredicate(ArgumentMultimap argMultimap)
             throws ParseException {
         if (argMultimap.getAllValues(PREFIX_TAG).size() != 0) {
             Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-            return Optional.of(new TagsContainsKeywordsPredicate(tagList));
+            return Optional.of(new TagSearchPredicate(tagList));
         } else {
             return Optional.empty();
         }

@@ -9,10 +9,10 @@ import seedu.simplykitchen.model.food.Food;
 /**
  * Tests that a {@code Food}'s {@code Description} matches any of the keywords given.
  */
-public class TagsContainsKeywordsPredicate implements Predicate<Food> {
+public class TagSearchPredicate implements Predicate<Food> {
     private final Set<Tag> keywords;
 
-    public TagsContainsKeywordsPredicate(Set<Tag> keywords) {
+    public TagSearchPredicate(Set<Tag> keywords) {
         this.keywords = keywords;
     }
 
@@ -32,8 +32,8 @@ public class TagsContainsKeywordsPredicate implements Predicate<Food> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TagsContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((TagsContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof TagSearchPredicate // instanceof handles nulls
+                && keywords.equals(((TagSearchPredicate) other).keywords)); // state check
     }
 
 }
