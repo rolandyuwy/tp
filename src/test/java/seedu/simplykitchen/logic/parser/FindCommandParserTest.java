@@ -5,11 +5,15 @@ import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParse
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
+import seedu.simplykitchen.model.food.PrioritySearchPredicate;
+import seedu.simplykitchen.model.tag.TagSearchPredicate;
 
 public class FindCommandParserTest {
 
@@ -22,9 +26,14 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsFindCommand() {
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
+        Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
+        Optional<TagSearchPredicate> tagPredicate = Optional.empty();
         // no leading and trailing whitespaces
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
+                = Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Anchovies", "Bread")));
         FindCommand expectedFindCommand =
-                new FindCommand(new DescriptionContainsKeywordsPredicate(Arrays.asList("Anchovies", "Bread")));
+                new FindCommand(descriptionPredicate, priorityPredicate, expiryDatePredicate, tagPredicate);
         assertParseSuccess(parser, "Anchovies Bread", expectedFindCommand);
 
         // multiple whitespaces between keywords
