@@ -35,7 +35,7 @@ public class AddCommandTest {
         ModelStubAcceptingFoodAdded modelStub = new ModelStubAcceptingFoodAdded();
         Food validFood = new FoodBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validFood).execute(modelStub);
+        CommandResult commandResult = new AddCommand(validFood).execute(modelStub, );
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validFood), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validFood), modelStub.foodAdded);
@@ -47,7 +47,7 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validFood);
         ModelStub modelStub = new ModelStubWithFood(validFood);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_FOOD, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_FOOD, () -> addCommand.execute(modelStub, ));
     }
 
     @Test

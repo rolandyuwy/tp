@@ -75,7 +75,7 @@ public class CommandTestUtil {
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
             Model expectedModel) {
         try {
-            CommandResult result = command.execute(actualModel);
+            CommandResult result = command.execute(actualModel, );
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
@@ -106,7 +106,7 @@ public class CommandTestUtil {
                 new FoodInventory(actualModel.getFoodInventory());
         List<Food> expectedFilteredList = new ArrayList<>(actualModel.getFilteredFoodList());
 
-        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel, ));
         assertEquals(expectedFoodInventory, actualModel.getFoodInventory());
         assertEquals(expectedFilteredList, actualModel.getFilteredFoodList());
     }

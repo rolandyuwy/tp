@@ -26,7 +26,9 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
+    private final CommandHistory history;
     private final FoodInventoryParser foodInventoryParser;
+    private boolean foodInventoryModified;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -34,21 +36,32 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
+        history = new CommandHistory();
         foodInventoryParser = new FoodInventoryParser();
+
+        // Set foodInventoryModified to true whenever the models' food inventory is modified.
+        model.getFoodInventory().addListener(observable -> foodInventoryModified = true);
     }
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
+        foodInventoryModified = false;
 
         CommandResult commandResult;
-        Command command = foodInventoryParser.parseCommand(commandText);
-        commandResult = command.execute(model);
-
         try {
-            storage.saveFoodInventory(model.getFoodInventory());
-        } catch (IOException ioe) {
-            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+            Command command = foodInventoryParser.parseCommand(commandText);
+            commandResult = command.execute(model, history);
+        } finally {
+            history.add(commandText);
+        }
+
+        if (foodInventoryModified) {
+            try {
+                storage.saveFoodInventory(model.getFoodInventory());
+            } catch (IOException ioe) {
+                throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+            }
         }
 
         return commandResult;
@@ -62,6 +75,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Food> getFilteredFoodList() {
         return model.getFilteredFoodList();
+    }
+
+    @Override
+    public ObservableList<String> getHistory() {
+        return history.getHistory();
     }
 
     @Override

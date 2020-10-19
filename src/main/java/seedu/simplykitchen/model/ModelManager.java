@@ -130,6 +130,33 @@ public class ModelManager implements Model {
         filteredFoods.setPredicate(predicate);
     }
 
+    //=========== Undo/Redo =================================================================================
+
+    @Override
+    public boolean canUndoFoodInventory() {
+        return versionedFoodInventory.canUndo();
+    }
+
+    @Override
+    public boolean canRedoFoodInventory() {
+        return versionedFoodInventory.canRedo();
+    }
+
+    @Override
+    public void undoFoodInventory() {
+        versionedFoodInventory.undo();
+    }
+
+    @Override
+    public void redoFoodInventory() {
+        versionedFoodInventory.redo();
+    }
+
+    @Override
+    public void commitFoodInventory() {
+        versionedFoodInventory.commit();
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object

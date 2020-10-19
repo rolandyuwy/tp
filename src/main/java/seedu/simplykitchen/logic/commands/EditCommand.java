@@ -16,6 +16,7 @@ import java.util.Set;
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.commons.util.CollectionUtil;
+import seedu.simplykitchen.logic.CommandHistory;
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.food.Description;
@@ -60,7 +61,7 @@ public class EditCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Food> lastShownList = model.getFilteredFoodList();
 
@@ -77,6 +78,7 @@ public class EditCommand extends Command {
 
         model.setFood(foodToEdit, editedFood);
         model.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        model.commitFoodInventory();
         return new CommandResult(String.format(MESSAGE_EDIT_FOOD_SUCCESS, editedFood));
     }
 

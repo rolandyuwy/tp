@@ -85,4 +85,29 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFoodList(Predicate<Food> predicate);
+
+    /**
+     * Returns true if the model has previous address book states to restore.
+     */
+    boolean canUndoFoodInventory();
+
+    /**
+     * Returns true if the model has undone address book states to restore.
+     */
+    boolean canRedoFoodInventory();
+
+    /**
+     * Restores the model's address book to its previous state.
+     */
+    void undoFoodInventory();
+
+    /**
+     * Restores the model's address book to its previously undone state.
+     */
+    void redoFoodInventory();
+
+    /**
+     * Saves the current address book state for undo/redo.
+     */
+    void commitFoodInventory();
 }
