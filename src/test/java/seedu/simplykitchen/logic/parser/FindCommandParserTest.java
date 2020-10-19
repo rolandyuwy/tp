@@ -34,10 +34,10 @@ public class FindCommandParserTest {
                 = Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Anchovies", "Bread")));
         FindCommand expectedFindCommand =
                 new FindCommand(descriptionPredicate, priorityPredicate, expiryDatePredicate, tagPredicate);
-        assertParseSuccess(parser, "Anchovies Bread", expectedFindCommand);
+        assertParseSuccess(parser, " d/Anchovies Bread", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " \n Anchovies \n \t Bread  \t", expectedFindCommand);
+        assertParseSuccess(parser, " d/     Anchovies      Bread  ", expectedFindCommand);
     }
 
 }
