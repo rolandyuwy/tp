@@ -185,10 +185,10 @@ public class EditCommandTest {
                 .withDescription(VALID_DESCRIPTION_BREAD).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
-        // execution failed -> address book state not added into model
+        // execution failed -> food inventory state not added into model
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
-        // single address book state in model -> undoCommand and redoCommand fail
+        // single food inventory state in model -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), model, UndoCommand.MESSAGE_FAILURE);
         assertCommandFailure(new RedoCommand(), model, RedoCommand.MESSAGE_FAILURE);
     }

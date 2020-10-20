@@ -20,7 +20,7 @@ public class VersionedFoodInventory extends FoodInventory {
     }
 
     /**
-     * Saves a copy of the current {@code AddressBook} state at the end of the state list.
+     * Saves a copy of the current {@code FoodInventory} state at the end of the state list.
      * Undone states are removed from the state list.
      */
     public void commit() {
@@ -35,7 +35,7 @@ public class VersionedFoodInventory extends FoodInventory {
     }
 
     /**
-     * Restores the address book to its previous state.
+     * Restores the food inventory to its previous state.
      */
     public void undo() {
         if (!canUndo()) {
@@ -46,7 +46,7 @@ public class VersionedFoodInventory extends FoodInventory {
     }
 
     /**
-     * Restores the address book to its previously undone state.
+     * Restores the food inventory to its previously undone state.
      */
     public void redo() {
         if (!canRedo()) {
@@ -57,14 +57,14 @@ public class VersionedFoodInventory extends FoodInventory {
     }
 
     /**
-     * Returns true if {@code undo()} has address book states to undo.
+     * Returns true if {@code undo()} has food inventory states to undo.
      */
     public boolean canUndo() {
         return currentStatePointer > 0;
     }
 
     /**
-     * Returns true if {@code redo()} has address book states to redo.
+     * Returns true if {@code redo()} has food inventory states to redo.
      */
     public boolean canRedo() {
         return currentStatePointer < foodInventoryStateList.size() - 1;
@@ -95,7 +95,7 @@ public class VersionedFoodInventory extends FoodInventory {
      */
     public static class NoUndoableStateException extends RuntimeException {
         private NoUndoableStateException() {
-            super("Current state pointer at start of addressBookState list, unable to undo.");
+            super("Current state pointer at start of foodInventoryState list, unable to undo.");
         }
     }
 
@@ -104,7 +104,7 @@ public class VersionedFoodInventory extends FoodInventory {
      */
     public static class NoRedoableStateException extends RuntimeException {
         private NoRedoableStateException() {
-            super("Current state pointer at end of addressBookState list, unable to redo.");
+            super("Current state pointer at end of foodInventoryState list, unable to redo.");
         }
     }
 }

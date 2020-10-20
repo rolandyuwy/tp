@@ -7,7 +7,7 @@ import seedu.simplykitchen.logic.commands.exceptions.CommandException;
 import seedu.simplykitchen.model.Model;
 
 /**
- * Reverts the {@code model}'s address book to its previous state.
+ * Reverts the {@code model}'s food inventory to its previous state.
  */
 public class UndoCommand extends Command {
 

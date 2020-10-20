@@ -90,7 +90,7 @@ public class DeleteCommandTest {
         // delete -> first food deleted
         deleteCommand.execute(model);
 
-        // undo -> reverts addressbook back to previous state and filtered food list to show all foods
+        // undo -> reverts food inventory back to previous state and filtered food list to show all foods
         expectedModel.undoFoodInventory();
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
@@ -104,10 +104,10 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredFoodList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
-        // execution failed -> address book state not added into model
+        // execution failed -> food inventory state not added into model
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
-        // single address book state in model -> undoCommand and redoCommand fail
+        // single food inventory state in model -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), model, UndoCommand.MESSAGE_FAILURE);
         assertCommandFailure(new RedoCommand(), model, RedoCommand.MESSAGE_FAILURE);
     }
@@ -132,7 +132,7 @@ public class DeleteCommandTest {
         // delete -> deletes second food in unfiltered food list / first food in filtered food list
         deleteCommand.execute(model);
 
-        // undo -> reverts addressbook back to previous state and filtered food list to show all foods
+        // undo -> reverts food inventory back to previous state and filtered food list to show all foods
         expectedModel.undoFoodInventory();
         assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
