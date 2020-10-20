@@ -19,6 +19,6 @@ StorageManager o--> FoodInventoryStorage
 JsonUserPrefsStorage .left.|> UserPrefsStorage
 JsonFoodInventoryStorage .left.|> FoodInventoryStorage
 JsonFoodInventoryStorage .down.> JsonSerializableFoodInventoryStorage
-JsonSerializableFoodInventoryStorage .right.> JsonSerializablePerson
-JsonSerializablePerson .right.> JsonAdaptedTag
+JsonSerializableFoodInventoryStorage .right.> JsonSerializableFood
+JsonSerializableFood .right.> JsonAdaptedTag
 @enduml
