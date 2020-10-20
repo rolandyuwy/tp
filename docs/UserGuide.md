@@ -83,7 +83,7 @@ Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE
 * The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
 * Tags with only whitespace(s) will not be allowed.
 * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
-* Food items with tags matching at least one of the search tag will be returned (i.e `OR` search). e.g. `frozen` will return food items with tags `frozen` and `raw`.
+* Food items with tags matching at least one of the search tags will be returned (i.e `OR` search). e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags.
 
 Examples:
 * `find d/chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
