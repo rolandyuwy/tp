@@ -54,7 +54,7 @@ public class ExpiryDateSearchPredicateTest {
         ExpiryDateSearchPredicate predicate = predicate = new ExpiryDateSearchPredicate("31-12-2021");
         assertFalse(predicate.test(new FoodBuilder().withExpiryDate("31-01-2022").build()));
 
-        // Keywords match tag, but does not match expiry date
+        // Expiry date search query matches tag, but does not match expiry date
         predicate = new ExpiryDateSearchPredicate("31-12-2021");
         assertFalse(predicate.test(new FoodBuilder().withTags("31-12-2021").build()));
     }

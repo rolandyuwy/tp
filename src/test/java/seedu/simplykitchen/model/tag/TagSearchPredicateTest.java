@@ -60,7 +60,7 @@ public class TagSearchPredicateTest {
         TagSearchPredicate predicate = new TagSearchPredicate(setOfTags);
         assertFalse(predicate.test(new FoodBuilder().withTags("raw").build()));
 
-        // Search tag matches description, but does not match tags
+        // Tag search query matches description, but does not match tags
         assertFalse(predicate.test(new FoodBuilder().withDescription("raw").build()));
     }
 }

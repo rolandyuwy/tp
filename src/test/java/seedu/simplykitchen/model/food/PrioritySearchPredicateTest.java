@@ -54,7 +54,7 @@ public class PrioritySearchPredicateTest {
         PrioritySearchPredicate predicate = predicate = new PrioritySearchPredicate(Priority.Level.LOW);
         assertFalse(predicate.test(new FoodBuilder().withPriority("high").build()));
 
-        // Keywords match description and tag, but does not match priority
+        // Priority search query matches description and tag, but does not match priority
         predicate = new PrioritySearchPredicate(Priority.Level.LOW);
         assertFalse(predicate.test(new FoodBuilder().withDescription("LOW").withPriority("high")
                 .withTags("LOW").build()));
