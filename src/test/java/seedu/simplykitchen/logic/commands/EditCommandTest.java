@@ -1,6 +1,7 @@
 package seedu.simplykitchen.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
@@ -45,6 +46,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(model.getFilteredFoodList().get(0), editedFood);
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -68,6 +70,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(lastFood, editedFood);
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -81,6 +84,7 @@ public class EditCommandTest {
 
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -99,6 +103,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
         expectedModel.setFood(model.getFilteredFoodList().get(0), editedFood);
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -149,6 +154,75 @@ public class EditCommandTest {
                 new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_BREAD).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
+        Food editedFood = new FoodBuilder().build();
+        Food foodToEdit = model.getFilteredFoodList().get(INDEX_FIRST_FOOD.getZeroBased());
+        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder(editedFood).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_FOOD, descriptor);
+        Model expectedModel = new ModelManager(new FoodInventory(model.getFoodInventory()), new UserPrefs());
+        expectedModel.setFood(foodToEdit, editedFood);
+        expectedModel.commitFoodInventory();
+
+        // edit -> first food edited
+        editCommand.execute(model);
+
+        // undo -> reverts food inventory back to previous state and filtered food list to show all foods
+        expectedModel.undoFoodInventory();
+        assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // redo -> same first food edited again
+        expectedModel.redoFoodInventory();
+        assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredFoodList().size() + 1);
+        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
+                .withDescription(VALID_DESCRIPTION_BREAD).build();
+        EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
+
+        // execution failed -> address book state not added into model
+        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
+
+        // single address book state in model -> undoCommand and redoCommand fail
+        assertCommandFailure(new UndoCommand(), model, UndoCommand.MESSAGE_FAILURE);
+        assertCommandFailure(new RedoCommand(), model, RedoCommand.MESSAGE_FAILURE);
+    }
+
+    /**
+     * 1. Edits a {@code Food} from a filtered list.
+     * 2. Undo the edit.
+     * 3. The unfiltered list should be shown now. Verify that the index of the previously edited food in the
+     * unfiltered list is different from the index at the filtered list.
+     * 4. Redo the edit. This ensures {@code RedoCommand} edits the food object regardless of indexing.
+     */
+    @Test
+    public void executeUndoRedo_validIndexFilteredList_sameFoodEdited() throws Exception {
+        Food editedFood = new FoodBuilder().build();
+        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder(editedFood).build();
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_FOOD, descriptor);
+        Model expectedModel = new ModelManager(new FoodInventory(model.getFoodInventory()), new UserPrefs());
+
+        showFoodAtIndex(model, INDEX_SECOND_FOOD);
+        Food foodToEdit = model.getFilteredFoodList().get(INDEX_FIRST_FOOD.getZeroBased());
+        expectedModel.setFood(foodToEdit, editedFood);
+        expectedModel.commitFoodInventory();
+
+        // edit -> edits second food in unfiltered food list / first food in filtered food list
+        editCommand.execute(model);
+
+        // undo -> reverts food inventory back to previous state and filtered food list to show all foods
+        expectedModel.undoFoodInventory();
+        assertCommandSuccess(new UndoCommand(), model, UndoCommand.MESSAGE_SUCCESS, expectedModel);
+
+        assertNotEquals(model.getFilteredFoodList().get(INDEX_FIRST_FOOD.getZeroBased()), foodToEdit);
+        // redo -> edits same second food in unfiltered food list
+        expectedModel.redoFoodInventory();
+        assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test

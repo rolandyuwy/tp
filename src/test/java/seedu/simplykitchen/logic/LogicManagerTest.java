@@ -84,6 +84,7 @@ public class LogicManagerTest {
         Food expectedFood = new FoodBuilder(APPLE_PIE).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFood(expectedFood);
+        expectedModel.commitFoodInventory();
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }

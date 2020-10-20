@@ -2,7 +2,6 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.simplykitchen.logic.CommandHistory;
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
 
@@ -16,7 +15,7 @@ public class ClearCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         model.setFoodInventory(new FoodInventory());
         model.commitFoodInventory();

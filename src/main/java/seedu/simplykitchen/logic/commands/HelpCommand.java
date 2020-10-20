@@ -1,6 +1,5 @@
 package seedu.simplykitchen.logic.commands;
 
-import seedu.simplykitchen.logic.CommandHistory;
 import seedu.simplykitchen.model.Model;
 
 /**
@@ -16,7 +15,7 @@ public class HelpCommand extends Command {
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model) {
         return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
     }
 }

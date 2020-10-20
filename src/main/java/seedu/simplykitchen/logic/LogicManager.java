@@ -26,7 +26,6 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final CommandHistory history;
     private final FoodInventoryParser foodInventoryParser;
     private boolean foodInventoryModified;
 
@@ -36,7 +35,6 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        history = new CommandHistory();
         foodInventoryParser = new FoodInventoryParser();
 
         // Set foodInventoryModified to true whenever the models' food inventory is modified.
@@ -49,12 +47,8 @@ public class LogicManager implements Logic {
         foodInventoryModified = false;
 
         CommandResult commandResult;
-        try {
-            Command command = foodInventoryParser.parseCommand(commandText);
-            commandResult = command.execute(model, history);
-        } finally {
-            history.add(commandText);
-        }
+        Command command = foodInventoryParser.parseCommand(commandText);
+        commandResult = command.execute(model);
 
         if (foodInventoryModified) {
             try {
@@ -75,11 +69,6 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Food> getFilteredFoodList() {
         return model.getFilteredFoodList();
-    }
-
-    @Override
-    public ObservableList<String> getHistory() {
-        return history.getHistory();
     }
 
     @Override

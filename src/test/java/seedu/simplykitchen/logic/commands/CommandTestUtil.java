@@ -72,10 +72,10 @@ public class CommandTestUtil {
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
      * - the {@code actualModel} matches {@code expectedModel}
      */
-    public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+    public static void assertCommandSuccess(Command command, Model actualModel,
+                                            CommandResult expectedCommandResult, Model expectedModel) {
         try {
-            CommandResult result = command.execute(actualModel, );
+            CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
@@ -87,8 +87,8 @@ public class CommandTestUtil {
      * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
      * that takes a string {@code expectedMessage}.
      */
-    public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+    public static void assertCommandSuccess(Command command, Model actualModel,
+                                            String expectedMessage, Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -99,14 +99,15 @@ public class CommandTestUtil {
      * - the CommandException message matches {@code expectedMessage} <br>
      * - the SimplyKitchen inventory, filtered food list and selected food in {@code actualModel} remain unchanged
      */
-    public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
+    public static void assertCommandFailure(Command command, Model actualModel,
+                                            String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         FoodInventory expectedFoodInventory =
                 new FoodInventory(actualModel.getFoodInventory());
         List<Food> expectedFilteredList = new ArrayList<>(actualModel.getFilteredFoodList());
 
-        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel, ));
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedFoodInventory, actualModel.getFoodInventory());
         assertEquals(expectedFilteredList, actualModel.getFilteredFoodList());
     }
@@ -124,4 +125,12 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredFoodList().size());
     }
 
+    /**
+     * Deletes the first food in {@code model}'s filtered list from {@code model}'s food inventory.
+     */
+    public static void deleteFirstFood(Model model) {
+        Food firstPerson = model.getFilteredFoodList().get(0);
+        model.deleteFood(firstPerson);
+        model.commitFoodInventory();
+    }
 }

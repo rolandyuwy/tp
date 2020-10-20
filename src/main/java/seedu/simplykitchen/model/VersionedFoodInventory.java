@@ -3,11 +3,14 @@ package seedu.simplykitchen.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VersionedFoodInventory extends FoodInventory{
+public class VersionedFoodInventory extends FoodInventory {
 
     private final List<ReadOnlyFoodInventory> foodInventoryStateList;
     private int currentStatePointer;
 
+    /**
+     * Initializes a VersionedFoodInventory with given initial state.
+     */
     public VersionedFoodInventory(ReadOnlyFoodInventory initialState) {
         super(initialState);
 
