@@ -76,8 +76,8 @@ public class FoodInventoryParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " d/" + keywords.stream().collect(Collectors.joining(" ")));
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(new DescriptionContainsKeywordsPredicate(keywords));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(new DescriptionContainsKeywordsPredicate(keywords));
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();

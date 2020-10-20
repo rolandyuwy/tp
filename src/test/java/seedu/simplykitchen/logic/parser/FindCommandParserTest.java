@@ -12,7 +12,12 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.logic.commands.FindCommand;
-import seedu.simplykitchen.model.food.*;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.ExpiryDate;
+import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
+import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.PrioritySearchPredicate;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.model.tag.TagSearchPredicate;
 
@@ -28,8 +33,8 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_validDescriptionArgs_returnsFindCommand() {
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Anchovies", "Bread")));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Anchovies", "Bread")));
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
@@ -47,8 +52,8 @@ public class FindCommandParserTest {
     public void parse_validPriorityArgs_returnsFindCommand() {
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
-        Optional<PrioritySearchPredicate> priorityPredicate
-                = Optional.of(new PrioritySearchPredicate(Priority.Level.HIGH));
+        Optional<PrioritySearchPredicate> priorityPredicate =
+                Optional.of(new PrioritySearchPredicate(Priority.Level.HIGH));
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
 
         // no leading and trailing whitespaces
@@ -63,8 +68,8 @@ public class FindCommandParserTest {
     @Test
     public void parse_validExpiryDateArgs_returnsFindCommand() {
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
-        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
-                = Optional.of(new ExpiryDateSearchPredicate("31-1-2022"));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
+                Optional.of(new ExpiryDateSearchPredicate("31-1-2022"));
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
 
@@ -101,12 +106,12 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_validSearchArgs_returnsFindCommand() {
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Bagel")));
-        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
-                = Optional.of(new ExpiryDateSearchPredicate("1-2-2022"));
-        Optional<PrioritySearchPredicate> priorityPredicate
-                = Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList("Bagel")));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
+                Optional.of(new ExpiryDateSearchPredicate("1-2-2022"));
+        Optional<PrioritySearchPredicate> priorityPredicate =
+                Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
         HashSet<Tag> setOfTags = new HashSet<>();
         setOfTags.add(new Tag("sugar-free"));
         setOfTags.add(new Tag("cheese"));
@@ -118,8 +123,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " d/Bagel p/low e/1-2-2022 t/sugar-free t/cheese", expectedFindCommand);
 
         // multiple whitespaces between prefixes and arguments
-        assertParseSuccess(parser, " d/  Bagel          p/       low   " +
-                "e/   1-2-2022    t/   sugar-free    t/    cheese", expectedFindCommand);
+        assertParseSuccess(parser, " d/  Bagel          p/       low   "
+                + "e/   1-2-2022    t/   sugar-free    t/    cheese", expectedFindCommand);
     }
 
     @Test
@@ -145,8 +150,8 @@ public class FindCommandParserTest {
                 ExpiryDate.MESSAGE_INVALID_DATE);
 
         // invalid tag
-        assertParseFailure(parser, " d/Bagel p/low e/1-2-2022 t/sugar-free} t/cheese"
-                , Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " d/Bagel p/low e/1-2-2022 t/sugar-free} t/cheese",
+                Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, " d/Ba+gel p/lower e/1-2-2022 t/sugar-free t/cheese",

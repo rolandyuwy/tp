@@ -3,10 +3,6 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.testutil.FoodBuilder;
@@ -20,6 +16,7 @@ public class PrioritySearchPredicateTest {
 
         PrioritySearchPredicate firstPredicate =
                 new PrioritySearchPredicate(firstPriorityPredicate);
+        PrioritySearchPredicate secondPredicate =
                 new PrioritySearchPredicate(secondPriorityPredicate);
 
         // same object -> returns true
@@ -37,7 +34,7 @@ public class PrioritySearchPredicateTest {
         assertFalse(firstPredicate.equals(null));
 
         // different food -> returns false
-        assertFalse(firstPredicate.equals(secondPriorityPredicate));
+        assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test

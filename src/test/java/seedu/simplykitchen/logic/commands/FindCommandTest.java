@@ -5,12 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_FOODS_LISTED_OVERVIEW;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.simplykitchen.testutil.TypicalFood.*;
+import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
+import static seedu.simplykitchen.testutil.TypicalFood.BAGEL;
+import static seedu.simplykitchen.testutil.TypicalFood.CARROT_CAKE;
+import static seedu.simplykitchen.testutil.TypicalFood.DARK_CHOCOLATE;
+import static seedu.simplykitchen.testutil.TypicalFood.EGGS;
+import static seedu.simplykitchen.testutil.TypicalFood.FRENCH_FRIES;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -83,8 +89,8 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noFoodFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 0);
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(preparePredicate(" "));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(preparePredicate(" "));
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
@@ -100,8 +106,8 @@ public class FindCommandTest {
     @Test
     public void execute_multipleDescriptionKeywords_multipleFoodsFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 3);
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(preparePredicate("Cake Dark Eggs"));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(preparePredicate("Cake Dark Eggs"));
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
@@ -119,8 +125,8 @@ public class FindCommandTest {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 2);
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
-        Optional<PrioritySearchPredicate> priorityPredicate
-                = Optional.of(new PrioritySearchPredicate(Priority.Level.HIGH));
+        Optional<PrioritySearchPredicate> priorityPredicate =
+                Optional.of(new PrioritySearchPredicate(Priority.Level.HIGH));
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
 
         FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,
@@ -135,8 +141,8 @@ public class FindCommandTest {
     public void execute_expiryDateSearch_oneFoodItemFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 1);
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
-        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
-                = Optional.of(new ExpiryDateSearchPredicate("31-1-2022"));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
+                Optional.of(new ExpiryDateSearchPredicate("31-1-2022"));
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
 
@@ -170,12 +176,12 @@ public class FindCommandTest {
     @Test
     public void execute_multipleSearchQueries_oneFoodItemFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 1);
-        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
-                = Optional.of(preparePredicate("Bagel"));
-        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
-                = Optional.of(new ExpiryDateSearchPredicate("1-2-2022"));
-        Optional<PrioritySearchPredicate> priorityPredicate
-                = Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(preparePredicate("Bagel"));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
+                Optional.of(new ExpiryDateSearchPredicate("1-2-2022"));
+        Optional<PrioritySearchPredicate> priorityPredicate =
+                Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
         HashSet<Tag> setOfTags = new HashSet<>();
         setOfTags.add(new Tag("cheese"));
         Optional<TagSearchPredicate> tagPredicate = Optional.of(new TagSearchPredicate(setOfTags));
