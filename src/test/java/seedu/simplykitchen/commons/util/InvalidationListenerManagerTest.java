@@ -2,9 +2,10 @@ package seedu.simplykitchen.commons.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleObjectProperty;
-import org.junit.jupiter.api.Test;
 
 public class InvalidationListenerManagerTest {
     private final SimpleObjectProperty<Object> dummyObservable = new SimpleObjectProperty<>();
