@@ -92,7 +92,7 @@ Examples:
 * `find e/30-12-2020` returns  all food items with expiry date on `30-12-2020`.
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `medium` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
-  ![result for 'find apple tuna'](images/findAppleTunaResult.png)
+  ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
 ### Deleting a food item : `delete`
 
