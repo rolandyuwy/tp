@@ -102,6 +102,8 @@ public class Quantity {
 
     @Override
     public String toString() {
+        assert(value > 0); // value must be a positive number
+        assert(unit.length() > 0); // unit should not be empty
         return String.format("%.2f %s", value, unit);
     }
 
