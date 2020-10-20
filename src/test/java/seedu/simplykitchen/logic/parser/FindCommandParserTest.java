@@ -1,7 +1,7 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.simplykitchen.logic.commands.AddCommand.MESSAGE_USAGE;
+import static seedu.simplykitchen.logic.commands.FindCommand.MESSAGE_USAGE;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
