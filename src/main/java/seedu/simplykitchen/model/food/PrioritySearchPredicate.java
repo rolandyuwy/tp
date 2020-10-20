@@ -8,6 +8,9 @@ import java.util.function.Predicate;
 public class PrioritySearchPredicate implements Predicate<Food> {
     private final Priority.Level prioritySearch;
 
+    /**
+     * @param prioritySearch The priority to search for.
+     */
     public PrioritySearchPredicate(Priority.Level prioritySearch) {
         assert prioritySearch != null : "Priority cannot be null.";
         this.prioritySearch = prioritySearch;

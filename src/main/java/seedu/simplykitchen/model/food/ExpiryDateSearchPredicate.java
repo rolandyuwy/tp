@@ -8,6 +8,9 @@ import java.util.function.Predicate;
 public class ExpiryDateSearchPredicate implements Predicate<Food> {
     private final String expiryDateSearch;
 
+    /**
+     * @param expiryDateSearch The expiry date to search for.
+     */
     public ExpiryDateSearchPredicate(String expiryDateSearch) {
         assert expiryDateSearch.length() > 0 : "Expiry date cannot be blank.";
         this.expiryDateSearch = expiryDateSearch;

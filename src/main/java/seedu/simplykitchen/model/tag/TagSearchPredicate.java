@@ -12,6 +12,9 @@ import seedu.simplykitchen.model.food.Food;
 public class TagSearchPredicate implements Predicate<Food> {
     private final Set<Tag> tagsToFind;
 
+    /**
+     * @param tagsToFind The set of tags to search for.
+     */
     public TagSearchPredicate(Set<Tag> tagsToFind) {
         assert tagsToFind != null : "Tags to find cannot be null.";
         this.tagsToFind = tagsToFind;
