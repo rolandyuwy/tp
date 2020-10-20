@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.simplykitchen.logic.commands.AddCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Description;
@@ -40,12 +39,11 @@ public class FindCommandParser implements Parser<FindCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        Optional<DescriptionContainsKeywordsPredicate> descriptionContainsKeywordsPredicate
-                = getDescriptionContainsKeywordsPredicate(argMultimap);
+        Optional<DescriptionContainsKeywordsPredicate> descriptionContainsKeywordsPredicate =
+                getDescriptionContainsKeywordsPredicate(argMultimap);
         Optional<PrioritySearchPredicate> prioritySearchPredicate = getPrioritySearchPredicate(argMultimap);
         Optional<ExpiryDateSearchPredicate> expiryDateSearchPredicate = getExpiryDateSearchPredicate(argMultimap);
-        Optional<TagSearchPredicate> tagSearchPredicate
-                = getTagSearchPredicate(argMultimap);
+        Optional<TagSearchPredicate> tagSearchPredicate = getTagSearchPredicate(argMultimap);
 
         if (descriptionContainsKeywordsPredicate.isEmpty()
                 && prioritySearchPredicate.isEmpty()

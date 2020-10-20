@@ -2,13 +2,16 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import seedu.simplykitchen.commons.core.Messages;
 import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.food.*;
+import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
+import seedu.simplykitchen.model.food.Food;
+import seedu.simplykitchen.model.food.PrioritySearchPredicate;
 import seedu.simplykitchen.model.tag.TagSearchPredicate;
-
-import java.util.function.Predicate;
-import java.util.Optional;
 
 /**
  * Finds and lists all food items in Food inventory whose description contains any of the argument keywords.
@@ -18,8 +21,8 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = "Usage : " + COMMAND_WORD + " [d/DESCRIPTION [MORE_DESCRIPTIONS]...] " +
-            "[e/EXPIRY_DATE] [p/PRIORITY] [t/TAG]…\u200B\n  "
+    public static final String MESSAGE_USAGE = "Usage : " + COMMAND_WORD + " [d/DESCRIPTION [MORE_DESCRIPTIONS]...] "
+            + "[e/EXPIRY_DATE] [p/PRIORITY] [t/TAG]…\u200B\n  "
             + "Example: " + COMMAND_WORD + " d/apple bread carrot e/30-09-2021 p/medium t/wholemeal t/fresh";
 
 
@@ -28,6 +31,12 @@ public class FindCommand extends Command {
     private final Optional<ExpiryDateSearchPredicate> expiryDatePredicate;
     private final Optional<TagSearchPredicate> tagsPredicate;
 
+    /**
+     * @param descriptionPredicate An {@code Optional} of the description search query
+     * @param priorityPredicate An {@code Optional} of the priority search query
+     * @param expiryDatePredicate An {@code Optional} of the expiry date search query
+     * @param tagsPredicate An {@code Optional} of the tag search query
+     */
     public FindCommand(Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate,
                        Optional<PrioritySearchPredicate> priorityPredicate,
                        Optional<ExpiryDateSearchPredicate> expiryDatePredicate,
