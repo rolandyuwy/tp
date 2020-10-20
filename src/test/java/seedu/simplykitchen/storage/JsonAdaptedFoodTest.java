@@ -15,12 +15,15 @@ import seedu.simplykitchen.commons.exceptions.IllegalValueException;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 
 public class JsonAdaptedFoodTest {
     private static final String INVALID_DESCRIPTION = "T@na";
     private static final String INVALID_PRIORITY = "MEDIUM-HIGH";
     private static final String INVALID_EXPIRY_DATE = "1-13-2020";
     private static final String INVALID_QUANTITY = "-1 @@";
+    private static final String INVALID_QUANTITY_ZEROVALUE = "0";
+    private static final String INVALID_QUANTITY_UNIT = "1 @@";
     private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = BAGEL.getDescription().toString();
     private static final String VALID_PRIORITY = BAGEL.getPriority().toString();
@@ -82,6 +85,38 @@ public class JsonAdaptedFoodTest {
         JsonAdaptedFood food = new JsonAdaptedFood(VALID_DESCRIPTION, VALID_PRIORITY, null,
                 VALID_QUANTITY, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, ExpiryDate.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, food::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullQuantity_throwsIllegalValueException() {
+        JsonAdaptedFood food = new JsonAdaptedFood(VALID_DESCRIPTION, VALID_PRIORITY, VALID_EXPIRY_DATE,
+                null, VALID_TAGS);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Quantity.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, food::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidQuantity_throwsIllegalValueException() {
+        JsonAdaptedFood food = new JsonAdaptedFood(VALID_DESCRIPTION, VALID_PRIORITY, VALID_EXPIRY_DATE,
+                INVALID_QUANTITY, VALID_TAGS);
+        String expectedMessage = Quantity.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, food::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidQuantityZeroValue_throwsIllegalValueException() {
+        JsonAdaptedFood food = new JsonAdaptedFood(VALID_DESCRIPTION, VALID_PRIORITY, VALID_EXPIRY_DATE,
+                INVALID_QUANTITY_ZEROVALUE, VALID_TAGS);
+        String expectedMessage = Quantity.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, food::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidQuantityUnit_throwsIllegalValueException() {
+        JsonAdaptedFood food = new JsonAdaptedFood(VALID_DESCRIPTION, VALID_PRIORITY, VALID_EXPIRY_DATE,
+                INVALID_QUANTITY_UNIT, VALID_TAGS);
+        String expectedMessage = Quantity.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, food::toModelType);
     }
 

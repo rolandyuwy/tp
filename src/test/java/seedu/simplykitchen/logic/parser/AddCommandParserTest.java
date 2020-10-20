@@ -11,6 +11,9 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_SHORTENED_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_ZEROVALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
@@ -37,6 +40,7 @@ import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.testutil.FoodBuilder;
 
@@ -91,6 +95,10 @@ public class AddCommandParserTest {
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                         + VALID_EXPIRY_DATE_BREAD + QUANTITY_DESC_BREAD, expectedMessage);
 
+        // missing quantity prefix
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                        + EXPIRY_DATE_DESC_BREAD + VALID_QUANTITY_BREAD, expectedMessage);
+
         // all prefixes missing
         assertParseFailure(parser, VALID_DESCRIPTION_BREAD + PRIORITY_DESC_BREAD
                         + VALID_EXPIRY_DATE_BREAD + VALID_QUANTITY_BREAD, expectedMessage);
@@ -122,6 +130,21 @@ public class AddCommandParserTest {
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + INVALID_EXPIRY_DATE_DESC + QUANTITY_DESC_BREAD
                 + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_INVALID_DATE);
+
+        // invalid unit in quantity field
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_UNIT
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Quantity.QUANTITY_UNIT_CONSTRAINTS);
+
+        // invalid value in quantity field
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_VALUE
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Quantity.QUANTITY_VALUE_CONSTRAINTS);
+
+        // invalid value zero in quantity field
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_ZEROVALUE
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Quantity.QUANTITY_VALUE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
