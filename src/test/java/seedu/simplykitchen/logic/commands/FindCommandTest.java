@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_FOODS_LISTED_OVERVIEW;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.simplykitchen.testutil.TypicalFood.CARROT_CAKE;
-import static seedu.simplykitchen.testutil.TypicalFood.DARK_CHOCOLATE;
-import static seedu.simplykitchen.testutil.TypicalFood.EGGS;
-import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
+import static seedu.simplykitchen.testutil.TypicalFood.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -101,7 +98,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_multipleKeywords_multipleFoodsFound() {
+    public void execute_multipleDescriptionKeywords_multipleFoodsFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 3);
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
                 = Optional.of(preparePredicate("Cake Dark Eggs"));
@@ -115,6 +112,80 @@ public class FindCommandTest {
                 expiryDatePredicate, tagPredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(CARROT_CAKE, DARK_CHOCOLATE, EGGS), model.getFilteredFoodList());
+    }
+
+    @Test
+    public void execute_prioritySearch_multipleFoodsFound() {
+        String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 2);
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
+        Optional<PrioritySearchPredicate> priorityPredicate
+                = Optional.of(new PrioritySearchPredicate(Priority.Level.HIGH));
+        Optional<TagSearchPredicate> tagPredicate = Optional.empty();
+
+        FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate);
+        expectedModel.updateFilteredFoodList(combinePredicates(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(DARK_CHOCOLATE, EGGS), model.getFilteredFoodList());
+    }
+
+    @Test
+    public void execute_expiryDateSearch_oneFoodItemFound() {
+        String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 1);
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
+                = Optional.of(new ExpiryDateSearchPredicate("31-1-2022"));
+        Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
+        Optional<TagSearchPredicate> tagPredicate = Optional.empty();
+
+        FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate);
+        expectedModel.updateFilteredFoodList(combinePredicates(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(FRENCH_FRIES), model.getFilteredFoodList());
+    }
+
+    @Test
+    public void execute_multipleTagsSearch_multipleFoodsFound() {
+        String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 2);
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
+        Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
+        HashSet<Tag> setOfTags = new HashSet<>();
+        setOfTags.add(new Tag("sugar-free"));
+        setOfTags.add(new Tag("raw"));
+        Optional<TagSearchPredicate> tagPredicate = Optional.of(new TagSearchPredicate(setOfTags));
+
+        FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate);
+        expectedModel.updateFilteredFoodList(combinePredicates(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(ANCHOVIES, BAGEL), model.getFilteredFoodList());
+    }
+
+    @Test
+    public void execute_multipleSearchQueries_oneFoodItemFound() {
+        String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 1);
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate
+                = Optional.of(preparePredicate("Bagel"));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate
+                = Optional.of(new ExpiryDateSearchPredicate("1-2-2022"));
+        Optional<PrioritySearchPredicate> priorityPredicate
+                = Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
+        HashSet<Tag> setOfTags = new HashSet<>();
+        setOfTags.add(new Tag("cheese"));
+        Optional<TagSearchPredicate> tagPredicate = Optional.of(new TagSearchPredicate(setOfTags));
+
+        FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate);
+        expectedModel.updateFilteredFoodList(combinePredicates(descriptionPredicate, priorityPredicate,
+                expiryDatePredicate, tagPredicate));
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(BAGEL), model.getFilteredFoodList());
     }
 
     /**
