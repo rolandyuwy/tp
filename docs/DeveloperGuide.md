@@ -262,6 +262,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                      | view a list of all food items I have added                 | I have a complete display of all my food items               |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
 | `* * *`  | user who cares about some food items more | have different priority for different food items           | I can prioritise some food items                             |
+| `* *`    | user                                      | undo and redo                                              | I can easily fix mistakes when using the application         |
 | `* `     | user                                      | tag food items                                             | I can add additional information pertaining/relating to them |
 
 *{More to be added}*
