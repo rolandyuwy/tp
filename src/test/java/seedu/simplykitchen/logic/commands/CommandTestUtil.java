@@ -129,8 +129,8 @@ public class CommandTestUtil {
      * Deletes the first food in {@code model}'s filtered list from {@code model}'s food inventory.
      */
     public static void deleteFirstFood(Model model) {
-        Food firstPerson = model.getFilteredFoodList().get(0);
-        model.deleteFood(firstPerson);
+        Food firstFood = model.getFilteredFoodList().get(0);
+        model.deleteFood(firstFood);
         model.commitFoodInventory();
     }
 }

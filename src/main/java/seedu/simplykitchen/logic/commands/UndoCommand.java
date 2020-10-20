@@ -18,6 +18,7 @@ public class UndoCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        assert model != null : model;
 
         if (!model.canUndoFoodInventory()) {
             throw new CommandException(MESSAGE_FAILURE);

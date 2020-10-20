@@ -15,6 +15,7 @@ public class RedoCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        assert model != null : model;
 
         if (!model.canRedoFoodInventory()) {
             throw new CommandException(MESSAGE_FAILURE);

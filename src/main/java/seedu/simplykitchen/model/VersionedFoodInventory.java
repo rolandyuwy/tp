@@ -60,6 +60,7 @@ public class VersionedFoodInventory extends FoodInventory {
      * Returns true if {@code undo()} has food inventory states to undo.
      */
     public boolean canUndo() {
+        assert currentStatePointer < foodInventoryStateList.size();
         return currentStatePointer > 0;
     }
 
@@ -67,6 +68,7 @@ public class VersionedFoodInventory extends FoodInventory {
      * Returns true if {@code redo()} has food inventory states to redo.
      */
     public boolean canRedo() {
+        assert currentStatePointer >= 0;
         return currentStatePointer < foodInventoryStateList.size() - 1;
     }
 
