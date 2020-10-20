@@ -16,7 +16,7 @@ import seedu.simplykitchen.model.util.SampleDataUtil;
 public class FoodBuilder {
     public static final String DEFAULT_DESCRIPTION = "Anchovies";
     public static final String DEFAULT_PRIORITY = "medium";
-    public static final String DEFAULT_EXPIRYDATE = "1-1-2020";
+    public static final String DEFAULT_EXPIRY_DATE = "15-1-2022";
 
     private Description description;
     private Priority priority;
@@ -29,7 +29,7 @@ public class FoodBuilder {
     public FoodBuilder() {
         description = new Description(DEFAULT_DESCRIPTION);
         priority = new Priority(DEFAULT_PRIORITY);
-        expiryDate = new ExpiryDate(DEFAULT_EXPIRYDATE);
+        expiryDate = new ExpiryDate(DEFAULT_EXPIRY_DATE);
         tags = new HashSet<>();
     }
 

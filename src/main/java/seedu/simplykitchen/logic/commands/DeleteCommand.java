@@ -17,12 +17,11 @@ public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the food item identified by the index number used in the displayed food list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+    public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " "
+            + "INDEX\n  "
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_FOOD_SUCCESS = "Deleted Food Item: %1$s";
+    public static final String MESSAGE_DELETE_FOOD_SUCCESS = "Deleted Food Item:\n  %1$s";
 
     private final Index targetIndex;
 

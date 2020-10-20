@@ -22,13 +22,13 @@ import seedu.simplykitchen.model.tag.Tag;
 public class ParserUtilTest {
     private static final String INVALID_DESCRIPTION = "R@spberry";
     private static final String INVALID_PRIORITY = "MEDIUM-HIGH";
-    private static final String INVALID_EXPIRYDATE = "32-9-2020";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_EXPIRY_DATE = "32-9-2020";
+    private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
     private static final String VALID_PRIORITY = "MEDIUM";
-    private static final String VALID_EXPIRYDATE = "1-1-2020";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_EXPIRY_DATE = "1-1-2022";
+    private static final String VALID_TAG_1 = "sugar-free";
+    private static final String VALID_TAG_2 = "$100";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -105,19 +105,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseExpiryDate_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseExpiryDate(INVALID_EXPIRYDATE));
+        assertThrows(ParseException.class, () -> ParserUtil.parseExpiryDate(INVALID_EXPIRY_DATE));
     }
 
     @Test
     public void parseExpiryDate_validValueWithoutWhitespace_returnsExpiryDate() throws Exception {
-        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRYDATE);
-        assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(VALID_EXPIRYDATE));
+        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRY_DATE);
+        assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(VALID_EXPIRY_DATE));
     }
 
     @Test
     public void parseExpiryDate_validValueWithWhitespace_returnsTrimmedExpiryDate() throws Exception {
-        String expiryDateWithWhitespace = WHITESPACE + VALID_EXPIRYDATE + WHITESPACE;
-        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRYDATE);
+        String expiryDateWithWhitespace = WHITESPACE + VALID_EXPIRY_DATE + WHITESPACE;
+        ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRY_DATE);
         assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(expiryDateWithWhitespace));
     }
 

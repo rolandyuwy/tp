@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRYDATE_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
 
 import org.junit.jupiter.api.Test;
 
@@ -43,11 +43,11 @@ public class EditFoodDescriptorTest {
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different expiry date -> returns false
-        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withExpiryDate(VALID_EXPIRYDATE_BREAD).build();
+        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
-        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withTags(VALID_TAG_HUSBAND).build();
+        editedApplePie = new EditFoodDescriptorBuilder(DESC_APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
         assertFalse(DESC_APPLE_PIE.equals(editedApplePie));
     }
 }
