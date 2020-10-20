@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.ReadOnlyFoodInventory;
-import seedu.simplykitchen.model.food.*;
+import seedu.simplykitchen.model.food.Description;
+import seedu.simplykitchen.model.food.ExpiryDate;
+import seedu.simplykitchen.model.food.Food;
+import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**

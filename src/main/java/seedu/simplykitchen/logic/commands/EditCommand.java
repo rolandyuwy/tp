@@ -1,7 +1,11 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.simplykitchen.logic.parser.CliSyntax.*;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 
 import java.util.Collections;

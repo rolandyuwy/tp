@@ -82,6 +82,12 @@ public class ParserUtil {
         return new ExpiryDate(trimmedExpiryDate);
     }
 
+    /**
+     * Parses a {@code String quantity} into a {@code Quantity}.
+     * Leading and trailing whitespaces will be trimmed
+     *
+     * @throws ParseException if the given {@code quantity} is invalid.
+     */
     public static Quantity parseQuantity(String quantity) throws ParseException {
         requireNonNull(quantity);
         String trimmedQuantity = quantity.trim();
