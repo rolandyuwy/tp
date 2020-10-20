@@ -9,6 +9,7 @@ public class PrioritySearchPredicate implements Predicate<Food> {
     private final Priority.Level prioritySearch;
 
     public PrioritySearchPredicate(Priority.Level prioritySearch) {
+        assert prioritySearch != null : "Priority cannot be null.";
         this.prioritySearch = prioritySearch;
     }
 

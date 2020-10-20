@@ -9,6 +9,7 @@ public class ExpiryDateSearchPredicate implements Predicate<Food> {
     private final String expiryDateSearch;
 
     public ExpiryDateSearchPredicate(String expiryDateSearch) {
+        assert expiryDateSearch.length() > 0 : "Expiry date cannot be blank.";
         this.expiryDateSearch = expiryDateSearch;
     }
 

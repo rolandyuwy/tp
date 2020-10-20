@@ -12,6 +12,7 @@ public class DescriptionContainsKeywordsPredicate implements Predicate<Food> {
     private final List<String> keywords;
 
     public DescriptionContainsKeywordsPredicate(List<String> keywords) {
+        assert keywords != null : "Keywords cannot be null.";
         this.keywords = keywords;
     }
 

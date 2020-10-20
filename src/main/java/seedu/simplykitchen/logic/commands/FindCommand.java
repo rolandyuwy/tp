@@ -41,6 +41,11 @@ public class FindCommand extends Command {
                        Optional<PrioritySearchPredicate> priorityPredicate,
                        Optional<ExpiryDateSearchPredicate> expiryDatePredicate,
                        Optional<TagSearchPredicate> tagsPredicate) {
+        assert descriptionPredicate != null : "Description predicate cannot be null.";
+        assert priorityPredicate != null : "Priority predicate cannot be null.";
+        assert expiryDatePredicate != null : "Expiry date predicate cannot be null.";
+        assert tagsPredicate != null : "Tags predicate cannot be null.";
+
         this.descriptionPredicate = descriptionPredicate;
         this.priorityPredicate = priorityPredicate;
         this.expiryDatePredicate = expiryDatePredicate;
