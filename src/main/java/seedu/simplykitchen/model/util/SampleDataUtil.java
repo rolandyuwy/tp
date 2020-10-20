@@ -6,10 +6,7 @@ import java.util.stream.Collectors;
 
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.ReadOnlyFoodInventory;
-import seedu.simplykitchen.model.food.Description;
-import seedu.simplykitchen.model.food.ExpiryDate;
-import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.*;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -19,17 +16,17 @@ public class SampleDataUtil {
     public static Food[] getSampleFoods() {
         return new Food[] {
             new Food(new Description("Apple Pie"), new Priority("high"), new ExpiryDate("30-9-2020"),
-                    getTagSet("Frozen")),
+                    new Quantity("1 pie"), getTagSet("Frozen")),
             new Food(new Description("Bread"), new Priority("medium"), new ExpiryDate("1-10-2020"),
-                    getTagSet("Wholemeal", "400g")),
+                    new Quantity("2 loaf"), getTagSet("Wholemeal", "400g")),
             new Food(new Description("Chocolate Cake"), new Priority("high"), new ExpiryDate("1-1-2021"),
-                    getTagSet("$50")),
+                    new Quantity("0.7 lb"), getTagSet("$50")),
             new Food(new Description("Donuts"), new Priority("low"), new ExpiryDate("1-11-2021"),
-                    getTagSet("Plain")),
+                    new Quantity("5 donuts"), getTagSet("Plain")),
             new Food(new Description("Ice Cream"), new Priority("low"), new ExpiryDate("15-6-2021"),
-                    getTagSet("Strawberry-flavoured")),
+                    new Quantity(".5 pint"), getTagSet("Strawberry-flavoured")),
             new Food(new Description("Raspberry Jam"), new Priority("medium"),
-                    new ExpiryDate("12-12-2021"),
+                    new ExpiryDate("12-12-2021"), new Quantity("1.5 jar"),
                     getTagSet("Sugar-free"))
         };
     }

@@ -12,6 +12,7 @@ import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -79,6 +80,17 @@ public class ParserUtil {
             throw new ParseException(errorMessage);
         }
         return new ExpiryDate(trimmedExpiryDate);
+    }
+
+    public static Quantity parseQuantity(String quantity) throws ParseException {
+        requireNonNull(quantity);
+        String trimmedQuantity = quantity.trim();
+        if (!Quantity.isValidQuantity(trimmedQuantity)) {
+            String errorMessage = Quantity.generateErrorMessage(trimmedQuantity);
+            throw new ParseException(errorMessage);
+        }
+
+        return new Quantity(trimmedQuantity);
     }
 
     /**

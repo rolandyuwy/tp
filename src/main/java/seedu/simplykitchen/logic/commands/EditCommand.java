@@ -1,10 +1,7 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.simplykitchen.logic.parser.CliSyntax.*;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 
 import java.util.Collections;
@@ -22,6 +19,7 @@ import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -32,10 +30,11 @@ public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
-            + "[" + PREFIX_TAG + "TAG]...\n  "
+            + "[ " + PREFIX_DESCRIPTION + "DESCRIPTION ] "
+            + "[ " + PREFIX_PRIORITY + "PRIORITY ] "
+            + "[ " + PREFIX_EXPIRY_DATE + "EXPIRY DATE ] "
+            + "[ " + PREFIX_QUANTITY + "VALUE [UNIT] ] "
+            + "[ " + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
             + PREFIX_EXPIRY_DATE + "1-11-2021";
@@ -90,8 +89,9 @@ public class EditCommand extends Command {
         Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
         Priority updatedPriority = editFoodDescriptor.getPriority().orElse(foodToEdit.getPriority());
         ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
+        Quantity updateQuantity = editFoodDescriptor.getQuantity().orElse(foodToEdit.getQuantity());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
-        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updatedTags);
+        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updateQuantity, updatedTags);
     }
 
     @Override
@@ -120,6 +120,7 @@ public class EditCommand extends Command {
         private Description description;
         private Priority priority;
         private ExpiryDate expiryDate;
+        private Quantity quantity;
         private Set<Tag> tags;
 
         public EditFoodDescriptor() {}
@@ -132,6 +133,7 @@ public class EditCommand extends Command {
             setDescription(toCopy.description);
             setPriority(toCopy.priority);
             setExpiryDate(toCopy.expiryDate);
+            setQuantity(toCopy.quantity);
             setTags(toCopy.tags);
         }
 
@@ -139,7 +141,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(description, priority, expiryDate, tags);
+            return CollectionUtil.isAnyNonNull(description, priority, expiryDate, quantity, tags);
         }
 
         public void setDescription(Description description) {
@@ -158,6 +160,13 @@ public class EditCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
+        public void setQuantity(Quantity quantity) {
+            this.quantity = quantity;
+        }
+
+        public Optional<Quantity> getQuantity() {
+            return Optional.ofNullable(quantity);
+        }
         public void setExpiryDate(ExpiryDate expiryDate) {
             this.expiryDate = expiryDate;
         }

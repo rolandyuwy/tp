@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.simplykitchen.logic.commands.exceptions.CommandException;
@@ -21,11 +22,13 @@ public class AddCommand extends Command {
             + PREFIX_DESCRIPTION + "DESCRIPTION "
             + PREFIX_PRIORITY + "PRIORITY "
             + PREFIX_EXPIRY_DATE + "EXPIRY DATE "
+            + PREFIX_QUANTITY + "VALUE [UNIT] "
             + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "Canned Tuna "
             + PREFIX_PRIORITY + "HIGH "
             + PREFIX_EXPIRY_DATE + "1-1-2020 "
+            + PREFIX_QUANTITY + "100 gm "
             + PREFIX_TAG + "frozen "
             + PREFIX_TAG + "20g";
 

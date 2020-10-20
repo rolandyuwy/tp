@@ -5,6 +5,7 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -31,7 +32,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY, PREFIX_EXPIRY_DATE, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY,
+                        PREFIX_EXPIRY_DATE, PREFIX_QUANTITY, PREFIX_TAG);
 
         Index index;
 
@@ -54,6 +56,11 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_EXPIRY_DATE).isPresent()) {
             editFoodDescriptor.setExpiryDate(ParserUtil.parseExpiryDate(
                     argMultimap.getValue(PREFIX_EXPIRY_DATE).get()));
+        }
+
+        if (argMultimap.getValue(PREFIX_QUANTITY).isPresent()) {
+            editFoodDescriptor.setQuantity(ParserUtil.parseQuantity(
+                    argMultimap.getValue(PREFIX_QUANTITY).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFoodDescriptor::setTags);
 
