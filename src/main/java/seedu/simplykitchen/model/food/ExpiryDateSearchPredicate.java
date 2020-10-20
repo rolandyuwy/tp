@@ -18,7 +18,7 @@ public class ExpiryDateSearchPredicate implements Predicate<Food> {
     public ExpiryDateSearchPredicate(String expiryDateSearch) {
         logger.log(Level.INFO, "Creating a new ExpiryDateSearchPredicate object");
         assert expiryDateSearch.length() > 0 : "Expiry date cannot be blank.";
-        logger.log(Level.INFO, "Expiry date search: " + expiryDateSearch);
+        logger.log(Level.INFO, "Search expiry date: " + expiryDateSearch);
         this.expiryDateSearch = expiryDateSearch;
         logger.log(Level.INFO, "Object created");
     }
