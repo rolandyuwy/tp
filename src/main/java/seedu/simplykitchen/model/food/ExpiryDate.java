@@ -106,7 +106,7 @@ public class ExpiryDate {
 
             return localDate1.isAfter(localDate2);
         } catch (DateTimeParseException e) {
-            assert false: "Expiry Dates should be valid";
+            assert false : "Expiry Dates should be valid";
             return false;
         }
     }
