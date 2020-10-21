@@ -2,6 +2,7 @@ package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_DESCRIPTION;
 
 import seedu.simplykitchen.model.Model;
 
@@ -19,6 +20,7 @@ public class ListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        model.updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
