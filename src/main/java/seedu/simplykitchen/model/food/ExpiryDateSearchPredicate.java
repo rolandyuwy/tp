@@ -1,5 +1,7 @@
 package seedu.simplykitchen.model.food;
 
+import seedu.simplykitchen.commons.core.LogsCenter;
+
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +10,7 @@ import java.util.logging.Logger;
  * Tests that a {@code Food}'s {@code Priority} matches the search given.
  */
 public class ExpiryDateSearchPredicate implements Predicate<Food> {
-    private static Logger logger = Logger.getLogger("ExpiryDateSearchPredicate.class");
+    private static Logger logger = LogsCenter.getLogger("ExpiryDateSearchPredicate.class");
 
     private final String expiryDateSearch;
 
