@@ -34,11 +34,11 @@ public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
-            + "[ " + PREFIX_DESCRIPTION + "DESCRIPTION ] "
-            + "[ " + PREFIX_PRIORITY + "PRIORITY ] "
-            + "[ " + PREFIX_EXPIRY_DATE + "EXPIRY DATE ] "
-            + "[ " + PREFIX_QUANTITY + "VALUE [UNIT] ] "
-            + "[ " + PREFIX_TAG + "TAG]...\n  "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
+            + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
+            + "[" + PREFIX_QUANTITY + "QUANTITY] "
+            + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
             + PREFIX_EXPIRY_DATE + "1-11-2021";
