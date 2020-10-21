@@ -221,6 +221,27 @@ _{more aspects and alternatives to be added}_
 
 The sorting command is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
+
+    @Override
+    public CommandResult execute(Model model) {
+        requireNonNull(model);
+        model.updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
+        model.updateSortedFoodList(SORT_BY_DESCENDING_PRIORITY);
+        model.updateSortedFoodList(SORT_BY_ASCENDING_EXPIRY_DATE);
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+}
+    The sorting command extends `Command` and sorts the food lists
+
+@Override
+    public void updateSortedFoodList(Comparator<Food> comparator) {
+        requireNonNull(comparator);
+        sortedFoods.setComparator(comparator);
+    }
+
+ComparatorUtil
+
 * `VersionedAddressBook#commit()` — Saves the current address book state in its history.
 * `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
 * `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
