@@ -45,7 +45,7 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " d/Anchovies Bread", expectedFindCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " d/     Anchovies      Bread  ", expectedFindCommand);
+        assertParseSuccess(parser, " d/\t\t\n Anchovies \t\t\n Bread \n\t ", expectedFindCommand);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " p/high", expectedFindCommand);
 
         // multiple whitespaces between prefix and priority
-        assertParseSuccess(parser, " p/     high      ", expectedFindCommand);
+        assertParseSuccess(parser, " p/\t\nhigh \t \n  ", expectedFindCommand);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " e/31-1-2022", expectedFindCommand);
 
         // multiple whitespaces between prefix and expiry date
-        assertParseSuccess(parser, " e/     31-1-2022      ", expectedFindCommand);
+        assertParseSuccess(parser, " e/\t\t31-1-2022\t ", expectedFindCommand);
 
         // using '/' instead of '-' for expiry date
         assertParseSuccess(parser, " e/31/1/2022", expectedFindCommand);
@@ -101,7 +101,7 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " t/sugar-free t/raw", expectedFindCommand);
 
         // multiple whitespaces between prefix, tag and subsequent tag prefix
-        assertParseSuccess(parser, " t/     sugar-free     t/            raw   ", expectedFindCommand);
+        assertParseSuccess(parser, " t/\tsugar-free  \t  t/  \t \t \t raw \t  ", expectedFindCommand);
     }
 
     @Test

@@ -60,9 +60,12 @@ public class FindCommandParser implements Parser<FindCommand> {
     private Optional<DescriptionContainsKeywordsPredicate> getDescriptionContainsKeywordsPredicate(
             ArgumentMultimap argMultimap) throws ParseException {
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-            String trimmedArgs = description.toString().trim();
+            String description = argMultimap.getValue(PREFIX_DESCRIPTION).get();
+            String trimmedArgs = description.trim();
             String[] descriptionKeywords = trimmedArgs.split("\\s+");
+            for (String keyword : descriptionKeywords) {
+                ParserUtil.parseDescription(keyword);
+            }
             return Optional.of(new DescriptionContainsKeywordsPredicate(Arrays.asList(descriptionKeywords)));
         } else {
             return Optional.empty();
