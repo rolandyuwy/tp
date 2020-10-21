@@ -87,7 +87,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noFoodFound() {
+    public void execute_zeroDescriptionKeywords_noFoodFound() {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 0);
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
                 Optional.of(preparePredicate(" "));
@@ -162,7 +162,7 @@ public class FindCommandTest {
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         HashSet<Tag> setOfTags = new HashSet<>();
         setOfTags.add(new Tag("sugar-free"));
-        setOfTags.add(new Tag("raw"));
+        setOfTags.add(new Tag("fresh water"));
         Optional<TagSearchPredicate> tagPredicate = Optional.of(new TagSearchPredicate(setOfTags));
 
         FindCommand command = new FindCommand(descriptionPredicate, priorityPredicate,

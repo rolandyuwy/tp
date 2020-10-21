@@ -4,7 +4,7 @@
     "description" : "Anchovies",
     "priority": "LOW",
     "expiryDate" : "1-1-2022",
-    "tagged" : [ "raw" ]
+    "tagged" : [ "raw", "fresh water" ]
   }, {
       "description": "Bagel",
     "priority": "LOW",
