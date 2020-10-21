@@ -123,8 +123,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " d/Bagel p/low e/1-2-2022 t/sugar-free t/cheese", expectedFindCommand);
 
         // multiple whitespaces between prefixes and arguments
-        assertParseSuccess(parser, " d/  Bagel          p/       low   "
-                + "e/   1-2-2022    t/   sugar-free    t/    cheese", expectedFindCommand);
+        assertParseSuccess(parser, " d/ \n Bagel  \t  p/ \t low  \n "
+                + "e/\t1-2-2022  \t  t/ \t  sugar-free \t   t/   \t \t cheese", expectedFindCommand);
     }
 
     @Test
