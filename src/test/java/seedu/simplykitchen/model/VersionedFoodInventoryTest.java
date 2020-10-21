@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.testutil.FoodInventoryBuilder;
 
+//Solution below adapted from https://github.com/se-edu/addressbook-level4.
 public class VersionedFoodInventoryTest {
     private final ReadOnlyFoodInventory foodInventoryWithApplePie = new FoodInventoryBuilder()
             .withFood(APPLE_PIE).build();

@@ -3,6 +3,7 @@ package seedu.simplykitchen.model;
 import java.util.ArrayList;
 import java.util.List;
 
+//Solution below adapted from https://github.com/se-edu/addressbook-level4.
 public class VersionedFoodInventory extends FoodInventory {
 
     private final List<ReadOnlyFoodInventory> foodInventoryStateList;

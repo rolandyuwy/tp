@@ -12,6 +12,7 @@ import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
 import seedu.simplykitchen.model.UserPrefs;
 
+//Solution below adapted from https://github.com/se-edu/addressbook-level4.
 public class UndoCommandTest {
     private final Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
     private final Model expectedModel = new ModelManager(getTypicalFoodInventory(), new UserPrefs());

@@ -15,6 +15,7 @@ public class UndoCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Undo success!";
     public static final String MESSAGE_FAILURE = "No more commands to undo!";
 
+    //Solution below adapted from https://github.com/se-edu/addressbook-level4.
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

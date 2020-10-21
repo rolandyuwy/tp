@@ -12,6 +12,7 @@ public class RedoCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Redo success!";
     public static final String MESSAGE_FAILURE = "No more commands to redo!";
 
+    //Solution below adapted from https://github.com/se-edu/addressbook-level4.
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
