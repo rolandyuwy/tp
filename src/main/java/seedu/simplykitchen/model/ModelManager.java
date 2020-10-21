@@ -43,7 +43,6 @@ public class ModelManager implements Model {
         sortedFoods = new SortedList<>(this.foodInventory.getFoods());
         updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
         filteredFoods = new FilteredList<>(sortedFoods);
-
     }
 
     public ModelManager() {

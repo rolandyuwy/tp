@@ -95,7 +95,6 @@ public class ExpiryDate {
     /**
      * Returns if the first ExpiryDate object's expiry date is after next ExpiryDate object's expiry date.
      */
-    //TODO: This is a stub for sorting command testing. To be refined..
     public static boolean isAfter(ExpiryDate expiryDate1, ExpiryDate expiryDate2) {
         try {
             String expiryDateString1 = replaceSlashWithDash(expiryDate1.value);
@@ -107,7 +106,7 @@ public class ExpiryDate {
 
             return localDate1.isAfter(localDate2);
         } catch (DateTimeParseException e) {
-            assert false;
+            assert false: "Expiry Dates should be valid";
             return false;
         }
     }
