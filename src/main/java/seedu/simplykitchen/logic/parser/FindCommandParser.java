@@ -12,7 +12,6 @@ import java.util.Set;
 
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
-import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;

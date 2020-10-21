@@ -3,7 +3,6 @@ package seedu.simplykitchen.model.tag;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import seedu.simplykitchen.commons.util.StringUtil;
 import seedu.simplykitchen.model.food.Food;
 
 /**
