@@ -93,9 +93,9 @@ public class EditCommand extends Command {
         Description updatedDescription = editFoodDescriptor.getDescription().orElse(foodToEdit.getDescription());
         Priority updatedPriority = editFoodDescriptor.getPriority().orElse(foodToEdit.getPriority());
         ExpiryDate updatedExpiryDate = editFoodDescriptor.getExpiryDate().orElse(foodToEdit.getExpiryDate());
-        Quantity updateQuantity = editFoodDescriptor.getQuantity().orElse(foodToEdit.getQuantity());
+        Quantity updatedQuantity = editFoodDescriptor.getQuantity().orElse(foodToEdit.getQuantity());
         Set<Tag> updatedTags = editFoodDescriptor.getTags().orElse(foodToEdit.getTags());
-        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updateQuantity, updatedTags);
+        return new Food(updatedDescription, updatedPriority, updatedExpiryDate, updatedQuantity, updatedTags);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class SampleDataUtil {
             new Food(new Description("Chocolate Cake"), new Priority("high"), new ExpiryDate("1-1-2021"),
                     new Quantity("0.7 lb"), getTagSet("$50")),
             new Food(new Description("Donuts"), new Priority("low"), new ExpiryDate("1-11-2021"),
-                    new Quantity("5 donuts"), getTagSet("Plain")),
+                    new Quantity("5 donut"), getTagSet("Plain")),
             new Food(new Description("Ice Cream"), new Priority("low"), new ExpiryDate("15-6-2021"),
                     new Quantity(".5 pint"), getTagSet("Strawberry-flavoured")),
             new Food(new Description("Raspberry Jam"), new Priority("medium"),
