@@ -11,7 +11,8 @@ public class Quantity {
     public static final String QUANTITY_VALUE_CONSTRAINTS =
             "The value in the quantity field must be a positive number.";
     public static final String QUANTITY_UNIT_CONSTRAINTS =
-            "The unit in the quantity field is optional. If provided, unit should only contain alphabets.";
+            "The unit in the quantity field is optional. If provided, unit should only contain alphabets."
+            + "\nIf the unit is not provided, a default unit - \"unit\" - will be given.";
     public static final String MESSAGE_CONSTRAINTS =
             "The quantity field must contain a positive number followed by an optional unit. "
                     + "\nIt should not be blank.";

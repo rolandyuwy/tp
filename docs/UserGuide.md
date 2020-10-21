@@ -53,8 +53,9 @@ Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
 * The quantity field consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
-* The value in the quantity field is compulsory. It must be a positive number. It can be an integer or a decimal value.
-* The unit in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
+* The `value` in the quantity field is compulsory. It must be a positive number. It can be an integer or a decimal value.
+* The `unit` in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
+* If the `unit` in the quantity field is not provided, the default unit - `unit` - will be given.
 * For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
 * The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
 * Tags with only whitespace(s) will not be allowed.
