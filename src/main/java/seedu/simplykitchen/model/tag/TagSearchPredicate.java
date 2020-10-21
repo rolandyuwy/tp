@@ -25,7 +25,7 @@ public class TagSearchPredicate implements Predicate<Food> {
         return tagsToFind.stream()
                 .anyMatch(tagToFind -> {
                     for (Tag tag : food.getTags()) {
-                        if (StringUtil.containsWordIgnoreCase(tag.tagName, tagToFind.tagName)) {
+                        if (tag.tagName.equalsIgnoreCase(tagToFind.tagName)) {
                             return true;
                         }
                     }
