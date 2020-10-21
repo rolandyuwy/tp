@@ -108,7 +108,7 @@ public class FoodInventory implements ReadOnlyFoodInventory {
     }
 
     /**
-     * Notifies listeners that the address book has been modified.
+     * Notifies listeners that the food inventory has been modified.
      */
     protected void indicateModified() {
         invalidationListenerManager.callListeners(this);

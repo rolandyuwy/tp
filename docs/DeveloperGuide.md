@@ -140,7 +140,7 @@ The feature is implemented with a `VersionedFoodInventory`. The `VersionedFoodIn
 * `VersionedFoodInventory#undo()` — Restores the previous food inventory state from its states list.
 * `VersionedFoodInventory#redo()` — Restores a previously undone food inventory state from its states list.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitFoodInventory()`, `Model#undoFoodInventory()` and `Model#redoFoodInventory()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
@@ -183,7 +183,7 @@ The `redo` command does the opposite — it calls `Model#redoFoodInventory()
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the food inventory, such as `list`, will usually not call `Model#commitFoodInventory()`, `Model#undoFoodInventory()` or `Model#redoAddressBook()`. Thus, the `foodInventoryStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the food inventory, such as `list`, will usually not call `Model#commitFoodInventory()`, `Model#undoFoodInventory()` or `Model#redoFoodInventory()`. Thus, the `foodInventoryStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
