@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 
+//Solution below adapted from https://github.com/se-edu/addressbook-level4.
 /**
  * Manages a list of {@link InvalidationListener}.
  */

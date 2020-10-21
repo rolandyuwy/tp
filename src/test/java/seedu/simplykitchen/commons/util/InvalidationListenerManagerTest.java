@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleObjectProperty;
 
+//Solution below adapted from https://github.com/se-edu/addressbook-level4.
 public class InvalidationListenerManagerTest {
     private final SimpleObjectProperty<Object> dummyObservable = new SimpleObjectProperty<>();
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
