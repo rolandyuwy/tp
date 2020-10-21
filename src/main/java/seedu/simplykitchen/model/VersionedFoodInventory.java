@@ -2,10 +2,13 @@ package seedu.simplykitchen.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import seedu.simplykitchen.commons.core.LogsCenter;
 
 //Solution below adapted from https://github.com/se-edu/addressbook-level4.
 public class VersionedFoodInventory extends FoodInventory {
-
+    private static Logger logger = LogsCenter.getLogger(VersionedFoodInventory.class);
     private final List<ReadOnlyFoodInventory> foodInventoryStateList;
     private int currentStatePointer;
 
@@ -28,11 +31,13 @@ public class VersionedFoodInventory extends FoodInventory {
         removeStatesAfterCurrentPointer();
         foodInventoryStateList.add(new FoodInventory(this));
         currentStatePointer++;
+        logger.info("Food Inventory Modified");
         indicateModified();
     }
 
     private void removeStatesAfterCurrentPointer() {
         foodInventoryStateList.subList(currentStatePointer + 1, foodInventoryStateList.size()).clear();
+        logger.info("Newer Food Inventory States Purged");
     }
 
     /**
