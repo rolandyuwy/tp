@@ -59,11 +59,11 @@ public class TypicalFood {
      * Returns an {@code FoodInventory} with all the typical Foods.
      */
     public static FoodInventory getTypicalFoodInventory() {
-        FoodInventory ab = new FoodInventory();
+        FoodInventory fi = new FoodInventory();
         for (Food food : getTypicalFood()) {
-            ab.addFood(food);
+            fi.addFood(food);
         }
-        return ab;
+        return fi;
     }
 
     public static List<Food> getTypicalFood() {
