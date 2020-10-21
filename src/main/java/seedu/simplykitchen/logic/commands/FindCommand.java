@@ -1,6 +1,7 @@
 package seedu.simplykitchen.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -53,7 +54,8 @@ public class FindCommand extends Command {
     }
 
     private Predicate<Food> combinePredicates() {
-        Predicate<Food> predicate = food -> true;
+        Predicate<Food> predicate = PREDICATE_SHOW_ALL_FOODS;
+
         if (descriptionPredicate.isPresent()) {
             predicate = predicate.and(descriptionPredicate.get());
         }
