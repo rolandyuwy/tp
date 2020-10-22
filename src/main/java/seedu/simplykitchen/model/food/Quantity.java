@@ -24,7 +24,7 @@ public class Quantity {
     public final String unit;
 
     /**
-     * Constructor when no unit is provided.
+     * Constructs a {@code Quantity}
      *
      * @param quantity a quantity string
      */
@@ -40,6 +40,18 @@ public class Quantity {
         }
         this.value = Double.parseDouble(value);
         this.unit = unit;
+    }
+
+    /**
+     * Create a {@code Quantity} object from a double value and a unit string.
+     *
+     * @param value a double value
+     * @param unit a unit string
+     */
+    public static Quantity of(double value, String unit) {
+        String valueString = String.valueOf(value);
+        String quantityString = valueString + " " + unit;
+        return new Quantity(quantityString);
     }
 
     /**
