@@ -217,6 +217,42 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Quantity Field in Food Items
+
+A `quantity` field for food items is implemented to track the dynamic changes in the quantity of a food in the FoodInventory.
+
+#### Implementation:
+
+The `quantity` field has been implemented as a class in the `model.food` package.
+
+* Quantity class contains 2 attributes: `value` and `unit`.
+* The `value` has to be a positive number. It can be an integer or a decimal value.
+* The `unit` in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
+* If the unit is not provided, a default unit - `unit` - will be given.
+
+#### Implementation Rationale:
+
+The constraints above have been applied after careful consideration of the needs of the target audience.
+
+* The `value` in the quantity field must be a positive value. A negative or zero value does not carry any meaning and would defeat the purpose of the feature.
+* Users would want to track the quantity precisely in some cases. To allow this, SimplyKitchen accepts decimal values as the `value` attribute.
+* The `value` attribute in the Quantity field has been stored as a `double` value.
+* Users will have different kinds of units while tracking the quantity of their food items. For example, kg, can, bottle etc.
+* To ensure the user's freedom in choosing the unit, the `unit` attribute in the Quantity class has been stored as a `String` field.
+* Constraints on the content of the `unit` field have been applied to prevent misuse of the feature. 
+* Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
+* The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish. 
+
+#### Design Consideration:
+
+##### Aspect: Implementation
+
+* <b>Alternative 1 (current choice): </b> Value and unit stored as double and string fields in the Quantity class.
+    * Pros: Easy to implement. 
+    * Cons: Less OOP compared to the other alternative.
+* <b>Alternative 2: </b> Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
+    * Pros: Improves OOP aspect of the code.
+    * Cons: Unnecessarily complicates the code.
 
 --------------------------------------------------------------------------------------------------------------------
 

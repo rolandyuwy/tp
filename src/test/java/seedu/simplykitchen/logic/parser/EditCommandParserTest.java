@@ -7,9 +7,13 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.QUANTITY_DESC_APPLE_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.QUANTITY_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_FROZEN;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.TAG_DESC_WHOLEMEAL;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_APPLE_PIE;
@@ -17,6 +21,8 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DA
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_APPLY_PIE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FROZEN;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
@@ -34,6 +40,7 @@ import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 
@@ -81,6 +88,10 @@ public class EditCommandParserTest {
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
         assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_FORMAT_DESC,
                 ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
+        assertParseFailure(parser, "1" + INVALID_QUANTITY_UNIT,
+                Quantity.QUANTITY_UNIT_CONSTRAINTS); // invalid quantity unit
+        assertParseFailure(parser, "1" + INVALID_QUANTITY_VALUE,
+                Quantity.QUANTITY_VALUE_CONSTRAINTS); // invalid quantity value
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid priority followed by valid expiry date
@@ -103,17 +114,18 @@ public class EditCommandParserTest {
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRY_DATE_FORMAT_DESC
-                + VALID_PRIORITY_APPLE_PIE, Description.MESSAGE_CONSTRAINTS);
+                + VALID_PRIORITY_APPLE_PIE + VALID_QUANTITY_APPLY_PIE, Description.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_BREAD + TAG_DESC_WHOLEMEAL
-                + EXPIRY_DATE_DESC_APPLE_PIE + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN;
+                + EXPIRY_DATE_DESC_APPLE_PIE + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN + QUANTITY_DESC_BREAD;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
                 .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
+                .withQuantity(VALID_QUANTITY_BREAD)
                 .withTags(VALID_TAG_WHOLEMEAL, VALID_TAG_FROZEN).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -154,6 +166,12 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
+        // quantity
+        userInput = targetIndex.getOneBased() + QUANTITY_DESC_APPLE_PIE;
+        descriptor = new EditFoodDescriptorBuilder().withQuantity(VALID_QUANTITY_APPLY_PIE).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_FROZEN;
         descriptor = new EditFoodDescriptorBuilder().withTags(VALID_TAG_FROZEN).build();
@@ -167,11 +185,13 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_APPLE_PIE
                 + EXPIRY_DATE_DESC_APPLE_PIE + TAG_DESC_FROZEN + PRIORITY_DESC_APPLE_PIE
                 + EXPIRY_DATE_DESC_APPLE_PIE + TAG_DESC_FROZEN + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_WHOLEMEAL;
+                + EXPIRY_DATE_DESC_BREAD + TAG_DESC_WHOLEMEAL + QUANTITY_DESC_APPLE_PIE
+                + QUANTITY_DESC_BREAD;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
                 .withExpiryDate(VALID_EXPIRY_DATE_BREAD)
-                .withTags(VALID_TAG_FROZEN, VALID_TAG_WHOLEMEAL).build();
+                .withTags(VALID_TAG_FROZEN, VALID_TAG_WHOLEMEAL)
+                .withQuantity(VALID_QUANTITY_BREAD).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
