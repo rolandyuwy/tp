@@ -5,7 +5,7 @@
     "priority": "LOW",
     "expiryDate" : "1-1-2022",
     "quantity": "1 can",
-    "tagged" : [ "raw" ]
+    "tagged" : [ "raw", "fresh water" ]
   }, {
       "description": "Bagel",
     "priority": "LOW",
