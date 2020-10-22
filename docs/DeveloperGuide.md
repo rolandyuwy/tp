@@ -210,19 +210,19 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the food item being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
-  
+
 
 ### Sorting feature
 
-#### Implementation 
+#### Implementation
 
 The sorting feature consists of two commends, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
-The sorting order is in accordance to what is likely the most useful order for the user. 
+The sorting order is in accordance to what is likely the most useful order for the user.
 
-Thus, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by the lexicographical order. 
+Thus, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by the lexicographical order.
 
-Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by the lexicographical order. 
+Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by the lexicographical order.
 
 When the commands are executed by calling `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `SortedList<Food>` attribute in `model` is sorted.
 
@@ -237,7 +237,7 @@ Comparators used for sorting are stored as static variables in `ComparatorUtil`,
 ##### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Lists are sorted in lexicographical order by default, sorting by priority or expiry date are reflected in displayed lists.
-  * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`. 
+  * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
   * Cons: Sorting is not permanent, thus lists stored are in lexicographical order by default.
 
 * **Alternative 2:** Permanently sort lists.
@@ -270,16 +270,16 @@ The constraints above have been applied after careful consideration of the needs
 * The `value` attribute in the Quantity field has been stored as a `double` value.
 * Users will have different kinds of units while tracking the quantity of their food items. For example, kg, can, bottle etc.
 * To ensure the user's freedom in choosing the unit, the `unit` attribute in the Quantity class has been stored as a `String` field.
-* Constraints on the content of the `unit` field have been applied to prevent misuse of the feature. 
+* Constraints on the content of the `unit` field have been applied to prevent misuse of the feature.
 * Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
-* The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish. 
+* The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish.
 
 #### Design Consideration:
 
 ##### Aspect: Implementation
 
 * <b>Alternative 1 (current choice): </b> Value and unit stored as double and string fields in the Quantity class.
-    * Pros: Easy to implement. 
+    * Pros: Easy to implement.
     * Cons: Less OOP compared to the other alternative.
 * <b>Alternative 2: </b> Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
     * Pros: Improves OOP aspect of the code.
@@ -397,11 +397,11 @@ Use case ends.
 **Extensions:**
 
 **1a.** SimplyKitchen detects an error in the user's food item.
-   
+
  * **1a1.** SimplyKitchen displays an error message and prompts the user to enter a correct food item.
-     
+
  * **1a2.** User enters another food item.
-      
+
    Steps **1a1.** - **1a2.** are repeated until the food item entered is correct.
 
    Use case resumes from step **2**.
@@ -435,9 +435,9 @@ Use case ends.
 **3a.** SimplyKitchen detects an invalid index corresponding to the food item in the list.
 
  * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct index.
-     
+
  * **3a2.** User requests to delete another index corresponding to the food item in the list.
-      
+
    Steps **3a1.** - **3a2.** are repeated until the index entered is correct.
 
    Use case resumes from step **4**.
@@ -471,9 +471,9 @@ Use case ends.
 **3a.** SimplyKitchen detects an invalid index corresponding to the food item in the list.
 
  * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct index.
-     
+
  * **3a2.** User requests to edit another food item in the list.
-      
+
    Steps **3a1.** - **3a2.** are repeated until the index entered is correct.
 
    Use case resumes from step **4**.
@@ -481,9 +481,9 @@ Use case ends.
 **3a.** SimplyKitchen detects an error in the user's edited food item.
 
  * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct edited food item.
-     
+
  * **3a2.** User enters another edited food item.
-      
+
    Steps **3a1.** - **3a2.** are repeated until the edited food item entered is correct.
 
    Use case resumes from step **4**.
@@ -504,12 +504,12 @@ Use case ends.
 
 **Extensions:**
 
-**1a.** SimplyKitchen detects an error in the search query. 
+**1a.** SimplyKitchen detects an error in the search query.
 
  * **1a1.** SimplyKitchen displays an error message and prompts the user to enter a correct search query.
-     
+
  * **1a2.** User enters a new search query.
-      
+
    Steps **1a1.** - **1a2.** are repeated until the search query entered is correct.
 
    Use case resumes from step **2**.
