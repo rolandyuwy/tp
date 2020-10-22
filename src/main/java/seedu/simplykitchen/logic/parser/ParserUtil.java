@@ -23,8 +23,6 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index should be a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_AMOUNT =
             "Amount should be a non-zero signed number with a maximum of 2 decimal places.";
-    public static final String MESSAGE_INVALID_AMOUNT_SIZE =
-            "Amount is too small/big";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -118,7 +116,7 @@ public class ParserUtil {
 
         double value = Double.parseDouble(trimmedAmount);
         if (value >= Double.MAX_VALUE || value <= -Double.MAX_VALUE) {
-            throw new ParseException(MESSAGE_INVALID_AMOUNT_SIZE);
+            throw new ParseException(MESSAGE_INVALID_AMOUNT);
         }
         return value;
     }
