@@ -9,6 +9,7 @@ import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,10 @@ import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
 import seedu.simplykitchen.model.food.Food;
+import seedu.simplykitchen.model.food.PrioritySearchPredicate;
+import seedu.simplykitchen.model.tag.TagSearchPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
@@ -80,8 +84,14 @@ public class FoodInventoryParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new DescriptionContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " d/" + keywords.stream().collect(Collectors.joining(" ")));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(new DescriptionContainsKeywordsPredicate(keywords));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
+        Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
+        Optional<TagSearchPredicate> tagPredicate = Optional.empty();
+        assertEquals(new FindCommand(descriptionPredicate, priorityPredicate, expiryDatePredicate, tagPredicate),
+                command);
     }
 
     @Test
