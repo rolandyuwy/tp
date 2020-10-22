@@ -31,6 +31,7 @@ public class AddCommandIntegrationTest {
 
         Model expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
         expectedModel.addFood(validFood);
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(new AddCommand(validFood), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, validFood), expectedModel);

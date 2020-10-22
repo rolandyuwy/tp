@@ -12,7 +12,9 @@ import seedu.simplykitchen.model.food.Food;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Food> PREDICATE_SHOW_ALL_FOODS = unused -> true;
 
     /**
@@ -50,7 +52,9 @@ public interface Model {
      */
     void setFoodInventory(ReadOnlyFoodInventory foodInventory);
 
-    /** Returns the FoodInventory */
+    /**
+     * Returns the FoodInventory
+     */
     ReadOnlyFoodInventory getFoodInventory();
 
     /**
@@ -78,18 +82,47 @@ public interface Model {
      */
     void setFood(Food target, Food editedFood);
 
-    /** Returns an unmodifiable view of the filtered food list */
+    /**
+     * Returns an unmodifiable view of the filtered food list
+     */
     ObservableList<Food> getFilteredFoodList();
 
     /**
      * Updates the filter of the filtered food list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFoodList(Predicate<Food> predicate);
 
     /**
      * Updates the comparator of the sorted food list to sort by the given {@code comparator}.
+     *
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateSortedFoodList(Comparator<Food> comparator);
+
+    /**
+     * Returns true if the model has previous food inventory states to restore.
+     */
+    boolean canUndoFoodInventory();
+
+    /**
+     * Returns true if the model has undone food inventory states to restore.
+     */
+    boolean canRedoFoodInventory();
+
+    /**
+     * Restores the model's food inventory to its previous state.
+     */
+    void undoFoodInventory();
+
+    /**
+     * Restores the model's food inventory to its previously undone state.
+     */
+    void redoFoodInventory();
+
+    /**
+     * Saves the current food inventory state for undo/redo.
+     */
+    void commitFoodInventory();
 }

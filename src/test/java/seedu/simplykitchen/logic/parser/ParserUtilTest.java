@@ -17,15 +17,20 @@ import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_DESCRIPTION = "R@spberry";
     private static final String INVALID_PRIORITY = "MEDIUM-HIGH";
+    private static final String INVALID_QUANTITY_UNIT = "1 @unit";
+    private static final String INVALID_QUANTITY_VALUE = "-1 unit";
+    private static final String INVALID_QUANTITY_ZEROVALUE = "0 unit";
     private static final String INVALID_EXPIRY_DATE = "32-9-2020";
     private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
     private static final String VALID_PRIORITY = "MEDIUM";
+    private static final String VALID_QUANTITY = "1 jar";
     private static final String VALID_EXPIRY_DATE = "1-1-2022";
     private static final String VALID_TAG_1 = "sugar-free";
     private static final String VALID_TAG_2 = "$100";
@@ -119,6 +124,32 @@ public class ParserUtilTest {
         String expiryDateWithWhitespace = WHITESPACE + VALID_EXPIRY_DATE + WHITESPACE;
         ExpiryDate expectedExpiryDate = new ExpiryDate(VALID_EXPIRY_DATE);
         assertEquals(expectedExpiryDate, ParserUtil.parseExpiryDate(expiryDateWithWhitespace));
+    }
+
+    @Test
+    public void parseQuantity_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseQuantity((String) null));
+    }
+
+    @Test
+    public void parseQuantity_invalidQuantityUnit_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_UNIT));
+    }
+
+    @Test
+    public void parseQuantity_invalidQuantityValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_VALUE));
+    }
+
+    @Test
+    public void parseQuantity_invalidQuantityZeroValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_ZEROVALUE));
+    }
+
+    @Test
+    public void parseQuantity_validQuantity_returnsValidQuantity() throws Exception {
+        Quantity expectedQuantity = new Quantity(VALID_QUANTITY);
+        assertEquals(expectedQuantity, ParserUtil.parseQuantity(VALID_QUANTITY));
     }
 
     @Test

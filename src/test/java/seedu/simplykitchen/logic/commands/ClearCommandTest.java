@@ -16,6 +16,7 @@ public class ClearCommandTest {
     public void execute_emptyFoodInventory_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -25,6 +26,7 @@ public class ClearCommandTest {
         Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
         expectedModel.setFoodInventory(new FoodInventory());
+        expectedModel.commitFoodInventory();
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

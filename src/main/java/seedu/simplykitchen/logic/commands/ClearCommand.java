@@ -18,6 +18,7 @@ public class ClearCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.setFoodInventory(new FoodInventory());
+        model.commitFoodInventory();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

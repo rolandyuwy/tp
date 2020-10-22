@@ -22,7 +22,7 @@ import seedu.simplykitchen.model.food.Food;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final FoodInventory foodInventory;
+    private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
     private final SortedList<Food> sortedFoods;
@@ -37,10 +37,10 @@ public class ModelManager implements Model {
         logger.fine("Initializing with Food inventory: " + foodInventory
                 + " and user prefs " + userPrefs);
 
-        this.foodInventory = new FoodInventory(foodInventory);
+        this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
 
-        sortedFoods = new SortedList<>(this.foodInventory.getFoods());
+        sortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
         updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
         filteredFoods = new FilteredList<>(sortedFoods);
     }
@@ -88,28 +88,28 @@ public class ModelManager implements Model {
 
     @Override
     public void setFoodInventory(ReadOnlyFoodInventory foodInventory) {
-        this.foodInventory.resetData(foodInventory);
+        versionedFoodInventory.resetData(foodInventory);
     }
 
     @Override
     public ReadOnlyFoodInventory getFoodInventory() {
-        return foodInventory;
+        return versionedFoodInventory;
     }
 
     @Override
     public boolean hasFood(Food food) {
         requireNonNull(food);
-        return foodInventory.hasFood(food);
+        return versionedFoodInventory.hasFood(food);
     }
 
     @Override
     public void deleteFood(Food target) {
-        foodInventory.removeFood(target);
+        versionedFoodInventory.removeFood(target);
     }
 
     @Override
     public void addFood(Food food) {
-        foodInventory.addFood(food);
+        versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
         updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
     }
@@ -118,7 +118,7 @@ public class ModelManager implements Model {
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
 
-        foodInventory.setFood(target, editedFood);
+        versionedFoodInventory.setFood(target, editedFood);
     }
 
     //=========== Filtered Food List Accessors =============================================================
@@ -136,6 +136,33 @@ public class ModelManager implements Model {
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
+    }
+
+    //=========== Undo/Redo =================================================================================
+
+    @Override
+    public boolean canUndoFoodInventory() {
+        return versionedFoodInventory.canUndo();
+    }
+
+    @Override
+    public boolean canRedoFoodInventory() {
+        return versionedFoodInventory.canRedo();
+    }
+
+    @Override
+    public void undoFoodInventory() {
+        versionedFoodInventory.undo();
+    }
+
+    @Override
+    public void redoFoodInventory() {
+        versionedFoodInventory.redo();
+    }
+
+    @Override
+    public void commitFoodInventory() {
+        versionedFoodInventory.commit();
     }
 
     @Override
@@ -158,7 +185,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return foodInventory.equals(other.foodInventory)
+        return versionedFoodInventory.equals(other.versionedFoodInventory)
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods);
     }

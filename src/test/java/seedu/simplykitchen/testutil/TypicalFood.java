@@ -22,7 +22,7 @@ import seedu.simplykitchen.model.food.Food;
 public class TypicalFood {
 
     public static final Food ANCHOVIES = new FoodBuilder().withDescription("Anchovies")
-            .withExpiryDate("1-1-2022").withPriority("low").withTags("raw").build();
+            .withExpiryDate("1-1-2022").withPriority("low").withTags("raw", "fresh water").build();
     public static final Food BAGEL = new FoodBuilder().withDescription("Bagel")
             .withExpiryDate("1-2-2022").withPriority("low").withTags("sugar-free", "cheese").build();
     public static final Food CARROT_CAKE = new FoodBuilder().withDescription("Carrot Cake").withPriority("low")
@@ -59,11 +59,11 @@ public class TypicalFood {
      * Returns an {@code FoodInventory} with all the typical Foods.
      */
     public static FoodInventory getTypicalFoodInventory() {
-        FoodInventory ab = new FoodInventory();
+        FoodInventory fi = new FoodInventory();
         for (Food food : getTypicalFood()) {
-            ab.addFood(food);
+            fi.addFood(food);
         }
-        return ab;
+        return fi;
     }
 
     public static List<Food> getTypicalFood() {
