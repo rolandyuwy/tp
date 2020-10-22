@@ -54,9 +54,9 @@ public class Priority {
      * Returns true if a given priority has a lower priority level.
      */
     public boolean isHigherPriority(Priority otherPriority) {
-        return (this.value == Level.HIGH) && (otherPriority.value == Level.MEDIUM)
-                || (this.value == Level.HIGH) && (otherPriority.value == Level.LOW)
-                || (this.value == Level.MEDIUM) && (otherPriority.value == Level.LOW);
+        return ((this.value == Level.HIGH) && (otherPriority.value == Level.MEDIUM))
+                || ((this.value == Level.HIGH) && (otherPriority.value == Level.LOW))
+                || ((this.value == Level.MEDIUM) && (otherPriority.value == Level.LOW));
     }
 
     @Override
