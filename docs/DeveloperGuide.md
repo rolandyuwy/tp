@@ -212,6 +212,38 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Cons: We must ensure that the implementation of each individual command are correct.
   
 
+### Sorting feature
+
+#### Implementation 
+
+The sorting feature consists of two commends, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
+
+The sorting order is in accordance to what is likely the most useful order for the user. 
+
+Thus, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by the lexicographical order. 
+
+Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by the lexicographical order. 
+
+When the commands are executed by calling `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `SortedList<Food>` attribute in `model` is sorted.
+
+This is done so by calling `model#updateSortedFoodList(Comparator<Food> comparator)` method in `model` with the relevant `Comparator<Food>` for sorting.
+
+Sorting of the `SortedList<Food>` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
+
+#### Design consideration:
+
+Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
+
+##### Aspect: Permanence of list sorting
+
+* **Alternative 1 (current choice):** Lists are sorted in lexicographical order by default, sorting by priority or expiry date are reflected in displayed lists.
+  * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`. 
+  * Cons: Sorting is not permanent, thus lists stored are in lexicographical order by default.
+
+* **Alternative 2:** Permanently sort lists.
+  * Pros: Less hassle if a specific sorting order is preferred by the user.
+  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user.
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
@@ -296,13 +328,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
 | `* * *`  | user                                      | add food items                                             |                                                              |
 | `* * *`  | user                                      | delete food items                                          |                                                              |
-| `* * *`  | user                                      | edit the fields of the food items                          | I can change the details of the food item after adding it    |
-| `* * *`  | user                                      | search for food items based on keywords of the description | I can find them easily                                       |
-| `* * *`  | user                                      | view a list of all food items I have added                 | I have a complete display of all my food items               |
+| `* * *`  | user                                      | edit the fields of the food items                          | change the details of the food item after adding it          |
+| `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                             |
+| `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                 |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
-| `* * *`  | user who cares about some food items more | have different priority for different food items           | I can prioritise some food items                             |
+| `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                   |
+| `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
+| `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
 | `* *`    | user                                      | undo and redo                                              | I can easily fix mistakes when using the application         |
-| `* `     | user                                      | tag food items                                             | I can add additional information pertaining/relating to them |
+| `* `     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
+
 
 *{More to be added}*
 
@@ -463,6 +498,50 @@ Use case ends.
 **1.** User requests to clear all food items in the food inventory.
 
 **2.** SimplyKitchen removes all food items in the food inventory and displays a success message.
+
+Use case ends.
+
+#### UC07: Sort food items by expiry date
+
+**Guarantees:** The food items in the food list are sorted by expiry date.
+
+**MSS:**
+
+**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
+
+**2.** SimplyKitchen displays a list of food items.
+
+**3.** User requests to sort the food list by expiry date.
+
+**4.** SimplyKitchen displays the food list sorted by expiry date.
+
+Use case ends.
+
+**Extensions:**
+
+**2a.** The list is empty.
+
+Use case ends.
+
+#### UC08: Sort food items by priority
+
+**Guarantees:** The food items in the food list are sorted by priority.
+
+**MSS:**
+
+**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
+
+**2.** SimplyKitchen displays a list of food items.
+
+**3.** User requests to sort the food list by priority.
+
+**4.** SimplyKitchen displays the food list sorted by priority.
+
+Use case ends.
+
+**Extensions:**
+
+**2a.** The list is empty.
 
 Use case ends.
 
