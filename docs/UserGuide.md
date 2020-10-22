@@ -46,20 +46,24 @@ Format: `help`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…​`  
+Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`  
 
 * Adds a food item based on its description and expiry date.
-* Description and expiry date fields are compulsory.
+* Description, expiry date and quantity fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
+* The quantity field consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
+* The `value` in the quantity field is compulsory. It must be a positive number. It can be an integer or a decimal value.
+* The `unit` in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
+* If the `unit` in the quantity field is not provided, the default unit - `unit` - will be given.
 * For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
 * The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
 * Tags with only whitespace(s) will not be allowed.
 * A food item can have any number of tags (including 0).
 
 Examples:
-* `add d/canned tuna e/01-01-2021 p/low`
-* `add d/apple pie e/11-10-2020 p/medium t/frozen t/$15 t/contains nuts`
+* `add d/canned tuna e/01-01-2021 q/1.1 can p/low`
+* `add d/apple pie e/11-10-2020 q/2 p/medium t/frozen t/$15 t/contains nuts`
 
 ### Listing all food items : `list`
 
@@ -112,7 +116,7 @@ Examples:
 
 Edits the details of an existing food item in the food inventory.
 
-Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
+Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
 * Edits the food item at the specified `INDEX`. 
 * The index refers to the index number shown in the displayed food item list. 
@@ -124,7 +128,27 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
 Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
-* `edit 2 d/canned tuna t/` Edits the food description of the 2nd food item to be `canned tuna` and clears all existing tags.
+* `edit 2 d/canned tuna q/0.5 can t/` Edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.5 can` and clears all existing tags.
+
+### Undoing previous command: `undo`
+Restores the food inventory to a state before an undoable command was executed.
+
+* Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
+
+Format: `undo`
+
+Examples:
+* `delete 1` then `undo` will reverse the delete command.
+* `delete 1` `clear` then `undo` will reverse the `clear` command.
+
+### Redoing previously undone command: `redo`
+Restores the food inventory to a state before an undo command was executed.
+
+Format: `redo`
+
+Examples:
+* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
+* `clear` `undo` then `redo` will redo the `clear` command.
 
 ### Clearing all entries : `clear` 
 
@@ -155,10 +179,12 @@ Food Inventory data are saved in the hard disk automatically after any command t
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY] [t/TAG]…` <br> e.g., `add d/cereal e/31-10-2020 p/medium t/corn flakes`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…` <br> e.g., `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020`
+**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`<br> e.g., `find d/biscuits p/medium e/30-12-2020 t/cat t/dog`
 **List** | `list`
+**Undo** | `undo`
+**Redo** | `redo`
 **Help** | `help`

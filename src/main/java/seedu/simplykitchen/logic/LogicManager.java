@@ -27,6 +27,7 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final FoodInventoryParser foodInventoryParser;
+    private boolean foodInventoryModified;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -35,20 +36,26 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         foodInventoryParser = new FoodInventoryParser();
+
+        // Set foodInventoryModified to true whenever the models' food inventory is modified.
+        model.getFoodInventory().addListener(observable -> foodInventoryModified = true);
     }
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
+        foodInventoryModified = false;
 
         CommandResult commandResult;
         Command command = foodInventoryParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-        try {
-            storage.saveFoodInventory(model.getFoodInventory());
-        } catch (IOException ioe) {
-            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+        if (foodInventoryModified) {
+            try {
+                storage.saveFoodInventory(model.getFoodInventory());
+            } catch (IOException ioe) {
+                throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+            }
         }
 
         return commandResult;
