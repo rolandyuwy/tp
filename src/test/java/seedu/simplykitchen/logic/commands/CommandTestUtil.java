@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 
@@ -30,6 +31,8 @@ public class CommandTestUtil {
     public static final String VALID_PRIORITY_BREAD = "medium";
     public static final String VALID_EXPIRY_DATE_APPLE_PIE = "1-1-2021";
     public static final String VALID_EXPIRY_DATE_BREAD = "31-12-2021";
+    public static final String VALID_QUANTITY_APPLY_PIE = "1.5 pie";
+    public static final String VALID_QUANTITY_BREAD = "2";
     public static final String VALID_TAG_FROZEN = "Frozen";
     public static final String VALID_TAG_WHOLEMEAL = "Wholemeal";
 
@@ -39,6 +42,8 @@ public class CommandTestUtil {
     public static final String PRIORITY_DESC_BREAD = " " + PREFIX_PRIORITY + VALID_PRIORITY_BREAD;
     public static final String EXPIRY_DATE_DESC_APPLE_PIE = " " + PREFIX_EXPIRY_DATE + VALID_EXPIRY_DATE_APPLE_PIE;
     public static final String EXPIRY_DATE_DESC_BREAD = " " + PREFIX_EXPIRY_DATE + VALID_EXPIRY_DATE_BREAD;
+    public static final String QUANTITY_DESC_APPLE_PIE = " " + PREFIX_QUANTITY + VALID_QUANTITY_APPLY_PIE;
+    public static final String QUANTITY_DESC_BREAD = " " + PREFIX_QUANTITY + VALID_QUANTITY_BREAD;
     public static final String TAG_DESC_FROZEN = " " + PREFIX_TAG + VALID_TAG_FROZEN;
     public static final String TAG_DESC_WHOLEMEAL = " " + PREFIX_TAG + VALID_TAG_WHOLEMEAL;
 
@@ -50,6 +55,10 @@ public class CommandTestUtil {
             + "1-1-22"; // shortened year
     public static final String INVALID_EXPIRY_DATE_DESC = " " + PREFIX_EXPIRY_DATE
             + "29-2-2021"; // non-existent expiry date
+    public static final String INVALID_QUANTITY_UNIT = " " + PREFIX_QUANTITY + "1 @@"; // only alphabets allowed
+    public static final String INVALID_QUANTITY_VALUE = " " + PREFIX_QUANTITY + "-1"; // only positive numbers allowed
+    public static final String INVALID_QUANTITY_ZEROVALUE = " " + PREFIX_QUANTITY
+            + "0 UNIT"; // only positive numbers allowed
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -61,10 +70,10 @@ public class CommandTestUtil {
     static {
         DESC_APPLE_PIE = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
                 .withPriority(VALID_PRIORITY_APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
-                .withTags(VALID_TAG_FROZEN).build();
+                .withQuantity(VALID_QUANTITY_APPLY_PIE).withTags(VALID_TAG_FROZEN).build();
         DESC_BREAD = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_BREAD)
                 .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_BREAD)
-                .withTags(VALID_TAG_WHOLEMEAL, VALID_TAG_WHOLEMEAL).build();
+                .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL, VALID_TAG_WHOLEMEAL).build();
     }
 
     /**

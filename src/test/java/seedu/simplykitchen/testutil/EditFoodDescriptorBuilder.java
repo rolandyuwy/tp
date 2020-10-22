@@ -10,6 +10,7 @@ import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 
 /**
@@ -59,6 +60,14 @@ public class EditFoodDescriptorBuilder {
      */
     public EditFoodDescriptorBuilder withExpiryDate(String expiryDate) {
         descriptor.setExpiryDate(new ExpiryDate(expiryDate));
+        return this;
+    }
+
+    /**
+     * Sets the {@code quantity} of the {@code EditFoodDescriptor} that we are building.
+     */
+    public EditFoodDescriptorBuilder withQuantity(String quantity) {
+        descriptor.setQuantity(new Quantity(quantity));
         return this;
     }
 
