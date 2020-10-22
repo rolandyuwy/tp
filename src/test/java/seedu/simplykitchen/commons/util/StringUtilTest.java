@@ -10,41 +10,88 @@ import org.junit.jupiter.api.Test;
 
 public class StringUtilTest {
 
-    //---------------- Tests for isNonZeroUnsignedInteger --------------------------------------
+    //---------------- Tests for isNonZeroUnsignedPositiveInteger ----------------------------
 
     @Test
-    public void isNonZeroUnsignedInteger() {
+    public void isNonZeroUnsignedPositiveInteger() {
 
         // EP: empty strings
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("")); // Boundary value
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("  "));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("")); // Boundary value
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("  "));
 
         // EP: not a number
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("a"));
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("aaa"));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("a"));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("aaa"));
 
         // EP: zero
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("0"));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("0"));
 
         // EP: zero as prefix
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("01"));
+        assertTrue(StringUtil.isNonZeroUnsignedPositiveInteger("01"));
 
         // EP: signed numbers
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("-1"));
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("+1"));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("-1"));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("+1"));
 
         // EP: numbers with white space
-        assertFalse(StringUtil.isNonZeroUnsignedInteger(" 10 ")); // Leading/trailing spaces
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("1 0")); // Spaces in the middle
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger(" 10 ")); // Leading/trailing spaces
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("1 0")); // Spaces in the middle
 
         // EP: number larger than Integer.MAX_VALUE
-        assertFalse(StringUtil.isNonZeroUnsignedInteger(Long.toString(Integer.MAX_VALUE + 1)));
+        assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger(Long.toString(Integer.MAX_VALUE + 1)));
 
         // EP: valid numbers, should return true
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("1")); // Boundary value
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
+        assertTrue(StringUtil.isNonZeroUnsignedPositiveInteger("1")); // Boundary value
+        assertTrue(StringUtil.isNonZeroUnsignedPositiveInteger("10"));
     }
 
+    //---------------- Tests for isNonZeroSignedDouble ---------------------------------------
+
+    @Test
+    public void isNonZeroSignedDouble() {
+
+        // EP: empty strings
+        assertFalse(StringUtil.isNonZeroSignedDouble("")); // Boundary value
+        assertFalse(StringUtil.isNonZeroSignedDouble("  "));
+
+        // EP: not a double
+        assertFalse(StringUtil.isNonZeroSignedDouble("a"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("aaa"));
+
+        // EP: zero
+        assertFalse(StringUtil.isNonZeroSignedDouble("0"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("+0"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("-0"));
+
+        // EP: zero as prefix
+        assertTrue(StringUtil.isNonZeroSignedDouble("+01"));
+
+        // EP: unsigned doubles
+        assertFalse(StringUtil.isNonZeroSignedDouble("2"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("2.0"));
+
+        // EP: numbers with white space
+        assertFalse(StringUtil.isNonZeroSignedDouble(" +10 ")); // Leading/trailing spaces
+        assertFalse(StringUtil.isNonZeroSignedDouble("+ 10")); // Space between sign and magnitude
+        assertFalse(StringUtil.isNonZeroSignedDouble("+1 0")); // Spaces in the middle of a double
+
+        // EP: valid signed doubles, should return true
+        assertTrue(StringUtil.isNonZeroSignedDouble("+1")); // Integer will be converted to a double
+        assertTrue(StringUtil.isNonZeroSignedDouble("-1"));
+        assertTrue(StringUtil.isNonZeroSignedDouble("+2.0"));
+        assertTrue(StringUtil.isNonZeroSignedDouble("-2.0"));
+    }
+
+    //---------------- Tests for isValidRangeOfDouble ----------------------------------------
+
+    @Test
+    public void isValidRangeOfDouble() {
+        // EP: numbers smaller than -Double.MAX_VALUE and larger than Double.MAX_VALUE
+        assertFalse(StringUtil.isValidRangeOfDouble("+" + Double.MAX_VALUE));
+        assertFalse(StringUtil.isValidRangeOfDouble("+" + Double.POSITIVE_INFINITY));
+        assertFalse(StringUtil.isValidRangeOfDouble("-" + Double.MAX_VALUE));
+        assertFalse(StringUtil.isValidRangeOfDouble(String.valueOf(Double.NEGATIVE_INFINITY)));
+    }
 
     //---------------- Tests for containsWordIgnoreCase --------------------------------------
 
