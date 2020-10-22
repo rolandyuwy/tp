@@ -293,7 +293,7 @@ The find feature allows users to search for food items based on description, exp
 
 The find feature is achieved by setting a `predicate` on the `filteredList` located in `ModelManager`. This can be done using the method `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`, which uses the parameter as the `predicate`. There are 4 valid `predicate`, namely `DescriptionContainsKeywordsPredicate`, `ExpirySearchPredicate`, `PrioritySearchPredicate` and `TagSearchPredicate`, all of which implements the `Predicate<Food>` interface. Based on the user's `find` command, each of the `predicate` is generated with the relevant search parameters. Then, the `FindCommand#combinePredicates()` method will combine all the predicates into a single `predicate` and is passed to `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`.   
 
-The following sequence diagram illustrates the command `find d/apple e/30-9-2020 p/medium t/frozen`:
+The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
 
 ![FindSequenceDiagram](images/FindSequenceDiagram.png)
 
