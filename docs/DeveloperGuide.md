@@ -135,15 +135,12 @@ Classes used by multiple components are in the `seedu.simplykitchen.commons` pac
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### Undo/Redo feature
+The feature is implemented with a `VersionedFoodInventory`. The `VersionedFoodInventory` contains the different states of the food inventory. The states are stored in a `foodInventoryStateList` and the current state is tracked with a `currentStatePointer`. It also implements the following methods:
 
-#### Proposed Implementation 
-
-The proposed undo/redo mechanism is facilitated by `VersionedFoodInventory`. It extends `FoodInventory` with an undo/redo history, stored internally as an `foodInventoryStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedFoodInventory#commit()` — Saves the current food inventory state in its history.
-* `VersionedFoodInventory#undo()` — Restores the previous food inventory state from its history.
-* `VersionedFoodInventory#redo()` — Restores a previously undone food inventory state from its history.
+* `VersionedFoodInventory#commit()` — Saves the current food inventory state in its states list.
+* `VersionedFoodInventory#undo()` — Restores the previous food inventory state from its states list.
+* `VersionedFoodInventory#redo()` — Restores a previously undone food inventory state from its states list.
 
 These operations are exposed in the `Model` interface as `Model#commitFoodInventory()`, `Model#undoFoodInventory()` and `Model#redoFoodInventory()` respectively.
 
@@ -169,7 +166,8 @@ Step 4. The user now decides that adding the food item was a mistake, and decide
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial FoodInventory state, then there are no previous FoodInventory states to restore. The `undo` command uses `Model#canUndoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial food inventory state, then there are no previous food inventory states to restore. The `undo` command uses `Model#canUndoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather
+
 than attempting to perform the undo.
 
 </div>
@@ -184,7 +182,7 @@ The following sequence diagram shows how the undo operation works:
 
 The `redo` command does the opposite — it calls `Model#redoFoodInventory()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the food inventory to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, pointing to the latest food inventory state, then there are no undone FoodInventory states to restore. The `redo` command uses `Model#canRedoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, pointing to the latest food inventory state, then there are no undone food inventory states to restore. The `redo` command uses `Model#canRedoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
@@ -192,7 +190,7 @@ Step 5. The user then decides to execute the command `list`. Commands that do no
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Since the `currentStatePointer` is not pointing at the end of the `foodInventoryStateList`, all food inventory states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add d/Donut …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Since the `currentStatePointer` is not pointing at the end of the `foodInventoryStateList`, all food inventory states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add d/Donut …​` command.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
@@ -212,8 +210,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the food item being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
+  
 
 ### \[Proposed\] Data archiving
 
@@ -304,6 +301,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                      | view a list of all food items I have added                 | I have a complete display of all my food items               |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
 | `* * *`  | user who cares about some food items more | have different priority for different food items           | I can prioritise some food items                             |
+| `* *`    | user                                      | undo and redo                                              | I can easily fix mistakes when using the application         |
 | `* `     | user                                      | tag food items                                             | I can add additional information pertaining/relating to them |
 
 *{More to be added}*

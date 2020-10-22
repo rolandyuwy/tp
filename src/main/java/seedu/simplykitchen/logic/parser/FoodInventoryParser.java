@@ -15,6 +15,8 @@ import seedu.simplykitchen.logic.commands.ExitCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
+import seedu.simplykitchen.logic.commands.RedoCommand;
+import seedu.simplykitchen.logic.commands.UndoCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**
@@ -67,6 +69,12 @@ public class FoodInventoryParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case RedoCommand.COMMAND_WORD:
+            return new RedoCommand();
+
+        case UndoCommand.COMMAND_WORD:
+            return new UndoCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -120,6 +120,26 @@ Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` Edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.5 can` and clears all existing tags.
 
+### Undoing previous command: `undo`
+Restores the food inventory to a state before an undoable command was executed.
+
+* Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
+
+Format: `undo`
+
+Examples:
+* `delete 1` then `undo` will reverse the delete command.
+* `delete 1` `clear` then `undo` will reverse the `clear` command.
+
+### Redoing previously undone command: `redo`
+Restores the food inventory to a state before an undo command was executed.
+
+Format: `redo`
+
+Examples:
+* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
+* `clear` `undo` then `redo` will redo the `clear` command.
+
 ### Clearing all entries : `clear` 
 
 Clears all entries from the food inventory.
@@ -155,4 +175,6 @@ Action | Format, Examples
 **Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
 **List** | `list`
+**Undo** | `undo`
+**Redo** | `redo`
 **Help** | `help`
