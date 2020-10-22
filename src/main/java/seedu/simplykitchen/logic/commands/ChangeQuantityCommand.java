@@ -69,6 +69,9 @@ public class ChangeQuantityCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, editedFood));
     }
 
+    /**
+     * Updates the quantity of a food item's by a certain amount.
+     */
     private Food updateQuantity(Food originalFood, double amount) throws CommandException {
         Quantity oldQuantity = originalFood.getQuantity();
         String quantityUnit = oldQuantity.unit;
@@ -88,5 +91,22 @@ public class ChangeQuantityCommand extends Command {
         Set<Tag> tags = originalFood.getTags();
 
         return new Food(description, priority, expiryDate, newQuantity, tags);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ChangeQuantityCommand)) {
+            return false;
+        }
+
+        // state checks
+        ChangeQuantityCommand c = (ChangeQuantityCommand) other;
+        return index.equals(c.index) && amount == c.amount;
     }
 }
