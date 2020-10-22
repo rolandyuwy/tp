@@ -80,6 +80,7 @@ public class EditCommand extends Command {
 
         model.setFood(foodToEdit, editedFood);
         model.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        model.commitFoodInventory();
         return new CommandResult(String.format(MESSAGE_EDIT_FOOD_SUCCESS, editedFood));
     }
 

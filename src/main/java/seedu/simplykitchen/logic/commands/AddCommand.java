@@ -53,6 +53,7 @@ public class AddCommand extends Command {
         }
 
         model.addFood(toAdd);
+        model.commitFoodInventory();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
