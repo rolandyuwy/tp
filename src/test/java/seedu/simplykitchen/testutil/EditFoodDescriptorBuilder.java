@@ -36,6 +36,7 @@ public class EditFoodDescriptorBuilder {
         descriptor.setDescription(food.getDescription());
         descriptor.setPriority(food.getPriority());
         descriptor.setExpiryDate(food.getExpiryDate());
+        descriptor.setQuantity(food.getQuantity());
         descriptor.setTags(food.getTags());
     }
 
