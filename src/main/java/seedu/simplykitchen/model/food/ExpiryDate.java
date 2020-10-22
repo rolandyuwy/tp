@@ -92,6 +92,25 @@ public class ExpiryDate {
         return yearString.length() == 4;
     }
 
+    /**
+     * Returns if the first ExpiryDate object's expiry date is after next ExpiryDate object's expiry date.
+     */
+    public static boolean isAfter(ExpiryDate expiryDate1, ExpiryDate expiryDate2) {
+        try {
+            String expiryDateString1 = replaceSlashWithDash(expiryDate1.value);
+            String expiryDateString2 = replaceSlashWithDash(expiryDate2.value);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+            LocalDate localDate1 = LocalDate.parse(expiryDateString1, formatter);
+            LocalDate localDate2 = LocalDate.parse(expiryDateString2, formatter);
+
+            return localDate1.isAfter(localDate2);
+        } catch (DateTimeParseException e) {
+            assert false : "Expiry Dates should be valid";
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return value;

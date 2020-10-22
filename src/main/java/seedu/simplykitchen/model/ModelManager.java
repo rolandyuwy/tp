@@ -2,13 +2,16 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_DESCRIPTION;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
@@ -22,6 +25,7 @@ public class ModelManager implements Model {
     private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
+    private final SortedList<Food> sortedFoods;
 
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
@@ -35,7 +39,10 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
+
+        sortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
+        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
+        filteredFoods = new FilteredList<>(sortedFoods);
     }
 
     public ModelManager() {
@@ -104,6 +111,7 @@ public class ModelManager implements Model {
     public void addFood(Food food) {
         versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
     }
 
     @Override
@@ -155,6 +163,12 @@ public class ModelManager implements Model {
     @Override
     public void commitFoodInventory() {
         versionedFoodInventory.commit();
+    }
+
+    @Override
+    public void updateSortedFoodList(Comparator<Food> comparator) {
+        requireNonNull(comparator);
+        sortedFoods.setComparator(comparator);
     }
 
     @Override
