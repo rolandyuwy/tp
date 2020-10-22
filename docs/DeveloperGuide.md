@@ -291,7 +291,7 @@ The find feature allows users to search for food items based on description, exp
 
 #### Implementation:
 
-The find feature is achieved by setting a `predicate` on the `filteredList` located in `ModelManager`. This can be done using the method `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`, which uses the parameter as the `predicate`. There are 4 valid `predicate`, namely `DescriptionContainsKeywordsPredicate`, `ExpirySearchPredicate`, `PrioritySearchPredicate` and `TagSearchPredicate`, all of which implements the `Predicate<Food>` interface. Based on the user's `find` command, each of the `predicate` is generated with the relevant search parameters. Then, the `FindCommand#combinePredicates()` method will combine all the predicates into a single `predicate` and is passed to `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`.
+The find feature is achieved by setting a `predicate` on the `filteredList` located in `ModelManager`. This can be done using the method `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`, which uses the parameter as the `predicate`. There are four valid predicates, namely `DescriptionContainsKeywordsPredicate`, `ExpirySearchPredicate`, `PrioritySearchPredicate` and `TagSearchPredicate`, all of which implement the `Predicate<Food>` interface. Based on the user's `find` command, each of the `predicate` is generated with the relevant search parameters. Then, the `FindCommand#combinePredicates()` method will combine all the predicates into a single `predicate` and is passed to `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`.
 
 The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
 
@@ -307,7 +307,7 @@ The following is the class diagram for the Find feature:
 
 #### Implementation Rationale:
 
-Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for 1 or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
+Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
 
 #### Design Consideration:
 
@@ -315,11 +315,11 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 ##### Aspect: Implementation
 
-* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command can only be 1 fixed date.
+* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command can only be one fixed date.
     * Pros: Easy to implement and search is more specific.
     * Cons: If the user wants to get all the expiring food items in a certain period, multiple searches will be required.
 * <b>Alternative 2: </b> The expiry date in the `find` command can be a date range.
-    * Pros: Able to get all the food items that are going to expire in a certain period with 1 search.
+    * Pros: Able to get all the food items that are going to expire in a certain period with one search.
     * Cons: Will need more validation to ensure the date range provided is valid.
 
 --------------------------------------------------------------------------------------------------------------------
