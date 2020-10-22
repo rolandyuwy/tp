@@ -405,7 +405,7 @@ Use case ends.
    Steps **1a1.** - **1a2.** are repeated until the food item entered is correct.
 
    Use case resumes from step **2**.
- 
+
 <br/>
 
 #### UC02: Delete a food item
