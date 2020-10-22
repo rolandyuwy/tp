@@ -301,6 +301,10 @@ The following sequence diagram illustrates how the command `find d/apple e/30-9-
 
 The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
 
+The following is the class diagram for the Find feature:
+
+![FindClasseDiagram](images/FindClassDiagram.png)
+
 #### Implementation Rationale:
 
 Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for 1 or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search. 
