@@ -68,7 +68,7 @@ public class StringUtil {
 
     /**
      * Returns true if {@code s} represents a non-zero signed double
-     * e.g. {@code -DOUBLE.MAX_VALUE}, ..., -2, -1, +1, +2, ..., {@code DOUBLE.MAX_VALUE} <br>
+     * e.g. ..., -2, -1, +1, +2, ... <br>
      * Will return false for any other non-null string input
      * e.g. empty string, "0", " +1.5 " (untrimmed), "+ 1.5" (contains whitespace), "+1a" (contains letters)
      * @throws NullPointerException if {@code s} is null.
@@ -79,6 +79,22 @@ public class StringUtil {
         try {
             double value = Double.parseDouble(s);
             return value != 0 && (s.startsWith("+") || s.startsWith("-"));
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if {@code s} represents a double within the range of double permitted in Java
+     * Will return false for any numbers not within that range
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isValidRangeOfDouble(String s) {
+        requireNonNull(s);
+
+        try {
+            double value = Double.parseDouble(s);
+            return value < Double.MAX_VALUE && value > -Double.MAX_VALUE;
         } catch (NumberFormatException nfe) {
             return false;
         }

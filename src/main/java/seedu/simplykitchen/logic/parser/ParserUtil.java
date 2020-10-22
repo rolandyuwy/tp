@@ -22,6 +22,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_AMOUNT = "Amount is not a non-zero signed number.";
+    public static final String MESSAGE_OUT_OF_RANGE_AMOUNT = "The amount is too small/big.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -111,6 +112,9 @@ public class ParserUtil {
         String trimmedAmount = amount.trim();
         if (!StringUtil.isNonZeroSignedDouble(trimmedAmount)) {
             throw new ParseException(MESSAGE_INVALID_AMOUNT);
+        }
+        if (!StringUtil.isValidRangeOfDouble(trimmedAmount)) {
+            throw new ParseException(MESSAGE_OUT_OF_RANGE_AMOUNT);
         }
         return Double.parseDouble(trimmedAmount);
     }
