@@ -75,18 +75,28 @@ Format: `list`
 
 Searches for food items in the inventory with descriptions matching any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
-* The search is case-insensitive. e.g `fish` will match `Fish`
-* The order of the keywords does not matter. e.g. `Cake Fish` will match `Fish Cake`
-* Only the description is searched.
-* Only full words will be matched e.g. `fis` will not match `fish`.
-* Food items matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`
+* The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
+* The search is case-insensitive. e.g `fish` will match `Fish`.
+* The order of the descriptions does not matter. e.g. `Cake Fish` will match `Fish Cake`.
+* Only full words in description will be matched e.g. `fis` will not match `fish`.
+* Food items with description matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`.
+* The priority field can be either `high`, `medium` or `low`.
+* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
+* The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
+* Tags with only whitespace(s) will not be allowed.
+* Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
+* Food items with tags matching at least one of the search tags will be returned (i.e `OR` search). e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags.
 
 Examples:
-* `find chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
-* `find apple tuna` returns `Apple Pie` and `Tuna Can`.
-  ![result for 'find apple tuna'](images/findAppleTunaResult.png)
+* `find d/chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
+* `find d/apple tuna` returns `Apple Pie` and `Tuna Can`.
+* `find d/apple p/high` returns `Apple Pie` and `Apple Jam`, both items have `HIGH` priority.
+* `find e/30-12-2020` returns  all food items with expiry date on `30-12-2020`.
+* `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
+* `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `MEDIUM` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
+  ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
 ### Deleting a food item : `delete`
 
@@ -173,7 +183,7 @@ Action | Format, Examples
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
+**Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`<br> e.g., `find d/biscuits p/medium e/30-12-2020 t/cat t/dog`
 **List** | `list`
 **Undo** | `undo`
 **Redo** | `redo`
