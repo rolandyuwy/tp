@@ -47,7 +47,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validFood);
         ModelStub modelStub = new ModelStubWithFood(validFood);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_FOOD, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_FOOD, () ->
+                addCommand.execute(modelStub));
     }
 
     @Test
@@ -147,6 +148,32 @@ public class AddCommandTest {
         public void updateFilteredFoodList(Predicate<Food> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean canUndoFoodInventory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoFoodInventory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoFoodInventory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoFoodInventory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitFoodInventory() {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
@@ -183,6 +210,11 @@ public class AddCommandTest {
         public void addFood(Food food) {
             requireNonNull(food);
             foodAdded.add(food);
+        }
+
+        @Override
+        public void commitFoodInventory() {
+            // called by {@code AddCommand#execute()}
         }
 
         @Override

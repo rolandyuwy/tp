@@ -85,4 +85,29 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFoodList(Predicate<Food> predicate);
+
+    /**
+     * Returns true if the model has previous food inventory states to restore.
+     */
+    boolean canUndoFoodInventory();
+
+    /**
+     * Returns true if the model has undone food inventory states to restore.
+     */
+    boolean canRedoFoodInventory();
+
+    /**
+     * Restores the model's food inventory to its previous state.
+     */
+    void undoFoodInventory();
+
+    /**
+     * Restores the model's food inventory to its previously undone state.
+     */
+    void redoFoodInventory();
+
+    /**
+     * Saves the current food inventory state for undo/redo.
+     */
+    void commitFoodInventory();
 }

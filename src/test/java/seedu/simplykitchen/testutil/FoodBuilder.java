@@ -7,6 +7,7 @@ import seedu.simplykitchen.model.food.Description;
 import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
+import seedu.simplykitchen.model.food.Quantity;
 import seedu.simplykitchen.model.tag.Tag;
 import seedu.simplykitchen.model.util.SampleDataUtil;
 
@@ -17,10 +18,12 @@ public class FoodBuilder {
     public static final String DEFAULT_DESCRIPTION = "Anchovies";
     public static final String DEFAULT_PRIORITY = "medium";
     public static final String DEFAULT_EXPIRY_DATE = "15-1-2022";
+    public static final String DEFAULT_QUANTITY = "1 can";
 
     private Description description;
     private Priority priority;
     private ExpiryDate expiryDate;
+    private Quantity quantity;
     private Set<Tag> tags;
 
     /**
@@ -30,6 +33,7 @@ public class FoodBuilder {
         description = new Description(DEFAULT_DESCRIPTION);
         priority = new Priority(DEFAULT_PRIORITY);
         expiryDate = new ExpiryDate(DEFAULT_EXPIRY_DATE);
+        quantity = new Quantity(DEFAULT_QUANTITY);
         tags = new HashSet<>();
     }
 
@@ -40,6 +44,7 @@ public class FoodBuilder {
         description = foodToCopy.getDescription();
         priority = foodToCopy.getPriority();
         expiryDate = foodToCopy.getExpiryDate();
+        quantity = foodToCopy.getQuantity();
         tags = new HashSet<>(foodToCopy.getTags());
     }
 
@@ -75,8 +80,16 @@ public class FoodBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code quantity} of the {@code Food} that we are building.
+     */
+    public FoodBuilder withQuantity(String quantity) {
+        this.quantity = new Quantity(quantity);
+        return this;
+    }
+
     public Food build() {
-        return new Food(description, priority, expiryDate, tags);
+        return new Food(description, priority, expiryDate, quantity, tags);
     }
 
 }

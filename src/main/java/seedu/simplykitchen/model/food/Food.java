@@ -21,16 +21,19 @@ public class Food {
     private final ExpiryDate expiryDate;
 
     // Data fields
+    private final Quantity quantity;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Food(Description description, Priority priority, ExpiryDate expiryDate, Set<Tag> tags) {
-        requireAllNonNull(description, priority, expiryDate, tags);
+    public Food(Description description, Priority priority, ExpiryDate expiryDate,
+                Quantity quantity, Set<Tag> tags) {
+        requireAllNonNull(description, priority, expiryDate, quantity, tags);
         this.description = description;
         this.priority = priority;
         this.expiryDate = expiryDate;
+        this.quantity = quantity;
         this.tags.addAll(tags);
     }
 
@@ -44,6 +47,10 @@ public class Food {
 
     public ExpiryDate getExpiryDate() {
         return expiryDate;
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
     }
 
     /**
@@ -92,7 +99,7 @@ public class Food {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(description, priority, expiryDate, tags);
+        return Objects.hash(description, priority, expiryDate, quantity, tags);
     }
 
     @Override
@@ -100,7 +107,8 @@ public class Food {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDescription()).append(", ")
                 .append(getExpiryDate()).append(", ")
-                .append(getPriority())
+                .append(getPriority()).append(", ")
+                .append(getQuantity())
                 .append("\n  Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
