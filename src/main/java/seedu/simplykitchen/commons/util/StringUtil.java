@@ -67,10 +67,11 @@ public class StringUtil {
     }
 
     /**
-     * Returns true if {@code s} represents a non-zero signed double
-     * e.g. ..., -2, -1, +1, +2, ... <br>
+     * Returns true if {@code s} represents a non-zero signed double with a maximum of 2 decimal places
+     * e.g. ..., -2.99, -1, +1, +2.99, ... <br>
      * Will return false for any other non-null string input
-     * e.g. empty string, "0", " +1.5 " (untrimmed), "+ 1.5" (contains whitespace), "+1a" (contains letters)
+     * e.g. empty string, "0", " +1.5 " (untrimmed), "+ 1.5" (contains whitespace), "+1a" (contains letters),
+     *      "-1.123" (more than 2 decimal places)
      * @throws NullPointerException if {@code s} is null.
      */
     public static boolean isNonZeroSignedDouble(String s) {
@@ -78,23 +79,8 @@ public class StringUtil {
 
         try {
             double value = Double.parseDouble(s);
-            return value != 0 && (s.startsWith("+") || s.startsWith("-"));
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if {@code s} represents a double within the range of double permitted in Java
-     * Will return false for any numbers not within that range
-     * @throws NullPointerException if {@code s} is null.
-     */
-    public static boolean isValidRangeOfDouble(String s) {
-        requireNonNull(s);
-
-        try {
-            double value = Double.parseDouble(s);
-            return value < Double.MAX_VALUE && value > -Double.MAX_VALUE;
+            String valueValidationRegex = "[+-][0-9]*[.]?[0-9]?[0-9]?";
+            return value != 0 && s.matches(valueValidationRegex);
         } catch (NumberFormatException nfe) {
             return false;
         }

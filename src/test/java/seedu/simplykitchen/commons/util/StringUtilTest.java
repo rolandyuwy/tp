@@ -61,36 +61,37 @@ public class StringUtilTest {
         // EP: zero
         assertFalse(StringUtil.isNonZeroSignedDouble("0"));
         assertFalse(StringUtil.isNonZeroSignedDouble("+0"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("-0"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("+.0"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("-0.00"));
 
         // EP: zero as prefix
         assertTrue(StringUtil.isNonZeroSignedDouble("+01"));
+        assertTrue(StringUtil.isNonZeroSignedDouble("-01.00"));
+
+        // EP: only a sign and a decimal point
+        assertFalse(StringUtil.isNonZeroSignedDouble("+."));
 
         // EP: unsigned doubles
         assertFalse(StringUtil.isNonZeroSignedDouble("2"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("2.0"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("2.00"));
 
         // EP: numbers with white space
         assertFalse(StringUtil.isNonZeroSignedDouble(" +10 ")); // Leading/trailing spaces
         assertFalse(StringUtil.isNonZeroSignedDouble("+ 10")); // Space between sign and magnitude
-        assertFalse(StringUtil.isNonZeroSignedDouble("+1 0")); // Spaces in the middle of a double
+        assertFalse(StringUtil.isNonZeroSignedDouble("+1 0")); // Spaces in the middle of a double value
+
+        // EP: numbers with more than 2 decimal places
+        assertFalse(StringUtil.isNonZeroSignedDouble("+1.234"));
+        assertFalse(StringUtil.isNonZeroSignedDouble("-5.678"));
+
+        // EP: numbers starting with a decimal point
+        assertTrue(StringUtil.isNonZeroSignedDouble("+.5"));
+        assertTrue(StringUtil.isNonZeroSignedDouble("-.50"));
 
         // EP: valid signed doubles, should return true
         assertTrue(StringUtil.isNonZeroSignedDouble("+1")); // Integer will be converted to a double
-        assertTrue(StringUtil.isNonZeroSignedDouble("-1"));
-        assertTrue(StringUtil.isNonZeroSignedDouble("+2.0"));
-        assertTrue(StringUtil.isNonZeroSignedDouble("-2.0"));
-    }
-
-    //---------------- Tests for isValidRangeOfDouble ----------------------------------------
-
-    @Test
-    public void isValidRangeOfDouble() {
-        // EP: numbers smaller than -Double.MAX_VALUE and larger than Double.MAX_VALUE
-        assertFalse(StringUtil.isValidRangeOfDouble("+" + Double.MAX_VALUE));
-        assertFalse(StringUtil.isValidRangeOfDouble("+" + Double.POSITIVE_INFINITY));
-        assertFalse(StringUtil.isValidRangeOfDouble("-" + Double.MAX_VALUE));
-        assertFalse(StringUtil.isValidRangeOfDouble(String.valueOf(Double.NEGATIVE_INFINITY)));
+        assertTrue(StringUtil.isNonZeroSignedDouble("-0.5"));
+        assertTrue(StringUtil.isNonZeroSignedDouble("+2.50"));
     }
 
     //---------------- Tests for containsWordIgnoreCase --------------------------------------

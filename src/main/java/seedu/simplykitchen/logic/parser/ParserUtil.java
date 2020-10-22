@@ -20,9 +20,11 @@ import seedu.simplykitchen.model.tag.Tag;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_AMOUNT = "Amount is not a non-zero signed number.";
-    public static final String MESSAGE_OUT_OF_RANGE_AMOUNT = "The amount is too small/big.";
+    public static final String MESSAGE_INVALID_INDEX = "Index should be a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_AMOUNT =
+            "Amount should be a non-zero signed number with a maximum of 2 decimal places.";
+    public static final String MESSAGE_INVALID_AMOUNT_SIZE =
+            "Amount is too small/big";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -113,10 +115,12 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroSignedDouble(trimmedAmount)) {
             throw new ParseException(MESSAGE_INVALID_AMOUNT);
         }
-        if (!StringUtil.isValidRangeOfDouble(trimmedAmount)) {
-            throw new ParseException(MESSAGE_OUT_OF_RANGE_AMOUNT);
+
+        double value = Double.parseDouble(trimmedAmount);
+        if (value >= Double.MAX_VALUE || value <= -Double.MAX_VALUE) {
+            throw new ParseException(MESSAGE_INVALID_AMOUNT_SIZE);
         }
-        return Double.parseDouble(trimmedAmount);
+        return value;
     }
 
     /**
