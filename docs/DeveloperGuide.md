@@ -285,6 +285,35 @@ The constraints above have been applied after careful consideration of the needs
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
 
+### Find feature
+
+The find feature allows users to search for food items based on description, expiration date, priority and/or tags.
+
+#### Implementation:
+
+The find feature is achieved by setting a `predicate` on the `filteredList` located in `ModelManager`. This can be done using the method `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`, which uses the parameter as the `predicate`. There are 4 valid `predicate`, namely `DescriptionContainsKeywordsPredicate`, `ExpirySearchPredicate`, `PrioritySearchPredicate` and `TagSearchPredicate`, all of which implements the `Predicate<Food>` interface. Based on the user's `find` command, each of the `predicate` is generated with the relevant search parameters. Then, the `FindCommand#combinePredicates()` method will combine all the predicates into a single `predicate` and is passed to `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`.   
+
+#### Find command
+
+The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
+
+#### Implementation Rationale:
+
+Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for 1 or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search. 
+
+#### Design Consideration:
+
+Each parameter of the search can be mapped to a `predicate`. This allows for scalability in the future as when a new attribute is added to `Food`, a new `predicate` implementing the `Predicate<Food>` interface can be created to search for this field without affecting the `predicates` of the other attributes. 
+
+##### Aspect: Implementation
+
+* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command can only be 1 fixed date.
+    * Pros: Easy to implement and search is more specific. 
+    * Cons: If the user wants to get all the expiring food items in a certain period, multiple searches will be required.
+* <b>Alternative 2: </b> The expiry date in the `find` command can be a date range. 
+    * Pros: Able to get all the food items that are going to expire in a certain period with 1 search.
+    * Cons: Will need more validation to ensure the date range provided is valid.    
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
