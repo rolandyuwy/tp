@@ -216,7 +216,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### Implementation
 
-The sorting feature consists of two commends, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
+The sorting feature consists of two commands, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
 The sorting order is in accordance to what is likely the most useful order for the user.
 
@@ -279,11 +279,50 @@ The constraints above have been applied after careful consideration of the needs
 ##### Aspect: Implementation
 
 * <b>Alternative 1 (current choice): </b> Value and unit stored as double and string fields in the Quantity class.
-    * Pros: Easy to implement.
+    * Pros: Easy to implement given the tight project timeframe.
     * Cons: Less OOP compared to the other alternative.
 * <b>Alternative 2: </b> Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
+
+### Change quantity feature
+
+The change quantity feature allows users to increment or decrement the quantity of a food item by a certain amount.
+
+#### Implementation:
+
+The `ChangeQuantityCommandParser` class parses the command by first extracting the index of the food item within the food list displayed to the user.
+
+Next, the `amount` is parsed. It is a non-zero signed double value.
+
+* Having a quantity change of zero is meaningless.
+* The signed value is used to denote the increment or decrement of the quantity value.
+* The amount value is constrained to a maximum of 2 decimal places. Any additional decimal places used will not be meaningful from the user's point of view.
+* A unit is not required as it can be derived from the existing unit of the food item when the user wants to change its quantity.
+
+A new `ChangeQuantityCommand` object is created with the extracted index and amount. It will retrieve the correct food item from the filtered list of food item provided by the `model` object.
+
+The selected food item will have its quantity updated through the `changeQuantityCommand#updateQuantity` method.
+The method will check if the new quantity is less than or equal to zero, in which it will throw a `ParseException` to notify the user that the updated quantity cannot go below 0.
+If the new quantity is 0, the user will also be prompted to use the `delete` command to delete the food item instead of setting the quantity to 0.
+
+#### Design Consideration:
+
+Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
+This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
+To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
+This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
+
+##### Aspect: Modifying a food item's quantity
+
+* <b>Alternative 1 (current choice): </b> Extract the value from the `quantity` object, update it and append it to the unit of the same object.
+    * Pros: Easy to implement given the tight project timeframe.
+    * Cons: Violates Law of Demeter when extracting relevant fields from the `quantity` object.
+* <b>Alternative 2: </b> Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
+    * Pros: Improves OOP aspect of the code.
+    * Cons: Unnecessarily complicates the code.
+    * Cons: Only the quantity field of a `food` object is changed so a `Descriptor` class may be an overkill.
+    * Cons: The Law of Demeter will still be violated and this problem is merely transferred from one place to another.
 
 ### Find feature
 
@@ -372,7 +411,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                   |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
-| `* *`    | user                                      | undo and redo                                              | I can easily fix mistakes when using the application         |
+| `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen |
+| `* *`    | user                                      | undo and redo                                              | easily fix mistakes when using the application               |
 | `* `     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
 
 
@@ -416,7 +456,7 @@ Use case ends.
 
 **MSS:**
 
-**1.** User requests to <ins>find a food item (UC03)</ins> or <ins>list all food items (UC04)</ins>.
+**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
 
 **2.** SimplyKitchen displays a list of food items.
 
@@ -452,7 +492,7 @@ Use case ends.
 
 **MSS:**
 
-**1.** User requests to <ins>find a food item (UC03)</ins> or <ins>list all food items (UC04)</ins>.
+**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
 
 **2.** SimplyKitchen displays a list of food items.
 
@@ -490,7 +530,51 @@ Use case ends.
 
 <br/>
 
-#### UC04: Find a food item
+#### UC04: Change the quantity of a food item
+
+**Guarantees:**  The food item has its quantity changed.
+
+**MSS:**
+
+**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
+
+**2.** SimplyKitchen displays a list of food items.
+
+**3.** User requests to change the quantity of a food item.
+
+**4.** SimplyKitchen changes the quantity of the food item in the food inventory and displays a success message.
+
+Use case ends.
+
+**Extensions:**
+
+**2a.** The list is empty.
+
+Use case ends.
+
+**3a.** SimplyKitchen detects an invalid index corresponding to the food item in the list.
+
+ * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct index.
+
+ * **3a2.** User requests to change the quantity of another food item in the list.
+
+   Steps **3a1.** - **3a2.** are repeated until the index entered is correct.
+
+   Use case resumes from step **4**.
+
+**3a.** SimplyKitchen detects an error in the user's input quantity.
+
+ * **3a1.** SimplyKitchen displays an error message and prompts the user to enter a correct input quantity.
+
+ * **3a2.** User enters another input quantity.
+
+   Steps **3a1.** - **3a2.** are repeated until the input quantity is correct.
+
+   Use case resumes from step **4**.
+
+<br/>
+
+#### UC05: Find a food item
 
 **Guarantees:**  All food items in the food inventory that match the query are listed.
 
@@ -514,7 +598,9 @@ Use case ends.
 
    Use case resumes from step **2**.
 
-#### UC05: List all food items
+<br/>
+
+#### UC06: List all food items
 
 **Guarantees:**  All food items in the food inventory are listed.
 
@@ -526,7 +612,9 @@ Use case ends.
 
 Use case ends.
 
-#### UC06: Clear all food items
+<br/>
+
+#### UC07: Clear all food items
 
 **Guarantees:**  All food items in the food inventory are cleared.
 
@@ -538,7 +626,9 @@ Use case ends.
 
 Use case ends.
 
-#### UC07: Sort food items by expiry date
+<br/>
+
+#### UC08: Sort food items by expiry date
 
 **Guarantees:** The food items in the food list are sorted by expiry date.
 
@@ -560,7 +650,9 @@ Use case ends.
 
 Use case ends.
 
-#### UC08: Sort food items by priority
+<br/>
+
+#### UC09: Sort food items by priority
 
 **Guarantees:** The food items in the food list are sorted by priority.
 
@@ -581,6 +673,8 @@ Use case ends.
 **2a.** The list is empty.
 
 Use case ends.
+
+<br/>
 
 *{More to be added}*
 
