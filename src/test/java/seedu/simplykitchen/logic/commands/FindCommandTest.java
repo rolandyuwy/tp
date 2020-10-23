@@ -36,6 +36,7 @@ import seedu.simplykitchen.model.tag.TagSearchPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
+
     private Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
     private Model expectedModel = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
 

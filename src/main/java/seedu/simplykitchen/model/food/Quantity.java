@@ -9,7 +9,9 @@ import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
  */
 public class Quantity {
     public static final String QUANTITY_VALUE_CONSTRAINTS =
-            "The value in the quantity field must be a positive number.";
+            "The value in the quantity field must be a positive number with a maximum of 2 decimal places.";
+    public static final String QUANTITY_VALUE_SIZE_CONSTRAINTS =
+            "The value in the quantity field is too big.";
     public static final String QUANTITY_UNIT_CONSTRAINTS =
             "The unit in the quantity field is optional. If provided, unit should only contain alphabets."
             + "\nIf the unit is not provided, a default unit - \"unit\" - will be given.";
@@ -17,14 +19,14 @@ public class Quantity {
             "The quantity field must contain a positive number followed by an optional unit. "
                     + "\nIt should not be blank.";
 
-    public static final String UNIT_VALIDATION_REGEX = "[a-zA-z]*";
-    public static final String VALUE_VALIDATION_REGEX = "[0-9]*[.]?[0-9]*";
+    public static final String UNIT_VALIDATION_REGEX = "[a-zA-Z]*";
+    public static final String VALUE_VALIDATION_REGEX = "[0-9]*[.]?[0-9]?[0-9]?";
     public static final String DEFAULT_UNIT = "unit";
     public final double value;
     public final String unit;
 
     /**
-     * Constructor when no unit is provided.
+     * Constructs a {@code Quantity}
      *
      * @param quantity a quantity string
      */
@@ -43,6 +45,18 @@ public class Quantity {
     }
 
     /**
+     * Creates a {@code Quantity} object from a double value and a unit string.
+     *
+     * @param value a double value
+     * @param unit a unit string
+     */
+    public static Quantity of(double value, String unit) {
+        String valueString = String.valueOf(value);
+        String quantityString = valueString + " " + unit;
+        return new Quantity(quantityString);
+    }
+
+    /**
      * Returns if given parameters is a valid quantity string.
      */
     public static boolean isValidQuantity(String quantity) {
@@ -58,10 +72,14 @@ public class Quantity {
         }
 
         if (unit.matches(UNIT_VALIDATION_REGEX) && value.matches(VALUE_VALIDATION_REGEX)) {
-            if (Double.parseDouble(value) > 0) {
-                return true;
+            try {
+                double doubleValue = Double.parseDouble(value);
+                return doubleValue > 0 && doubleValue < Double.MAX_VALUE;
+            } catch (NumberFormatException nfe) {
+                return false;
             }
         }
+
         return false;
     }
 
@@ -88,9 +106,14 @@ public class Quantity {
             return QUANTITY_VALUE_CONSTRAINTS;
         }
 
-        if (Double.parseDouble(value) <= 0) {
+        double doubleValue = Double.parseDouble(value);
+        if (doubleValue <= 0) {
             // if the value is not a positive number
             return QUANTITY_VALUE_CONSTRAINTS;
+        }
+        if (doubleValue >= Double.MAX_VALUE) {
+            // if the value is too big
+            return QUANTITY_VALUE_SIZE_CONSTRAINTS;
         }
 
         if (!unit.matches(UNIT_VALIDATION_REGEX)) {

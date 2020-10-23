@@ -1,14 +1,17 @@
 package seedu.simplykitchen.testutil;
 
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 
 import java.util.Set;
 
 import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.tag.Tag;
@@ -23,6 +26,17 @@ public class FoodUtil {
      */
     public static String getAddCommand(Food food) {
         return AddCommand.COMMAND_WORD + " " + getFoodDetails(food);
+    }
+
+    /**
+     * Returns a change quantity command for changing the quantity of a food item by {@code amount} unit.
+     */
+    public static String getChangeQuantityCommand(double amount) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(ChangeQuantityCommand.COMMAND_WORD + " ");
+        sb.append(INDEX_FIRST_FOOD.getOneBased() + " ");
+        sb.append(PREFIX_AMOUNT + "+1.00");
+        return sb.toString();
     }
 
     /**

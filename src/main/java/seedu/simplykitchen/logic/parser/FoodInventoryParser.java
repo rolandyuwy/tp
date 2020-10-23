@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
 import seedu.simplykitchen.logic.commands.ClearCommand;
 import seedu.simplykitchen.logic.commands.Command;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
@@ -65,6 +66,9 @@ public class FoodInventoryParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ChangeQuantityCommand.COMMAND_WORD:
+            return new ChangeQuantityCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

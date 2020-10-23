@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
 import seedu.simplykitchen.logic.commands.ClearCommand;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
@@ -41,6 +42,14 @@ public class FoodInventoryParserTest {
         Food food = new FoodBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(FoodUtil.getAddCommand(food));
         assertEquals(new AddCommand(food), command);
+    }
+
+    @Test
+    public void parseCommand_changeQuantity() throws Exception {
+        double amount = +1.00;
+        ChangeQuantityCommand command = (ChangeQuantityCommand) parser
+                .parseCommand(FoodUtil.getChangeQuantityCommand(amount));
+        assertEquals(new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount), command);
     }
 
     @Test

@@ -13,7 +13,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_ZEROVALUE;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_ZERO_VALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
@@ -143,7 +143,7 @@ public class AddCommandParserTest {
 
         // invalid value zero in quantity field
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_ZEROVALUE
+                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_ZERO_VALUE
                 + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Quantity.QUANTITY_VALUE_CONSTRAINTS);
 
         // invalid tag
