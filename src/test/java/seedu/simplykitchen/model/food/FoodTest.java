@@ -41,20 +41,20 @@ public class FoodTest {
         editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same priority, different attributes -> returns true
+        // same description, same priority, different attributes -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
                 .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
-        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same expiry date, different attributes -> returns true
+        // same description, same expiry date, different attributes -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
                 .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
-        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, same priority, same expiry date different attributes -> returns true
         editedApplePie = new FoodBuilder(APPLE_PIE)
                 .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
-        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
     }
 
     @Test
@@ -87,9 +87,9 @@ public class FoodTest {
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
-        // different quantity -> returns true
+        // different quantity -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withQuantity(VALID_QUANTITY_BREAD).build();
-        assertTrue(APPLE_PIE.equals(editedApplePie));
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();

@@ -32,7 +32,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "frozen";
 
     public static final String MESSAGE_SUCCESS = "New food item added!\n  %1$s";
-    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory";
+    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists "
+            + "\n(Please change the description, expiry date or tags)";
 
     private final Food toAdd;
 
