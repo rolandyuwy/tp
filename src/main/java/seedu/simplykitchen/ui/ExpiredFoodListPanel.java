@@ -17,15 +17,15 @@ public class ExpiredFoodListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ExpiredFoodListPanel.class);
 
     @javafx.fxml.FXML
-    private ListView<Food> expiryListView;
+    private ListView<Food> expiredListView;
 
     /**
      * Creates a {@code FoodListPanel} with the given {@code ObservableList}.
      */
     public ExpiredFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
-        expiryListView.setItems(foodList);
-        expiryListView.setCellFactory(listView -> new ExpiredListViewCell());
+        expiredListView.setItems(foodList);
+        expiredListView.setCellFactory(listView -> new ExpiredListViewCell());
     }
 
     /**
@@ -40,7 +40,7 @@ public class ExpiredFoodListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ExpiryFoodListCard(food, getIndex() + 1).getRoot());
+                setGraphic(new ExpiredFoodListCard(food, getIndex() + 1).getRoot());
             }
         }
     }
