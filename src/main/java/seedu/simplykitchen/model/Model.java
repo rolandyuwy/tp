@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.model.food.Food;
 
@@ -88,11 +89,21 @@ public interface Model {
     ObservableList<Food> getFilteredFoodList();
 
     /**
+     * Returns an unmodifiable view of the expiring food items in the filtered food list
+     */
+    ObservableList<Food> getFilteredExpiryFoodList();
+
+    /**
      * Updates the filter of the filtered food list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFoodList(Predicate<Food> predicate);
+
+    /**
+     * Updates the Expiry Filtered List after any changes to the inventory.
+     */
+    void updateExpiryFilteredFoodList();
 
     /**
      * Updates the comparator of the sorted food list to sort by the given {@code comparator}.
@@ -125,4 +136,11 @@ public interface Model {
      * Saves the current food inventory state for undo/redo.
      */
     void commitFoodInventory();
+
+    /**
+     * Sets the comparator of the sorted food list to sort by the given {@code comparator}.
+     *
+     * @throws NullPointerException if {@code comparator} is null.
+     */
+    void updateExpiringSortedFoodList();
 }

@@ -31,6 +31,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private ExpiryFoodListPanel expiryListPanel;
     private FoodListPanel foodListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -40,6 +41,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private StackPane expiryListPanelPlaceholder;
 
     @FXML
     private StackPane foodListPanelPlaceholder;
@@ -113,6 +117,9 @@ public class MainWindow extends UiPart<Stage> {
         foodListPanel = new FoodListPanel(logic.getFilteredFoodList());
         foodListPanelPlaceholder.getChildren().add(foodListPanel.getRoot());
 
+        expiryListPanel = new ExpiryFoodListPanel(logic.getFilteredExpiringFoodList());
+        expiryListPanelPlaceholder.getChildren().add(expiryListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -165,6 +172,10 @@ public class MainWindow extends UiPart<Stage> {
 
     public FoodListPanel getFoodListPanel() {
         return foodListPanel;
+    }
+
+    public ExpiryFoodListPanel getExpiryListPanel() {
+        return expiryListPanel;
     }
 
     /**
