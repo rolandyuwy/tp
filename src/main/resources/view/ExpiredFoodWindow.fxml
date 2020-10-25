@@ -8,7 +8,7 @@
 <?import javafx.stage.Stage?>
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
-<fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<fx:root resizable="false" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="Expired Food" minWidth="350" minHeight="467" onCloseRequest="#handleExit">
     <icons>
         <Image url="@/images/simply_kitchen_fridge.png" />
@@ -20,7 +20,7 @@
                 <URL value="@Extensions.css" />
             </stylesheets>
             <HBox>
-                <VBox fx:id="expiredList" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+                <VBox fx:id="expiredList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
                     <padding>
                         <Insets top="10" right="10" bottom="10" left="10" />
                     </padding>
