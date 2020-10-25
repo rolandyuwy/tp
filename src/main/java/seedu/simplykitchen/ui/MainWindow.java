@@ -159,6 +159,7 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
+        primaryStage.centerOnScreen();
     }
 
     /**
