@@ -60,8 +60,8 @@ public class FoodTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Food aliceCopy = new FoodBuilder(APPLE_PIE).build();
-        assertTrue(APPLE_PIE.equals(aliceCopy));
+        Food applePieCopy = new FoodBuilder(APPLE_PIE).build();
+        assertTrue(APPLE_PIE.equals(applePieCopy));
 
         // same object -> returns true
         assertTrue(APPLE_PIE.equals(APPLE_PIE));
