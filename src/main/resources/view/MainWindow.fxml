@@ -10,6 +10,7 @@
 <?import javafx.scene.Scene?>
 <?import javafx.stage.Stage?>
 <?import java.net.URL?>
+<?import javafx.scene.layout.HBox?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="SimplyKitchen" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
@@ -32,19 +33,21 @@
           </Menu>
         </MenuBar>
 
-        <VBox fx:id="expiryList" styleClass="pane-with-border" minWidth="80" prefWidth="80" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="expiryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+        <HBox>
+          <VBox fx:id="foodList" styleClass="pane-with-border" minWidth="500" prefWidth="500" VBox.vgrow="ALWAYS">
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <StackPane fx:id="foodListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
 
-        <VBox fx:id="foodList" styleClass="pane-with-border" minWidth="260" prefWidth="260" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="foodListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+          <VBox fx:id="expiryList" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <StackPane fx:id="expiryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
+        </HBox>
 
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
                    minHeight="100" prefHeight="100" maxHeight="100">
