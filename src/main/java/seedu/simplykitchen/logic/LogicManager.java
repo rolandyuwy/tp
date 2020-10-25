@@ -77,6 +77,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Food> getFilteredExpiredFoodList() {
+        return model.getFilteredExpiredFoodList();
+    }
+
+    @Override
     public Path getFoodInventoryFilePath() {
         return model.getFoodInventoryFilePath();
     }
