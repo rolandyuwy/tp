@@ -21,12 +21,12 @@ public class ExpiredFoodWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private ExpiryFoodListPanel expiryListPanel;
+    private ExpiryFoodListPanel expiredListPanel;
     private FoodListPanel foodListPanel;
 
 
     @FXML
-    private StackPane expiryListPanelPlaceholder;
+    private StackPane expiredListPanelPlaceholder;
 
     @FXML
     private StackPane foodListPanelPlaceholder;
@@ -46,16 +46,16 @@ public class ExpiredFoodWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        expiryListPanel = new ExpiryFoodListPanel(logic.getFilteredExpiringFoodList());
-        expiryListPanelPlaceholder.getChildren().add(expiryListPanel.getRoot());
+        expiredListPanel = new ExpiryFoodListPanel(logic.getFilteredExpiringFoodList());
+        expiredListPanelPlaceholder.getChildren().add(expiredListPanel.getRoot());
     }
 
     public FoodListPanel getFoodListPanel() {
         return foodListPanel;
     }
 
-    public ExpiryFoodListPanel getExpiryListPanel() {
-        return expiryListPanel;
+    public ExpiryFoodListPanel getExpiredListPanel() {
+        return expiredListPanel;
     }
 
     void show() {
