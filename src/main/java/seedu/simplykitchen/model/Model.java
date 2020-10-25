@@ -93,6 +93,11 @@ public interface Model {
     ObservableList<Food> getFilteredExpiryFoodList();
 
     /**
+     * Returns an unmodifiable view of the expired food items in the filtered food list
+     */
+    ObservableList<Food> getFilteredExpiredFoodList();
+
+    /**
      * Updates the filter of the filtered food list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
@@ -140,6 +145,11 @@ public interface Model {
      * Returns the predicate required to filter the Expiry food list.
      */
     Predicate<Food> getExpiryPredicate();
+
+    /**
+     * Returns the predicate required to filter the Expired food list.
+     */
+    Predicate<Food> getExpiredPredicate();
 
     /**
      * Sets the comparator of the sorted food list to sort by the given {@code comparator}.
