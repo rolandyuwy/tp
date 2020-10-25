@@ -8,13 +8,10 @@ import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EX
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -201,33 +198,10 @@ public class ModelManager implements Model {
     @Override
     public void updateExpiringSortedFoodList() {
         expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
-//        ObservableList<Food> temp = (this.versionedFoodInventory.getFoods());
-//
-//        LocalDate nextWeek = LocalDate.now().plusDays(7);
-//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
-//        String date = nextWeek.format(dateFormat);
-//        ExpiryDate expiryDateNextWeek = new ExpiryDate(date);
-//
-//        List<Food> expiringFoodList = new ArrayList<Food>();
-//        int tempListIndex = 0;
-//        int tempListSize = temp.size();
-//        while (tempListIndex < tempListSize) {
-//            Food food = temp.get(tempListIndex);
-//            ExpiryDate foodExpiry = food.getExpiryDate();
-//            if (!ExpiryDate.isAfter(foodExpiry, expiryDateNextWeek)) {
-//                expiringFoodList.add(food);
-//            }
-//            tempListIndex++;
-//        }
-//
-//        ObservableList<Food> list = FXCollections.observableList(expiringFoodList);
-//        SortedList<Food> expiringList = new SortedList<>(list);
-//        expiringList.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
-//
-//        return expiringList;
     }
 
-    private static Predicate<Food> getExpiryPredicate() {
+    @Override
+    public Predicate<Food> getExpiryPredicate() {
         return new Predicate<Food>() {
             @Override
             public boolean test(Food food) {
@@ -242,8 +216,10 @@ public class ModelManager implements Model {
                 ExpiryDate expiryDateNextWeek = new ExpiryDate(dateNextWeek);
 
                 ExpiryDate foodExpiry = food.getExpiryDate();
-                if (!ExpiryDate.isAfter(foodExpiry, expiryDateNextWeek)
-                        && ExpiryDate.isAfter(foodExpiry, expiryToday)) {
+
+                if ((!ExpiryDate.isAfter(foodExpiry, expiryDateNextWeek)
+                        && ExpiryDate.isAfter(foodExpiry, expiryToday))
+                        || foodExpiry.equals(expiryToday)) {
                     return true;
                 }
                 return false;
@@ -267,7 +243,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return versionedFoodInventory.equals(other.versionedFoodInventory)
                 && userPrefs.equals(other.userPrefs)
-                && filteredFoods.equals(other.filteredFoods);
+                && filteredFoods.equals(other.filteredFoods)
+                && expiringFilteredFoods.equals(other.expiringFilteredFoods);
     }
 
 }

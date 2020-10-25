@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.model.food.Food;
 
@@ -136,6 +135,11 @@ public interface Model {
      * Saves the current food inventory state for undo/redo.
      */
     void commitFoodInventory();
+
+    /**
+     * Returns the predicate required to filter the Expiry food list.
+     */
+    Predicate<Food> getExpiryPredicate();
 
     /**
      * Sets the comparator of the sorted food list to sort by the given {@code comparator}.
