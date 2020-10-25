@@ -1,9 +1,15 @@
 package seedu.simplykitchen.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MAX_AMOUNT;
+import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_NEGATIVE_QUANTITY;
+import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_TOO_BIG_QUANTITY;
+import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_ZERO_QUANTITY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
+import static seedu.simplykitchen.model.food.Quantity.changeQuantityValue;
+import static seedu.simplykitchen.model.food.Quantity.updateQuantity;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_SECOND_FOOD;
@@ -35,15 +41,16 @@ public class ChangeQuantityCommandTest {
     /**
      * Updates the quantity of the first food item by a certain amount.
      */
-    private Food updateQuantity(double amount) {
+    private Food updateFoodQuantity(double amount) {
         Food food = model.getFilteredFoodList().get(INDEX_FIRST_FOOD.getZeroBased());
 
-        double newQuantityValue = food.getQuantityValue() + amount;
-        Quantity newQuantity = new Quantity(newQuantityValue + " " + food.getQuantityUnit());
+        Quantity oldQuantity = food.getQuantity();
+        double newQuantityValue = changeQuantityValue(oldQuantity, amount);
 
         Description description = food.getDescription();
         Priority priority = food.getPriority();
         ExpiryDate expiryDate = food.getExpiryDate();
+        Quantity newQuantity = updateQuantity(oldQuantity, newQuantityValue);
         Set<Tag> tags = food.getTags();
 
         return new Food(description, priority, expiryDate, newQuantity, tags);
@@ -52,7 +59,7 @@ public class ChangeQuantityCommandTest {
     @Test
     public void execute_unfilteredList_success() {
         double amount = +1.0;
-        Food newFood = updateQuantity(amount);
+        Food newFood = updateFoodQuantity(amount);
 
         String expectedMessage = String.format(ChangeQuantityCommand.MESSAGE_SUCCESS, newFood);
 
@@ -71,7 +78,7 @@ public class ChangeQuantityCommandTest {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
 
         double amount = +1.0;
-        Food newFood = updateQuantity(amount);
+        Food newFood = updateFoodQuantity(amount);
 
         String expectedMessage = String.format(ChangeQuantityCommand.MESSAGE_SUCCESS, newFood);
 
@@ -109,9 +116,33 @@ public class ChangeQuantityCommandTest {
     }
 
     @Test
+    public void execute_zeroQuantity_failure() {
+        double amount = -1.0;
+        ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_ZERO_QUANTITY);
+    }
+
+    @Test
+    public void execute_negativeQuantity_failure() {
+        double amount = -100.0;
+        ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_NEGATIVE_QUANTITY);
+    }
+
+    @Test
+    public void execute_tooBigAmount_failure() {
+        double amount = MAX_AMOUNT + 1;
+        ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_TOO_BIG_QUANTITY);
+    }
+
+    @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         double amount = +1.0;
-        Food newFood = updateQuantity(amount);
+        Food newFood = updateFoodQuantity(amount);
 
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
@@ -137,7 +168,7 @@ public class ChangeQuantityCommandTest {
         showFoodAtIndex(model, INDEX_FIRST_FOOD);
 
         double amount = +1.0;
-        Food newFood = updateQuantity(amount);
+        Food newFood = updateFoodQuantity(amount);
 
         Model expectedModel = new ModelManager(
                 new FoodInventory(model.getFoodInventory()), new UserPrefs());
