@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,7 +27,13 @@
                 </Label>
                 <Label fx:id="description" text="\$first" styleClass="cell_big_label" />
             </HBox>
-            <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate" />
+            <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate">
+                <graphic>
+                    <ImageView fitHeight="15" fitWidth="15" preserveRatio="true">
+                        <Image url="@/images/clock_icon.png" />
+                    </ImageView>
+                </graphic>
+            </Label>
         </VBox>
     </GridPane>
 </HBox>
