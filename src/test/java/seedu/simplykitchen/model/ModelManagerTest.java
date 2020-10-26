@@ -101,12 +101,12 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredExpriyFoodList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredExpiryFoodList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredExpiringFoodList().remove(0));
     }
 
     @Test
     public void getExpiryPredicate_predicateTest_predicateReturnsTrue() {
-        Predicate<Food> predicate = modelManager.getExpiryPredicate();
+        Predicate<Food> predicate = modelManager.getExpiringPredicate();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
 
         LocalDate today = LocalDate.now();
@@ -147,7 +147,7 @@ public class ModelManagerTest {
 
     @Test
     public void getExpiryPredicate_predicateTest_predicateReturnsFalse() {
-        Predicate<Food> predicate = modelManager.getExpiryPredicate();
+        Predicate<Food> predicate = modelManager.getExpiringPredicate();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
 
         LocalDate minusTenDays = LocalDate.now().minusDays(10);
@@ -181,7 +181,7 @@ public class ModelManagerTest {
 
     @Test
     public void getExpiryPredicate_predicateTest_nullArgument() {
-        Predicate<Food> predicate = modelManager.getExpiryPredicate();
+        Predicate<Food> predicate = modelManager.getExpiringPredicate();
         assertThrows(NullPointerException.class, () -> predicate.test(null)); // null argument
     }
 
