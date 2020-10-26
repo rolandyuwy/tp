@@ -12,7 +12,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.layout.HBox?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="SimplyKitchen" minWidth="800" minHeight="600" onCloseRequest="#handleExit">
+         title="SimplyKitchen" minWidth="900" minHeight="600" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/simply_kitchen_fridge.png" />
   </icons>
@@ -34,13 +34,13 @@
         </MenuBar>
 
         <HBox fx:id="hroot" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-          <VBox fx:id="foodList" styleClass="pane-with-border" minWidth="525" prefWidth="${hroot.width*0.7}" VBox.vgrow="ALWAYS">
+          <VBox fx:id="foodList" styleClass="pane-with-border" minWidth="560" prefWidth="${hroot.width*0.7}" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
             <StackPane fx:id="foodListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="expiringList" styleClass="pane-with-border" minWidth="225" prefWidth="${hroot.width*0.3}" VBox.vgrow="ALWAYS">
+          <VBox fx:id="expiringList" styleClass="pane-with-border" minWidth="240" prefWidth="${hroot.width*0.3}" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
