@@ -141,17 +141,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFoodInventory(Comparator<Food>... comparators) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Food> getFilteredFoodList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredFoodList(Predicate<Food> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateSortedFoodList(Comparator<Food> comparator) {
             throw new AssertionError("This method should not be called.");
         }
 

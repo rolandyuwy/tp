@@ -2,7 +2,6 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_DESCRIPTION;
 
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -11,7 +10,6 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
@@ -25,7 +23,6 @@ public class ModelManager implements Model {
     private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
-    private final SortedList<Food> sortedFoods;
 
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
@@ -40,9 +37,7 @@ public class ModelManager implements Model {
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
 
-        sortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
-        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
-        filteredFoods = new FilteredList<>(sortedFoods);
+        filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
     }
 
     public ModelManager() {
@@ -111,13 +106,6 @@ public class ModelManager implements Model {
     public void addFood(Food food) {
         versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
-        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
-    }
-
-    @Override
-    public void sortFood(Food food, Comparator<Food> comparator) {
-        versionedFoodInventory.sortFood(food); //updates foods aka internalList
-//        updateSortedFoodList(comparator); //updates sortedFoods aka internalUnmodifiableList
     }
 
     @Override
@@ -125,6 +113,11 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedFood);
 
         versionedFoodInventory.setFood(target, editedFood);
+    }
+
+    @Override
+    public void sortFoodInventory(Comparator<Food>... comparators) {
+        versionedFoodInventory.sortFoods(comparators);
     }
 
     //=========== Filtered Food List Accessors =============================================================
@@ -142,12 +135,6 @@ public class ModelManager implements Model {
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
-    }
-
-    @Override
-    public void updateSortedFoodList(Comparator<Food> comparator) {
-        requireNonNull(comparator);
-        sortedFoods.setComparator(comparator);
     }
 
     //=========== Undo/Redo =================================================================================

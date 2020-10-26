@@ -18,13 +18,13 @@ public class SortExpiryCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Sorted by expiry date from oldest to newest";
 
-
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
-        model.updateSortedFoodList(SORT_BY_DESCENDING_PRIORITY);
-        model.updateSortedFoodList(SORT_BY_ASCENDING_EXPIRY_DATE);
+        model.sortFoodInventory(SORT_BY_ASCENDING_DESCRIPTION,
+                SORT_BY_DESCENDING_PRIORITY,
+                SORT_BY_ASCENDING_EXPIRY_DATE);
+        model.commitFoodInventory();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

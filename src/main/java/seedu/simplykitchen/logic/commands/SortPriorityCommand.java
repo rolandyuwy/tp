@@ -18,13 +18,13 @@ public class SortPriorityCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Sorted by priority from high to low";
 
-
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
-        model.updateSortedFoodList(SORT_BY_ASCENDING_EXPIRY_DATE);
-        model.updateSortedFoodList(SORT_BY_DESCENDING_PRIORITY);
+        model.sortFoodInventory(SORT_BY_ASCENDING_DESCRIPTION,
+                SORT_BY_ASCENDING_EXPIRY_DATE,
+                SORT_BY_DESCENDING_PRIORITY);
+        model.commitFoodInventory();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
