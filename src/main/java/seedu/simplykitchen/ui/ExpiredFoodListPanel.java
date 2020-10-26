@@ -40,7 +40,7 @@ public class ExpiredFoodListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ExpiredFoodListCard(food, getIndex() + 1).getRoot());
+                setGraphic(new ExpiredFoodListCard(food).getRoot());
             }
         }
     }

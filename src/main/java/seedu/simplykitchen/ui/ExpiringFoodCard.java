@@ -30,17 +30,14 @@ public class ExpiringFoodCard extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
-    private Label id;
-    @FXML
     private Label expiryDate;
 
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
      */
-    public ExpiringFoodCard(Food food, int displayedIndex) {
+    public ExpiringFoodCard(Food food) {
         super(FXML);
         this.food = food;
-        id.setText(displayedIndex + ". ");
         description.setText(food.getDescription().fullDescription);
         expiryDate.setText(food.getExpiryDate().value);
     }
@@ -59,7 +56,6 @@ public class ExpiringFoodCard extends UiPart<Region> {
 
         // state check
         ExpiringFoodCard card = (ExpiringFoodCard) other;
-        return id.getText().equals(card.id.getText())
-                && food.equals(card.food);
+        return food.equals(card.food);
     }
 }
