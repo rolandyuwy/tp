@@ -9,7 +9,7 @@ import seedu.simplykitchen.model.Model;
 
 
 /**
- * Sorts food items in Food inventory by priority from high to low, then by expiry date from oldest to newest,
+ * Sorts food items in FoodInventory by priority from high to low, then by expiry date from oldest to newest,
  * then lexicographically.
  */
 public class SortPriorityCommand extends Command {
