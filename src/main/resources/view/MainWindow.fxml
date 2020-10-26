@@ -40,7 +40,7 @@
             </padding>
             <StackPane fx:id="foodListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
-          <VBox fx:id="expiringList" styleClass="pane-with-border" minWidth="250" prefWidth="250" VBox.vgrow="ALWAYS">
+          <VBox fx:id="expiringList" styleClass="pane-with-border" minWidth="225" prefWidth="${hroot.width*0.3}" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
