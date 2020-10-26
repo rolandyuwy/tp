@@ -3,7 +3,6 @@ package seedu.simplykitchen.model.food;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
@@ -32,36 +31,40 @@ public class FoodTest {
         // null -> returns false
         assertFalse(APPLE_PIE.isSameFood(null));
 
-        // different priorities and expiry date -> returns false
-        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
-                .withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
-        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
-
         // different description -> returns false
-        editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same priority, different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
-                .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
-        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+        // different expiry dates -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same expiry date, different attributes -> returns true
+        // different tags -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
+
+        // same description, same expiry date, different attributes -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
                 .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
+
+        // same description, same tags, different attributes -> returns false
+        editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD)
+                .withQuantity(VALID_QUANTITY_BREAD).withPriority(VALID_PRIORITY_BREAD).build();
+        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
+
+        // same description, same expiry date, same tags, different attributes -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
+                .withQuantity(VALID_QUANTITY_BREAD).build();
         assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
-        // same description, same priority, same expiry date different attributes -> returns true
-        editedApplePie = new FoodBuilder(APPLE_PIE)
-                .withQuantity(VALID_QUANTITY_BREAD).withTags(VALID_TAG_WHOLEMEAL).build();
-        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Food aliceCopy = new FoodBuilder(APPLE_PIE).build();
-        assertTrue(APPLE_PIE.equals(aliceCopy));
+        Food applePieCopy = new FoodBuilder(APPLE_PIE).build();
+        assertTrue(APPLE_PIE.equals(applePieCopy));
 
         // same object -> returns true
         assertTrue(APPLE_PIE.equals(APPLE_PIE));
@@ -87,9 +90,9 @@ public class FoodTest {
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
-        // different quantity -> returns true
+        // different quantity -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withQuantity(VALID_QUANTITY_BREAD).build();
-        assertTrue(APPLE_PIE.equals(editedApplePie));
+        assertFalse(APPLE_PIE.equals(editedApplePie));
 
         // different tags -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();

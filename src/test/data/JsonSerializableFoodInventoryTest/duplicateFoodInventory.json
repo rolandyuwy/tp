@@ -7,8 +7,9 @@
     "tagged": [ "raw" ]
   }, {
     "description": "Anchovies",
-    "priority": "LOW",
+    "priority": "HIGH",
+    "expiryDate": "1-12-2021",
     "quantity": "1",
-    "expiryDate": "1-12-2021"
+    "tagged": [ "raw" ]
   } ]
 }
