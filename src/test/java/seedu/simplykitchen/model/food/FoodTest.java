@@ -31,13 +31,8 @@ public class FoodTest {
         // null -> returns false
         assertFalse(APPLE_PIE.isSameFood(null));
 
-        // different expiry date and tags -> returns false
-        Food editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD)
-                .withTags(VALID_TAG_WHOLEMEAL).build();
-        assertFalse(APPLE_PIE.isSameFood(editedApplePie));
-
         // different description -> returns false
-        editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
         // different expiry dates -> returns false
