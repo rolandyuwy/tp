@@ -33,7 +33,7 @@
           </Menu>
         </MenuBar>
 
-        <HBox fx:id="hroot" minWidth="750" prefWidth="750" HBox.hgrow="ALWAYS">
+        <HBox fx:id="hroot" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
           <VBox fx:id="foodList" styleClass="pane-with-border" minWidth="525" prefWidth="${hroot.width*0.7}" VBox.vgrow="ALWAYS">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
