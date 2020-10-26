@@ -20,6 +20,7 @@ import seedu.simplykitchen.logic.commands.ClearCommand;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.ExitCommand;
+import seedu.simplykitchen.logic.commands.ExpiredCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
@@ -32,6 +33,7 @@ import seedu.simplykitchen.model.tag.TagSearchPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
+import seedu.simplykitchen.ui.ExpiredFoodWindow;
 
 public class FoodInventoryParserTest {
 
@@ -92,6 +94,12 @@ public class FoodInventoryParserTest {
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
         assertEquals(new FindCommand(descriptionPredicate, priorityPredicate, expiryDatePredicate, tagPredicate),
                 command);
+    }
+
+    @Test
+    public void parseCommand_expired() throws Exception {
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD) instanceof ExpiredCommand);
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD + " 3") instanceof ExpiredCommand);
     }
 
     @Test
