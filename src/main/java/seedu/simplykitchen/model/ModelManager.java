@@ -54,7 +54,7 @@ public class ModelManager implements Model {
         expiringSortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
-        expiringFilteredFoods.setPredicate(getExpiryPredicate());
+        expiringFilteredFoods.setPredicate(getExpiringPredicate());
         expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiredFilteredFoods.setPredicate(getExpiredPredicate());
     }
@@ -146,7 +146,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Food> getFilteredExpiryFoodList() {
+    public ObservableList<Food> getFilteredExpiringFoodList() {
         return expiringFilteredFoods;
     }
 
@@ -159,14 +159,14 @@ public class ModelManager implements Model {
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
-        updateExpiryFilteredFoodList();
+        updateExpiringFilteredFoodList();
     }
 
     @Override
-    public void updateExpiryFilteredFoodList() {
+    public void updateExpiringFilteredFoodList() {
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
-        expiringFilteredFoods.setPredicate(getExpiryPredicate());
+        expiringFilteredFoods.setPredicate(getExpiringPredicate());
     }
 
     //=========== Undo/Redo =================================================================================
@@ -209,7 +209,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Predicate<Food> getExpiryPredicate() {
+    public Predicate<Food> getExpiringPredicate() {
         return new Predicate<Food>() {
             @Override
             public boolean test(Food food) {

@@ -90,7 +90,7 @@ public interface Model {
     /**
      * Returns an unmodifiable view of the expiring food items in the filtered food list
      */
-    ObservableList<Food> getFilteredExpiryFoodList();
+    ObservableList<Food> getFilteredExpiringFoodList();
 
     /**
      * Returns an unmodifiable view of the expired food items in the filtered food list
@@ -107,7 +107,7 @@ public interface Model {
     /**
      * Updates the Expiry Filtered List after any changes to the inventory.
      */
-    void updateExpiryFilteredFoodList();
+    void updateExpiringFilteredFoodList();
 
     /**
      * Updates the comparator of the sorted food list to sort by the given {@code comparator}.
@@ -144,7 +144,7 @@ public interface Model {
     /**
      * Returns the predicate required to filter the Expiry food list.
      */
-    Predicate<Food> getExpiryPredicate();
+    Predicate<Food> getExpiringPredicate();
 
     /**
      * Returns the predicate required to filter the Expired food list.

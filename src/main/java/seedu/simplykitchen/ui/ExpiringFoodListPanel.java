@@ -12,9 +12,9 @@ import seedu.simplykitchen.model.food.Food;
 /**
  * Panel containing the list of food items.
  */
-public class ExpiryFoodListPanel extends UiPart<Region> {
-    private static final String FXML = "ExpiryFoodListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(ExpiryFoodListPanel.class);
+public class ExpiringFoodListPanel extends UiPart<Region> {
+    private static final String FXML = "ExpiringFoodListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(ExpiringFoodListPanel.class);
 
     @javafx.fxml.FXML
     private ListView<Food> expiryListView;
@@ -22,7 +22,7 @@ public class ExpiryFoodListPanel extends UiPart<Region> {
     /**
      * Creates a {@code FoodListPanel} with the given {@code ObservableList}.
      */
-    public ExpiryFoodListPanel(ObservableList<Food> foodList) {
+    public ExpiringFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
         expiryListView.setItems(foodList);
         expiryListView.setCellFactory(listView -> new ExpiryListViewCell());
@@ -40,7 +40,7 @@ public class ExpiryFoodListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ExpiryFoodListCard(food, getIndex() + 1).getRoot());
+                setGraphic(new ExpiringFoodCard(food, getIndex() + 1).getRoot());
             }
         }
     }

@@ -46,7 +46,7 @@ Format: `help`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`  
+Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
 * Adds a food item based on its description and expiry date.
 * Description, expiry date and quantity fields are compulsory.
@@ -118,8 +118,8 @@ Edits the details of an existing food item in the food inventory.
 
 Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
-* Edits the food item at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed food item list. 
+* Edits the food item at the specified `INDEX`.
+* The index refers to the index number shown in the displayed food item list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -166,8 +166,7 @@ Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
-### Clearing all entries : `clear` 
-
+### Clearing all entries : `clear`
 Clears all entries from the food inventory.
 
 Format: `clear`
