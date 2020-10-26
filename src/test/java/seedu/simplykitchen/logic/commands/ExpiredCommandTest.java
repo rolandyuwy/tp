@@ -1,8 +1,8 @@
 package seedu.simplykitchen.logic.commands;
 
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.simplykitchen.logic.commands.ExpiredCommand.SHOWING_EXPIRED_MESSAGE;
 import static seedu.simplykitchen.logic.commands.ExpiredCommand.NO_EXPIRED_ITEMS;
+import static seedu.simplykitchen.logic.commands.ExpiredCommand.SHOWING_EXPIRED_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 

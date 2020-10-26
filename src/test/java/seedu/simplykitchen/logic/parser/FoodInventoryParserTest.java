@@ -33,7 +33,6 @@ import seedu.simplykitchen.model.tag.TagSearchPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
-import seedu.simplykitchen.ui.ExpiredFoodWindow;
 
 public class FoodInventoryParserTest {
 
