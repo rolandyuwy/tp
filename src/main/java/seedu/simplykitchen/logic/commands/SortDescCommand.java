@@ -1,12 +1,11 @@
 package seedu.simplykitchen.logic.commands;
 
-import seedu.simplykitchen.model.Model;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_DESCRIPTION;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESCENDING_PRIORITY;
 
+import seedu.simplykitchen.model.Model;
 /**
  * Sorts food items in FoodInventory lexicographically, by expiry date from oldest to newest,
  * then by priority from high to low.

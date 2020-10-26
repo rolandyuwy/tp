@@ -6,7 +6,21 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.simplykitchen.logic.commands.*;
+import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
+import seedu.simplykitchen.logic.commands.ClearCommand;
+import seedu.simplykitchen.logic.commands.Command;
+import seedu.simplykitchen.logic.commands.DeleteCommand;
+import seedu.simplykitchen.logic.commands.EditCommand;
+import seedu.simplykitchen.logic.commands.ExitCommand;
+import seedu.simplykitchen.logic.commands.FindCommand;
+import seedu.simplykitchen.logic.commands.HelpCommand;
+import seedu.simplykitchen.logic.commands.ListCommand;
+import seedu.simplykitchen.logic.commands.RedoCommand;
+import seedu.simplykitchen.logic.commands.SortDescCommand;
+import seedu.simplykitchen.logic.commands.SortExpiryCommand;
+import seedu.simplykitchen.logic.commands.SortPriorityCommand;
+import seedu.simplykitchen.logic.commands.UndoCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**
@@ -67,7 +81,7 @@ public class FoodInventoryParser {
             return new RedoCommand();
 
         case SortDescCommand.COMMAND_WORD:
-             return new SortDescCommand();            
+            return new SortDescCommand();
 
         case SortExpiryCommand.COMMAND_WORD:
             return new SortExpiryCommand();
