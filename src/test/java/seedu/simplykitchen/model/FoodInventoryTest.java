@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
@@ -72,7 +73,8 @@ public class FoodInventoryTest {
     @Test
     public void hasFood_foodWithSameIdentityFieldsInFoodInventory_returnsTrue() {
         foodInventory.addFood(APPLE_PIE);
-        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).build();
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
+                .withQuantity(VALID_QUANTITY_BREAD).build();
         assertTrue(foodInventory.hasFood(editedApplePie));
     }
 
