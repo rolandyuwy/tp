@@ -36,7 +36,7 @@ Table of Contents:<br>
 
 ### Viewing help : `help`
 
-Shows a help message explaining how to access the help page.
+Shows a help message explaining how to access the help page. 
 
 ![help message](images/helpMessage.png)
 
@@ -44,7 +44,7 @@ Format: `help`
 
 ### Adding a food item: `add`
 
-Adds a food item to the food inventory.
+Adds a food item to the food inventory, so that you can start tracking it.
 
 Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
@@ -67,13 +67,13 @@ Examples:
 
 ### Listing all food items : `list`
 
-Shows a list of all food items in the food inventory.
+Shows a list of all food items in the food inventory, which lets you have an overview of the food inventory.
 
 Format: `list`
 
 ### Searching for a food item: `find`
 
-Searches for food items in the inventory with descriptions matching any of the given keywords.
+Searches for food items in the inventory with descriptions matching any of the given keywords, so that you can find a specific food item, or a group of food items easily.
 
 Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -100,7 +100,7 @@ Examples:
 
 ### Deleting a food item : `delete`
 
-Deletes the specified food item from the food inventory.
+Deletes the specified food item from the food inventory, so that you can stop tracking the food item.
 
 Format: `delete INDEX`
 
@@ -114,7 +114,7 @@ Examples:
 
 ### Editing a food item : `edit`
 
-Edits the details of an existing food item in the food inventory.
+Edits the details of an existing food item in the food inventory. If an entry was incorrect, you can easily edit the entry, without deleting and re-adding the food item.
 
 Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -132,7 +132,7 @@ Examples:
 
 ### Changing the quantity of a food item: `changeqty`
 
-Changes the quantity of an existing food item in the food inventory.
+Changes the quantity of an existing food item in the food inventory. This lets you easily update the current quantity of a food item if you used or stocked up on it.
 
 Format: `changeqty INDEX a/AMOUNT`
 
@@ -147,7 +147,7 @@ Examples:
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
 ### Undoing previous command: `undo`
-Restores the food inventory to a state before an undoable command was executed.
+Restores the food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on the food inventory.
 
 * Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
 
@@ -158,7 +158,7 @@ Examples:
 * `delete 1` `clear` then `undo` will reverse the `clear` command.
 
 ### Redoing previously undone command: `redo`
-Restores the food inventory to a state before an undo command was executed.
+Restores the food inventory to a state before an undo command was executed. This lets you easily redo the command that was incorrectly undone.
 
 Format: `redo`
 
@@ -167,7 +167,7 @@ Examples:
 * `clear` `undo` then `redo` will redo the `clear` command.
 
 ### Clearing all entries : `clear`
-Clears all entries from the food inventory.
+Clears all entries from the food inventory. You can easily clear the starting data, or start on a clean food inventory.
 
 Format: `clear`
 
