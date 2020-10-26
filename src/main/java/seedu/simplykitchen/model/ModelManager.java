@@ -115,6 +115,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void sortFood(Food food, Comparator<Food> comparator) {
+        versionedFoodInventory.sortFood(food); //updates foods aka internalList
+//        updateSortedFoodList(comparator); //updates sortedFoods aka internalUnmodifiableList
+    }
+
+    @Override
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
 
@@ -136,6 +142,12 @@ public class ModelManager implements Model {
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateSortedFoodList(Comparator<Food> comparator) {
+        requireNonNull(comparator);
+        sortedFoods.setComparator(comparator);
     }
 
     //=========== Undo/Redo =================================================================================
@@ -163,12 +175,6 @@ public class ModelManager implements Model {
     @Override
     public void commitFoodInventory() {
         versionedFoodInventory.commit();
-    }
-
-    @Override
-    public void updateSortedFoodList(Comparator<Food> comparator) {
-        requireNonNull(comparator);
-        sortedFoods.setComparator(comparator);
     }
 
     @Override
