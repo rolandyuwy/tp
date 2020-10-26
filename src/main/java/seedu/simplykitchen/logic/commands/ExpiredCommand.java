@@ -18,9 +18,9 @@ public class ExpiredCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         if (model.getFilteredExpiredFoodList().size() > 0) {
-            return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+            return new CommandResult(SHOWING_HELP_MESSAGE, true, false, false);
         } else {
-            return new CommandResult(NO_EXPIRED_ITEMS, true, false);
+            return new CommandResult(NO_EXPIRED_ITEMS, false, false, false);
         }
     }
 }
