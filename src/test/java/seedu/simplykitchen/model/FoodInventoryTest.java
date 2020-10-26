@@ -47,7 +47,8 @@ public class FoodInventoryTest {
     @Test
     public void resetData_withDuplicateFoods_throwsDuplicateFoodException() {
         // Two foods with the same identity fields
-        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).build();
+        Food editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
+                .withQuantity(VALID_QUANTITY_BREAD).build();
         List<Food> newFoods = Arrays.asList(APPLE_PIE, editedApplePie);
         FoodInventoryStub newData = new FoodInventoryStub(newFoods);
 
