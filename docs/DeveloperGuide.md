@@ -230,9 +230,17 @@ This is done so by calling `model#updateSortedFoodList(Comparator<Food> comparat
 
 Sorting of the `SortedList<Food>` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
 
+The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
+
 #### Design consideration:
 
 Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
+Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
+This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
+To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
+This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
 
 ##### Aspect: Permanence of list sorting
 
