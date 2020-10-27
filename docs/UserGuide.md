@@ -13,8 +13,17 @@ Table of Contents:<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start [coming soon]
+## Quick start 
 
+* Ensure that you have Java 11 or above installed on your system.
+* Download the most recent SimplyKitchen.jar from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
+* Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
+* Double click on the SimplyKitchen.jar file to launch the app. The window of the app should appear in a few seconds. 
+  ![GUI for the app](images/Ui.png)
+  
+  Notice how the app is populated with some sample data.
+* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
+* Refer to the features section in [this guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html) for help on how to use the app.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
