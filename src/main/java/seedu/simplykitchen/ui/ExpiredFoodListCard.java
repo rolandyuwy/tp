@@ -10,9 +10,9 @@ import seedu.simplykitchen.model.food.Food;
 /**
  * An UI component that displays information of a {@code Food} which is expiring soon.
  */
-public class ExpiringFoodCard extends UiPart<Region> {
+public class ExpiredFoodListCard extends UiPart<Region> {
 
-    private static final String FXML = "ExpiringFoodCard.fxml";
+    private static final String FXML = "ExpiredFoodListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -35,7 +35,7 @@ public class ExpiringFoodCard extends UiPart<Region> {
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
      */
-    public ExpiringFoodCard(Food food) {
+    public ExpiredFoodListCard(Food food) {
         super(FXML);
         this.food = food;
         description.setText(food.getDescription().fullDescription);
@@ -50,12 +50,12 @@ public class ExpiringFoodCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ExpiringFoodCard)) {
+        if (!(other instanceof ExpiredFoodListCard)) {
             return false;
         }
 
         // state check
-        ExpiringFoodCard card = (ExpiringFoodCard) other;
+        ExpiredFoodListCard card = (ExpiredFoodListCard) other;
         return food.equals(card.food);
     }
 }

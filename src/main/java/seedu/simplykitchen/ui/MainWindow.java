@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private FoodListPanel foodListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ExpiredFoodWindow expiredFoodWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -70,6 +71,8 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        expiredFoodWindow = new ExpiredFoodWindow(new Stage(), logic);
+        expiredFoodWindow.fillInnerParts();
     }
 
     public Stage getPrimaryStage() {
@@ -156,6 +159,7 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
+        primaryStage.centerOnScreen();
     }
 
     /**
@@ -167,6 +171,7 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        expiredFoodWindow.hide();
         primaryStage.hide();
     }
 
@@ -202,6 +207,17 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
+        }
+    }
+
+    /**
+     * Opens the expired food window or focuses on it if it's already opened.
+     */
+    public void showExpiredFood() {
+        if (!expiredFoodWindow.isShowing()) {
+            expiredFoodWindow.show();
+        } else {
+            expiredFoodWindow.focus();
         }
     }
 }
