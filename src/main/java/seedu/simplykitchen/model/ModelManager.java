@@ -204,7 +204,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Predicate<Food> getExpiringPredicate() { 
+    public Predicate<Food> getExpiringPredicate() {
         return new Predicate<Food>() {
             @Override
             public boolean test(Food food) {
