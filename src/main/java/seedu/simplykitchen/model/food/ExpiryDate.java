@@ -31,7 +31,7 @@ public class ExpiryDate {
     public ExpiryDate(String expiryDateString) {
         requireNonNull(expiryDateString);
         checkArgument(isValidExpiryDate(expiryDateString), generateErrorMessage(expiryDateString));
-        value = replaceSlashWithDash(expiryDateString);
+        value = padDayAndMonthWithZero(replaceSlashWithDash(expiryDateString));
     }
 
     /**
@@ -86,7 +86,29 @@ public class ExpiryDate {
     }
 
     /**
-     * Guarantees: The date String is formatted correctly.
+     * Pads the day and month string with zero
+     * Guarantees: The date string is formatted correctly.
+     */
+    private static String padDayAndMonthWithZero(String dateString) {
+        assert isValidExpiryDate(dateString);
+        dateString = replaceSlashWithDash(dateString);
+        String[] split = dateString.split("-");
+        String day = split[0];
+        String month = split[1];
+        String year = split[2];
+
+        if (day.length() == 1) {
+            day = "0" + day;
+        }
+        if (month.length() == 1) {
+            month = "0" + month;
+        }
+
+        return day + "-" + month + "-" + year;
+    }
+
+    /**
+     * Guarantees: The date string is formatted correctly.
      */
     private static boolean isFourDigitYear(String yearString) {
         return yearString.length() == 4;
@@ -97,8 +119,8 @@ public class ExpiryDate {
      */
     public boolean isAfter(ExpiryDate expiryDate) {
         try {
-            String expiryDateString1 = replaceSlashWithDash(this.value);
-            String expiryDateString2 = replaceSlashWithDash(expiryDate.value);
+            String expiryDateString1 = padDayAndMonthWithZero(replaceSlashWithDash(this.value));
+            String expiryDateString2 = padDayAndMonthWithZero(replaceSlashWithDash(expiryDate.value));
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
             LocalDate localDate1 = LocalDate.parse(expiryDateString1, formatter);

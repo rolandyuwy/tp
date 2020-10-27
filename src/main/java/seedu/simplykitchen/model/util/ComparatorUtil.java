@@ -3,7 +3,6 @@ package seedu.simplykitchen.model.util;
 import java.util.Comparator;
 
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.model.food.UniqueFoodList;
 
 /**
  * Contains utility comparators for sorting food lists.

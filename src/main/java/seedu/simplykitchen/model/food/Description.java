@@ -55,7 +55,7 @@ public class Description {
      * @return the value 0 if the characters are of equal precedence, 1 if the given description's first character
      * is of lower precedence, and -1 otherwise.
      */
-    public int compareFirstCharacterTo(Description description){
+    public int compareFirstCharacterTo(Description description) {
         Character character1 = this.fullDescription.charAt(0);
         System.out.println(character1);
         Character character2 = description.fullDescription.charAt(0);
@@ -68,10 +68,6 @@ public class Description {
         } else {
             return 0;
         }
-    }
-
-    public static void test(){
-
     }
 
     @Override
