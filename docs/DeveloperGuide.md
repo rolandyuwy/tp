@@ -216,41 +216,43 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### Implementation
 
-The sorting feature consists of two commands, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
+The sorting feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
 The sorting order is in accordance to what is likely the most useful order for the user.
 
-Thus, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by the lexicographical order.
+Thus, `SortDescCommand` sorts the list of food displayed by description, then by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`.
 
-Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by the lexicographical order.
+Similarly, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by description.
 
-When the commands are executed by calling `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `SortedList<Food>` attribute in `model` is sorted.
+Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by description.
 
-This is done so by calling `model#updateSortedFoodList(Comparator<Food> comparator)` method in `model` with the relevant `Comparator<Food>` for sorting.
+When the commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `versionedFoodInventory` attribute in `model` is sorted.
 
-Sorting of the `SortedList<Food>` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
+This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` with the relevant `comparators` for sorting.
 
-The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
+`model#setSortingComparators` and `userPref#setSortingComparatorsDescription` are then called to save the sorting information.
 
-![FindSequenceDiagram](images/FindSequenceDiagram.png)
+Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
+
+The following sequence diagram illustrates how the command `sortdesc` works:
+
+![SortDescSequenceDiagram](images/SortDescSequenceDiagram.png)
 
 #### Design consideration:
 
 Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
-Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
-This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
-To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
-This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
+
 
 ##### Aspect: Permanence of list sorting
 
-* **Alternative 1 (current choice):** Lists are sorted in lexicographical order by default, sorting by priority or expiry date are reflected in displayed lists.
+* **Alternative 1 (current choice):** Permanently sort lists.
+  * Pros: Less hassle if a specific sorting order is preferred by the user.
+  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user.
+
+* **Alternative 2:** Lists are sorted in lexicographical order by default, sorting by priority or expiry date are reflected in displayed lists.
   * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
   * Cons: Sorting is not permanent, thus lists stored are in lexicographical order by default.
 
-* **Alternative 2:** Permanently sort lists.
-  * Pros: Less hassle if a specific sorting order is preferred by the user.
-  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user.
 
 ### \[Proposed\] Data archiving
 
