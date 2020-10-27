@@ -93,12 +93,12 @@ public class ExpiryDate {
     }
 
     /**
-     * Returns if the first ExpiryDate object's expiry date is after next ExpiryDate object's expiry date.
+     * Returns true if a given {@code expiryDate}'s expiry date is after the expiry date.
      */
-    public static boolean isAfter(ExpiryDate expiryDate1, ExpiryDate expiryDate2) {
+    public boolean isAfter(ExpiryDate expiryDate) {
         try {
-            String expiryDateString1 = replaceSlashWithDash(expiryDate1.value);
-            String expiryDateString2 = replaceSlashWithDash(expiryDate2.value);
+            String expiryDateString1 = replaceSlashWithDash(this.value);
+            String expiryDateString2 = replaceSlashWithDash(expiryDate.value);
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
             LocalDate localDate1 = LocalDate.parse(expiryDateString1, formatter);
