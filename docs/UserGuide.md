@@ -13,7 +13,7 @@ Table of Contents:<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start 
+## [Quick start](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 * Ensure that you have Java 11 or above installed on your system.
 * Download the most recent SimplyKitchen.jar from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
@@ -26,7 +26,7 @@ Table of Contents:<br>
 * Refer to the features section in [this guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html) for help on how to use the app.
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## [Features](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 <div markdown="block" class="alert alert-info">
 
@@ -43,7 +43,7 @@ Table of Contents:<br>
 
 </div>
 
-### Viewing help : `help`
+### [Viewing help](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `help`
 
 Shows a help message explaining how to access the help page.
 
@@ -51,7 +51,7 @@ Shows a help message explaining how to access the help page.
 
 Format: `help`
 
-### Adding a food item: `add`
+### [Adding a food item](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `add`
 
 Adds a food item to the food inventory.
 
@@ -74,13 +74,13 @@ Examples:
 * `add d/canned tuna e/01-01-2021 q/1.1 can p/low`
 * `add d/apple pie e/11-10-2020 q/2 p/medium t/frozen t/$15 t/contains nuts`
 
-### Listing all food items : `list`
+### [Listing all food items](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `list`
 
 Shows a list of all food items in the food inventory.
 
 Format: `list`
 
-### Searching for a food item: `find`
+### [Searching for a food item](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `find`
 
 Searches for food items in the inventory with descriptions matching any of the given keywords.
 
@@ -107,7 +107,7 @@ Examples:
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `MEDIUM` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
   ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
-### Deleting a food item : `delete`
+### [Deleting a food item](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `delete`
 
 Deletes the specified food item from the food inventory.
 
@@ -121,7 +121,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
 * `find tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
-### Editing a food item : `edit`
+### [Editing a food item](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `edit`
 
 Edits the details of an existing food item in the food inventory.
 
@@ -139,7 +139,7 @@ Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` Edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.5 can` and clears all existing tags.
 
-### Changing the quantity of a food item: `changeqty`
+### [Changing the quantity of a food item](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `changeqty`
 
 Changes the quantity of an existing food item in the food inventory.
 
@@ -155,7 +155,7 @@ Examples:
 * `changeqty 1 a/+1` increases the quantity of the 1st food item by 1.
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
-### Undoing previous command: `undo`
+### [Undoing previous command](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `undo`
 Restores the food inventory to a state before an undoable command was executed.
 
 * Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
@@ -166,7 +166,7 @@ Examples:
 * `delete 1` then `undo` will reverse the delete command.
 * `delete 1` `clear` then `undo` will reverse the `clear` command.
 
-### Redoing previously undone command: `redo`
+### [Redoing previously undone command](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `redo`
 Restores the food inventory to a state before an undo command was executed.
 
 Format: `redo`
@@ -175,31 +175,31 @@ Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
-### Clearing all entries : `clear`
+### [Clearing all entries](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `clear`
 Clears all entries from the food inventory.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### [Exiting the program](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features) : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### [Saving the data](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features)
 
 Food Inventory data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## [FAQ](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## [Command summary](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 Action | Format, Examples
 --------|------------------
