@@ -12,26 +12,26 @@ import seedu.simplykitchen.model.food.Food;
 /**
  * Panel containing the list of food items.
  */
-public class ExpiringFoodListPanel extends UiPart<Region> {
-    private static final String FXML = "ExpiringFoodListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(ExpiringFoodListPanel.class);
+public class ExpiredFoodListPanel extends UiPart<Region> {
+    private static final String FXML = "ExpiredFoodListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(ExpiredFoodListPanel.class);
 
     @javafx.fxml.FXML
-    private ListView<Food> expiryListView;
+    private ListView<Food> expiredListView;
 
     /**
      * Creates a {@code FoodListPanel} with the given {@code ObservableList}.
      */
-    public ExpiringFoodListPanel(ObservableList<Food> foodList) {
+    public ExpiredFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
-        expiryListView.setItems(foodList);
-        expiryListView.setCellFactory(listView -> new ExpiryListViewCell());
+        expiredListView.setItems(foodList);
+        expiredListView.setCellFactory(listView -> new ExpiredListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Food} using a {@code FoodCard}.
      */
-    class ExpiryListViewCell extends ListCell<Food> {
+    class ExpiredListViewCell extends ListCell<Food> {
         @Override
         protected void updateItem(Food food, boolean empty) {
             super.updateItem(food, empty);
@@ -40,7 +40,7 @@ public class ExpiringFoodListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ExpiringFoodCard(food).getRoot());
+                setGraphic(new ExpiredFoodListCard(food).getRoot());
             }
         }
     }

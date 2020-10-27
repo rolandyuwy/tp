@@ -100,12 +100,17 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredExpiryFoodList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredExpiringFoodList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredExpiringFoodList().remove(0));
     }
 
     @Test
-    public void getExpiryPredicate_predicateTest_predicateReturnsTrue() {
+    public void getFilteredExpiredFoodList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredExpiredFoodList().remove(0));
+    }
+
+    @Test
+    public void getExpiringPredicate_predicateTest_predicateReturnsTrue() {
         Predicate<Food> predicate = modelManager.getExpiringPredicate();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
 
@@ -146,7 +151,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getExpiryPredicate_predicateTest_predicateReturnsFalse() {
+    public void getExpiringPredicate_predicateTest_predicateReturnsFalse() {
         Predicate<Food> predicate = modelManager.getExpiringPredicate();
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
 
@@ -180,8 +185,89 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getExpiryPredicate_predicateTest_nullArgument() {
+    public void getExpiringPredicate_predicateTest_nullArgument() {
         Predicate<Food> predicate = modelManager.getExpiringPredicate();
+        assertThrows(NullPointerException.class, () -> predicate.test(null)); // null argument
+    }
+
+    @Test
+    public void getExpiredPredicate_predicateTest_predicateReturnsTrue() {
+        Predicate<Food> predicate = modelManager.getExpiredPredicate();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        String dateYesterday = yesterday.format(dateFormat);
+
+        Food pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateYesterday).withQuantity("1.5").withTags("cheese").build();
+        assertTrue(predicate.test(pizza)); // expired yesterday
+
+        LocalDate twoDaysAgo = LocalDate.now().minusDays(2);
+        String dateTwoDaysAgo = twoDaysAgo.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateTwoDaysAgo).withQuantity("1.5").withTags("cheese").build();
+        assertTrue(predicate.test(pizza)); // expired two days ago
+
+        LocalDate today = LocalDate.now();
+        String dateToday = today.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateToday).withQuantity("1.5").withTags("cheese").build();
+        assertFalse(predicate.test(pizza)); // expiring today
+
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        String dateTomorrow = tomorrow.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateTomorrow).withQuantity("1.5").withTags("cheese").build();
+        assertFalse(predicate.test(pizza)); // expiring 2 days from today
+
+        LocalDate lastYear = LocalDate.now().minusDays(365);
+        String dateLastYear = lastYear.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateLastYear).withQuantity("1.5").withTags("cheese").build();
+        assertTrue(predicate.test(pizza)); // expired a year ago
+    }
+
+    @Test
+    public void getExpiredPredicate_predicateTest_predicateReturnsFalse() {
+        Predicate<Food> predicate = modelManager.getExpiredPredicate();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+        LocalDate minusTenDays = LocalDate.now().minusDays(10);
+        String dateminusTenDays = minusTenDays.format(dateFormat);
+
+        Food pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateminusTenDays).withQuantity("1.5").withTags("cheese").build();
+        assertTrue(predicate.test(pizza)); // expired 10 days ago
+
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        String dateYesterday = yesterday.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateYesterday).withQuantity("1.5").withTags("cheese").build();
+        assertTrue(predicate.test(pizza)); // expired yesterday
+
+        LocalDate eightDaysLater = LocalDate.now().plusDays(8);
+        String dateEightDaysLater = eightDaysLater.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(dateEightDaysLater).withQuantity("1.5").withTags("cheese").build();
+        assertFalse(predicate.test(pizza)); // expiring 8 days from today
+
+        LocalDate twoWeeksLater = LocalDate.now().plusDays(14);
+        String datetwoWeeksLater = twoWeeksLater.format(dateFormat);
+
+        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
+                .withExpiryDate(datetwoWeeksLater).withQuantity("1.5").withTags("cheese").build();
+        assertFalse(predicate.test(pizza)); // expiring 2 weeks from today
+    }
+
+    @Test
+    public void getExpiredPredicate_predicateTest_nullArgument() {
+        Predicate<Food> predicate = modelManager.getExpiredPredicate();
         assertThrows(NullPointerException.class, () -> predicate.test(null)); // null argument
     }
 
