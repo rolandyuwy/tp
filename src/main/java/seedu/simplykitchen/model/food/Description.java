@@ -48,7 +48,8 @@ public class Description {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Description // instanceof handles nulls
-                && fullDescription.equals(((Description) other).fullDescription)); // state check
+                && fullDescription.toLowerCase().equals(((Description) other).fullDescription.toLowerCase()));
+        // state check
     }
 
     @Override
