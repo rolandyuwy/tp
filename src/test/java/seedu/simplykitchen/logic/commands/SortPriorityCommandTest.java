@@ -1,14 +1,5 @@
 package seedu.simplykitchen.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.simplykitchen.model.FoodInventory;
-import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.UserPrefs;
-import seedu.simplykitchen.model.food.Food;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.SortPriorityCommand.MESSAGE_SUCCESS;
@@ -25,6 +16,16 @@ import static seedu.simplykitchen.testutil.TypicalFood.FRENCH_FRIES;
 import static seedu.simplykitchen.testutil.TypicalFood.GINGER;
 import static seedu.simplykitchen.testutil.TypicalFood.WHITE_CHOCOLATE;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.simplykitchen.model.FoodInventory;
+import seedu.simplykitchen.model.Model;
+import seedu.simplykitchen.model.ModelManager;
+import seedu.simplykitchen.model.UserPrefs;
+import seedu.simplykitchen.model.food.Food;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortPriorityCommand.
@@ -44,7 +45,7 @@ public class SortPriorityCommandTest {
     }
 
     @Test
-    public void execute_sortByPriority_differentPriority_success() {
+    public void execute_sortByPriorityDifferentPriority_success() {
         setUp();
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortPriorityCommand command = new SortPriorityCommand();
@@ -59,7 +60,7 @@ public class SortPriorityCommandTest {
     }
 
     @Test
-    public void execute_sortByPriority_samePrioritySameExpiryDifferentDescription_success() {
+    public void execute_sortByPrioritySamePrioritySameExpiryDifferentDescription_success() {
         setUp(WHITE_CHOCOLATE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortPriorityCommand command = new SortPriorityCommand();

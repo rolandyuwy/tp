@@ -1,14 +1,5 @@
 package seedu.simplykitchen.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.simplykitchen.model.FoodInventory;
-import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.UserPrefs;
-import seedu.simplykitchen.model.food.Food;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.SortExpiryCommand.MESSAGE_SUCCESS;
@@ -26,6 +17,16 @@ import static seedu.simplykitchen.testutil.TypicalFood.FRENCH_FRIES;
 import static seedu.simplykitchen.testutil.TypicalFood.GINGER;
 import static seedu.simplykitchen.testutil.TypicalFood.WHITE_CHOCOLATE;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.simplykitchen.model.FoodInventory;
+import seedu.simplykitchen.model.Model;
+import seedu.simplykitchen.model.ModelManager;
+import seedu.simplykitchen.model.UserPrefs;
+import seedu.simplykitchen.model.food.Food;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortExpiryCommand.
@@ -45,7 +46,7 @@ public class SortExpiryCommandTest {
     }
 
     @Test
-    public void execute_sortByExpiry_differentExpiry_success() {
+    public void execute_sortByExpiryDifferentExpiry_success() {
         setUp();
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
@@ -60,7 +61,7 @@ public class SortExpiryCommandTest {
     }
 
     @Test
-    public void execute_sortByPriority_sameExpiryDifferentPriority_success() {
+    public void execute_sortByPrioritySameExpiryDifferentPriority_success() {
         setUp(CHEAP_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
@@ -75,7 +76,7 @@ public class SortExpiryCommandTest {
     }
 
     @Test
-    public void execute_sortByPriority_sameExpirySamePriorityDifferentDescription_success() {
+    public void execute_sortByPrioritySameExpirySamePriorityDifferentDescription_success() {
         setUp(WHITE_CHOCOLATE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();

@@ -1,14 +1,5 @@
 package seedu.simplykitchen.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.simplykitchen.model.FoodInventory;
-import seedu.simplykitchen.model.Model;
-import seedu.simplykitchen.model.ModelManager;
-import seedu.simplykitchen.model.UserPrefs;
-import seedu.simplykitchen.model.food.Food;
-
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.SortDescCommand.MESSAGE_SUCCESS;
@@ -29,6 +20,16 @@ import static seedu.simplykitchen.testutil.TypicalFood.GINGER;
 import static seedu.simplykitchen.testutil.TypicalFood.OLD_EGGS;
 import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.simplykitchen.model.FoodInventory;
+import seedu.simplykitchen.model.Model;
+import seedu.simplykitchen.model.ModelManager;
+import seedu.simplykitchen.model.UserPrefs;
+import seedu.simplykitchen.model.food.Food;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortDescCommand.
  */
@@ -47,7 +48,7 @@ public class SortDescCommandTest {
     }
 
     @Test
-    public void execute_sortByDescription_differentDescription_success() {
+    public void execute_sortByDescriptionDifferentDescription_success() {
         setUp(APRICOT, APPLE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
@@ -62,7 +63,7 @@ public class SortDescCommandTest {
     }
 
     @Test
-    public void execute_sortByDescription_sameDescriptionDifferentExpiry_success() {
+    public void execute_sortByDescriptionSameDescriptionDifferentExpiry_success() {
         setUp(OLD_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
@@ -77,7 +78,7 @@ public class SortDescCommandTest {
     }
 
     @Test
-    public void execute_sortByDescription_sameDescriptionSameExpiryDifferentPriority_success() {
+    public void execute_sortByDescriptionSameDescriptionSameExpiryDifferentPriority_success() {
         setUp(CHEAP_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
