@@ -182,7 +182,7 @@ public class ModelManager implements Model {
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
-        updateExpiringFilteredFoodList(); 
+        updateExpiringFilteredFoodList();
     }
 
     @Override
