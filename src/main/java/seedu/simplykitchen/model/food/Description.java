@@ -14,7 +14,8 @@ import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 public class Description {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Description should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Description should only contain alphanumeric characters and spaces and it should not be blank.";
+    public static final String MESSAGE_EXCEED_LIMIT = "Description should not exceed 50 characters.";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -31,7 +32,7 @@ public class Description {
      */
     public Description(String description) {
         requireNonNull(description);
-        checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDescription(description), generateErrorMessage(description));
         fullDescription = description;
     }
 
@@ -39,6 +40,9 @@ public class Description {
      * Returns true if a given string is a valid description.
      */
     public static boolean isValidDescription(String test) {
+        if (test.length() > 50) {
+            return false;
+        }
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -70,6 +74,20 @@ public class Description {
         }
     }
 
+    /**
+     * Generates an error message based on why the description is invalid.
+     *
+     * @param invalidDescription An invalid description.
+     * @return A string describing the error message.
+     */
+    public static String generateErrorMessage(String invalidDescription) {
+        if (invalidDescription.length() > 50) {
+            return MESSAGE_EXCEED_LIMIT;
+        }
+        return MESSAGE_CONSTRAINTS;
+    }
+
+
     @Override
     public String toString() {
         return fullDescription;
@@ -79,7 +97,8 @@ public class Description {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Description // instanceof handles nulls
-                && fullDescription.equals(((Description) other).fullDescription)); // state check
+                && fullDescription.toLowerCase().equals(((Description) other).fullDescription.toLowerCase()));
+        // state check
     }
 
     @Override

@@ -2,10 +2,12 @@ package seedu.simplykitchen.model.food;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DATE_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_PRIORITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FROZEN;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
@@ -35,6 +37,10 @@ public class FoodTest {
         Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
 
+        // different casing for description -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_APPLE_PIE.toLowerCase()).build();
+        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
+
         // different expiry dates -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
@@ -42,6 +48,10 @@ public class FoodTest {
         // different tags -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
         assertFalse(APPLE_PIE.isSameFood(editedApplePie));
+
+        // different casing for tags -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_FROZEN.toLowerCase()).build();
+        assertTrue(APPLE_PIE.isSameFood(editedApplePie));
 
         // same description, same expiry date, different attributes -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD)
@@ -82,6 +92,10 @@ public class FoodTest {
         Food editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
 
+        // different casing for description -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withDescription(VALID_DESCRIPTION_APPLE_PIE.toLowerCase()).build();
+        assertTrue(APPLE_PIE.equals(editedApplePie));
+
         // different priority -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withPriority(VALID_PRIORITY_BREAD).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
@@ -97,5 +111,9 @@ public class FoodTest {
         // different tags -> returns false
         editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_WHOLEMEAL).build();
         assertFalse(APPLE_PIE.equals(editedApplePie));
+
+        // different casing for tags -> returns true
+        editedApplePie = new FoodBuilder(APPLE_PIE).withTags(VALID_TAG_FROZEN.toLowerCase()).build();
+        assertTrue(APPLE_PIE.equals(editedApplePie));
     }
 }

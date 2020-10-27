@@ -30,6 +30,7 @@ public class ModelManager implements Model {
     private final FilteredList<Food> filteredFoods;
 
     private FilteredList<Food> expiringFilteredFoods;
+    private final FilteredList<Food> expiredFilteredFoods;
     private SortedList<Food> expiringSortedFoods;
 
     /**
@@ -51,6 +52,8 @@ public class ModelManager implements Model {
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
+        expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
+        expiredFilteredFoods.setPredicate(getExpiredPredicate());
     }
 
     public ModelManager() {
@@ -149,10 +152,15 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Food> getFilteredExpiredFoodList() {
+        return expiredFilteredFoods;
+    }
+
+    @Override
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
-        updateExpiringFilteredFoodList(); //TODO: This line does not seem like the same level of abstraction.
+        updateExpiringFilteredFoodList();
     }
 
     @Override
@@ -192,12 +200,11 @@ public class ModelManager implements Model {
     // ============== Expiring Food List ========================================================================
     @Override
     public void updateExpiringSortedFoodList() {
-        //TODO: Does it sort by priority then description if expiry date is the same?
         expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
     }
 
     @Override
-    public Predicate<Food> getExpiringPredicate() { //TODO: Not sure if ModelManager should contain this?
+    public Predicate<Food> getExpiringPredicate() {
         return new Predicate<Food>() {
             @Override
             public boolean test(Food food) {
@@ -219,6 +226,24 @@ public class ModelManager implements Model {
                     return true;
                 }
                 return false;
+            }
+        };
+    }
+
+    @Override
+    public Predicate<Food> getExpiredPredicate() {
+        return new Predicate<Food>() {
+            @Override
+            public boolean test(Food food) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+                LocalDate today = LocalDate.now();
+                String dateToday = today.format(dateFormat);
+                ExpiryDate expiredToday = new ExpiryDate(dateToday);
+
+                ExpiryDate foodExpiry = food.getExpiryDate();
+
+                return expiredToday.isAfter(foodExpiry);
             }
         };
     }

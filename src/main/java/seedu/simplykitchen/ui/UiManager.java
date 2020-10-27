@@ -44,6 +44,9 @@ public class UiManager implements Ui {
             mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
+            if (logic.getFilteredExpiredFoodList().size() > 0) { // Only show popup if there are expired items
+                mainWindow.showExpiredFood();
+            }
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
