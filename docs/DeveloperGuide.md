@@ -242,16 +242,20 @@ The following sequence diagram illustrates how the command `sortdesc` works:
 
 Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
 
+Sorting information is stored as user preferences, to allow for the information to be retained when the application closes. Thus, the user's preferred sorting mechanism is stored, to enhance user experience. 
+
+Furthermore, this helps for items added or edited by calling `AddCommand` and `EditCommand` in the list to be updated dynamically according to the sorting mechanism. Thus, the user does not need to sort the list again.
 
 ##### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
   * Pros: Less hassle if a specific sorting order is preferred by the user.
-  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user.
+  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user, as sorting is useful for narrowed down lists. 
+    However, they may achieve the same result by first sorting, then executing `FindCommand` or `ListCommand`
 
-* **Alternative 2:** Lists are sorted in lexicographical order by default, sorting by priority or expiry date are reflected in displayed lists.
+* **Alternative 2:** Lists are sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
   * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
-  * Cons: Sorting is not permanent, thus lists stored are in lexicographical order by default.
+  * Cons: Sorting is not permanent, thus lists stored are sorted by description by default.
 
 
 ### \[Proposed\] Data archiving
@@ -644,13 +648,9 @@ Use case ends.
 
 **MSS:**
 
-**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
+**1.** User requests to sort the food list by expiry date.
 
-**2.** SimplyKitchen displays a list of food items.
-
-**3.** User requests to sort the food list by expiry date.
-
-**4.** SimplyKitchen displays the food list sorted by expiry date.
+**2.** SimplyKitchen displays the food list sorted by expiry date.
 
 Use case ends.
 
@@ -668,13 +668,29 @@ Use case ends.
 
 **MSS:**
 
-**1.** User requests to <ins>find a food item (UC05)</ins> or <ins>list all food items (UC06)</ins>.
+**1.** User requests to sort the food list by priority.
 
-**2.** SimplyKitchen displays a list of food items.
+**2.** SimplyKitchen displays the food list sorted by priority.
 
-**3.** User requests to sort the food list by priority.
+Use case ends.
 
-**4.** SimplyKitchen displays the food list sorted by priority.
+**Extensions:**
+
+**2a.** The list is empty.
+
+Use case ends.
+
+<br/>
+
+#### UC10: Sort food items by description
+
+**Guarantees:** The food items in the food list are sorted by description.
+
+**MSS:**
+
+**1.** User requests to sort the food list by description.
+
+**2.** SimplyKitchen displays the food list sorted by description.
 
 Use case ends.
 
