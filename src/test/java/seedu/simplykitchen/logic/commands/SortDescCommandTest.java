@@ -1,13 +1,11 @@
 package seedu.simplykitchen.logic.commands;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.simplykitchen.model.FoodInventory;
 import seedu.simplykitchen.model.Model;
 import seedu.simplykitchen.model.ModelManager;
 import seedu.simplykitchen.model.UserPrefs;
 import seedu.simplykitchen.model.food.Food;
-import seedu.simplykitchen.testutil.TypicalFood;
 
 import java.util.Arrays;
 
