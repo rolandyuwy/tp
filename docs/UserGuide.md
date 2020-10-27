@@ -146,6 +146,44 @@ Examples:
 * `changeqty 1 a/+1` increases the quantity of the 1st food item by 1.
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
+### Sort food items by description: `sortdesc`
+
+Sorts the list of food items by description, then by expiry date from oldest to newest, then by priority from high to low. 
+
+* Sorting by description consists of first sorting lexicographically, then by the description's first characters.
+* For the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
+* If two food items have the description, they will be ordered by expiry date from oldest to newest.
+* If two food items have the same expiry date and description, they will be ordered by by priority from high to low. 
+
+Format: `sortdesc`
+
+Examples:
+* A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
+
+![sorting by description](images/SortDesc1.3.png)
+
+### Sort food items by expiry date: `sortexpiry`
+
+Sorts the list of food items by expiry date from oldest to newest, then by priority from high to low, then by description. 
+
+* If two food items have the same expiry date, they will be ordered by priority from high to low.
+* If two food items have the same expiry date and priority, they will be ordered by description.
+
+Format: `sortexpiry`
+
+![sorting by expiry date from oldest to newest](images/SortExpiry1.3.png)
+
+### Sort food items by priority: `sortpriority`
+
+Sorts the list of food items by priority from high to low, then by expiry date from oldest to newest, then by description. 
+
+* If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
+* If two food items have the same priority and expiry date, they will be ordered by description.
+
+Format: `sortpriority`
+
+![sorting by priority from HIGH to LOW](images/SortPriority1.3.png)
+
 ### Undoing previous command: `undo`
 Restores the food inventory to a state before an undoable command was executed.
 
@@ -201,6 +239,9 @@ Action | Format, Examples
 **Change quantity** | `changeqty INDEX a/AMOUNT` <br> e.g. `changeqty 1 a/+1.50`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`<br> e.g., `find d/biscuits p/medium e/30-12-2020 t/cat t/dog`
 **List** | `list`
+**Sort by Description** | `sortdesc`
+**Sort by Expiry Date** | `sortexpiry`
+**Sort by Priority** | `sortpriority`
 **Undo** | `undo`
 **Redo** | `redo`
 **Help** | `help`
