@@ -12,8 +12,20 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.SortExpiryCommand.MESSAGE_SUCCESS;
-import static seedu.simplykitchen.model.util.ComparatorUtil.*;
-import static seedu.simplykitchen.testutil.TypicalFood.*;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESCENDING_PRIORITY;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_FIRST_CHARACTER;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_LEXICOGRAPHICAL_ORDER;
+import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
+import static seedu.simplykitchen.testutil.TypicalFood.BAGEL;
+import static seedu.simplykitchen.testutil.TypicalFood.CARROT_CAKE;
+import static seedu.simplykitchen.testutil.TypicalFood.CHEAP_EGGS;
+import static seedu.simplykitchen.testutil.TypicalFood.DARK_CHOCOLATE;
+import static seedu.simplykitchen.testutil.TypicalFood.EGGS;
+import static seedu.simplykitchen.testutil.TypicalFood.FRENCH_FRIES;
+import static seedu.simplykitchen.testutil.TypicalFood.GINGER;
+import static seedu.simplykitchen.testutil.TypicalFood.WHITE_CHOCOLATE;
+import static seedu.simplykitchen.testutil.TypicalFood.getTypicalFoodInventory;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortExpiryCommand.
