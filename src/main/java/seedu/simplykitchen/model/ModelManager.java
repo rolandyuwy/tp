@@ -3,6 +3,8 @@ package seedu.simplykitchen.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
+import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
+import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -27,6 +29,7 @@ public class ModelManager implements Model {
 
     private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
+    private Comparator<Food>[] sortingComparators;
     private final FilteredList<Food> filteredFoods;
 
     private FilteredList<Food> expiringFilteredFoods;
@@ -44,6 +47,7 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.sortingComparators = getComparator(userPrefs.getSortingComparatorsDescription());
 
         filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
 
@@ -92,6 +96,12 @@ public class ModelManager implements Model {
         userPrefs.setFoodInventoryFilePath(foodInventoryFilePath);
     }
 
+    @Override
+    public void setSortingComparators(Comparator<Food>[] sortingComparators) {
+        requireNonNull(sortingComparators);
+        this.sortingComparators = sortingComparators;
+    }
+
     //=========== FoodInventory ==========================================================================
 
     @Override
@@ -117,19 +127,31 @@ public class ModelManager implements Model {
 
     @Override
     public void addFood(Food food) {
+        requireNonNull(food);
         versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        sortFoodInventoryBySortingComparators();
     }
 
     @Override
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
         versionedFoodInventory.setFood(target, editedFood);
+        updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        sortFoodInventoryBySortingComparators();
     }
 
     @Override
     public void sortFoodInventory(Comparator<Food>... comparators) {
+        requireNonNull(comparators);
         versionedFoodInventory.sortFoods(comparators);
+        setSortingComparators(comparators);
+        userPrefs.setSortingComparatorsDescription(generateSortingComparatorsDescription(comparators));
+    }
+
+    @Override
+    public void sortFoodInventoryBySortingComparators() {
+        versionedFoodInventory.sortFoods(sortingComparators);
     }
 
     //=========== Filtered Food List Accessors =============================================================

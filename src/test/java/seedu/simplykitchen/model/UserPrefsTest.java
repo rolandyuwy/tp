@@ -18,4 +18,9 @@ public class UserPrefsTest {
         assertThrows(NullPointerException.class, () -> userPrefs.setFoodInventoryFilePath(null));
     }
 
+    @Test
+    public void setSortingComparatorsDescription_nullSortingComparatorsDescription_throwsAssertionError() {
+        UserPrefs userPrefs = new UserPrefs();
+        assertThrows(NullPointerException.class, () -> userPrefs.setSortingComparatorsDescription(null));
+    }
 }

@@ -1,13 +1,20 @@
 package seedu.simplykitchen.model.util;
 
+import static seedu.simplykitchen.logic.commands.SortDescCommand.SORT_DESC_COMPARATORS;
+import static seedu.simplykitchen.logic.commands.SortExpiryCommand.SORT_EXPIRY_COMPARATORS;
+import static seedu.simplykitchen.logic.commands.SortPriorityCommand.SORT_PRIORITY_COMPARATORS;
+
 import java.util.Comparator;
 
 import seedu.simplykitchen.model.food.Food;
+
 
 /**
  * Contains utility comparators for sorting food lists.
  */
 public class ComparatorUtil {
+    public static final Comparator<Food> DEFAULT = (food1, food2) -> 0;
+    public static final Comparator<Food>[] DEFAULT_COMPARATOR_ARRAY = new Comparator[]{(food1, food2) -> 0};
     public static final Comparator<Food> SORT_BY_ASCENDING_EXPIRY_DATE = (food1, food2) ->
                 food1.getExpiryDate().isAfter(food2.getExpiryDate())
                     ? 1
@@ -24,4 +31,41 @@ public class ComparatorUtil {
                 food1.getDescription().fullDescription.compareTo(food2.getDescription().fullDescription);
     public static final Comparator<Food> SORT_BY_FIRST_CHARACTER = (food1, food2) ->
                 food1.getDescription().compareFirstCharacterTo(food2.getDescription());
+
+    /**
+     * Returns the foodInventorySortingComparators information according to {@code comparatorDescription}.
+     */
+    public static Comparator<Food>[] getComparator(String comparatorDescription) {
+        switch (comparatorDescription) {
+        case "default without ordering":
+            return DEFAULT_COMPARATOR_ARRAY;
+        case "ascending expiry date":
+            return SORT_EXPIRY_COMPARATORS;
+        case "descending priority":
+            return SORT_PRIORITY_COMPARATORS;
+        case "description":
+            return SORT_DESC_COMPARATORS;
+        default:
+            assert false : "Comparator is not defined.";
+            return null;
+        }
+    }
+
+    /**
+     * Returns a String describing the sorting used according to {@code foodInventorySortingComparators}.
+     */
+    public static String generateSortingComparatorsDescription(Comparator<Food>[] sortingComparators) {
+        if (sortingComparators.equals(DEFAULT_COMPARATOR_ARRAY)) {
+            return "default without ordering";
+        } else if (sortingComparators.equals(SORT_EXPIRY_COMPARATORS)) {
+            return "ascending expiry date";
+        } else if (sortingComparators.equals(SORT_PRIORITY_COMPARATORS)) {
+            return "descending priority";
+        } else if (sortingComparators.equals(SORT_DESC_COMPARATORS)) {
+            return "description";
+        } else {
+            assert false : "Comparator is not defined.";
+            return "";
+        }
+    }
 }
