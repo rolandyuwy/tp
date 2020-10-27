@@ -157,11 +157,6 @@ public class ModelManager implements Model {
         versionedFoodInventory.sortFoods(sortingComparators);
     }
 
-    @Override
-    public void sortFoodInventory(Comparator<Food>... comparators) {
-        versionedFoodInventory.sortFoods(comparators);
-    }
-
     //=========== Filtered Food List Accessors =============================================================
 
     /**
