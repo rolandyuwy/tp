@@ -4,9 +4,11 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
+import javafx.scene.text.TextAlignment;
 import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
 
@@ -25,6 +27,11 @@ public class FoodListPanel extends UiPart<Region> {
      */
     public FoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
+        Label placeHolderText = new Label("There is currently no food item in the inventory");
+        placeHolderText.setWrapText(true);
+        placeHolderText.setStyle("-fx-text-fill: #FFFFFF");
+        placeHolderText.setTextAlignment(TextAlignment.CENTER);
+        foodListView.setPlaceholder(placeHolderText);
         foodListView.setItems(foodList);
         foodListView.setCellFactory(listView -> new FoodListViewCell());
     }

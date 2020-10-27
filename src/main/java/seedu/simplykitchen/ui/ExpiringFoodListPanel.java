@@ -26,7 +26,7 @@ public class ExpiringFoodListPanel extends UiPart<Region> {
      */
     public ExpiringFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
-        Label placeHolderText = new Label("No food items expiring within the next 7 days.");
+        Label placeHolderText = new Label("No food item is expiring within the next 7 days");
         placeHolderText.setWrapText(true);
         placeHolderText.setStyle("-fx-text-fill: #FFFFFF");
         placeHolderText.setTextAlignment(TextAlignment.CENTER);
