@@ -18,6 +18,7 @@ import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
 import seedu.simplykitchen.logic.commands.RedoCommand;
+import seedu.simplykitchen.logic.commands.SortDescCommand;
 import seedu.simplykitchen.logic.commands.SortExpiryCommand;
 import seedu.simplykitchen.logic.commands.SortPriorityCommand;
 import seedu.simplykitchen.logic.commands.UndoCommand;
@@ -79,6 +80,9 @@ public class FoodInventoryParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
+
+        case SortDescCommand.COMMAND_WORD:
+            return new SortDescCommand();
 
         case SortExpiryCommand.COMMAND_WORD:
             return new SortExpiryCommand();

@@ -2,6 +2,7 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.beans.InvalidationListener;
@@ -95,6 +96,13 @@ public class FoodInventory implements ReadOnlyFoodInventory {
      */
     public void removeFood(Food key) {
         foods.remove(key);
+    }
+
+    /**
+     * Sorts the food items from this {@code FoodInventory} according to and in order of the input {@code comparators}.
+     */
+    public void sortFoods(Comparator<Food>... comparators) {
+        foods.sortFoods(comparators);
     }
 
     @Override

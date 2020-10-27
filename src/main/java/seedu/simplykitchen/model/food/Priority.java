@@ -51,7 +51,7 @@ public class Priority {
     }
 
     /**
-     * Returns true if a given priority has a lower priority level.
+     * Returns true if a given {@code otherPriority} has a lower priority level.
      */
     public boolean isHigherPriority(Priority otherPriority) {
         return ((this.value == Level.HIGH) && (otherPriority.value == Level.MEDIUM))
