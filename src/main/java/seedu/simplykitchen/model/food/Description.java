@@ -49,7 +49,7 @@ public class Description {
         return other == this // short circuit if same object
                 || (other instanceof Description // instanceof handles nulls
                 && fullDescription.toLowerCase().equals(((Description) other).fullDescription.toLowerCase()));
-                // state check
+        // state check
     }
 
     @Override
