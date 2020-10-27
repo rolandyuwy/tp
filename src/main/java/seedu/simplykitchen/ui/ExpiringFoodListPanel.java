@@ -15,6 +15,7 @@ import seedu.simplykitchen.model.food.Food;
  * Panel containing the list of food items.
  */
 public class ExpiringFoodListPanel extends UiPart<Region> {
+    private static final String NO_EXPIRING_ITEMS = "No food item is expiring within the next 7 days";
     private static final String FXML = "ExpiringFoodListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ExpiringFoodListPanel.class);
 
@@ -26,7 +27,7 @@ public class ExpiringFoodListPanel extends UiPart<Region> {
      */
     public ExpiringFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
-        Label placeHolderText = new Label("No food item is expiring within the next 7 days");
+        Label placeHolderText = new Label(NO_EXPIRING_ITEMS);
         placeHolderText.setWrapText(true);
         placeHolderText.setStyle("-fx-text-fill: #FFFFFF");
         placeHolderText.setTextAlignment(TextAlignment.CENTER);

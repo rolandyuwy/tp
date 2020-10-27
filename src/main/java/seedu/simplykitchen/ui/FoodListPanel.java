@@ -16,6 +16,7 @@ import seedu.simplykitchen.model.food.Food;
  * Panel containing the list of food items.
  */
 public class FoodListPanel extends UiPart<Region> {
+    private static final String NO_FOOD_ITEMS = "There is currently no food item in the inventory";
     private static final String FXML = "FoodListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(FoodListPanel.class);
 
@@ -27,7 +28,7 @@ public class FoodListPanel extends UiPart<Region> {
      */
     public FoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
-        Label placeHolderText = new Label("There is currently no food item in the inventory");
+        Label placeHolderText = new Label(NO_FOOD_ITEMS);
         placeHolderText.setWrapText(true);
         placeHolderText.setStyle("-fx-text-fill: #FFFFFF");
         placeHolderText.setTextAlignment(TextAlignment.CENTER);
