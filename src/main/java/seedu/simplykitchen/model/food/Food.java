@@ -87,7 +87,8 @@ public class Food {
 
         return otherFood != null
                 && otherFood.getDescription().equals(getDescription())
-                && (otherFood.getPriority().equals(getPriority()) || otherFood.getExpiryDate().equals(getExpiryDate()));
+                && otherFood.getExpiryDate().equals(getExpiryDate())
+                && otherFood.getTags().equals(getTags());
     }
 
     /**
@@ -108,7 +109,8 @@ public class Food {
         return otherFood.getDescription().equals(getDescription())
                 && otherFood.getPriority().equals(getPriority())
                 && otherFood.getExpiryDate().equals(getExpiryDate())
-                && otherFood.getTags().equals(getTags());
+                && otherFood.getTags().equals(getTags())
+                && otherFood.getQuantity().equals(getQuantity());
     }
 
     @Override
