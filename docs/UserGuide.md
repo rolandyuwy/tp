@@ -226,6 +226,11 @@ Food Inventory data are saved in the hard disk automatically after any command t
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
 
+**Q**: What are the design and implementation considerations behind SimplyKitchen's code?<br>
+**A**: You may find this information at our [Developer Guide](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/DeveloperGuide.md).
+
+**Q**: How do I report a bug?<br>
+**A**: You may do so by creating a new issue in our [GitHub Repository](https://github.com/AY2021S1-CS2103T-F13-4/tp/issues).
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
