@@ -83,6 +83,14 @@ Finally, the **command summary** section acts as a quick reference point for all
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
+## Viewing expired food
+
+When you launch the app, it checks for any expired food items in your food inventory.
+If there is any expired food item, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
+If you have discarded the expired food, please remember to delete the associated food item using the `delete` command.
+
+![expired food list](images/expiredFoodList.png)
+
 ## Viewing help
 
 The `help` command shows a help message explaining how to access the user guide.
