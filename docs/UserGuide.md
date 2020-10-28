@@ -6,8 +6,8 @@ title: User Guide
 SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). 
 With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently than traditional GUI apps.
 
-SimplyKitchen aims to aid the general population managing a kitchen in their house by providing an apt food inventory management system.
-We have kept in mind the problems that such audience may have with their kitchens currently and have tried to address those with the features in our app.
+SimplyKitchen aims to aid the domestic individuals who manage their kitchens at home by providing an apt food inventory management system.
+We have taken into consideration the common problems our target audience may face while managing their kitchen, and have created specialized features in our application in order to address those problems.
 Since it is meant for general households, care has been taken to make the app more intuitive and not overwhelming to facilitate comfortable usage for all.
 We hope to make SimplyKitchen a household name in Singapore and appreciate your assistance in helping us do so!
 
@@ -24,7 +24,7 @@ Table of Contents:<br>
 
 This document is a User Guide meant to assist you in the entire process of using SimplyKitchen to manage your food inventory.
 
-The `Quick start` section of this document guides you in setting up and launching the SimplyKitchen app on your system.
+The `Quick start` section of this document guides you in setting up and launching the SimplyKitchen app on your computer.
 
 The `Features` section of this document can help you understand and use the features of SimplyKitchen. 
 It gives clear examples for each of the features to ensure that the purpose and constraints of the features are evident.
@@ -36,7 +36,7 @@ Finally, the `Command Summary` section acts as a quick reference point for all t
 --------------------------------------------------------------------------------------------------------------------
 ## [Quick start](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
-* Ensure that you have Java 11 or above installed on your system.
+* Ensure that you have Java 11 or above installed on your computer.
 * Download the most recent SimplyKitchen.jar from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
 * Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
 * Double click on the SimplyKitchen.jar file to launch the app. The window of the app should appear in a few seconds. 
