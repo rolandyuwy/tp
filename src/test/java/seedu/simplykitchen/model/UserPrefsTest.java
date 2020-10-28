@@ -19,7 +19,7 @@ public class UserPrefsTest {
     }
 
     @Test
-    public void setSortingComparatorsDescription_nullSortingComparatorsDescription_throwsAssertionError() {
+    public void setSortingComparatorsDescription_nullSortingComparatorsDescription_throwsNullPointerException() {
         UserPrefs userPrefs = new UserPrefs();
         assertThrows(NullPointerException.class, () -> userPrefs.setSortingComparatorsDescription(null));
     }
