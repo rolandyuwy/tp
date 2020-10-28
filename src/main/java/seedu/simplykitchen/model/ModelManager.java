@@ -30,6 +30,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
     private FilteredList<Food> expiringFilteredFoods;
+    private final FilteredList<Food> expiredFilteredFoods;
     private final SortedList<Food> sortedFoods;
     private SortedList<Food> expiringSortedFoods;
 
@@ -54,6 +55,8 @@ public class ModelManager implements Model {
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
+        expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
+        expiredFilteredFoods.setPredicate(getExpiredPredicate());
     }
 
     public ModelManager() {
@@ -148,6 +151,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Food> getFilteredExpiredFoodList() {
+        return expiredFilteredFoods;
+    }
+
+    @Override
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
@@ -223,6 +231,24 @@ public class ModelManager implements Model {
                     return true;
                 }
                 return false;
+            }
+        };
+    }
+
+    @Override
+    public Predicate<Food> getExpiredPredicate() {
+        return new Predicate<Food>() {
+            @Override
+            public boolean test(Food food) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+                LocalDate today = LocalDate.now();
+                String dateToday = today.format(dateFormat);
+                ExpiryDate expiredToday = new ExpiryDate(dateToday);
+
+                ExpiryDate foodExpiry = food.getExpiryDate();
+
+                return ExpiryDate.isAfter(expiredToday, foodExpiry);
             }
         };
     }

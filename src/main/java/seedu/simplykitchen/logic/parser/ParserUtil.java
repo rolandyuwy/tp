@@ -47,7 +47,8 @@ public class ParserUtil {
         requireNonNull(description);
         String trimmedDescription = description.trim();
         if (!Description.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+            String errorMessage = Description.generateErrorMessage(description);
+            throw new ParseException(errorMessage);
         }
         return new Description(trimmedDescription);
     }
@@ -131,7 +132,8 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            String errorMessage = Tag.generateErrorMessage(tag);
+            throw new ParseException(errorMessage);
         }
         return new Tag(trimmedTag);
     }
