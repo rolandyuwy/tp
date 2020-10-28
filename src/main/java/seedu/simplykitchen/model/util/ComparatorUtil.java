@@ -46,8 +46,7 @@ public class ComparatorUtil {
         case "description":
             return SORT_DESC_COMPARATORS;
         default:
-            assert false : "Comparator is not defined.";
-            return null;
+            throw new IllegalArgumentException("Comparator is not defined.");
         }
     }
 
@@ -64,8 +63,7 @@ public class ComparatorUtil {
         } else if (sortingComparators.equals(SORT_DESC_COMPARATORS)) {
             return "description";
         } else {
-            assert false : "Comparator is not defined.";
-            return "";
+            throw new IllegalArgumentException("Comparator is not defined.");
         }
     }
 }
