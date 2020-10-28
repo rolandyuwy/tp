@@ -48,7 +48,9 @@ Adds a food item to the food inventory.
 
 Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
-* Adds a food item based on its description and expiry date.
+* Adds a food item based on its description, expiry date and tags.
+* A food item with the same description, expriy date and tags as another food item is considered a duplicate.
+* Description and tags are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * Description, expiry date and quantity fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
@@ -166,6 +168,14 @@ Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
+### Viewing expired items : `expired`
+
+Shows a popup window listing all the expired food items if present in the inventory.
+
+![expired popup](images/expiredPopup.png)
+
+Format: `expired`
+
 ### Clearing all entries : `clear`
 Clears all entries from the food inventory.
 
@@ -204,3 +214,4 @@ Action | Format, Examples
 **Undo** | `undo`
 **Redo** | `redo`
 **Help** | `help`
+**Expired** | `expired`
