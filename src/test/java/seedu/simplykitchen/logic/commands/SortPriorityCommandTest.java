@@ -3,10 +3,7 @@ package seedu.simplykitchen.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.SortPriorityCommand.MESSAGE_SUCCESS;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESCENDING_PRIORITY;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_FIRST_CHARACTER;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_LEXICOGRAPHICAL_ORDER;
+import static seedu.simplykitchen.logic.commands.SortPriorityCommand.SORT_PRIORITY_COMPARATORS;
 import static seedu.simplykitchen.testutil.TypicalFood.ANCHOVIES;
 import static seedu.simplykitchen.testutil.TypicalFood.BAGEL;
 import static seedu.simplykitchen.testutil.TypicalFood.CARROT_CAKE;
@@ -49,10 +46,7 @@ public class SortPriorityCommandTest {
         setUp();
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortPriorityCommand command = new SortPriorityCommand();
-        expectedModel.sortFoodInventory(SORT_BY_LEXICOGRAPHICAL_ORDER,
-                SORT_BY_FIRST_CHARACTER,
-                SORT_BY_ASCENDING_EXPIRY_DATE,
-                SORT_BY_DESCENDING_PRIORITY);
+        expectedModel.sortFoodInventory(SORT_PRIORITY_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(DARK_CHOCOLATE, EGGS, ANCHOVIES, FRENCH_FRIES, BAGEL,
@@ -64,10 +58,7 @@ public class SortPriorityCommandTest {
         setUp(WHITE_CHOCOLATE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortPriorityCommand command = new SortPriorityCommand();
-        expectedModel.sortFoodInventory(SORT_BY_LEXICOGRAPHICAL_ORDER,
-                SORT_BY_FIRST_CHARACTER,
-                SORT_BY_ASCENDING_EXPIRY_DATE,
-                SORT_BY_DESCENDING_PRIORITY);
+        expectedModel.sortFoodInventory(SORT_PRIORITY_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(DARK_CHOCOLATE, WHITE_CHOCOLATE, EGGS, ANCHOVIES, FRENCH_FRIES, BAGEL,

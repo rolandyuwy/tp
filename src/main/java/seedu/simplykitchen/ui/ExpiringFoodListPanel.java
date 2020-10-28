@@ -3,9 +3,11 @@ package seedu.simplykitchen.ui;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
+import javafx.scene.text.TextAlignment;
 import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
 
@@ -13,6 +15,7 @@ import seedu.simplykitchen.model.food.Food;
  * Panel containing the list of food items.
  */
 public class ExpiringFoodListPanel extends UiPart<Region> {
+    private static final String NO_EXPIRING_ITEMS = "No food item is expiring within the next 7 days";
     private static final String FXML = "ExpiringFoodListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ExpiringFoodListPanel.class);
 
@@ -24,6 +27,11 @@ public class ExpiringFoodListPanel extends UiPart<Region> {
      */
     public ExpiringFoodListPanel(ObservableList<Food> foodList) {
         super(FXML);
+        Label placeHolderText = new Label(NO_EXPIRING_ITEMS);
+        placeHolderText.setWrapText(true);
+        placeHolderText.setStyle("-fx-text-fill: #FFFFFF");
+        placeHolderText.setTextAlignment(TextAlignment.CENTER);
+        expiryListView.setPlaceholder(placeHolderText);
         expiryListView.setItems(foodList);
         expiryListView.setCellFactory(listView -> new ExpiryListViewCell());
     }

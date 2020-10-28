@@ -58,6 +58,11 @@ public interface Model {
     ReadOnlyFoodInventory getFoodInventory();
 
     /**
+     * Sets the sortingComparators information in the model.
+     */
+    void setSortingComparators(Comparator<Food>[] sortingComparators);
+
+    /**
      * Returns true if a food item with the same identity as {@code food} exists in the FoodInventory.
      */
     boolean hasFood(Food food);
@@ -86,6 +91,11 @@ public interface Model {
      * Sorts the FoodInventory data according to and in order of the input {@code comparators}.
      */
     void sortFoodInventory(Comparator<Food>... comparators);
+
+    /**
+     * Sorts the FoodInventory data according to the {@code sortingComparators} in Model.
+     */
+    void sortFoodInventoryBySortingComparators();
 
     /**
      * Returns an unmodifiable view of the filtered food list
