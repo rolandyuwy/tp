@@ -178,12 +178,12 @@ Examples:
 
 ### [Sort food items by description](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortdesc`
 
-Sorts the list of food items by description, then by expiry date from oldest to newest, then by priority from high to low. 
+Sorts the list of food items by description. 
 
-* Sorting by description consists of first sorting lexicographically, then by the description's first characters.
-* For the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
-* If two food items have the description, they will be ordered by expiry date from oldest to newest.
-* If two food items have the same expiry date and description, they will be ordered by by priority from high to low. 
+* Sorting by description consists of first sorting lexicographically, then by the descriptions' first characters.
+* If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
+* Food items of the same description will be sorted by expiry date from oldest to newest.
+* Food items of the same description and same expiry date will be sorted by priority from high to low.
 
 Format: `sortdesc`
 
@@ -194,10 +194,10 @@ Examples:
 
 ### [Sort food items by expiry date](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortexpiry`
 
-Sorts the list of food items by expiry date from oldest to newest, then by priority from high to low, then by description. 
+Sorts the list of food items by expiry date from oldest to newest. 
 
-* If two food items have the same expiry date, they will be ordered by priority from high to low.
-* If two food items have the same expiry date and priority, they will be ordered by description.
+* Food items of the same expiry date will be sorted by priority from high to low.
+* Food items of the same expiry date and same priority will be sorted by description.
 
 Format: `sortexpiry`
 
@@ -205,7 +205,7 @@ Format: `sortexpiry`
 
 ### [Sort food items by priority](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortpriority`
 
-Sorts the list of food items by priority from high to low, then by expiry date from oldest to newest, then by description. 
+Sorts the list of food items by priority from high to low. 
 
 * If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
 * If two food items have the same priority and expiry date, they will be ordered by description.
@@ -258,7 +258,7 @@ Food Inventory data are saved in the hard disk automatically after any command t
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
 
 **Q**: What are the design and implementation considerations behind SimplyKitchen's code?<br>
-**A**: You may find this information at our [Developer Guide](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/DeveloperGuide.md).
+**A**: You may find this information at our [Developer Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html).
 
 **Q**: How do I report a bug?<br>
 **A**: You may do so by creating a new issue in our [GitHub Repository](https://github.com/AY2021S1-CS2103T-F13-4/tp/issues).
