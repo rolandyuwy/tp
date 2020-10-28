@@ -15,6 +15,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path foodInventoryFilePath = Paths.get("data" , "foodInventory.json");
+    private String sortingComparatorsDescription = "default without ordering";
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -36,6 +37,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setFoodInventoryFilePath(newUserPrefs.getFoodInventoryFilePath());
+        setSortingComparatorsDescription(newUserPrefs.getSortingComparatorsDescription());
     }
 
     public GuiSettings getGuiSettings() {
@@ -56,6 +58,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.foodInventoryFilePath = foodInventoryFilePath;
     }
 
+    public String getSortingComparatorsDescription() {
+        return sortingComparatorsDescription;
+    }
+
+    public void setSortingComparatorsDescription(String sortingComparatorsDescription) {
+        requireNonNull(sortingComparatorsDescription);
+        this.sortingComparatorsDescription = sortingComparatorsDescription;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -68,12 +79,13 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && foodInventoryFilePath.equals(o.foodInventoryFilePath);
+                && foodInventoryFilePath.equals(o.foodInventoryFilePath)
+                && sortingComparatorsDescription.equals(o.sortingComparatorsDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, foodInventoryFilePath);
+        return Objects.hash(guiSettings, foodInventoryFilePath, sortingComparatorsDescription);
     }
 
     @Override
@@ -81,6 +93,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
         sb.append("\nLocal data file location : " + foodInventoryFilePath);
+        sb.append("\n" + sortingComparatorsDescription);
         return sb.toString();
     }
 
