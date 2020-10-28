@@ -3,21 +3,51 @@ layout: page
 title: User Guide
 ---
 
-SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, SimplyKitchen can get your food management tasks done faster than traditional GUI apps.
+SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently than traditional GUI apps.
+
+SimplyKitchen aims to aid the domestic individuals who manage their kitchens at home by providing an apt food inventory management system.
+We have taken into consideration the common problems our target audience may face while managing their kitchen, and have created specialized features in our application in order to address those problems.
+Since it is meant for general households, care has been taken to make the app more intuitive and not overwhelming to facilitate comfortable usage for all.
+We hope to make SimplyKitchen a household name in Singapore and appreciate your assistance in helping us do so!
 
 Table of Contents:<br>
-* [Quick start](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#quick-start-coming-soon)
-* [Features](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#features)
-* [FAQs](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#faq)
-* [Command Summary](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/docs/UserGuide.md#command-summary)
+* [About this document](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#about-this-document)
+* [Quick start](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#quick-start)
+* [Features](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features)
+* [FAQs](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#faq)
+* [Command Summary](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start [coming soon]
+## [About this document](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
+This document is a User Guide meant to assist you in the entire process of using SimplyKitchen to manage your food inventory.
+
+The `Quick start` section of this document guides you in setting up and launching the SimplyKitchen app on your computer.
+
+The `Features` section of this document can help you understand and use the features of SimplyKitchen. 
+It gives clear examples for each of the features to ensure that the purpose and constraints of the features are evident.
+
+The `FAQs` section contains some Frequently Asked Questions with regard to SimplyKitchen.
+
+Finally, the `Command Summary` section acts as a quick reference point for all the features of SimplyKitchen.
+ 
+--------------------------------------------------------------------------------------------------------------------
+## [Quick start](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
+
+* Ensure that you have Java 11 or above installed on your computer.
+* Download the most recent SimplyKitchen.jar from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
+* Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
+* Double click on the SimplyKitchen.jar file to launch the app. The window of the app should appear in a few seconds. 
+  ![GUI for the app](images/Ui.png)
+  
+  Notice how the app is populated with some sample data.
+* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
+* Refer to the features section in [this guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html) for help on how to use the app.
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## [Features](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 <div markdown="block" class="alert alert-info">
 
@@ -34,7 +64,7 @@ Table of Contents:<br>
 
 </div>
 
-### Viewing help : `help`
+### [Viewing help](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `help`
 
 Shows a help message explaining how to access the help page. 
 
@@ -42,7 +72,7 @@ Shows a help message explaining how to access the help page.
 
 Format: `help`
 
-### Adding a food item: `add`
+### [Adding a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `add`
 
 Adds a food item to the food inventory, to start tracking your food item.
 
@@ -65,13 +95,13 @@ Examples:
 * `add d/canned tuna e/01-01-2021 q/1.1 can p/low`
 * `add d/apple pie e/11-10-2020 q/2 p/medium t/frozen t/$15 t/contains nuts`
 
-### Listing all food items : `list`
+### [Listing all food items](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `list`
 
 Shows a list of all food items in the food inventory, which lets you have an overview of the food inventory.
 
 Format: `list`
 
-### Searching for a food item: `find`
+### [Searching for a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `find`
 
 Searches for food items in the inventory with descriptions matching any of the given keywords. This lets you find a specific food item, or a group of food items easily.
 
@@ -98,7 +128,7 @@ Examples:
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `MEDIUM` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
   ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
-### Deleting a food item : `delete`
+### [Deleting a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `delete`
 
 Deletes the specified food item from the food inventory, so that you can stop tracking the food item.
 
@@ -112,7 +142,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd food item in the food inventory.
 * `find tuna` followed by `delete 1` deletes the 1st food item in the results of the `find` command.
 
-### Editing a food item : `edit`
+### [Editing a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `edit`
 
 Edits the details of an existing food item in the food inventory. If an entry was incorrect, you can easily edit the entry, without deleting and re-adding the food item.
 
@@ -130,7 +160,7 @@ Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` Edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.5 can` and clears all existing tags.
 
-### Changing the quantity of a food item: `changeqty`
+### [Changing the quantity of a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `changeqty`
 
 Changes the quantity of an existing food item in the food inventory. This lets you easily update the current quantity of a food item if you used or stocked up on it.
 
@@ -146,7 +176,7 @@ Examples:
 * `changeqty 1 a/+1` increases the quantity of the 1st food item by 1.
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
-### Undoing previous command: `undo`
+### [Undoing previous command](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `undo`
 Restores the food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on the food inventory.
 
 * Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
@@ -157,7 +187,7 @@ Examples:
 * `delete 1` then `undo` will reverse the delete command.
 * `delete 1` `clear` then `undo` will reverse the `clear` command.
 
-### Redoing previously undone command: `redo`
+### [Redoing previously undone command](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `redo`
 Restores the food inventory to a state before an undo command was executed. This lets you easily redo the command that was incorrectly undone.
 
 Format: `redo`
@@ -166,31 +196,31 @@ Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
-### Clearing all entries : `clear`
+### [Clearing all entries](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `clear`
 Clears all entries from the food inventory. This lets you easily clear the starting data, or start on a clean food inventory.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### [Exiting the program](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### [Saving the data](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features)
 
 Food Inventory data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## [FAQ](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## [Command summary](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
 
 Action | Format, Examples
 --------|------------------
