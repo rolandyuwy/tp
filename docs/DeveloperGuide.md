@@ -2,8 +2,43 @@
 layout: page
 title: Developer Guide
 ---
+
+SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+With intuitive and practical features, SimplyKitchen can get food management tasks done faster and more efficiently than traditional GUI apps.
+
+SimplyKitchen aims to aid the domestic individuals who manage their kitchens at home by providing an apt food inventory management system.
+We have taken into consideration the common problems our target audience may face while managing their kitchen, and have created specialized features in our application in order to address those problems.
+Since it is meant for general households, care has been taken to make the app more intuitive and not overwhelming to facilitate comfortable usage for all.
+We hope to make SimplyKitchen a household name in Singapore and appreciate your assistance in helping us do so!
+
+--------------------------------------------------------------------------------------------------------------------
+
 * Table of Contents
 {:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **About this document**
+
+This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
+
+The `Setting up, getting started` section of this document guides you in setting up the code base on your computer and helps you begin working on the project.
+
+The `Design` section of this document can help you understand the design of the code base as a whole and its various components. 
+This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
+
+The `Implementation` section contains details about the implementation of some of the features in SimplyKitchen.
+It also provides details about design considerations and implementation alternatives. 
+This section allows you to understand our thought process and make your own design considerations.
+
+This is followed by a section consisting of guides for `Documentation`, `Logging`, `Testing`, `Configuration` and `DevOps`.
+Each of these guides give specific assistance in the context of the project.
+
+The `Appendix` for `Requriements` consists of the details of the planning stage of the project.
+It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
+The `Glossary` and `Non-Functional Requirements` provide other key information relevant to the document and the app.
+
+This document ends with an `Appendix` for `Instructions for Manual Testing`.
 
 --------------------------------------------------------------------------------------------------------------------
 
