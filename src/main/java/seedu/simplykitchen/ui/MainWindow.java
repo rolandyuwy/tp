@@ -31,15 +31,20 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private ExpiringFoodListPanel expiringListPanel;
     private FoodListPanel foodListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ExpiredFoodWindow expiredFoodWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private StackPane expiringListPanelPlaceholder;
 
     @FXML
     private StackPane foodListPanelPlaceholder;
@@ -66,6 +71,8 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        expiredFoodWindow = new ExpiredFoodWindow(new Stage(), logic);
+        expiredFoodWindow.fillInnerParts();
     }
 
     public Stage getPrimaryStage() {
@@ -113,6 +120,9 @@ public class MainWindow extends UiPart<Stage> {
         foodListPanel = new FoodListPanel(logic.getFilteredFoodList());
         foodListPanelPlaceholder.getChildren().add(foodListPanel.getRoot());
 
+        expiringListPanel = new ExpiringFoodListPanel(logic.getFilteredExpiringFoodList());
+        expiringListPanelPlaceholder.getChildren().add(expiringListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -149,6 +159,7 @@ public class MainWindow extends UiPart<Stage> {
 
     void show() {
         primaryStage.show();
+        primaryStage.centerOnScreen();
     }
 
     /**
@@ -160,11 +171,16 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        expiredFoodWindow.hide();
         primaryStage.hide();
     }
 
     public FoodListPanel getFoodListPanel() {
         return foodListPanel;
+    }
+
+    public ExpiringFoodListPanel getExpiringListPanel() {
+        return expiringListPanel;
     }
 
     /**
@@ -186,11 +202,26 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isShowExpired()) {
+                showExpiredFood();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
+        }
+    }
+
+    /**
+     * Opens the expired food window or focuses on it if it's already opened.
+     */
+    public void showExpiredFood() {
+        if (!expiredFoodWindow.isShowing()) {
+            expiredFoodWindow.show();
+        } else {
+            expiredFoodWindow.focus();
         }
     }
 }

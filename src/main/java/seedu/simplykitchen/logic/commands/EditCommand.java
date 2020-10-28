@@ -6,7 +6,6 @@ import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -43,9 +42,10 @@ public class EditCommand extends Command {
             + PREFIX_PRIORITY + "high "
             + PREFIX_EXPIRY_DATE + "1-11-2021";
 
-    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item:\n  %1$s";
+    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item:\n%1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory.";
+    public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory."
+            + "\n(Please change the description, expiry date or tags)";
 
     private final Index index;
     private final EditFoodDescriptor editFoodDescriptor;
@@ -79,7 +79,6 @@ public class EditCommand extends Command {
         }
 
         model.setFood(foodToEdit, editedFood);
-        model.updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
         model.commitFoodInventory();
         return new CommandResult(String.format(MESSAGE_EDIT_FOOD_SUCCESS, editedFood));
     }

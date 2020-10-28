@@ -46,7 +46,7 @@ Format: `help`
 
 Adds a food item to the food inventory.
 
-Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`  
+Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
 * Adds a food item based on its description and expiry date.
 * Description, expiry date and quantity fields are compulsory.
@@ -75,18 +75,28 @@ Format: `list`
 
 Searches for food items in the inventory with descriptions matching any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
-* The search is case-insensitive. e.g `fish` will match `Fish`
-* The order of the keywords does not matter. e.g. `Cake Fish` will match `Fish Cake`
-* Only the description is searched.
-* Only full words will be matched e.g. `fis` will not match `fish`.
-* Food items matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`
+* The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
+* The search is case-insensitive. e.g `fish` will match `Fish`.
+* The order of the descriptions does not matter. e.g. `Cake Fish` will match `Fish Cake`.
+* Only full words in description will be matched e.g. `fis` will not match `fish`.
+* Food items with description matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`.
+* The priority field can be either `high`, `medium` or `low`.
+* For `e/EXPIRY_DATE`, the field only accepts a date in the format of `DD-mm-yyyy`.
+* The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
+* Tags with only whitespace(s) will not be allowed.
+* Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
+* Food items with tags matching at least one of the search tags will be returned (i.e `OR` search). e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags.
 
 Examples:
-* `find chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
-* `find apple tuna` returns `Apple Pie` and `Tuna Can`.
-  ![result for 'find apple tuna'](images/findAppleTunaResult.png)
+* `find d/chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
+* `find d/apple tuna` returns `Apple Pie` and `Tuna Can`.
+* `find d/apple p/high` returns `Apple Pie` and `Apple Jam`, both items have `HIGH` priority.
+* `find e/30-12-2020` returns  all food items with expiry date on `30-12-2020`.
+* `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
+* `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `MEDIUM` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
+  ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
 ### Deleting a food item : `delete`
 
@@ -108,8 +118,8 @@ Edits the details of an existing food item in the food inventory.
 
 Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
-* Edits the food item at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed food item list. 
+* Edits the food item at the specified `INDEX`.
+* The index refers to the index number shown in the displayed food item list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
@@ -119,6 +129,22 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t
 Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` Edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.5 can` and clears all existing tags.
+
+### Changing the quantity of a food item: `changeqty`
+
+Changes the quantity of an existing food item in the food inventory.
+
+Format: `changeqty INDEX a/AMOUNT`
+
+* The index refers to the number shown in the displayed food list. It must be a positive unsigned integer i.e. 1, 2, 3 and so on.
+* The amount is the quantity of a food item you want to change by. It is compulsory and can be any non-zero signed number.
+* Choose an amount such that the final quantity should not be less than or equal to zero.
+* The amount can be specified up to a maximum of 2 decimal places.
+* Do not specify the unit of the food item. The existing unit is used instead.
+
+Examples:
+* `changeqty 1 a/+1` increases the quantity of the 1st food item by 1.
+* `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
 ### Undoing previous command: `undo`
 Restores the food inventory to a state before an undoable command was executed.
@@ -140,8 +166,7 @@ Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
-### Clearing all entries : `clear` 
-
+### Clearing all entries : `clear`
 Clears all entries from the food inventory.
 
 Format: `clear`
@@ -172,8 +197,9 @@ Action | Format, Examples
 **Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…` <br> e.g., `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]…​` <br> e.g., `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find apple tuna`
+**Edit** | `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]…` <br> e.g., `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
+**Change quantity** | `changeqty INDEX a/AMOUNT` <br> e.g. `changeqty 1 a/+1.50`
+**Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`<br> e.g., `find d/biscuits p/medium e/30-12-2020 t/cat t/dog`
 **List** | `list`
 **Undo** | `undo`
 **Redo** | `redo`

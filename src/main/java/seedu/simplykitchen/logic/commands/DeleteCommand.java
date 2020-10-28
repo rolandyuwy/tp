@@ -21,7 +21,7 @@ public class DeleteCommand extends Command {
             + "INDEX\n  "
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_FOOD_SUCCESS = "Deleted Food Item:\n  %1$s";
+    public static final String MESSAGE_DELETE_FOOD_SUCCESS = "Deleted Food Item:\n%1$s";
 
     private final Index targetIndex;
 

@@ -24,8 +24,10 @@ public class ParserUtilTest {
     private static final String INVALID_DESCRIPTION = "R@spberry";
     private static final String INVALID_PRIORITY = "MEDIUM-HIGH";
     private static final String INVALID_QUANTITY_UNIT = "1 @unit";
-    private static final String INVALID_QUANTITY_VALUE = "-1 unit";
-    private static final String INVALID_QUANTITY_ZEROVALUE = "0 unit";
+    private static final String INVALID_QUANTITY_NEGATIVE_VALUE = "-1 unit";
+    private static final String INVALID_QUANTITY_ZERO_VALUE = "0 unit";
+    private static final String INVALID_AMOUNT = "1";
+    private static final String INVALID_AMOUNT_SIZE = "+" + Double.MAX_VALUE;
     private static final String INVALID_EXPIRY_DATE = "32-9-2020";
     private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
@@ -138,12 +140,22 @@ public class ParserUtilTest {
 
     @Test
     public void parseQuantity_invalidQuantityValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_VALUE));
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_NEGATIVE_VALUE));
     }
 
     @Test
     public void parseQuantity_invalidQuantityZeroValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_ZEROVALUE));
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_ZERO_VALUE));
+    }
+
+    @Test
+    public void parseAmount_invalidAmount_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAmount(INVALID_AMOUNT));
+    }
+
+    @Test
+    public void parseAmount_invalidAmountSize_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAmount(INVALID_AMOUNT_SIZE));
     }
 
     @Test

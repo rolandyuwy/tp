@@ -9,21 +9,27 @@ import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
 import seedu.simplykitchen.logic.commands.ClearCommand;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.ExitCommand;
+import seedu.simplykitchen.logic.commands.ExpiredCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
+import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
 import seedu.simplykitchen.model.food.Food;
+import seedu.simplykitchen.model.food.PrioritySearchPredicate;
+import seedu.simplykitchen.model.tag.TagSearchPredicate;
 import seedu.simplykitchen.testutil.EditFoodDescriptorBuilder;
 import seedu.simplykitchen.testutil.FoodBuilder;
 import seedu.simplykitchen.testutil.FoodUtil;
@@ -37,6 +43,14 @@ public class FoodInventoryParserTest {
         Food food = new FoodBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(FoodUtil.getAddCommand(food));
         assertEquals(new AddCommand(food), command);
+    }
+
+    @Test
+    public void parseCommand_changeQuantity() throws Exception {
+        double amount = +1.00;
+        ChangeQuantityCommand command = (ChangeQuantityCommand) parser
+                .parseCommand(FoodUtil.getChangeQuantityCommand(amount));
+        assertEquals(new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount), command);
     }
 
     @Test
@@ -71,8 +85,20 @@ public class FoodInventoryParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new DescriptionContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " d/" + keywords.stream().collect(Collectors.joining(" ")));
+        Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
+                Optional.of(new DescriptionContainsKeywordsPredicate(keywords));
+        Optional<ExpiryDateSearchPredicate> expiryDatePredicate = Optional.empty();
+        Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
+        Optional<TagSearchPredicate> tagPredicate = Optional.empty();
+        assertEquals(new FindCommand(descriptionPredicate, priorityPredicate, expiryDatePredicate, tagPredicate),
+                command);
+    }
+
+    @Test
+    public void parseCommand_expired() throws Exception {
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD) instanceof ExpiredCommand);
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD + " 3") instanceof ExpiredCommand);
     }
 
     @Test
