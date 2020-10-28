@@ -126,6 +126,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setSortingComparators(Comparator<Food>[] sortingComparators) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasFood(Food food) {
             throw new AssertionError("This method should not be called.");
         }
@@ -142,6 +147,11 @@ public class AddCommandTest {
 
         @Override
         public void sortFoodInventory(Comparator<Food>... comparators) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void sortFoodInventoryBySortingComparators() {
             throw new AssertionError("This method should not be called.");
         }
 
