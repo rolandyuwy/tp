@@ -10,7 +10,8 @@ import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Tags names should only contain alphanumeric, spaces or these special characters: #$%&-()";
+            "Tags should only contain alphanumeric, spaces or these special characters: #$%&-()";
+    public static final String MESSAGE_EXCEED_LIMIT = "Tags should not exceed 72 characters.";
     public static final String VALIDATION_REGEX = "[#$%&()\\-\\s\\p{Alnum}]+";
 
     public final String tagName;
@@ -22,7 +23,7 @@ public class Tag {
      */
     public Tag(String tagName) {
         requireNonNull(tagName);
-        checkArgument(isValidTagName(tagName), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTagName(tagName), generateErrorMessage(tagName));
         this.tagName = tagName;
     }
 
@@ -30,19 +31,35 @@ public class Tag {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidTagName(String test) {
+        if (test.length() > 72) {
+            return false;
+        }
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Generates an error message based on why the Tag is invalid.
+     *
+     * @param invalidTag An invalid Tag.
+     * @return A string describing the error message.
+     */
+    public static String generateErrorMessage(String invalidTag) {
+        if (invalidTag.length() > 72) {
+            return MESSAGE_EXCEED_LIMIT;
+        }
+        return MESSAGE_CONSTRAINTS;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Tag // instanceof handles nulls
-                && tagName.equals(((Tag) other).tagName)); // state check
+                && tagName.toLowerCase().equals(((Tag) other).tagName.toLowerCase())); // state check
     }
 
     @Override
     public int hashCode() {
-        return tagName.hashCode();
+        return tagName.toLowerCase().hashCode();
     }
 
     /**

@@ -11,7 +11,11 @@ import seedu.simplykitchen.commons.util.StringUtil;
 public class DescriptionContainsKeywordsPredicate implements Predicate<Food> {
     private final List<String> keywords;
 
+    /**
+     * @param keywords to search for in description of food items.
+     */
     public DescriptionContainsKeywordsPredicate(List<String> keywords) {
+        assert keywords != null : "Keywords cannot be null.";
         this.keywords = keywords;
     }
 

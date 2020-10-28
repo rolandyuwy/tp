@@ -20,7 +20,9 @@ import seedu.simplykitchen.model.tag.Tag;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index should be a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_AMOUNT =
+            "Amount should be a non-zero signed number with a maximum of 2 decimal places.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -29,7 +31,7 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
+        if (!StringUtil.isNonZeroUnsignedPositiveInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
@@ -45,7 +47,8 @@ public class ParserUtil {
         requireNonNull(description);
         String trimmedDescription = description.trim();
         if (!Description.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+            String errorMessage = Description.generateErrorMessage(description);
+            throw new ParseException(errorMessage);
         }
         return new Description(trimmedDescription);
     }
@@ -100,6 +103,26 @@ public class ParserUtil {
     }
 
     /**
+     * Parses an {@code String amount} into an {@code int}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code amount} is invalid.
+     */
+    public static double parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        String trimmedAmount = amount.trim();
+        if (!StringUtil.isNonZeroSignedDouble(trimmedAmount)) {
+            throw new ParseException(MESSAGE_INVALID_AMOUNT);
+        }
+
+        double value = Double.parseDouble(trimmedAmount);
+        if (value >= Double.MAX_VALUE || value <= -Double.MAX_VALUE) {
+            throw new ParseException(MESSAGE_INVALID_AMOUNT);
+        }
+        return value;
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -109,7 +132,8 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            String errorMessage = Tag.generateErrorMessage(tag);
+            throw new ParseException(errorMessage);
         }
         return new Tag(trimmedTag);
     }

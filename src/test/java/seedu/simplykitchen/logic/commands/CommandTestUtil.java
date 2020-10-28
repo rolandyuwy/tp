@@ -2,6 +2,7 @@ package seedu.simplykitchen.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -33,6 +34,8 @@ public class CommandTestUtil {
     public static final String VALID_EXPIRY_DATE_BREAD = "31-12-2021";
     public static final String VALID_QUANTITY_APPLY_PIE = "1.5 pie";
     public static final String VALID_QUANTITY_BREAD = "2";
+    public static final String VALID_AMOUNT_APPLE_PIE = "+1";
+    public static final String VALID_AMOUNT_BREAD = "-0.25";
     public static final String VALID_TAG_FROZEN = "Frozen";
     public static final String VALID_TAG_WHOLEMEAL = "Wholemeal";
 
@@ -44,6 +47,8 @@ public class CommandTestUtil {
     public static final String EXPIRY_DATE_DESC_BREAD = " " + PREFIX_EXPIRY_DATE + VALID_EXPIRY_DATE_BREAD;
     public static final String QUANTITY_DESC_APPLE_PIE = " " + PREFIX_QUANTITY + VALID_QUANTITY_APPLY_PIE;
     public static final String QUANTITY_DESC_BREAD = " " + PREFIX_QUANTITY + VALID_QUANTITY_BREAD;
+    public static final String AMOUNT_DESC_APPLE_PIE = " " + PREFIX_AMOUNT + VALID_AMOUNT_APPLE_PIE;
+    public static final String AMOUNT_DESC_BREAD = " " + PREFIX_AMOUNT + VALID_AMOUNT_BREAD;
     public static final String TAG_DESC_FROZEN = " " + PREFIX_TAG + VALID_TAG_FROZEN;
     public static final String TAG_DESC_WHOLEMEAL = " " + PREFIX_TAG + VALID_TAG_WHOLEMEAL;
 
@@ -57,8 +62,11 @@ public class CommandTestUtil {
             + "29-2-2021"; // non-existent expiry date
     public static final String INVALID_QUANTITY_UNIT = " " + PREFIX_QUANTITY + "1 @@"; // only alphabets allowed
     public static final String INVALID_QUANTITY_VALUE = " " + PREFIX_QUANTITY + "-1"; // only positive numbers allowed
-    public static final String INVALID_QUANTITY_ZEROVALUE = " " + PREFIX_QUANTITY
+    public static final String INVALID_QUANTITY_ZERO_VALUE = " " + PREFIX_QUANTITY
             + "0 UNIT"; // only positive numbers allowed
+    public static final String INVALID_AMOUNT_DESC = " " + PREFIX_AMOUNT + "+1.234"; // more than 2 decimal places
+    public static final String INVALID_AMOUNT_SIZE_DESC = " " + PREFIX_AMOUNT + "+"
+            + Double.MAX_VALUE; // amount size too big
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

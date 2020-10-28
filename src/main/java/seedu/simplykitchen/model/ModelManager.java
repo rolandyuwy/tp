@@ -2,15 +2,21 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.commons.core.LogsCenter;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 
 /**
@@ -22,6 +28,10 @@ public class ModelManager implements Model {
     private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
     private final FilteredList<Food> filteredFoods;
+
+    private FilteredList<Food> expiringFilteredFoods;
+    private final FilteredList<Food> expiredFilteredFoods;
+    private SortedList<Food> expiringSortedFoods;
 
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
@@ -35,7 +45,15 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
+
         filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
+
+        expiringSortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
+        updateExpiringSortedFoodList();
+        expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
+        expiringFilteredFoods.setPredicate(getExpiringPredicate());
+        expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
+        expiredFilteredFoods.setPredicate(getExpiredPredicate());
     }
 
     public ModelManager() {
@@ -109,8 +127,12 @@ public class ModelManager implements Model {
     @Override
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
-
         versionedFoodInventory.setFood(target, editedFood);
+    }
+
+    @Override
+    public void sortFoodInventory(Comparator<Food>... comparators) {
+        versionedFoodInventory.sortFoods(comparators);
     }
 
     //=========== Filtered Food List Accessors =============================================================
@@ -125,9 +147,27 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Food> getFilteredExpiringFoodList() {
+        return expiringFilteredFoods;
+    }
+
+    @Override
+    public ObservableList<Food> getFilteredExpiredFoodList() {
+        return expiredFilteredFoods;
+    }
+
+    @Override
     public void updateFilteredFoodList(Predicate<Food> predicate) {
         requireNonNull(predicate);
         filteredFoods.setPredicate(predicate);
+        updateExpiringFilteredFoodList();
+    }
+
+    @Override
+    public void updateExpiringFilteredFoodList() {
+        updateExpiringSortedFoodList();
+        expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
+        expiringFilteredFoods.setPredicate(getExpiringPredicate());
     }
 
     //=========== Undo/Redo =================================================================================
@@ -157,6 +197,57 @@ public class ModelManager implements Model {
         versionedFoodInventory.commit();
     }
 
+    // ============== Expiring Food List ========================================================================
+    @Override
+    public void updateExpiringSortedFoodList() {
+        expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
+    }
+
+    @Override
+    public Predicate<Food> getExpiringPredicate() {
+        return new Predicate<Food>() {
+            @Override
+            public boolean test(Food food) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+                LocalDate today = LocalDate.now();
+                String dateToday = today.format(dateFormat);
+                ExpiryDate expiryToday = new ExpiryDate(dateToday);
+
+                LocalDate nextWeek = LocalDate.now().plusDays(7);
+                String dateNextWeek = nextWeek.format(dateFormat);
+                ExpiryDate expiryDateNextWeek = new ExpiryDate(dateNextWeek);
+
+                ExpiryDate foodExpiry = food.getExpiryDate();
+
+                if ((!foodExpiry.isAfter(expiryDateNextWeek)
+                        && foodExpiry.isAfter(expiryToday))
+                        || foodExpiry.equals(expiryToday)) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+
+    @Override
+    public Predicate<Food> getExpiredPredicate() {
+        return new Predicate<Food>() {
+            @Override
+            public boolean test(Food food) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+                LocalDate today = LocalDate.now();
+                String dateToday = today.format(dateFormat);
+                ExpiryDate expiredToday = new ExpiryDate(dateToday);
+
+                ExpiryDate foodExpiry = food.getExpiryDate();
+
+                return expiredToday.isAfter(foodExpiry);
+            }
+        };
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -173,7 +264,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return versionedFoodInventory.equals(other.versionedFoodInventory)
                 && userPrefs.equals(other.userPrefs)
-                && filteredFoods.equals(other.filteredFoods);
+                && filteredFoods.equals(other.filteredFoods)
+                && expiringFilteredFoods.equals(other.expiringFilteredFoods);
     }
 
 }

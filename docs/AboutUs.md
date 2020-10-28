@@ -19,9 +19,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/rolandyuwy)] [[portfolio](team/rolandyuwy.md)]
 
 * Role: Team Lead
-* Responsibilities: 
+* Responsibilities:
     * Scheduling and Tracking: Responsible for defining, assignment, and tracking all project tasks.
-    * Deliverables and Deadlines: Responsible for the project deliverables. 
+    * Deliverables and Deadlines: Responsible for the project deliverables.
 
 ### Ang Song Yi
 
@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/songyi.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities:
     * Documentation - Responsible for the quality of all project documents.
 
 ### Boh Cheng Hin
@@ -41,8 +41,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/bchenghi)] [[portfolio](team/bchenghi.md)]
 
 * Role: Developer
-* Responsibilities: 
-    * Documentation - Responsible for the quality of all project documents. 
+* Responsibilities:
+    * Documentation - Responsible for the quality of all project documents.
     * Testing - Responsible for proper testing completed on time.
     * Integration - Responsible for versioning of the code, maintaining the code repository and integrating various parts of the software to create a whole.
 
@@ -54,8 +54,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/jonahtanjz.md)]
 
 * Role: Developer
-* Responsibilities: 
-    * Testing: Responsible for proper testing 
+* Responsibilities:
+    * Testing: Responsible for proper testing
     * Integration: Responsible for versioning of the code, maintaining the code repository and integrating various parts of the software to create a whole.
 
 ### Sagar Sureka
@@ -66,7 +66,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/sagarsureka.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities:
     * Code Quality: Responsible for ensuring all code adheres to coding standards.
     * Integration: Responsible for versioning of the code, maintaining the code repository and integrating various parts of the software to create a whole.
 

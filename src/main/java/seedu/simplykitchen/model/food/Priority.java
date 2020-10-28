@@ -50,6 +50,15 @@ public class Priority {
         return priority.equals("low") || priority.equals("medium") || priority.equals("high");
     }
 
+    /**
+     * Returns true if a given {@code otherPriority} has a lower priority level.
+     */
+    public boolean isHigherPriority(Priority otherPriority) {
+        return ((this.value == Level.HIGH) && (otherPriority.value == Level.MEDIUM))
+                || ((this.value == Level.HIGH) && (otherPriority.value == Level.LOW))
+                || ((this.value == Level.MEDIUM) && (otherPriority.value == Level.LOW));
+    }
+
     @Override
     public String toString() {
         return value.toString();

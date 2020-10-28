@@ -9,6 +9,7 @@ import static seedu.simplykitchen.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -140,12 +141,31 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFoodInventory(Comparator<Food>... comparators) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Food> getFilteredFoodList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public ObservableList<Food> getFilteredExpiringFoodList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Food> getFilteredExpiredFoodList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredFoodList(Predicate<Food> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateExpiringFilteredFoodList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -174,6 +194,20 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public Predicate<Food> getExpiringPredicate() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateExpiringSortedFoodList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Predicate<Food> getExpiredPredicate() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

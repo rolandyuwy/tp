@@ -7,15 +7,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.simplykitchen.logic.commands.AddCommand;
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
 import seedu.simplykitchen.logic.commands.ClearCommand;
 import seedu.simplykitchen.logic.commands.Command;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.ExitCommand;
+import seedu.simplykitchen.logic.commands.ExpiredCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
 import seedu.simplykitchen.logic.commands.RedoCommand;
+import seedu.simplykitchen.logic.commands.SortDescCommand;
+import seedu.simplykitchen.logic.commands.SortExpiryCommand;
+import seedu.simplykitchen.logic.commands.SortPriorityCommand;
 import seedu.simplykitchen.logic.commands.UndoCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
@@ -64,6 +69,9 @@ public class FoodInventoryParser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
+        case ChangeQuantityCommand.COMMAND_WORD:
+            return new ChangeQuantityCommandParser().parse(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
@@ -73,8 +81,20 @@ public class FoodInventoryParser {
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
 
+        case SortDescCommand.COMMAND_WORD:
+            return new SortDescCommand();
+
+        case SortExpiryCommand.COMMAND_WORD:
+            return new SortExpiryCommand();
+
+        case SortPriorityCommand.COMMAND_WORD:
+            return new SortPriorityCommand();
+
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
+
+        case ExpiredCommand.COMMAND_WORD:
+            return new ExpiredCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

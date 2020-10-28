@@ -33,6 +33,12 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of food items */
     ObservableList<Food> getFilteredFoodList();
 
+    /** Returns an unmodifiable view of the filtered list of expiring food items */
+    ObservableList<Food> getFilteredExpiringFoodList();
+
+    /** Returns an unmodifiable view of the filtered list of expired food items */
+    ObservableList<Food> getFilteredExpiredFoodList();
+
     /**
      * Returns the user prefs' Food inventory file path.
      */
