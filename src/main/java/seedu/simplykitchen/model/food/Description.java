@@ -61,9 +61,7 @@ public class Description {
      */
     public int compareFirstCharacterTo(Description description) {
         Character character1 = this.fullDescription.charAt(0);
-        System.out.println(character1);
         Character character2 = description.fullDescription.charAt(0);
-        System.out.println(character2);
         int comparedValue = compare(toLowerCase(character1), toLowerCase(character2));
         if (comparedValue > 0 || (comparedValue == 0 && isUpperCase(character1) && isLowerCase(character2))) {
             return 1;
@@ -86,7 +84,6 @@ public class Description {
         }
         return MESSAGE_CONSTRAINTS;
     }
-
 
     @Override
     public String toString() {

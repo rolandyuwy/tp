@@ -18,7 +18,7 @@ public class SortDescCommand extends Command {
 
     public static final String COMMAND_WORD = "sortdesc";
 
-    public static final String MESSAGE_SUCCESS = "Sorted by expiry date from oldest to newest";
+    public static final String MESSAGE_SUCCESS = "Sorted by description";
 
     @Override
     public CommandResult execute(Model model) {
