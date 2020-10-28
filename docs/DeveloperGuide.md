@@ -230,7 +230,7 @@ When the commands are executed by calling `SortDescCommand#execute(Model model)`
 
 This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` with the relevant `comparators` for sorting.
 
-`model#setSortingComparators` and `userPref#setSortingComparatorsDescription` are then called to save the sorting information.
+`model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` are then called to save the sorting information.
 
 Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
 
