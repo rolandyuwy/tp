@@ -44,7 +44,7 @@ Format: `help`
 
 ### Adding a food item: `add`
 
-Adds a food item to the food inventory, so that you can start tracking it.
+Adds a food item to the food inventory, to start tracking your food item.
 
 Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
@@ -73,7 +73,7 @@ Format: `list`
 
 ### Searching for a food item: `find`
 
-Searches for food items in the inventory with descriptions matching any of the given keywords, so that you can find a specific food item, or a group of food items easily.
+Searches for food items in the inventory with descriptions matching any of the given keywords. This lets you find a specific food item, or a group of food items easily.
 
 Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -167,7 +167,7 @@ Examples:
 * `clear` `undo` then `redo` will redo the `clear` command.
 
 ### Clearing all entries : `clear`
-Clears all entries from the food inventory. You can easily clear the starting data, or start on a clean food inventory.
+Clears all entries from the food inventory. This lets you easily clear the starting data, or start on a clean food inventory.
 
 Format: `clear`
 
