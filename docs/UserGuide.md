@@ -127,7 +127,7 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
 * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to [`add`](#Adding a food item:) command, a food item with the same description, expriy date and tags as another food item is considered a duplicate.
+* Similar to [`add`](#adding-a-food-item) command, a food item with the same description, expriy date and tags as another food item is considered a duplicate.
 
 Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
