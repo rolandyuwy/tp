@@ -3,6 +3,7 @@ package seedu.simplykitchen.model.food;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -95,6 +96,17 @@ public class UniqueFoodList implements Iterable<Food> {
         }
 
         internalList.setAll(foods);
+    }
+
+    /**
+     * Sorts the food list according to and in order of the input {@code comparators}.
+     * @throws NullPointerException if any of the comparators in {@code comparators} is null.
+     */
+    public void sortFoods(Comparator<Food>... comparators) {
+        for (Comparator<Food> comparator : comparators) {
+            requireAllNonNull(comparator);
+            FXCollections.sort(internalList, comparator);
+        }
     }
 
     /**

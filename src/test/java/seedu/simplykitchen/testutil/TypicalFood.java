@@ -39,10 +39,21 @@ public class TypicalFood {
             .withExpiryDate("31-12-2022").withQuantity("200 g").build();
 
     // Manually added
+    public static final Food APPLE = new FoodBuilder().withDescription("apple").withPriority("medium")
+            .withExpiryDate("12-12-2001").withQuantity("50 g").build();
+    public static final Food APRICOT = new FoodBuilder().withDescription("apricot").withPriority("high")
+            .withExpiryDate("12-12-2000").withQuantity("50 g").build();
+    public static final Food CHEAP_EGGS = new FoodBuilder().withDescription("Eggs").withPriority("low")
+            .withExpiryDate("1-12-2022").withQuantity("1.25 carton").withTags("cheap").build();
     public static final Food HUMMUS = new FoodBuilder().withDescription("Hummus").withPriority("low")
             .withExpiryDate("12-12-2022").withQuantity("1").build();
     public static final Food ICEBERG_LETTUCE = new FoodBuilder().withDescription("Iceberg Lettuce").withPriority("high")
             .withExpiryDate("12-12-2022").withQuantity("125.50 g").build();
+    public static final Food OLD_EGGS = new FoodBuilder().withDescription("Eggs").withPriority("high")
+            .withExpiryDate("1-12-2002").withQuantity("1.25 carton").build();
+    public static final Food WHITE_CHOCOLATE = new FoodBuilder().withDescription("White Chocolate").withPriority("high")
+            .withExpiryDate("1-6-2022").withQuantity("1.5 bar").withTags("85%").build();
+
 
     // Manually added - Food's details found in {@code CommandTestUtil}
     public static final Food APPLE_PIE = new FoodBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
