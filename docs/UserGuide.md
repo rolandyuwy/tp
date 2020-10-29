@@ -5,12 +5,28 @@ title: User Guide
 
 # Table of contents
 
-* [Introduction](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#introduction)
-* [About this document](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#about-this-document)
-* [Quick start](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#quick-start)
-* [Features](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features)
-* [FAQs](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#faq)
-* [Command summary](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#command-summary)
+* [Introduction](#introduction)
+* [About this document](#about-this-document)
+* [Quick start](#quick-start)
+* [Features](#features)
+  * [Viewing help](#viewing-help)
+  * [Viewing expired food items](#viewing-expired-food-items)
+  * [Adding a food item](#adding-a-food-item)
+  * [Listing all food items](#listing-all-food-items)
+  * [Searching for a food item](#searching-for-a-food-item)
+  * [Deleting a food item](#deleting-a-food-item)
+  * [Editing a food item](#editing-a-food-item)
+  * [Changing the quantity of a food item](#changing-the-quantity-of-a-food-item)
+  * [Sort food items by description](#sort-food-items-by-description)
+  * [Sort food items by expiry date](#sort-food-items-by-expiry-date)
+  * [Sort food items by priority](#sort-food-items-by-priority)
+  * [Undoing previous command](#undoing-previous-command)
+  * [Redoing previously undone command](#redoing-previously-undone-command)
+  * [Clearing all entries](#clearing-all-entries)
+  * [Exiting the program](#exiting-the-program)
+  * [Saving the data](#saving-the-data)
+* [FAQs](#faq)
+* [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
