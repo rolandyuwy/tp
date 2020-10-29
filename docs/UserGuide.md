@@ -259,7 +259,7 @@ The `sortdesc` command sorts the list of food items by description. This functio
 **Examples:**
 * A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
 
-![sorting by description](images/SortDesc1.3.png)
+![sorting by description](images/SortDesc.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
@@ -272,7 +272,7 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 * Food items of the same expiry date will be sorted by priority from high to low.
 * Food items of the same expiry date and same priority will be sorted by description.
 
-![sorting by expiry date from oldest to newest](images/SortExpiry1.3.png)
+![sorting by expiry date from oldest to newest](images/SortExpiry.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
@@ -285,7 +285,7 @@ The `sortpriority` command sorts the list of food items by priority from high to
 * If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
 * If two food items have the same priority and expiry date, they will be ordered by description.
 
-![sorting by priority from HIGH to LOW](images/SortPriority1.3.png)
+![sorting by priority from HIGH to LOW](images/SortPriority.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
