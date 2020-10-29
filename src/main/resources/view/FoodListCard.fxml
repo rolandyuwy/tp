@@ -56,19 +56,25 @@
                <Insets top="4.0" />
             </VBox.margin>
         </HBox>
-      <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate">
-        <graphic>
-          <ImageView fitHeight="15" fitWidth="15" preserveRatio="true">
-            <Image url="@/images/clock_icon.png" />
-          </ImageView>
-        </graphic>
-            <VBox.margin>
-               <Insets bottom="2.0" right="2.0" top="2.0" />
-            </VBox.margin>
-            <padding>
-               <Insets bottom="2.0" right="2.0" top="2.0" />
-            </padding>
-      </Label>
+         <HBox prefHeight="0.0" prefWidth="130.0">
+            <children>
+            <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate">
+              <graphic>
+                <ImageView fitHeight="15" fitWidth="15" preserveRatio="true">
+                  <Image url="@/images/clock_icon.png" />
+                </ImageView>
+              </graphic>
+                  <padding>
+                     <Insets bottom="2.0" right="2.0" top="2.0" />
+                  </padding>
+            </Label>
+               <Label fx:id="expiryLabel" style="-fx-background-radius: 5;" styleClass="cell_small_label" text="\$expiryLabel">
+                  <padding>
+                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                  </padding>
+               </Label>
+            </children>
+         </HBox>
       <Label fx:id="quantity" styleClass="cell_small_label" text="\$quantity">
         <graphic>
           <ImageView fitHeight="15" fitWidth="15" preserveRatio="true">

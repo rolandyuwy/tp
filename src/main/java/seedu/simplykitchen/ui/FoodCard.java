@@ -1,7 +1,6 @@
 package seedu.simplykitchen.ui;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
@@ -41,6 +40,8 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label expiryDate;
     @FXML
+    private Label expiryLabel;
+    @FXML
     private Label priority;
     @FXML
     private Label quantity;
@@ -57,7 +58,8 @@ public class FoodCard extends UiPart<Region> {
         description.setText(food.getDescription().fullDescription);
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
-        expiryDate.setText(generateExpiryDateText());
+        expiryDate.setText(food.getExpiryDate().value);
+        expiryLabel.setText(generateExpiryDateText());
         quantity.setText(food.getQuantity().toString());
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -84,18 +86,18 @@ public class FoodCard extends UiPart<Region> {
 
     private String generateExpiryDateText() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
-        ExpiryDate dateToday = new ExpiryDate(LocalDateTime.now().format(dateFormat));
-        ExpiryDate dateNextWeek = new ExpiryDate(LocalDateTime.now().plusDays(7).format(dateFormat));
+        ExpiryDate dateToday = new ExpiryDate(LocalDate.now().format(dateFormat));
+        ExpiryDate dateNextWeek = new ExpiryDate(LocalDate.now().plusDays(7).format(dateFormat));
 
         if (dateToday.isAfter(food.getExpiryDate())) {
-            return food.getExpiryDate().value + " (EXPIRED)";
+            return "EXPIRED";
         }
 
         if (dateNextWeek.isAfter(food.getExpiryDate())) {
-            return food.getExpiryDate().value + " (EXPIRING SOON)";
+            return "EXPIRING SOON";
         }
 
-        return food.getExpiryDate().value;
+        return "";
 
     }
 
