@@ -112,9 +112,9 @@ After entering this command, you should see a pop-up window similar to the one s
 
 ## Viewing expired food items
 
-When you launch the app, it checks for any expired food present in your food inventory. This lets you easily see what foods have expired.
-If there is any expired food, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
-If you have discarded the expired food, please remember to delete the associated food item from the app using the [`delete`](#deleting-a-food-item) command.
+When you launch the app, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
+If there is any expired food item, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
+If you have discarded the expired food item, please remember to delete the associated food item from the app using the [`delete`](#deleting-a-food-item) command.
 
 If you want to see the list of expired food items when using the app, you can use the `expired` command.
 
@@ -206,7 +206,7 @@ The `delete` command deletes a specified food item from your food inventory, so 
 
 ## Editing a food item
 
-The edit command edits the details of an existing food item in your food inventory. If an entry was incorrect, you can easily edit the entry, without deleting and re-adding the food item.
+The edit command edits the details of an existing food item in your food inventory. If an entry is incorrect, you can easily edit the entry, without deleting and re-adding the food item.
 
 **Format:** `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -265,7 +265,7 @@ The `sortdesc` command sorts the list of food items by description. This functio
 
 ## Sort food items by expiry date
 
-The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which foods are expiring first.
+The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which food items are expiring first.
 
 **Format:** `sortexpiry`
 
@@ -278,7 +278,7 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 
 ## Sort food items by priority
 
-The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which foods have higher priority.
+The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which food items have higher priority.
 
 **Format:** `sortpriority`
 
@@ -309,7 +309,7 @@ The `redo` command restores your food inventory to a state before an undo comman
 **Format:** `redo`
 
 **Examples:**
-* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
+* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
 ## Clearing all entries
