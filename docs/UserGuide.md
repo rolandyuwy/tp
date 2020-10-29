@@ -79,7 +79,7 @@ Adds a food item to the food inventory.
 Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
 * Adds a food item based on its description, expiry date and tags.
-* A food item with the same description, expriy date and tags as another food item is considered a duplicate.
+* A food item with the same description, expiry date and tags as another food item is considered a duplicate.
 * Description and tags are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * Description, expiry date and quantity fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
@@ -157,7 +157,7 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
 * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to [`add`](#adding-a-food-item--add) command, a food item with the same description, expriy date and tags as another food item is considered a duplicate.
+* Similar to [`add`](#adding-a-food-item--add) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
 
 Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
