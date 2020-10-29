@@ -78,7 +78,9 @@ Adds a food item to the food inventory, to start tracking your food item.
 
 Format: `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…​`
 
-* Adds a food item based on its description and expiry date.
+* Adds a food item based on its description, expiry date and tags.
+* A food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* Description and tags are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * Description, expiry date and quantity fields are compulsory.
 * The priority field can be either `high`, `medium` or `low`.
 * The priority field is optional. If not specified the default priority is set to `low`.
@@ -155,6 +157,7 @@ Format: `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
 * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
+* Similar to [`add`](#adding-a-food-item--add) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
 
 Examples:
 * `edit 1 d/baked beans e/1-1-2020` Edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
@@ -176,9 +179,47 @@ Examples:
 * `changeqty 1 a/+1` increases the quantity of the 1st food item by 1.
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
+### [Sort food items by description](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortdesc`
+
+Sorts the list of food items by description. This function is useful if you forget a food item's exact spelling, and you are unable to use the `find` command for it.
+
+* Sorting by description consists of first sorting lexicographically, then by the descriptions' first characters.
+* If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
+* Food items of the same description will be sorted by expiry date from oldest to newest.
+* Food items of the same description and same expiry date will be sorted by priority from high to low.
+
+Format: `sortdesc`
+
+Examples:
+* A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
+
+![sorting by description](images/SortDesc1.3.png)
+
+### [Sort food items by expiry date](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortexpiry`
+
+Sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which foods are expiring first.
+
+* Food items of the same expiry date will be sorted by priority from high to low.
+* Food items of the same expiry date and same priority will be sorted by description.
+
+Format: `sortexpiry`
+
+![sorting by expiry date from oldest to newest](images/SortExpiry1.3.png)
+
+### [Sort food items by priority](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `sortpriority`
+
+Sorts the list of food items by priority from high to low. With this, you can easily tell which foods have higher priority.
+
+* If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
+* If two food items have the same priority and expiry date, they will be ordered by description.
+
+Format: `sortpriority`
+
+![sorting by priority from HIGH to LOW](images/SortPriority1.3.png)
+
 ### [Undoing previous command](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `undo`
 
-Restores the food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on the food inventory.
+Restores the food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
 
 * Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
 
@@ -197,6 +238,14 @@ Format: `redo`
 Examples:
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
+
+### [Viewing expired items](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `expired`
+
+Shows a popup window listing all the expired food items if present in the inventory.
+
+![expired popup](images/expiredPopup.png)
+
+Format: `expired`
 
 ### [Clearing all entries](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `clear`
 
@@ -221,6 +270,11 @@ Food Inventory data are saved in the hard disk automatically after any command t
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
 
+**Q**: What are the design and implementation considerations behind SimplyKitchen's code?<br>
+**A**: You may find this information at our [Developer Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html).
+
+**Q**: How do I report a bug?<br>
+**A**: You may do so by creating a new issue in our [GitHub Repository](https://github.com/AY2021S1-CS2103T-F13-4/tp/issues).
 --------------------------------------------------------------------------------------------------------------------
 
 ## [Command summary](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)
@@ -234,7 +288,11 @@ Action | Format, Examples
 **Change quantity** | `changeqty INDEX a/AMOUNT` <br> e.g. `changeqty 1 a/+1.50`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`<br> e.g., `find d/biscuits p/medium e/30-12-2020 t/cat t/dog`
 **List** | `list`
+**Sort by Description** | `sortdesc`
+**Sort by Expiry Date** | `sortexpiry`
+**Sort by Priority** | `sortpriority`
 **Undo** | `undo`
 **Redo** | `redo`
 **Help** | `help`
+**Expired** | `expired`
 **Exit** | `exit`
