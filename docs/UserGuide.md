@@ -103,7 +103,7 @@ Format: `list`
 
 ### [Searching for a food item](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `find`
 
-Searches for food items in the inventory with descriptions matching any of the given keywords. This lets you find a specific food item, or a group of food items easily.
+Searches for food items in the inventory with descriptions matching any of the given keywords. You can easily find a specific food item, or a group of food items.
 
 Format: `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [p/PRIORITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -177,6 +177,7 @@ Examples:
 * `changeqty 2 a/-2` decreases the quantity of the 2nd food item by 2.
 
 ### [Undoing previous command](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `undo`
+
 Restores the food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on the food inventory.
 
 * Undoable commands: commands that modify the food inventory's content (`add`, `delete`, `edit` and `clear`)
@@ -188,6 +189,7 @@ Examples:
 * `delete 1` `clear` then `undo` will reverse the `clear` command.
 
 ### [Redoing previously undone command](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `redo`
+
 Restores the food inventory to a state before an undo command was executed. This lets you easily redo the command that was incorrectly undone.
 
 Format: `redo`
@@ -197,6 +199,7 @@ Examples:
 * `clear` `undo` then `redo` will redo the `clear` command.
 
 ### [Clearing all entries](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#features) : `clear`
+
 Clears all entries from the food inventory. This lets you easily clear the starting data, or start on a clean food inventory.
 
 Format: `clear`
