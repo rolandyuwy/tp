@@ -49,14 +49,14 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 
 This document is a User Guide meant to assist you in using SimplyKitchen to manage your food inventory.
 
-The [**quick start**](#quick-start) section guides you in setting up and launching the SimplyKitchen app on your computer.
+The [quick start](#quick-start) section guides you in setting up and launching the SimplyKitchen app on your computer.
 
-The [**features**](#features) section helps you understand and use the features of SimplyKitchen. 
+The [features](#features) section helps you understand and use the features of SimplyKitchen. 
 It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
 
-The [**FAQs**](#faq) section contains some Frequently Asked Questions with regard to SimplyKitchen.
+The [FAQs](#faq) section contains some Frequently Asked Questions with regard to SimplyKitchen.
 
-Finally, the [**command summary**](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
+Finally, the [command summary](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
@@ -112,9 +112,9 @@ After entering this command, you should see a pop-up window similar to the one s
 
 ## Viewing expired food items
 
-When you launch the app, it checks for any expired food present in your food inventory.
-If there is any expired food, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
-If you have discarded the expired food, please remember to delete the associated food item from the app using the [`delete`](#deleting-a-food-item) command.
+When you launch the app, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
+If there is any expired food item, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
+If you have discarded the expired food item, please remember to delete the associated food item from the app using the [`delete`](#deleting-a-food-item) command.
 
 If you want to see the list of expired food items when using the app, you can use the `expired` command.
 
@@ -126,7 +126,7 @@ If you want to see the list of expired food items when using the app, you can us
 
 ## Adding a food item
 
-The `add` command stores a food item in your food inventory.
+The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`
@@ -159,7 +159,7 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 ## Searching for a food item
 
-The `find` command searches for food items in your food inventory and displays the result on your food list.
+The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
 The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
 
 **Format:** `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`
@@ -190,7 +190,7 @@ The search will return food items with matching description, priority, expiry da
 
 ## Deleting a food item
 
-The `delete` command deletes a specified food item from your food inventory.
+The `delete` command deletes a specified food item from your food inventory, so that you can stop tracking it.
 
 **Format:** `delete INDEX`
 
@@ -206,7 +206,7 @@ The `delete` command deletes a specified food item from your food inventory.
 
 ## Editing a food item
 
-The edit command edits the details of an existing food item in your food inventory.
+The edit command edits the details of an existing food item in your food inventory. If an entry is incorrect, you can easily edit the entry, without deleting and re-adding the food item.
 
 **Format:** `edit INDEX [d/DESCRIPTION] [p/PRIORITY] [q/QUANTITY] [e/EXPIRY DATE] [t/TAG]...`
 
@@ -227,7 +227,7 @@ The edit command edits the details of an existing food item in your food invento
 
 ## Changing the quantity of a food item
 
-The `changeqty` command changes the quantity of an existing food item in your food inventory.
+The `changeqty` command changes the quantity of an existing food item in your food inventory. This lets you easily update the current quantity of a food item if you used or stocked up on it.
 Use this command if you have bought new food items or used/discarded some existing food items.
 
 **Format:** `changeqty INDEX a/AMOUNT`
@@ -247,14 +247,14 @@ Use this command if you have bought new food items or used/discarded some existi
 
 ## Sort food items by description
 
-The `sortdesc` command sorts the list of food items by description. 
+The `sortdesc` command sorts the list of food items by description. This function is useful if you forget a food item's exact spelling, and you are unable to use the `find` command for it.
+
+**Format:** `sortdesc`
 
 * Sorting by description consists of first sorting lexicographically, then by the descriptions' first characters.
 * If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
-
-**Format:** `sortdesc`
 
 **Examples:**
 * A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
@@ -265,12 +265,12 @@ The `sortdesc` command sorts the list of food items by description.
 
 ## Sort food items by expiry date
 
-The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. 
+The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which food items are expiring first.
+
+**Format:** `sortexpiry`
 
 * Food items of the same expiry date will be sorted by priority from high to low.
 * Food items of the same expiry date and same priority will be sorted by description.
-
-**Format:** `sortexpiry`
 
 ![sorting by expiry date from oldest to newest](images/SortExpiry1.3.png)
 
@@ -278,12 +278,12 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 
 ## Sort food items by priority
 
-The `sortpriority` command sorts the list of food items by priority from high to low. 
+The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which food items have higher priority.
+
+**Format:** `sortpriority`
 
 * If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
 * If two food items have the same priority and expiry date, they will be ordered by description.
-
-**Format:** `sortpriority`
 
 ![sorting by priority from HIGH to LOW](images/SortPriority1.3.png)
 
@@ -291,7 +291,7 @@ The `sortpriority` command sorts the list of food items by priority from high to
 
 ## Undoing previous command
 
-The `undo` command restores your food inventory to a state before an undoable command was executed.
+The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
 Undoable commands are commands that modify your food inventory's content (`add`, `delete`, `edit` and `clear`)
 
 **Format:** `undo`
@@ -304,17 +304,17 @@ Undoable commands are commands that modify your food inventory's content (`add`,
 
 ## Redoing previously undone command
 
-The `redo` command restores your food inventory to a state before an undo command was executed.
+The `redo` command restores your food inventory to a state before an undo command was executed. This lets you easily redo commands that were incorrectly undone.
 
 **Format:** `redo`
 
 **Examples:**
-* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food was added.
+* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
 ## Clearing all entries
 
-The `clear` command clears all entries from your food inventory.
+The `clear` command clears all entries from your food inventory. This lets you easily clear the starting data, or start on a clean food inventory.
 Note that the data saved in your hard disk will also be cleared!
 
 **Format:** `clear`
