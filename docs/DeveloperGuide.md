@@ -737,7 +737,7 @@ Use case ends.
 
 <br/>
 
-#### UC10: Undo most recent undoable command
+#### UC11: Undo most recent undoable command
 
 **Guarantees** The most recent undoable command (add, delete, edit, sort, clear) requested will be undone.
 
@@ -755,7 +755,7 @@ Use case ends.
 
 <br/>
 
-#### UC11: Redo most recent undo command
+#### UC12: Redo most recent undo command
 
 **Guarantees** It redoes the most recent undo command.
 
