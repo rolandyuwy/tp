@@ -54,21 +54,6 @@ public class Food {
     }
 
     /**
-     * Returns the amount of the food item in the food inventory.
-     * Does not include the unit string.
-     */
-    public double getQuantityValue() {
-        return quantity.value;
-    }
-
-    /**
-     * Returns the unit of the food item.
-     */
-    public String getQuantityUnit() {
-        return quantity.unit;
-    }
-
-    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */

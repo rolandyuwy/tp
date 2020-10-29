@@ -84,6 +84,21 @@ public class Quantity {
     }
 
     /**
+     * Returns a quantity value added to the amount to change by.
+     */
+    public static double changeQuantityValue(Quantity oldQuantity, double amount) {
+        return oldQuantity.value + amount;
+    }
+
+    /**
+     * Returns a new quantity with the {@code newValue} as its value and
+     * the old unit from {@code oldQuantity} as the unit.
+     */
+    public static Quantity updateQuantity(Quantity oldQuantity, double newValue) {
+        return Quantity.of(newValue, oldQuantity.unit);
+    }
+
+    /**
      * Generates an error message based on why the quantity is invalid.
      *
      * @param quantity invalid quantity string

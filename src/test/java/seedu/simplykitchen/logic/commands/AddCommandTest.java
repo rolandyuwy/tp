@@ -126,6 +126,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setSortingComparators(Comparator<Food>[] sortingComparators) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasFood(Food food) {
             throw new AssertionError("This method should not be called.");
         }
@@ -141,11 +146,20 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Food> getFilteredFoodList() {
+        public void sortFoodInventory(Comparator<Food>... comparators) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public void sortFoodInventoryBySortingComparators() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Food> getFilteredFoodList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public ObservableList<Food> getFilteredExpiringFoodList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -166,10 +180,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateSortedFoodList(Comparator<Food> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
         public boolean canUndoFoodInventory() {
             throw new AssertionError("This method should not be called.");
         }
@@ -195,12 +205,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateExpiringSortedFoodList() {
+        public Predicate<Food> getExpiringPredicate() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public Predicate<Food> getExpiringPredicate() {
+        public void updateExpiringSortedFoodList() {
             throw new AssertionError("This method should not be called.");
         }
 

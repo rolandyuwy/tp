@@ -2,8 +2,9 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_DESCRIPTION;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
+import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
+import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -28,10 +29,11 @@ public class ModelManager implements Model {
 
     private final VersionedFoodInventory versionedFoodInventory;
     private final UserPrefs userPrefs;
+    private Comparator<Food>[] sortingComparators;
     private final FilteredList<Food> filteredFoods;
+
     private FilteredList<Food> expiringFilteredFoods;
     private final FilteredList<Food> expiredFilteredFoods;
-    private final SortedList<Food> sortedFoods;
     private SortedList<Food> expiringSortedFoods;
 
     /**
@@ -46,10 +48,9 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.sortingComparators = getComparator(userPrefs.getSortingComparatorsDescription());
 
-        sortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
-        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
-        filteredFoods = new FilteredList<>(sortedFoods);
+        filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
 
         expiringSortedFoods = new SortedList<>(this.versionedFoodInventory.getFoods());
         updateExpiringSortedFoodList();
@@ -98,6 +99,12 @@ public class ModelManager implements Model {
         userPrefs.setFoodInventoryFilePath(foodInventoryFilePath);
     }
 
+    @Override
+    public void setSortingComparators(Comparator<Food>[] sortingComparators) {
+        requireNonNull(sortingComparators);
+        this.sortingComparators = sortingComparators;
+    }
+
     //=========== FoodInventory ==========================================================================
 
     @Override
@@ -123,15 +130,31 @@ public class ModelManager implements Model {
 
     @Override
     public void addFood(Food food) {
+        requireNonNull(food);
         versionedFoodInventory.addFood(food);
         updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
-        updateSortedFoodList(SORT_BY_ASCENDING_DESCRIPTION);
+        sortFoodInventoryBySortingComparators();
     }
 
     @Override
     public void setFood(Food target, Food editedFood) {
         requireAllNonNull(target, editedFood);
         versionedFoodInventory.setFood(target, editedFood);
+        updateFilteredFoodList(PREDICATE_SHOW_ALL_FOODS);
+        sortFoodInventoryBySortingComparators();
+    }
+
+    @Override
+    public void sortFoodInventory(Comparator<Food>... comparators) {
+        requireNonNull(comparators);
+        versionedFoodInventory.sortFoods(comparators);
+        setSortingComparators(comparators);
+        userPrefs.setSortingComparatorsDescription(generateSortingComparatorsDescription(comparators));
+    }
+
+    @Override
+    public void sortFoodInventoryBySortingComparators() {
+        versionedFoodInventory.sortFoods(sortingComparators);
     }
 
     //=========== Filtered Food List Accessors =============================================================
@@ -196,12 +219,6 @@ public class ModelManager implements Model {
         versionedFoodInventory.commit();
     }
 
-    @Override
-    public void updateSortedFoodList(Comparator<Food> comparator) {
-        requireNonNull(comparator);
-        sortedFoods.setComparator(comparator);
-    }
-
     // ============== Expiring Food List ========================================================================
     @Override
     public void updateExpiringSortedFoodList() {
@@ -225,8 +242,8 @@ public class ModelManager implements Model {
 
                 ExpiryDate foodExpiry = food.getExpiryDate();
 
-                if ((!ExpiryDate.isAfter(foodExpiry, expiryDateNextWeek)
-                        && ExpiryDate.isAfter(foodExpiry, expiryToday))
+                if ((!foodExpiry.isAfter(expiryDateNextWeek)
+                        && foodExpiry.isAfter(expiryToday))
                         || foodExpiry.equals(expiryToday)) {
                     return true;
                 }
@@ -248,7 +265,7 @@ public class ModelManager implements Model {
 
                 ExpiryDate foodExpiry = food.getExpiryDate();
 
-                return ExpiryDate.isAfter(expiredToday, foodExpiry);
+                return expiredToday.isAfter(foodExpiry);
             }
         };
     }
