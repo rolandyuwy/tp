@@ -49,6 +49,7 @@ public class SortDescCommandTest {
         setUp(APRICOT, APPLE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
+
         expectedModel.sortFoodInventory(SORT_DESC_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -61,6 +62,7 @@ public class SortDescCommandTest {
         setUp(OLD_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
+
         expectedModel.sortFoodInventory(SORT_DESC_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -73,6 +75,7 @@ public class SortDescCommandTest {
         setUp(CHEAP_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortDescCommand command = new SortDescCommand();
+
         expectedModel.sortFoodInventory(SORT_DESC_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
