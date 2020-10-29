@@ -59,7 +59,7 @@ public class FoodCard extends UiPart<Region> {
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
         expiryDate.setText(food.getExpiryDate().value);
-        expiryLabel.setText(generateExpiryDateText());
+        setExpiryDateLabel();
         quantity.setText(food.getQuantity().toString());
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -84,20 +84,20 @@ public class FoodCard extends UiPart<Region> {
         priority.setStyle("-fx-background-color: " + priorityColor + ";");
     }
 
-    private String generateExpiryDateText() {
+    private void setExpiryDateLabel() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
         ExpiryDate dateToday = new ExpiryDate(LocalDate.now().format(dateFormat));
         ExpiryDate dateNextWeek = new ExpiryDate(LocalDate.now().plusDays(7).format(dateFormat));
 
         if (dateToday.isAfter(food.getExpiryDate())) {
-            return "EXPIRED";
+            expiryLabel.setText("EXPIRED");
+            expiryLabel.setStyle("-fx-background-color: #A93226; -fx-background-radius: 5;");
+        } else if (dateNextWeek.isAfter(food.getExpiryDate())) {
+            expiryLabel.setText("EXPIRING SOON");
+            expiryLabel.setStyle("-fx-background-color: #9A7D0A; -fx-background-radius: 5;");
+        } else {
+            expiryLabel.setStyle("visibility: false");
         }
-
-        if (dateNextWeek.isAfter(food.getExpiryDate())) {
-            return "EXPIRING SOON";
-        }
-
-        return "";
 
     }
 
