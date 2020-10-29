@@ -1,5 +1,8 @@
 package seedu.simplykitchen.ui;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -7,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
 
@@ -53,7 +57,7 @@ public class FoodCard extends UiPart<Region> {
         description.setText(food.getDescription().fullDescription);
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
-        expiryDate.setText(food.getExpiryDate().value);
+        expiryDate.setText(generateExpiryDateText());
         quantity.setText(food.getQuantity().toString());
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -76,6 +80,23 @@ public class FoodCard extends UiPart<Region> {
             throw new IllegalArgumentException("Invalid priority level");
         }
         priority.setStyle("-fx-background-color: " + priorityColor + ";");
+    }
+
+    private String generateExpiryDateText() {
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+        ExpiryDate dateToday = new ExpiryDate(LocalDateTime.now().format(dateFormat));
+        ExpiryDate dateNextWeek = new ExpiryDate(LocalDateTime.now().plusDays(7).format(dateFormat));
+
+        if (dateToday.isAfter(food.getExpiryDate())) {
+            return food.getExpiryDate().value + " (EXPIRED)";
+        }
+
+        if (dateNextWeek.isAfter(food.getExpiryDate())) {
+            return food.getExpiryDate().value + " (EXPIRING SOON)";
+        }
+
+        return food.getExpiryDate().value;
+
     }
 
     @Override
