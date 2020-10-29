@@ -33,14 +33,14 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 
 This document is a User Guide meant to assist you in using SimplyKitchen to manage your food inventory.
 
-The **quick start** section guides you in setting up and launching the SimplyKitchen app on your computer.
+The [**quick start**](#quick-start) section guides you in setting up and launching the SimplyKitchen app on your computer.
 
-The **features** section helps you understand and use the features of SimplyKitchen. 
+The [**features**](#features) section helps you understand and use the features of SimplyKitchen. 
 It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
 
-The **FAQs** section contains some Frequently Asked Questions with regard to SimplyKitchen.
+The [**FAQs**](#faq) section contains some Frequently Asked Questions with regard to SimplyKitchen.
 
-Finally, the **command summary** section acts as a quick reference point for all the features of SimplyKitchen.
+Finally, the [**command summary**](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
