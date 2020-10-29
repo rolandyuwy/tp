@@ -112,7 +112,7 @@ After entering this command, you should see a pop-up window similar to the one s
 
 ## Viewing expired food items
 
-When you launch the app, it checks for any expired food present in your food inventory.
+When you launch the app, it checks for any expired food present in your food inventory. This lets you easily see what foods have expired.
 If there is any expired food, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
 If you have discarded the expired food, please remember to delete the associated food item from the app using the [`delete`](#deleting-a-food-item) command.
 
