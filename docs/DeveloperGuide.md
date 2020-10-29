@@ -747,6 +747,8 @@ Use case ends.
 
 **2.** SimplyKitchen displays the food list before the most recent undoable command was requested.
 
+Use case ends.
+
 **Extensions:**
 
 **2a** No undoable commands were executed.
@@ -764,6 +766,8 @@ Use case ends.
 **1.** User requests to redo.
 
 **2.** SimplyKitchen displays the food list after the most recent undo command was requested.
+
+Use case ends.
 
 **Extensions:**
 
