@@ -234,3 +234,4 @@ Action | Format, Examples
 **Undo** | `undo`
 **Redo** | `redo`
 **Help** | `help`
+**Exit** | `exit`
