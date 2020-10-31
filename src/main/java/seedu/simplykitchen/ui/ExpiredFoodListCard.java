@@ -3,9 +3,12 @@ package seedu.simplykitchen.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.simplykitchen.model.food.Food;
+
+import java.util.Comparator;
 
 /**
  * An UI component that displays information of a {@code Food} which is expiring soon.
@@ -31,6 +34,8 @@ public class ExpiredFoodListCard extends UiPart<Region> {
     private Label description;
     @FXML
     private Label expiryDate;
+    @FXML
+    private FlowPane tags;
 
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
@@ -40,6 +45,9 @@ public class ExpiredFoodListCard extends UiPart<Region> {
         this.food = food;
         description.setText(food.getDescription().fullDescription);
         expiryDate.setText(food.getExpiryDate().value);
+        food.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override
