@@ -36,6 +36,8 @@ public class ModelManager implements Model {
     private final FilteredList<Food> expiredFilteredFoods;
     private SortedList<Food> expiringSortedFoods;
 
+    private boolean isDataFileInvalid;
+
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
      */
@@ -58,6 +60,14 @@ public class ModelManager implements Model {
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
         expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiredFilteredFoods.setPredicate(getExpiredPredicate());
+    }
+
+    /**
+     * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     */
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs, boolean isDataFileInvalid) {
+        this(foodInventory, userPrefs);
+        this.isDataFileInvalid = isDataFileInvalid;
     }
 
     public ModelManager() {
@@ -288,6 +298,11 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods)
                 && expiringFilteredFoods.equals(other.expiringFilteredFoods);
+    }
+
+    @Override
+    public boolean isDataFileInvalid() {
+        return this.isDataFileInvalid;
     }
 
 }

@@ -53,4 +53,9 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns true if the data file format is invalid.
+     */
+    boolean isDataFileInvalid();
 }
