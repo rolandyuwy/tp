@@ -6,6 +6,8 @@ import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
@@ -30,6 +32,7 @@ public class ArgumentTokenizer {
      */
     public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws ParseException {
         checkRepeatedPrefixes(argsString, prefixes);
+        checkIllegalPrefix(argsString, prefixes);
         List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
         return extractArguments(argsString, positions);
     }
@@ -77,6 +80,25 @@ public class ArgumentTokenizer {
 
             if (!prefix.equals(PREFIX_TAG) && count > 1) {
                 throw new ParseException("Multiple " + prefix + " detected. Please remove one of them.");
+            }
+        }
+    }
+
+    private static void checkIllegalPrefix(String argsString, Prefix... prefixes) throws ParseException {
+        Pattern prefixPattern = Pattern.compile(" [a-zA-Z]/");
+        Matcher prefixMatcher = prefixPattern.matcher(argsString);
+        while (prefixMatcher.find()) {
+            int prefixIndex = prefixMatcher.start();
+            boolean isInvalidPrefix = true;
+            for (Prefix prefix : prefixes) {
+                if (argsString.substring(prefixIndex, prefixIndex + 3).equals(" " + prefix.toString())) {
+                    isInvalidPrefix = false;
+                    break;
+                }
+            }
+            if (isInvalidPrefix) {
+                throw new ParseException("Invalid prefix \"" + argsString.substring(prefixIndex + 1, prefixIndex + 3) +
+                        "\" detected. Please remove it and re-enter the command.");
             }
         }
     }
