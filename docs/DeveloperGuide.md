@@ -737,6 +737,47 @@ Use case ends.
 
 <br/>
 
+#### UC11: Undo most recent undoable command
+
+**Guarantees** The most recent undoable command (add, delete, edit, sort, clear) requested will be undone.
+
+**MSS:**
+
+**1.** User requests to undo.
+
+**2.** SimplyKitchen displays the food list before the most recent undoable command was requested.
+
+Use case ends.
+
+**Extensions:**
+
+**2a** No undoable commands were executed.
+
+Use case ends.
+
+<br/>
+
+#### UC12: Redo most recent undo command
+
+**Guarantees** It redoes the most recent undo command.
+
+**MSS:**
+
+**1.** User requests to redo.
+
+**2.** SimplyKitchen displays the food list after the most recent undo command was requested.
+
+Use case ends.
+
+**Extensions:**
+
+**2a** No undo commands were executed.
+
+Use case ends.
+
+<br/>
+
+
 *{More to be added}*
 
 ### Non-Functional Requirements
