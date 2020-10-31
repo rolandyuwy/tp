@@ -29,6 +29,7 @@ public class ArgumentTokenizer {
      * @return           ArgumentMultimap object that maps prefixes to their arguments
      */
     public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws ParseException {
+        checkRepeatedPrefixes(argsString, prefixes);
         List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
         return extractArguments(argsString, positions);
     }
@@ -40,27 +41,16 @@ public class ArgumentTokenizer {
      * @param prefixes   Prefixes to find in the arguments string
      * @return           List of zero-based prefix positions in the given arguments string
      */
-    private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes)
-            throws ParseException {
-        try {
+    private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes) {
             return Arrays.stream(prefixes)
-                    .flatMap(prefix -> {
-                        try {
-                            return findPrefixPositions(argsString, prefix).stream();
-                        } catch (ParseException e) {
-                            throw new IllegalArgumentException(e.getMessage());
-                        }
-                    })
+                    .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
                     .collect(Collectors.toList());
-        } catch (IllegalArgumentException e) {
-            throw new ParseException(e.getMessage());
-        }
     }
 
     /**
      * {@see findAllPrefixPositions}
      */
-    private static List<PrefixPosition> findPrefixPositions(String argsString, Prefix prefix) throws ParseException {
+    private static List<PrefixPosition> findPrefixPositions(String argsString, Prefix prefix) {
         List<PrefixPosition> positions = new ArrayList<>();
 
         int prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), 0);
@@ -70,11 +60,25 @@ public class ArgumentTokenizer {
             prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition);
         }
 
-        if (!prefix.equals(PREFIX_TAG) && positions.size() > 1) {
-            throw new ParseException("Multiple " + prefix + " detected. Please remove one of them.");
-        }
-
         return positions;
+    }
+
+    /**
+     * Throws ParseException if the command contains repeated prefixes.
+     */
+    private static void checkRepeatedPrefixes(String argsString, Prefix... prefixes) throws ParseException {
+        for (Prefix prefix : prefixes) {
+            int count = 0;
+            int prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), 0);
+            while (prefixPosition != -1) {
+                count++;
+                prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition);
+            }
+
+            if (!prefix.equals(PREFIX_TAG) && count > 1) {
+                throw new ParseException("Multiple " + prefix + " detected. Please remove one of them.");
+            }
+        }
     }
 
     /**
