@@ -1,9 +1,13 @@
 package seedu.simplykitchen.logic.parser;
 
+import seedu.simplykitchen.logic.parser.exceptions.ParseException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -23,7 +27,7 @@ public class ArgumentTokenizer {
      * @param prefixes   Prefixes to tokenize the arguments string with
      * @return           ArgumentMultimap object that maps prefixes to their arguments
      */
-    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) {
+    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws ParseException {
         List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
         return extractArguments(argsString, positions);
     }
@@ -35,10 +39,16 @@ public class ArgumentTokenizer {
      * @param prefixes   Prefixes to find in the arguments string
      * @return           List of zero-based prefix positions in the given arguments string
      */
-    private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes) {
-        return Arrays.stream(prefixes)
-                .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
-                .collect(Collectors.toList());
+    private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes)
+            throws ParseException {
+
+        try {
+            return Arrays.stream(prefixes)
+                    .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
+                    .collect(Collectors.toList());
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(e.getMessage());
+        }
     }
 
     /**
@@ -52,6 +62,10 @@ public class ArgumentTokenizer {
             PrefixPosition extendedPrefix = new PrefixPosition(prefix, prefixPosition);
             positions.add(extendedPrefix);
             prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition);
+        }
+
+        if (!prefix.equals(PREFIX_TAG) && positions.size() > 1) {
+            throw new IllegalArgumentException("Multiple " + prefix + " detected. Please remove one of them.");
         }
 
         return positions;
