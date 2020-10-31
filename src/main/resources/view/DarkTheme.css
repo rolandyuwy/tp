@@ -1,6 +1,6 @@
 .background {
     -fx-background-color: derive(#1e2a30, 20%);
-    background-color: #383838; /* Used in the default.html file */
+    background-color: #1e2a30; /* Used in the default.html file */
 }
 
 .label {
@@ -318,7 +318,7 @@
 }
 
 #commandTextField {
-    -fx-background-color: transparent #383838 transparent #383838;
+    -fx-background-color: transparent #1e2a30 transparent #1e2a30;
     -fx-background-insets: 0;
     -fx-border-color: #27353c #27353c #ffffff #27353c;
     -fx-border-insets: 0;
