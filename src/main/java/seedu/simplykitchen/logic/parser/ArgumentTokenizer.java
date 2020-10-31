@@ -2,6 +2,7 @@ package seedu.simplykitchen.logic.parser;
 
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,10 +42,15 @@ public class ArgumentTokenizer {
      */
     private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes)
             throws ParseException {
-
         try {
             return Arrays.stream(prefixes)
-                    .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
+                    .flatMap(prefix -> {
+                        try {
+                            return findPrefixPositions(argsString, prefix).stream();
+                        } catch (ParseException e) {
+                            throw new IllegalArgumentException(e.getMessage());
+                        }
+                    })
                     .collect(Collectors.toList());
         } catch (IllegalArgumentException e) {
             throw new ParseException(e.getMessage());
@@ -54,7 +60,7 @@ public class ArgumentTokenizer {
     /**
      * {@see findAllPrefixPositions}
      */
-    private static List<PrefixPosition> findPrefixPositions(String argsString, Prefix prefix) {
+    private static List<PrefixPosition> findPrefixPositions(String argsString, Prefix prefix) throws ParseException {
         List<PrefixPosition> positions = new ArrayList<>();
 
         int prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), 0);
@@ -65,7 +71,7 @@ public class ArgumentTokenizer {
         }
 
         if (!prefix.equals(PREFIX_TAG) && positions.size() > 1) {
-            throw new IllegalArgumentException("Multiple " + prefix + " detected. Please remove one of them.");
+            throw new ParseException("Multiple " + prefix + " detected. Please remove one of them.");
         }
 
         return positions;
