@@ -21,6 +21,9 @@ import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
  *    in the above example.<br>
  */
 public class ArgumentTokenizer {
+    public static final String MULTIPLE_SAME_PREFIX = "Multiple %s detected. Please remove one of them.";
+    public static final String ILLEGAL_PREFIX = "Invalid prefix \"%s"
+            + "\" detected. Please remove it and re-enter the command.";
 
     /**
      * Tokenizes an arguments string and returns an {@code ArgumentMultimap} object that maps prefixes to their
@@ -79,11 +82,14 @@ public class ArgumentTokenizer {
             }
 
             if (!prefix.equals(PREFIX_TAG) && count > 1) {
-                throw new ParseException("Multiple " + prefix + " detected. Please remove one of them.");
+                throw new ParseException(String.format(MULTIPLE_SAME_PREFIX, prefix));
             }
         }
     }
 
+    /**
+     * Throws parse exception if the command contains invalid prefixes (i.e o/)
+     */
     private static void checkIllegalPrefix(String argsString, Prefix... prefixes) throws ParseException {
         Pattern prefixPattern = Pattern.compile(" [a-zA-Z]/");
         Matcher prefixMatcher = prefixPattern.matcher(argsString);
@@ -97,8 +103,8 @@ public class ArgumentTokenizer {
                 }
             }
             if (isInvalidPrefix) {
-                throw new ParseException("Invalid prefix \"" + argsString.substring(prefixIndex + 1, prefixIndex + 3) +
-                        "\" detected. Please remove it and re-enter the command.");
+                throw new ParseException(String.format(ILLEGAL_PREFIX,
+                        argsString.substring(prefixIndex + 1, prefixIndex + 3)));
             }
         }
     }
