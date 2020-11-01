@@ -2,7 +2,8 @@ package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
-import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedInteger;
+import static seedu.simplykitchen.commons.util.StringUtil.isIntegerOverflow;
+import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedDouble;
 
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
@@ -31,7 +32,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      * Generate the error message for the invalid index number.
      */
     private String generateParseExceptionMessage(String args) {
-        if (isNonPositiveUnsignedInteger(args.trim())) {
+        if (isNonPositiveUnsignedDouble(args.trim()) || isIntegerOverflow(args.trim())) {
             return MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
         } else {
             return String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);

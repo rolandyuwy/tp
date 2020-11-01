@@ -3,7 +3,8 @@ package seedu.simplykitchen.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
-import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedInteger;
+import static seedu.simplykitchen.commons.util.StringUtil.isIntegerOverflow;
+import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedDouble;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -92,7 +93,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      * Generate the error message for the invalid index number.
      */
     private String generateParseExceptionMessage(String args) {
-        if (isNonPositiveUnsignedInteger(args.trim())) {
+        if (isNonPositiveUnsignedDouble(args.trim()) || isIntegerOverflow(args.trim())) {
             return MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
         } else {
             return String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
