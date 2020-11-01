@@ -23,12 +23,18 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteCommand(index);
         } catch (ParseException pe) {
-            if (isNonPositiveUnsignedInteger(args.trim())) {
-                throw new ParseException(MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
-            } else {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
-            }
+            throw new ParseException(generateParseExceptionMessage(args), pe);
+        }
+    }
+
+    /**
+     * Generate the error message for the invalid index number.
+     */
+    private String generateParseExceptionMessage(String args) {
+        if (isNonPositiveUnsignedInteger(args.trim())) {
+            return MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
+        } else {
+            return String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
         }
     }
 
