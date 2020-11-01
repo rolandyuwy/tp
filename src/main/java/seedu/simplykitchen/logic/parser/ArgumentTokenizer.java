@@ -1,15 +1,15 @@
 package seedu.simplykitchen.logic.parser;
 
-import seedu.simplykitchen.logic.parser.exceptions.ParseException;
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
+import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -47,9 +47,9 @@ public class ArgumentTokenizer {
      * @return           List of zero-based prefix positions in the given arguments string
      */
     private static List<PrefixPosition> findAllPrefixPositions(String argsString, Prefix... prefixes) {
-            return Arrays.stream(prefixes)
-                    .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
-                    .collect(Collectors.toList());
+        return Arrays.stream(prefixes)
+                .flatMap(prefix -> findPrefixPositions(argsString, prefix).stream())
+                .collect(Collectors.toList());
     }
 
     /**

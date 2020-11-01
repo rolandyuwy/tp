@@ -1,12 +1,12 @@
 package seedu.simplykitchen.logic.parser;
 
-import seedu.simplykitchen.commons.core.index.Index;
-import seedu.simplykitchen.logic.commands.DeleteCommand;
-import seedu.simplykitchen.logic.parser.exceptions.ParseException;
-
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedInteger;
+
+import seedu.simplykitchen.commons.core.index.Index;
+import seedu.simplykitchen.logic.commands.DeleteCommand;
+import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object

@@ -16,7 +16,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.simplykitchen.commons.core.index.Index;
-import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
@@ -96,7 +95,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (isNonPositiveUnsignedInteger(args.trim())) {
             return MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
         } else {
-            return String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
+            return String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
         }
     }
 

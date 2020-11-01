@@ -22,10 +22,10 @@ import seedu.simplykitchen.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-    private static final String INVALID_DATA_FILE = "Data file is not in the correct format. " +
-            "Will be starting with an empty Food Inventory.\n" +
-            "Please double check the data file and fix all incorrect formatting and restart the app.\n" +
-            "If you add a new food item now, all previous data will be lost.";
+    private static final String INVALID_DATA_FILE = "Data file is not in the correct format. "
+            + "Will be starting with an empty Food Inventory.\n"
+            + "Please double check the data file and fix all incorrect formatting and restart the app.\n"
+            + "If you add a new food item now, all previous data will be lost.";
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());

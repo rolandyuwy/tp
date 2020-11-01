@@ -1,6 +1,7 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
@@ -70,10 +71,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // zero index
-        assertParseFailure(parser, "0" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -123,10 +124,10 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_BREAD + TAG_DESC_WHOLEMEAL
-                + EXPIRY_DATE_DESC_APPLE_PIE + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN + QUANTITY_DESC_BREAD;
+                + EXPIRY_DATE_DESC_BREAD + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN + QUANTITY_DESC_BREAD;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
-                .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
+                .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_BREAD)
                 .withQuantity(VALID_QUANTITY_BREAD)
                 .withTags(VALID_TAG_WHOLEMEAL, VALID_TAG_FROZEN).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);

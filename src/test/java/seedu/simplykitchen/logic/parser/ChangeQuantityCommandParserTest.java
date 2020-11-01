@@ -51,8 +51,8 @@ public class ChangeQuantityCommandParserTest {
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", "Invalid prefix \"i/\" detected. " +
-                "Please remove it and re-enter the command.");
+        assertParseFailure(parser, "1 i/ string", "Invalid prefix \"i/\" detected. "
+                + "Please remove it and re-enter the command.");
     }
 
     @Test
