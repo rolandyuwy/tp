@@ -55,18 +55,6 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
 
-        // multiple descriptions - last description accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_APPLE_PIE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
-        // multiple priorities - last priority accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_APPLE_PIE + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
-        // multiple expiry dates - last expiry date accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_APPLE_PIE
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
         // multiple tags - all accepted
         Food expectedFoodMultipleTags = new FoodBuilder(BREAD).withTags(VALID_TAG_FROZEN, VALID_TAG_WHOLEMEAL)
                 .build();
@@ -160,5 +148,32 @@ public class AddCommandParserTest {
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_multipleSameFields_failure() {
+        String expectedMessageMultipleDescription = "Multiple d/ detected. Please remove one of them.";
+        String expectedMessageMultiplePriority = "Multiple p/ detected. Please remove one of them.";
+        String expectedMessageMultipleExpiry = "Multiple e/ detected. Please remove one of them.";
+
+        // multiple descriptions - last description accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_APPLE_PIE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, expectedMessageMultipleDescription);
+
+        // multiple priorities - last priority accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_APPLE_PIE + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, expectedMessageMultiplePriority);
+
+        // multiple expiry dates - last expiry date accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_APPLE_PIE
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, expectedMessageMultipleExpiry);
+    }
+
+    @Test
+    public void parse_invalidPrefix_failure() {
+        String expectedMessage = "Invalid prefix \"o/\" detected. Please remove it and re-enter the command.";
+
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD
+                + PRIORITY_DESC_BREAD + TAG_DESC_WHOLEMEAL + " o/testing", expectedMessage);
     }
 }

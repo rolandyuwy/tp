@@ -50,7 +50,8 @@ public class ChangeQuantityCommandParserTest {
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/ string", "Invalid prefix \"i/\" detected. " +
+                "Please remove it and re-enter the command.");
     }
 
     @Test
@@ -70,20 +71,18 @@ public class ChangeQuantityCommandParserTest {
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_multipleRepeatedFields_failure() {
+        String expectedMessage = "Multiple a/ detected. Please remove one of them.";
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_APPLE_PIE + AMOUNT_DESC_BREAD;
-        ChangeQuantityCommand expectedCommand =
-                new ChangeQuantityCommand(targetIndex, Double.parseDouble(VALID_AMOUNT_BREAD));
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, expectedMessage);
     }
 
     @Test
     public void parse_invalidValueFollowedByValidValue() {
+        String expectedMessage = "Multiple a/ detected. Please remove one of them.";
         Index targetIndex = INDEX_THIRD_FOOD;
         String userInput = targetIndex.getOneBased() + INVALID_AMOUNT_DESC + AMOUNT_DESC_BREAD;
-        ChangeQuantityCommand expectedCommand =
-                new ChangeQuantityCommand(targetIndex, Double.parseDouble(VALID_AMOUNT_BREAD));
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, expectedMessage);
     }
 }

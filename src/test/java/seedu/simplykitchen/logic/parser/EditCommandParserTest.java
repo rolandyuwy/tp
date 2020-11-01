@@ -77,7 +77,8 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/ string", "Invalid prefix \"i/\" detected. " +
+                "Please remove it and re-enter the command.");
     }
 
     @Test
@@ -101,7 +102,7 @@ public class EditCommandParserTest {
         // valid priority followed by invalid priority. The test case for invalid priority followed by valid priority
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
         assertParseFailure(parser, "1" + PRIORITY_DESC_BREAD + INVALID_PRIORITY_DESC,
-                Priority.MESSAGE_CONSTRAINTS);
+                "Multiple p/ detected. Please remove one of them.");
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Food} being edited,
         // parsing it together with a valid tag results in error
@@ -180,7 +181,7 @@ public class EditCommandParserTest {
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_multipleRepeatedFields_failure() {
         Index targetIndex = INDEX_FIRST_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_APPLE_PIE
                 + EXPIRY_DATE_DESC_APPLE_PIE + TAG_DESC_FROZEN + PRIORITY_DESC_APPLE_PIE
@@ -192,9 +193,8 @@ public class EditCommandParserTest {
                 .withExpiryDate(VALID_EXPIRY_DATE_BREAD)
                 .withTags(VALID_TAG_FROZEN, VALID_TAG_WHOLEMEAL)
                 .withQuantity(VALID_QUANTITY_BREAD).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, "Multiple p/ detected. Please remove one of them.");
     }
 
     @Test
@@ -205,14 +205,14 @@ public class EditCommandParserTest {
         EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
                 .withPriority(VALID_PRIORITY_BREAD).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, "Multiple p/ detected. Please remove one of them.");
 
         // other valid values specified
         userInput = targetIndex.getOneBased() + EXPIRY_DATE_DESC_BREAD + INVALID_PRIORITY_DESC + PRIORITY_DESC_BREAD;
         descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
                 .withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
+
+        assertParseFailure(parser, userInput, "Multiple p/ detected. Please remove one of them.");
     }
 
     @Test
