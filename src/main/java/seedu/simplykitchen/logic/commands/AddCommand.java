@@ -20,9 +20,9 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
-            + PREFIX_PRIORITY + "PRIORITY "
             + PREFIX_EXPIRY_DATE + "EXPIRY DATE "
             + PREFIX_QUANTITY + "QUANTITY "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "Canned Tuna "
