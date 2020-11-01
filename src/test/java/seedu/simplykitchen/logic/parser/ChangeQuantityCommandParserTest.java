@@ -7,6 +7,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_AMOUNT_
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_AMOUNT_SIZE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_AMOUNT_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_AMOUNT_BREAD;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.MULTIPLE_SAME_PREFIX;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.simplykitchen.logic.parser.ParserUtil.MESSAGE_INVALID_AMOUNT;
@@ -72,17 +73,15 @@ public class ChangeQuantityCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_failure() {
-        String expectedMessage = "Multiple a/ detected. Please remove one of them.";
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_APPLE_PIE + AMOUNT_DESC_BREAD;
-        assertParseFailure(parser, userInput, expectedMessage);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "a/"));
     }
 
     @Test
-    public void parse_invalidValueFollowedByValidValue() {
-        String expectedMessage = "Multiple a/ detected. Please remove one of them.";
+    public void parse_invalidValueFollowedByValidValue_failure() {
         Index targetIndex = INDEX_THIRD_FOOD;
         String userInput = targetIndex.getOneBased() + INVALID_AMOUNT_DESC + AMOUNT_DESC_BREAD;
-        assertParseFailure(parser, userInput, expectedMessage);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "a/"));
     }
 }

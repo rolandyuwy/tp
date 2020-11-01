@@ -2,9 +2,8 @@ package seedu.simplykitchen.logic.parser;
 
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
-import java.io.UncheckedIOException;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
