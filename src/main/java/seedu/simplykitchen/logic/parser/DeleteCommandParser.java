@@ -5,14 +5,18 @@ import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DIS
 import static seedu.simplykitchen.commons.util.StringUtil.isIntegerOverflow;
 import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedDouble;
 
+import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.DeleteCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
+
+import java.util.logging.Logger;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
@@ -24,6 +28,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteCommand(index);
         } catch (ParseException pe) {
+            logger.info(generateParseExceptionMessage(args));
             throw new ParseException(generateParseExceptionMessage(args), pe);
         }
     }
