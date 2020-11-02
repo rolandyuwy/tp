@@ -160,7 +160,7 @@ This command is suitable if you want to get a glimpse of all your food items cur
 ## Searching for a food item
 
 The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
-The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
+The search will return food items with matching description, priority, expiry date and tags, if specified.
 
 **Format:** `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`
 
@@ -200,7 +200,7 @@ The `delete` command deletes a specified food item from your food inventory, so 
 
 **Examples:**
 * `list` followed by `delete 2` deletes the 2nd food item in your food inventory.
-* `find tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
+* `find d/tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
