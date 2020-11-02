@@ -1,10 +1,6 @@
 package seedu.simplykitchen.model.food;
 
 import java.util.function.Predicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import seedu.simplykitchen.commons.core.LogsCenter;
 
 /**
  * Tests that a {@code Food}'s {@code Priority} matches the search given.
