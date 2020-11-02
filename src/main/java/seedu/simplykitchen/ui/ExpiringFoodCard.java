@@ -1,15 +1,14 @@
 package seedu.simplykitchen.ui;
 
+import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.OverrunStyle;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.simplykitchen.model.food.Food;
 
-import java.util.Comparator;
 
 /**
  * An UI component that displays information of a {@code Food} which is expiring soon.
@@ -51,10 +50,11 @@ public class ExpiringFoodCard extends UiPart<Region> {
                 .forEach(tag -> {
                     Label newTag = new Label(tag.tagName);
                     newTag.setWrapText(true);
-                    newTag.setMaxWidth(tags.getMaxWidth());
+                    newTag.maxWidthProperty().bind(cardPane.widthProperty().multiply(0.9));
                     tags.getChildren().add(newTag);
                 });
-        tags.setMaxWidth(5);
+        // Default min width of FlowPane is largest tag label, which may cause the tags to not wrap, so set to 0
+        tags.setMinWidth(0);
     }
 
     @Override
