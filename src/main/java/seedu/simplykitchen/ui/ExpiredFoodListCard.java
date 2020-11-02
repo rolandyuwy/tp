@@ -9,7 +9,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.simplykitchen.model.food.Food;
 
-
 /**
  * An UI component that displays information of a {@code Food} which is expiring soon.
  */
