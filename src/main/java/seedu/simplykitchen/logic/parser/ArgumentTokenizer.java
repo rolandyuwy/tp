@@ -69,7 +69,7 @@ public class ArgumentTokenizer {
     }
 
     /**
-     * Throws ParseException if the command contains repeated prefixes.
+     * Throws ParseException if the command contains repeated prefixes except for {@code PREFIX_TAG}.
      */
     private static void checkRepeatedPrefixes(String argsString, Prefix... prefixes) throws ParseException {
         for (Prefix prefix : prefixes) {
@@ -87,7 +87,7 @@ public class ArgumentTokenizer {
     }
 
     /**
-     * Throws parse exception if the command contains invalid prefixes (i.e o/)
+     * Throws parse exception if the command contains invalid prefixes (i.e o/).
      */
     private static void checkIllegalPrefix(String argsString, Prefix... prefixes) throws ParseException {
         Pattern prefixPattern = Pattern.compile(" [a-zA-Z]/");
