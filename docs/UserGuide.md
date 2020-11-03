@@ -139,6 +139,8 @@ You can then access the food item later on for editing, deleting etc.
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`
 
 * A food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* Description cannot contain more than 50 characters, including spaces.
+* Tags cannot contain more than 72 characters, including spaces.
 * Description and tags are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The quantity field consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
   * The `value` is compulsory. It must be a positive number with a maximum of 2 decimal places.
@@ -228,6 +230,7 @@ The edit command edits the details of an existing food item in your food invento
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
 * Similar to the [`add`](#adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* The constraints for the individual parameters of the command (description, priority, quantity, expiry date, tags) are the same as those for the add command.
 
 **Examples:**
 * `edit 1 d/baked beans e/1-1-2020` edits the food description and expiry date of the 1st food item to be `baked beans` and `1-1-2020` respectively.
