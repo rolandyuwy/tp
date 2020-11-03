@@ -351,6 +351,16 @@ Your food inventory data is saved in the hard disk automatically after any comma
 **Q**: How do I report a bug?<br>
 **A**: You may do so by creating a new issue in our [GitHub Repository](https://github.com/AY2021S1-CS2103T-F13-4/tp/issues).
 
+**Q**: What does SimplyKitchen consider as a duplicate food item?<br>
+**A**: In SimplyKitchen, two food items are duplicates if they have the same `description`, `expiry date` and `tags`. 
+All the tags must be the same.
+The capitalisation of the characters in the description or tag is ignored while checking for duplicates.
+The `priority` and `quantity` of food items is not considered while checking for duplicates.<br>
+The following screenshot gives an example of the error generated when trying to add a duplicate food item.<br>
+The descriptions, expiry dates and tags are all the same. Notice the difference in case of the description `Apple pie` and tag `contains nuts`.
+Whether the `priority` and the `quantity` are same or different is not considered. 
+![duplicate food example](images/duplicateFood.png)
+
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
