@@ -102,6 +102,9 @@ A pop up window will appear as below, which indicates the expired items.
 * Ellipis after some of the parameters indicate that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]…`, the relevant command can have zero or more tags each with the prefix `t/`, as in `t/spicy t/mustard`.
   
+* For all parameters, the extra whitespaces leading and succeeding the parameter will be ignored.<br>
+  e.g. The description parameter `d/    cashew  nuts   `, will be stored as `d/cashew  nuts`.
+  
 </div>
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
