@@ -95,6 +95,9 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 * Parameters can be in any order.<br>
   e.g. If the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
 
+* Ellipis after some of the parameters indicate that multiple entries of that parameter can be given.<br>
+  e.g. In `[t/TAG]…`, the relevant command can have zero or more tags each with the prefix `t/`, as in `t/spicy t/mustard`.
+  
 </div>
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
@@ -357,7 +360,8 @@ All the tags must be the same.
 The capitalisation of the characters in the description or tag is ignored while checking for duplicates.
 The `priority` and `quantity` of food items is not considered while checking for duplicates.<br>
 The following screenshot gives an example of the error generated when trying to add a duplicate food item.<br>
-The descriptions, expiry dates and tags are all the same. Notice the difference in case of the description `Apple pie` and tag `contains nuts`.
+The descriptions, expiry dates and tags are all the same. <br>
+Notice the difference in case of the description `Apple pie` and tag `contains nuts`.
 Whether the `priority` and the `quantity` are same or different is not considered. 
 ![duplicate food example](images/duplicateFood.png)
 
