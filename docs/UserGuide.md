@@ -143,8 +143,11 @@ You can then access the food item later on for editing, deleting etc.
   * A food item can have any number of tags (including 0).
 
 **Examples:**
-* `add d/canned tuna e/01-01-2021 q/1.5 can p/low`
-* `add d/apple pie e/11-10-2020 q/2 p/medium t/frozen t/$15 t/contains nuts`
+* `add d/Canned tuna e/01-01-2021 q/1.5 can p/low` adds an item having description `Canned Tuna`, expiry date `01-01-2021`, quantity `1.50 can` and priority `LOW`.
+* `add d/Apple pie e/11-11-2020 q/2 p/medium t/frozen t/$15 t/contains nuts` adds an item having description `Apple pie`, expiry date `11-11-2020`,
+ quantity `2.00 unit`, priority `MEDIUM`, and tags `frozen`, `$15` and `contains nuts`.
+The result of executing this example command is in the screenshot below.
+![result for 'add d/Apple pie e/11-11-2020 q/2 p/medium t/frozen t/$15 t/contains nuts'](images/addApplePieUgExample.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
