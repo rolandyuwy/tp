@@ -322,6 +322,8 @@ The `redo` command restores your food inventory to a state before an undo comman
 * `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` `undo` then `redo` will redo the `clear` command.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+
 ## Clearing all entries
 
 The `clear` command clears all entries from your food inventory. This lets you easily clear the starting data, or start on a clean food inventory.
