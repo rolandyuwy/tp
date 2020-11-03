@@ -255,6 +255,7 @@ The `sortdesc` command sorts the list of food items by description. This functio
 * If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
+* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
 **Examples:**
 * A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
@@ -271,6 +272,7 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 
 * Food items of the same expiry date will be sorted by priority from high to low.
 * Food items of the same expiry date and same priority will be sorted by description.
+* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
 ![sorting by expiry date from oldest to newest](images/SortExpiry.png)
 
@@ -284,6 +286,7 @@ The `sortpriority` command sorts the list of food items by priority from high to
 
 * If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
 * If two food items have the same priority and expiry date, they will be ordered by description.
+* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
 ![sorting by priority from HIGH to LOW](images/SortPriority.png)
 
