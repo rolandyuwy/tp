@@ -3,6 +3,7 @@ package seedu.simplykitchen.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -49,7 +50,9 @@ public class ExpiringFoodCard extends UiPart<Region> {
                 .forEach(tag -> {
                     Label newTag = new Label(tag.tagName);
                     newTag.setWrapText(true);
-                    newTag.maxWidthProperty().bind(cardPane.widthProperty().multiply(0.9));
+                    cardPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+                        newTag.setMaxWidth((double) newVal * 0.9);
+                    });
                     tags.getChildren().add(newTag);
                 });
         // Default min width of FlowPane is largest tag label, which may cause the tags to not wrap, so set to 0
