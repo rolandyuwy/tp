@@ -71,7 +71,11 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 
   ![GUI for the app](images/Ui.png)
 
-* Notice how the app is populated with some sample data.
+* Notice how the app is populated with some sample data. Some food items from the sample data are expired. 
+A pop up window will appear as below, which indicates the expired items. 
+ 
+  ![Pop up window of expired items](images/UiPopUp.png)
+
 * Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
 * Refer to the [features section in this guide](#features) for help on how to use the app.
 
