@@ -225,6 +225,7 @@ public class ModelManager implements Model {
     @Override
     public void updateExpiringSortedFoodList() {
         // Priority was not considered as priority cannot be seen on the expired/expiring lists
+        expiringSortedFoods.setComparator(null);
         expiringSortedFoods.setComparator(SORT_BY_LEXICOGRAPHICAL_ORDER);
         expiringSortedFoods.setComparator(SORT_BY_FIRST_CHARACTER);
         expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
