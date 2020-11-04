@@ -285,7 +285,7 @@ Furthermore, this helps for items added or edited by calling `AddCommand` and `E
 
 * **Alternative 1 (current choice):** Permanently sort lists.
   * Pros: Less hassle if a specific sorting order is preferred by the user.
-  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user, as sorting is useful for narrowed down lists. 
+  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user, as sorting is useful for narrowed down lists.
     However, they may achieve the same result by first sorting, then executing `FindCommand` or `ListCommand`
 
 * **Alternative 2:** Lists are sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
