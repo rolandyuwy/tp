@@ -24,35 +24,35 @@ import seedu.simplykitchen.model.food.Food;
 public class TypicalFood {
 
     public static final Food ANCHOVIES = new FoodBuilder().withDescription("Anchovies").withPriority("low")
-            .withExpiryDate("1-1-2022").withQuantity("1 jar").withTags("raw", "fresh water").build();
+            .withExpiryDate("1-1-2020").withQuantity("1 jar").withTags("raw", "fresh water").build();
     public static final Food BAGEL = new FoodBuilder().withDescription("Bagel").withPriority("low")
-            .withExpiryDate("1-2-2022").withQuantity("5").withTags("sugar-free", "cheese").build();
+            .withExpiryDate("1-2-2020").withQuantity("5").withTags("sugar-free", "cheese").build();
     public static final Food CARROT_CAKE = new FoodBuilder().withDescription("Carrot Cake").withPriority("low")
-            .withExpiryDate("1-3-2022").withQuantity("10 slice").build();
+            .withExpiryDate("1-3-2020").withQuantity("10 slice").build();
     public static final Food DARK_CHOCOLATE = new FoodBuilder().withDescription("Dark Chocolate").withPriority("high")
-            .withExpiryDate("1-6-2022").withQuantity("1.5 bar").withTags("85%").build();
+            .withExpiryDate("1-6-2020").withQuantity("1.5 bar").withTags("85%").build();
     public static final Food EGGS = new FoodBuilder().withDescription("Eggs").withPriority("high")
-            .withExpiryDate("1-12-2022").withQuantity("1.25 carton").build();
+            .withExpiryDate("1-12-2020").withQuantity("1.25 carton").build();
     public static final Food FRENCH_FRIES = new FoodBuilder().withDescription("French Fries").withPriority("low")
-            .withExpiryDate("31-1-2022").withQuantity("1 packet").build();
+            .withExpiryDate("31-1-2020").withQuantity("1 packet").build();
     public static final Food GINGER = new FoodBuilder().withDescription("Ginger").withPriority("low")
-            .withExpiryDate("31-12-2022").withQuantity("200 g").build();
+            .withExpiryDate("31-12-2020").withQuantity("200 g").build();
 
     // Manually added
     public static final Food APPLE = new FoodBuilder().withDescription("apple").withPriority("medium")
-            .withExpiryDate("12-12-2001").withQuantity("50 g").build();
+            .withExpiryDate("12-12-2120").withQuantity("50 g").build();
     public static final Food APRICOT = new FoodBuilder().withDescription("apricot").withPriority("high")
-            .withExpiryDate("12-12-2000").withQuantity("50 g").build();
+            .withExpiryDate("12-12-2120").withQuantity("50 g").build();
     public static final Food CHEAP_EGGS = new FoodBuilder().withDescription("Eggs").withPriority("low")
-            .withExpiryDate("1-12-2022").withQuantity("1.25 carton").withTags("cheap").build();
+            .withExpiryDate("1-12-2020").withQuantity("1.25 carton").withTags("cheap").build();
     public static final Food HUMMUS = new FoodBuilder().withDescription("Hummus").withPriority("low")
-            .withExpiryDate("12-12-2022").withQuantity("1").build();
+            .withExpiryDate("12-12-2120").withQuantity("1").build();
     public static final Food ICEBERG_LETTUCE = new FoodBuilder().withDescription("Iceberg Lettuce").withPriority("high")
-            .withExpiryDate("12-12-2022").withQuantity("125.50 g").build();
+            .withExpiryDate("12-12-2120").withQuantity("125.50 g").build();
     public static final Food OLD_EGGS = new FoodBuilder().withDescription("Eggs").withPriority("high")
-            .withExpiryDate("1-12-2002").withQuantity("1.25 carton").build();
+            .withExpiryDate("1-1-2020").withQuantity("1.25 carton").build();
     public static final Food WHITE_CHOCOLATE = new FoodBuilder().withDescription("White Chocolate").withPriority("high")
-            .withExpiryDate("1-6-2022").withQuantity("1.5 bar").withTags("85%").build();
+            .withExpiryDate("1-6-2020").withQuantity("1.5 bar").withTags("85%").build();
 
 
     // Manually added - Food's details found in {@code CommandTestUtil}
