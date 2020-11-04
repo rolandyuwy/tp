@@ -2,9 +2,7 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_FIRST_CHARACTER;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_LEXICOGRAPHICAL_ORDER;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESC_THEN_ASC_EXPIRY;
 import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
 import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
 
@@ -224,11 +222,7 @@ public class ModelManager implements Model {
     // ============== Expiring Food List ========================================================================
     @Override
     public void updateExpiringSortedFoodList() {
-        // Priority was not considered as priority cannot be seen on the expired/expiring lists
-        expiringSortedFoods.setComparator(null);
-        expiringSortedFoods.setComparator(SORT_BY_LEXICOGRAPHICAL_ORDER);
-        expiringSortedFoods.setComparator(SORT_BY_FIRST_CHARACTER);
-        expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
+        expiringSortedFoods.setComparator(SORT_BY_DESC_THEN_ASC_EXPIRY);
     }
 
     @Override
