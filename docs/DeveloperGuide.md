@@ -464,7 +464,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
 | `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen |
-| `* * *`  | forgetful user                            | be notified of expired food items          | know which food items are expired and can be thrown them away      |
+| `* * *`  | forgetful user                            | be notified of expired food items          | know which food items are expired and can be thrown away      |
 | `* * *`  | forgetful user                            | be notified of expiring food items         | know which food items are expiring soon and use them before they expired     |
 | `* * *`    | user                                      | undo and redo my actions                                               | easily fix the mistakes when using the application                  |
 | `* *`     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
@@ -758,7 +758,7 @@ Use case ends.
 
 **Extensions:**
 
-**2a** No undoable commands were executed.
+**2a.** No undoable commands were executed.
 
 Use case ends.
 
@@ -778,7 +778,7 @@ Use case ends.
 
 **Extensions:**
 
-**2a** No undo commands were executed.
+**2a.** No undo commands were executed.
 
 Use case ends.
 
