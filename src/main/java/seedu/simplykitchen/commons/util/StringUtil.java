@@ -85,4 +85,38 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} represents a non-positive unsigned integer
+     * e.g. 0, -1, -2, ..., {@code Integer.MIN_VALUE} <br>
+     * Will return false for any other non-null string input
+     * e.g. empty string, "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isNonPositiveUnsignedDouble(String s) {
+        requireNonNull(s);
+
+        try {
+            double value = Double.parseDouble(s);
+            return value <= 0;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if {@code s} represents a integer more than {@code Integer.MAX_VALUE} <br>
+     * or less than {@code Integer.MIN_VALUE}
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isIntegerOverflow(String s) {
+        requireNonNull(s);
+
+        try {
+            double value = Double.parseDouble(s);
+            return value > Integer.MAX_VALUE || value < Integer.MIN_VALUE;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 }

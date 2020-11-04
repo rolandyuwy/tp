@@ -183,7 +183,7 @@ The `delete` command deletes a specified food item from your food inventory, so 
 
 **Examples:**
 * `list` followed by `delete 2` deletes the 2nd food item in your food inventory.
-* `find tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
+* `find d/tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 

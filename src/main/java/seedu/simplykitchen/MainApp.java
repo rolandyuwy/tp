@@ -90,6 +90,7 @@ public class MainApp extends Application {
             logger.warning("Data file not in the correct format. "
                     + "Will be starting with an empty FoodInventory");
             initialData = new FoodInventory();
+            return new ModelManager(initialData, userPrefs, true);
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
                     + "Will be starting with an empty FoodInventory");

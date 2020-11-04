@@ -34,15 +34,15 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EXPIRY_DATE + "EXPIRY DATE] "
             + "[" + PREFIX_QUANTITY + "QUANTITY] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_TAG + "TAG]...\n  "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "high "
             + PREFIX_EXPIRY_DATE + "1-11-2021";
 
-    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item:\n%1$s";
+    public static final String MESSAGE_EDIT_FOOD_SUCCESS = "Edited Food Item:\n  %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_FOOD = "This food item already exists in the food inventory."
             + "\nDuplicates are not allowed in the food inventory."

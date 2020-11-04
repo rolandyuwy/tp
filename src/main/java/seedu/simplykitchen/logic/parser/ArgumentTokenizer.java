@@ -1,9 +1,15 @@
 package seedu.simplykitchen.logic.parser;
 
+import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -14,6 +20,9 @@ import java.util.stream.Collectors;
  *    in the above example.<br>
  */
 public class ArgumentTokenizer {
+    public static final String MULTIPLE_SAME_PREFIX = "Multiple %s detected. Please remove one of them.";
+    public static final String ILLEGAL_PREFIX = "Invalid prefix \"%s"
+            + "\" detected. Please remove it and re-enter the command.";
 
     /**
      * Tokenizes an arguments string and returns an {@code ArgumentMultimap} object that maps prefixes to their
@@ -23,7 +32,9 @@ public class ArgumentTokenizer {
      * @param prefixes   Prefixes to tokenize the arguments string with
      * @return           ArgumentMultimap object that maps prefixes to their arguments
      */
-    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) {
+    public static ArgumentMultimap tokenize(String argsString, Prefix... prefixes) throws ParseException {
+        checkRepeatedPrefixes(argsString, prefixes);
+        checkIllegalPrefix(argsString, prefixes);
         List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixes);
         return extractArguments(argsString, positions);
     }
@@ -55,6 +66,46 @@ public class ArgumentTokenizer {
         }
 
         return positions;
+    }
+
+    /**
+     * Throws ParseException if the command contains repeated prefixes except for {@code PREFIX_TAG}.
+     */
+    private static void checkRepeatedPrefixes(String argsString, Prefix... prefixes) throws ParseException {
+        for (Prefix prefix : prefixes) {
+            int count = 0;
+            int prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), 0);
+            while (prefixPosition != -1) {
+                count++;
+                prefixPosition = findPrefixPosition(argsString, prefix.getPrefix(), prefixPosition);
+            }
+
+            if (!prefix.equals(PREFIX_TAG) && count > 1) {
+                throw new ParseException(String.format(MULTIPLE_SAME_PREFIX, prefix));
+            }
+        }
+    }
+
+    /**
+     * Throws parse exception if the command contains invalid prefixes (i.e o/).
+     */
+    private static void checkIllegalPrefix(String argsString, Prefix... prefixes) throws ParseException {
+        Pattern prefixPattern = Pattern.compile(" [a-zA-Z]/");
+        Matcher prefixMatcher = prefixPattern.matcher(argsString);
+        while (prefixMatcher.find()) {
+            int prefixIndex = prefixMatcher.start();
+            boolean isInvalidPrefix = true;
+            for (Prefix prefix : prefixes) {
+                if (argsString.substring(prefixIndex, prefixIndex + 3).equals(" " + prefix.toString())) {
+                    isInvalidPrefix = false;
+                    break;
+                }
+            }
+            if (isInvalidPrefix) {
+                throw new ParseException(String.format(ILLEGAL_PREFIX,
+                        argsString.substring(prefixIndex + 1, prefixIndex + 3)));
+            }
+        }
     }
 
     /**
