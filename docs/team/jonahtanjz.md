@@ -40,7 +40,7 @@ SimplyKitchen is a desktop food inventory application used for managing househol
     * Check for duplicate prefixes that are not supposed to be repeated in the command
   * Wrote additional tests for new and existing features to increase coverage.
 
-**Code contributed**: [\[Functional code\]](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)[\[Test code\]](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)
+**Code contributed**: [[Functional code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)] [[Test code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)]
 
 
 ### Project management:
@@ -48,15 +48,15 @@ SimplyKitchen is a desktop food inventory application used for managing househol
 
 ### Documentation:
   * User Guide:
-    * Added documentation for the features `find` and `expired`.
-    * Did cosmetic tweaks to existing documentation.
+    * Added documentation for the features `find` and `expired`
+    * Did cosmetic tweaks to existing documentation
   * Developer Guide:
-    * Added implementation details of the `find` feature including activity and class diagram.
-    * Updated UML class diagram of Ui component. 
-    * Added user stories.
+    * Added implementation details of the `find` feature including sequence and class diagram
+    * Updated UML class diagram of Ui component
+    * Added user stories
 
-**Documentation contributed**: [\[User Guide\]](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)[\[Developer Guide\]](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html)
+**Documentation contributed**: [[User Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)] [[Developer Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html)]
 
 ### Community:
-  * Reviewed PRs of peers.
-  * Reported bugs and suggestions for other teams.
+  * Reviewed PRs of peers
+  * Reported bugs and suggestions for other teams
