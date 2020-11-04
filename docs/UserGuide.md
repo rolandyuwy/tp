@@ -32,7 +32,7 @@ title: User Guide
 
 # Introduction
 
-SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
 With intuitive and practical features, it can get your food management tasks done faster and more efficiently than traditional GUI apps.
 
 SimplyKitchen aims to help you, a domestic household member, to manage your kitchen by providing a food inventory management system.
@@ -51,7 +51,7 @@ This document is a User Guide meant to assist you in using SimplyKitchen to mana
 
 The [quick start](#quick-start) section guides you in setting up and launching the SimplyKitchen app on your computer.
 
-The [features](#features) section helps you understand and use the features of SimplyKitchen. 
+The [features](#features) section helps you understand and use the features of SimplyKitchen.
 It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
 
 The [FAQs](#faq) section contains some Frequently Asked Questions with regard to SimplyKitchen.
@@ -67,7 +67,7 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 * Ensure that you have Java 11 or above installed on your computer.
 * Download the most recent SimplyKitchen.jar file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
 * Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
-* Double click on the SimplyKitchen.jar file to launch the app. An app window similar to the one shown below should appear in a few seconds. 
+* Double click on the SimplyKitchen.jar file to launch the app. An app window similar to the one shown below should appear in a few seconds.
 
   ![GUI for the app](images/Ui.png)
 
@@ -183,7 +183,7 @@ The search will return food items with matching description, priority, expiry da
 * `find d/apple p/high` returns `Apple Pie` and `Apple Jam`, both items have `HIGH` priority.
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in the description, `MEDIUM` priority, expires on `30-12-2020` and have either `cat` or `dog` as tags.
-  
+
   ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/findBiscuitsCatDog.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
@@ -252,7 +252,7 @@ The `sortdesc` command sorts the list of food items by description. This functio
 **Format:** `sortdesc`
 
 * Sorting by description consists of first sorting lexicographically, then by the descriptions' first characters.
-* If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters. 
+* If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters.
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
 
