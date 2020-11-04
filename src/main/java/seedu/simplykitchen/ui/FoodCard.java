@@ -1,5 +1,7 @@
 package seedu.simplykitchen.ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -7,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.simplykitchen.model.food.ExpiryDate;
 import seedu.simplykitchen.model.food.Food;
 import seedu.simplykitchen.model.food.Priority;
 
@@ -37,6 +40,8 @@ public class FoodCard extends UiPart<Region> {
     @FXML
     private Label expiryDate;
     @FXML
+    private Label expiryLabel;
+    @FXML
     private Label priority;
     @FXML
     private Label quantity;
@@ -54,6 +59,7 @@ public class FoodCard extends UiPart<Region> {
         priority.setText(food.getPriority().toString());
         setPriorityColor(food.getPriority().value);
         expiryDate.setText(food.getExpiryDate().value);
+        setExpiryDateLabel();
         quantity.setText(food.getQuantity().toString());
         food.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -76,6 +82,23 @@ public class FoodCard extends UiPart<Region> {
             throw new IllegalArgumentException("Invalid priority level");
         }
         priority.setStyle("-fx-background-color: " + priorityColor + ";");
+    }
+
+    private void setExpiryDateLabel() {
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+        ExpiryDate dateToday = new ExpiryDate(LocalDate.now().format(dateFormat));
+        ExpiryDate dateNextWeek = new ExpiryDate(LocalDate.now().plusDays(7).format(dateFormat));
+
+        if (dateToday.isAfter(food.getExpiryDate())) {
+            expiryLabel.setText("EXPIRED");
+            expiryLabel.setStyle("-fx-background-color: #922B21; -fx-background-radius: 5;");
+        } else if (dateNextWeek.isAfter(food.getExpiryDate())) {
+            expiryLabel.setText("EXPIRING SOON");
+            expiryLabel.setStyle("-fx-background-color: #9A7D0A; -fx-background-radius: 5;");
+        } else {
+            expiryLabel.setStyle("visibility: false");
+        }
+
     }
 
     @Override
