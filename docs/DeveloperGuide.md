@@ -453,16 +453,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
 | `* * *`  | user                                      | add food items                                             |                                                              |
 | `* * *`  | user                                      | delete food items                                          |                                                              |
-| `* * *`  | user                                      | edit the fields of the food items                          | change the details of the food item after adding it          |
+| `* * *`  | user                                      | edit the fields of a food items                          | change the details of the food item after adding it          |
 | `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                             |
 | `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                 |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
 | `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                   |
+| `* * *`  | user                                 | use more intuitive commands   | be more comfortable with using the app              |
+| `* * *`  | user who likes efficiency                           | search for food items based on their priorities   | know which food items belong to a certain priority          |
+| `* * *`  | user                           | search for food items based on their expiry dates   | know which food items are expiring on a certain date          |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
 | `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen |
-| `* *`    | user                                      | undo and redo                                              | easily fix mistakes when using the application               |
-| `* `     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
+| `* * *`  | forgetful user                            | be notified of expired food items          | know which food items are expired and can be thrown them away      |
+| `* * *`  | forgetful user                            | be notified of expiring food items         | know which food items are expiring soon and use them before they expired     |
+| `* * *`    | user                                      | undo and redo my actions                                               | easily fix the mistakes when using the application                  |
+| `* *`     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
+| `* *`  | user                           | search for food items based on their tags   | know which food items are tagged with a certain information          |
+| `*`  | user                           | see some sample data populated in the app   | understand how the app will look like and what benefits it has       |
 
 
 *{More to be added}*
