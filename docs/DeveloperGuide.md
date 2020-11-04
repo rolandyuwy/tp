@@ -99,7 +99,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `FoodListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `FoodListPanel`, `StatusBarFooter`, `ExpiringFoodListPanel`, `ExpiredFoodListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -403,7 +403,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 ##### Aspect: Implementation
 
-* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command can only be one fixed date.
+* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command looks for a single specific expiry date.
     * Pros: Easy to implement and search is more specific.
     * Cons: If the user wants to get all the expiring food items in a certain period, multiple searches will be required.
 * <b>Alternative 2: </b> The expiry date in the `find` command can be a date range.
@@ -441,7 +441,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **GUI**: Graphical User Interface
-* **food inventory**: a complete list of food items stored in Simply Kitchen
+* **Food inventory**: a complete list of food items stored in Simply Kitchen
 
 *{More to be added}*
 
@@ -453,16 +453,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
 | `* * *`  | user                                      | add food items                                             |                                                              |
 | `* * *`  | user                                      | delete food items                                          |                                                              |
-| `* * *`  | user                                      | edit the fields of the food items                          | change the details of the food item after adding it          |
+| `* * *`  | user                                      | edit the fields of a food item                          | change the details of the food item after adding it          |
 | `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                             |
 | `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                 |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
 | `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                   |
+| `* * *`  | user                                 | use more intuitive commands   | be more comfortable with using the app              |
+| `* * *`  | user who likes efficiency                           | search for food items based on their priorities   | know which food items belong to a certain priority          |
+| `* * *`  | user                           | search for food items based on their expiry dates   | know which food items are expiring on a certain date          |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
 | `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
 | `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen |
-| `* *`    | user                                      | undo and redo                                              | easily fix mistakes when using the application               |
-| `* `     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
+| `* * *`  | forgetful user                            | be notified of expired food items          | know which food items are expired and can be thrown away      |
+| `* * *`  | forgetful user                            | be notified of expiring food items         | know which food items are expiring soon and use them before they expired     |
+| `* * *`    | user                                      | undo and redo my actions                                               | easily fix the mistakes when using the application                  |
+| `* *`     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
+| `* *`  | user                           | search for food items based on their tags   | know which food items are tagged with a certain information          |
+| `*`  | user                           | see some sample data populated in the app   | understand how the app will look like and what benefits it has       |
 
 
 *{More to be added}*
@@ -751,7 +758,7 @@ Use case ends.
 
 **Extensions:**
 
-**2a** No undoable commands were executed.
+**2a.** No undoable commands were executed.
 
 Use case ends.
 
@@ -771,7 +778,7 @@ Use case ends.
 
 **Extensions:**
 
-**2a** No undo commands were executed.
+**2a.** No undo commands were executed.
 
 Use case ends.
 
