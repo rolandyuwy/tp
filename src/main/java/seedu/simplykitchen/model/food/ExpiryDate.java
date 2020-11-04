@@ -16,7 +16,7 @@ import java.time.format.DateTimeParseException;
 public class ExpiryDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "The expiry date should be of the format DD-MM-YYYY or DD/MM/YYYY. "
+            "The expiry date should be a valid date of the format DD-MM-YYYY or DD/MM/YYYY. "
                     + "The year should be between 2020 and 2120, both inclusive.";
     public static final String DATE_PATTERN = "d-M-yyyy";
 
