@@ -43,7 +43,7 @@ public class ChangeQuantityCommand extends Command {
     public static final String MESSAGE_TOO_BIG_QUANTITY =
             "The quantity of the food item cannot be changed by such a big value.\n";
 
-    public static final double MAX_AMOUNT = 999999;
+    public static final double MAX_AMOUNT = Quantity.MAX_VALUE;
 
     private static Logger logger = LogsCenter.getLogger("ChangeQuantityCommand.class");
 
