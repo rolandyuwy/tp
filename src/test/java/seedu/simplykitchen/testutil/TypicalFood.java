@@ -54,6 +54,11 @@ public class TypicalFood {
     public static final Food WHITE_CHOCOLATE = new FoodBuilder().withDescription("White Chocolate").withPriority("high")
             .withExpiryDate("1-6-2022").withQuantity("1.5 bar").withTags("85%").build();
 
+    // Manually added - for use in QuantityTest
+    public static final Food BAKING_SODA = new FoodBuilder().withDescription("baking soda").withPriority("medium")
+            .withExpiryDate("06-06-2030").withQuantity("0.02 g").build();
+    public static final Food FLOUR = new FoodBuilder().withDescription("flour").withPriority("low")
+            .withExpiryDate("06-06-2030").withQuantity("99999.56 g").build();
 
     // Manually added - Food's details found in {@code CommandTestUtil}
     public static final Food APPLE_PIE = new FoodBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)

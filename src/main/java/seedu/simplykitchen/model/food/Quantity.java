@@ -1,5 +1,8 @@
 package seedu.simplykitchen.model.food;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
 
@@ -91,7 +94,9 @@ public class Quantity {
      * Returns a new quantity value after adding the change in {@code amount} to the {@code oldQuantity} value.
      */
     public double updateQuantityValue(double amount) {
-        return this.value + amount;
+        BigDecimal bigDecimal = new BigDecimal(this.value).add(new BigDecimal(amount));
+        BigDecimal finalBigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_UP);
+        return finalBigDecimal.doubleValue();
     }
 
     /**

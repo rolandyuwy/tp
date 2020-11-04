@@ -35,15 +35,11 @@ public class ChangeQuantityCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "The following food item has its quantity changed:\n  %1$s";
     public static final String MESSAGE_QUANTITY_ERROR = "The quantity of the food item cannot be updated to a value "
-            + "less than or equal to zero or more than 100000.00.";
-    public static final String MESSAGE_NEGATIVE_QUANTITY =
-            "The quantity of the food item cannot be updated to a value less than zero.\n";
-    public static final String MESSAGE_ZERO_QUANTITY =
-            "The quantity of the food item cannot be updated to 0. Delete the food item instead.\n";
+            + "less than or equal to zero or more than 100000.00.\n";
 
     public static final double MAX_AMOUNT = Quantity.MAX_VALUE;
 
-    private static Logger logger = LogsCenter.getLogger("ChangeQuantityCommand.class");
+    private static final Logger logger = LogsCenter.getLogger("ChangeQuantityCommand.class");
 
     private final Index index;
     private final double amount;
@@ -54,7 +50,7 @@ public class ChangeQuantityCommand extends Command {
      */
     public ChangeQuantityCommand(Index index, double amount) {
         requireNonNull(index);
-        assert amount != 0;
+        assert amount != 0 && amount > -MAX_AMOUNT && amount < MAX_AMOUNT;
 
         this.index = index;
         this.amount = amount;
@@ -79,23 +75,20 @@ public class ChangeQuantityCommand extends Command {
     }
 
     /**
-     * Updates the quantity of a food item's by a certain amount.
+     * Updates the quantity of the {@code originalFood} by a certain {@code amount}.
      */
     private Food updateFoodQuantity(Food originalFood, double amount) throws CommandException {
-        assert amount != 0 && amount > -MAX_AMOUNT && amount < MAX_AMOUNT;
-
-        // update quantity
+        // update quantity value
         Quantity oldQuantity = originalFood.getQuantity();
         double newQuantityValue = oldQuantity.updateQuantityValue(amount);
         logger.log(Level.INFO, "User is trying to update the quantity to " + newQuantityValue);
-        if (newQuantityValue == 0) {
-            throw new CommandException(MESSAGE_ZERO_QUANTITY);
-        }
-        if (newQuantityValue < 0) {
-            throw new CommandException(MESSAGE_NEGATIVE_QUANTITY);
-        }
-        assert newQuantityValue != 0;
 
+        // check validity of new quantity value
+        if (newQuantityValue <= 0.00 || newQuantityValue > Quantity.MAX_VALUE) {
+            throw new CommandException(MESSAGE_QUANTITY_ERROR);
+        }
+
+        // update food with new quantity
         Description description = originalFood.getDescription();
         Priority priority = originalFood.getPriority();
         ExpiryDate expiryDate = originalFood.getExpiryDate();

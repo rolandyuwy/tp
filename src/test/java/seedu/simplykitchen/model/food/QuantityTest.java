@@ -1,10 +1,13 @@
 package seedu.simplykitchen.model.food;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.simplykitchen.testutil.TypicalFood;
 
 public class QuantityTest {
 
@@ -32,6 +35,7 @@ public class QuantityTest {
         assertFalse(Quantity.isValidQuantity("0.500")); // more than 2 decimal places
 
         // EP: invalid quantity units
+        assertFalse(Quantity.isValidQuantity("1g")); // no spacing between value and unit
         assertFalse(Quantity.isValidQuantity("1 @u")); // special character in unit
         assertFalse(Quantity.isValidQuantity("1 2u")); // number in unit
         assertFalse(Quantity.isValidQuantity("1 u n")); // space in unit
@@ -46,5 +50,47 @@ public class QuantityTest {
         assertTrue(Quantity.isValidQuantity(String.valueOf(Quantity.ZERO_VALUE + 0.01))); // lower bound
         assertTrue(Quantity.isValidQuantity(String.valueOf(Quantity.MAX_VALUE))); // upper bound
         assertTrue(Quantity.isValidQuantity("100000")); // upper bound converted to integer
+    }
+
+    @Test
+    public void updateQuantityValue_addValidBigAmount_returnCorrectNewQuantity() {
+        double amount = 99999.09;
+        Quantity oldQuantity = TypicalFood.BAKING_SODA.getQuantity();
+        double newQuantityValue = oldQuantity.updateQuantityValue(amount);
+        assertEquals(99999.11, newQuantityValue);
+    }
+
+    @Test
+    public void updateQuantityValue_minusValidBigAmount_returnCorrectNewQuantity() {
+        double amount = -99999.55;
+        Quantity oldQuantity = TypicalFood.FLOUR.getQuantity();
+        double newQuantityValue = oldQuantity.updateQuantityValue(amount);
+        assertEquals(0.01, newQuantityValue);
+    }
+
+    @Test
+    public void updateQuantityValue_addValidSmallAmount_returnCorrectNewQuantity() {
+        double amount = 0.01;
+
+        Quantity oldBakingSodaQuantity = TypicalFood.BAKING_SODA.getQuantity();
+        double newBakingSodaQuantityValue = oldBakingSodaQuantity.updateQuantityValue(amount);
+        assertEquals(0.03, newBakingSodaQuantityValue);
+
+        Quantity oldFlourQuantity = TypicalFood.FLOUR.getQuantity();
+        double newFlourQuantityValue = oldFlourQuantity.updateQuantityValue(amount);
+        assertEquals(99999.57, newFlourQuantityValue);
+    }
+
+    @Test
+    public void updateQuantityValue_minusValidSmallAmount_returnCorrectNewQuantity() {
+        double amount = -0.01;
+
+        Quantity oldBakingSodaQuantity = TypicalFood.BAKING_SODA.getQuantity();
+        double newBakingSodaQuantityValue = oldBakingSodaQuantity.updateQuantityValue(amount);
+        assertEquals(0.01, newBakingSodaQuantityValue);
+
+        Quantity oldFlourQuantity = TypicalFood.FLOUR.getQuantity();
+        double newFlourQuantityValue = oldFlourQuantity.updateQuantityValue(amount);
+        assertEquals(99999.55, newFlourQuantityValue);
     }
 }

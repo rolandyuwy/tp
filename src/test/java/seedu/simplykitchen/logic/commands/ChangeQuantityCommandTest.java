@@ -1,8 +1,7 @@
 package seedu.simplykitchen.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_NEGATIVE_QUANTITY;
-import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_ZERO_QUANTITY;
+import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_QUANTITY_ERROR;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.showFoodAtIndex;
@@ -32,7 +31,7 @@ import seedu.simplykitchen.model.tag.Tag;
  */
 public class ChangeQuantityCommandTest {
 
-    private Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalFoodInventory(), new UserPrefs());
 
     /**
      * Updates the quantity of the first food item by a certain amount.
@@ -116,7 +115,7 @@ public class ChangeQuantityCommandTest {
         double amount = -1.0;
         ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
 
-        assertCommandFailure(changeQuantityCommand, model, MESSAGE_ZERO_QUANTITY);
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_QUANTITY_ERROR);
     }
 
     @Test
@@ -124,7 +123,31 @@ public class ChangeQuantityCommandTest {
         double amount = -100.0;
         ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
 
-        assertCommandFailure(changeQuantityCommand, model, MESSAGE_NEGATIVE_QUANTITY);
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_QUANTITY_ERROR);
+    }
+
+    @Test
+    public void execute_aboveMaxQuantity_failure() {
+        double amount = +99996;
+        ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_SECOND_FOOD, amount);
+
+        assertCommandFailure(changeQuantityCommand, model, MESSAGE_QUANTITY_ERROR);
+    }
+
+    @Test
+    public void execute_maxQuantity_success() {
+        double amount = +99999;
+        ChangeQuantityCommand changeQuantityCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+        Food newFood = updateFoodQuantity(amount);
+
+        String expectedMessage = String.format(ChangeQuantityCommand.MESSAGE_SUCCESS, newFood);
+
+        Model expectedModel = new ModelManager(
+                new FoodInventory(model.getFoodInventory()), new UserPrefs());
+        expectedModel.setFood(model.getFilteredFoodList().get(0), newFood);
+        expectedModel.commitFoodInventory();
+
+        assertCommandSuccess(changeQuantityCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
