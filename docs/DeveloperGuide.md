@@ -453,7 +453,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
 | `* * *`  | user                                      | add food items                                             |                                                              |
 | `* * *`  | user                                      | delete food items                                          |                                                              |
-| `* * *`  | user                                      | edit the fields of a food items                          | change the details of the food item after adding it          |
+| `* * *`  | user                                      | edit the fields of a food item                          | change the details of the food item after adding it          |
 | `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                             |
 | `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                 |
 | `* * *`  | user                                      | clear all food items                                       |                                                              |
