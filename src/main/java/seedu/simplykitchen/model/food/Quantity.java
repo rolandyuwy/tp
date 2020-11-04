@@ -90,16 +90,15 @@ public class Quantity {
     /**
      * Returns a new quantity value after adding the change in {@code amount} to the {@code oldQuantity} value.
      */
-    public static double changeQuantityValue(Quantity oldQuantity, double amount) {
-        return oldQuantity.value + amount;
+    public double updateQuantityValue(double amount) {
+        return this.value + amount;
     }
 
     /**
-     * Returns a new {@code Quantity} with the {@code newValue} as its value and
-     * the old unit from {@code oldQuantity} as the unit.
+     * Returns a new {@code Quantity} with the {@code newValue} as its value and its existing unit as the unit.
      */
-    public static Quantity updateQuantity(Quantity oldQuantity, double newValue) {
-        return new Quantity(newValue, oldQuantity.unit);
+    public Quantity updateQuantity(double newValue) {
+        return new Quantity(newValue, this.unit);
     }
 
     /**

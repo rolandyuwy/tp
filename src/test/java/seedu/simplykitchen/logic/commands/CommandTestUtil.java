@@ -66,7 +66,7 @@ public class CommandTestUtil {
             + "0 UNIT"; // only positive numbers allowed
     public static final String INVALID_AMOUNT_DESC = " " + PREFIX_AMOUNT + "+1.234"; // more than 2 decimal places
     public static final String INVALID_AMOUNT_SIZE_DESC = " " + PREFIX_AMOUNT + "+"
-            + Double.MAX_VALUE; // amount size too big
+            + Integer.MAX_VALUE; // amount size too big
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
