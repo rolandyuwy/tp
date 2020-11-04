@@ -13,8 +13,33 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 
 --------------------------------------------------------------------------------------------------------------------
 
-* Table of Contents
-{:toc}
+# Table of contents
+
+* [About this document](#about-this-document)
+* [Setting up, getting started](#setting-up-getting-started)
+* [Design](#design)
+  * [Architecture](#architecture)
+  * [UI component](#ui-component)
+  * [Logic component](#logic-component)
+  * [Model component](#model-component)
+  * [Storage component](#storage-component)
+  * [Common classes](#common-classes)
+* [Implementation](#implementation)
+  * [Undo/Redo feature](#undoredo-feature)
+  * [Sorting feature](#sorting-feature)
+  * [Quantity Field in Food Items](#quantity-field-in-food-items)
+  * [Find feature](#find-feature)
+* [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+* [Appendix: Requirements](#appendix-requirements)
+  * [Product scope](#product-scope)
+  * [Glossary](#glossary)
+  * [User stories](#user-stories)
+  * [Use cases](#use-cases)
+  * [Non-Functional Requirements](#non-functional-requirements)
+* [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
+  * [Launch and shutdown](#launch-and-shutdown)
+  * [Deleting a food item](#deleting-a-food-item)
+  * [Saving data](#saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -22,29 +47,33 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 
 This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
 
-The `Setting up, getting started` section of this document guides you in setting up the code base on your computer and helps you begin working on the project.
+The [Setting up, getting started](#setting-up-getting-started) section of this document guides you in setting up the code base on your computer and helps you begin working on the project.
 
-The `Design` section of this document can help you understand the design of the code base as a whole and its various components. 
+The [Design](#design) section of this document can help you understand the design of the code base as a whole and its various components. 
 This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
 
-The `Implementation` section contains details about the implementation of some of the features in SimplyKitchen.
+The [Implementation](#implementation) section contains details about the implementation of some of the features in SimplyKitchen.
 It also provides details about design considerations and implementation alternatives. 
 This section allows you to understand our thought process and make your own design considerations.
 
-This is followed by a section consisting of guides for `Documentation`, `Logging`, `Testing`, `Configuration` and `DevOps`.
+This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops).
 Each of these guides give specific assistance in the context of the project.
 
-The `Appendix` for `Requriements` consists of the details of the planning stage of the project.
+The [Appendix for Requirements](#appendix-requirements) consists of the details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The `Glossary` and `Non-Functional Requirements` provide other key information relevant to the document and the app.
+The [Glossary](#glossary) and [Non-Functional Requirements](#non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an `Appendix` for `Instructions for Manual Testing`.
+This document ends with an [Appendix for Instructions for Manual Testing](#appendix-instructions-for-manual-testing).
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -164,13 +193,18 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.simplykitchen.commons` package.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation** [to be updated]
+## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Undo/Redo feature
+
+#### Implementation
+
 The feature is implemented with a `VersionedFoodInventory`. The `VersionedFoodInventory` contains the different states of the food inventory. The states are stored in a `foodInventoryStateList` and the current state is tracked with a `currentStatePointer`. It also implements the following methods:
 
 * `VersionedFoodInventory#commit()` — Saves the current food inventory state in its states list.
@@ -292,11 +326,6 @@ Furthermore, this helps for items added or edited by calling `AddCommand` and `E
   * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
   * Cons: Sorting is not permanent, thus lists stored are sorted by description by default.
 
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 ### Quantity Field in Food Items
 
 A `quantity` field for food items is implemented to track the dynamic changes in the quantity of a food in the FoodInventory.
@@ -410,6 +439,8 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
     * Pros: Able to get all the food items that are going to expire in a certain period with one search.
     * Cons: Will need more validation to ensure the date range provided is valid.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -419,6 +450,8 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 * [Logging guide](Logging.md)
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -789,6 +822,8 @@ Use case ends.
 
 *{More to be added}*
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
@@ -841,3 +876,5 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
