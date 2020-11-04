@@ -1,10 +1,10 @@
 package seedu.simplykitchen.model.food;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.AppUtil.checkArgument;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Represents a Food's Quantity in the Food inventory.
