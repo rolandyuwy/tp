@@ -403,7 +403,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 ##### Aspect: Implementation
 
-* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command can only be one fixed date.
+* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command looks for a single specific expiry date.
     * Pros: Easy to implement and search is more specific.
     * Cons: If the user wants to get all the expiring food items in a certain period, multiple searches will be required.
 * <b>Alternative 2: </b> The expiry date in the `find` command can be a date range.
@@ -441,7 +441,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **GUI**: Graphical User Interface
-* **food inventory**: a complete list of food items stored in Simply Kitchen
+* **Food inventory**: a complete list of food items stored in Simply Kitchen
 
 *{More to be added}*
 
