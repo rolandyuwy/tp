@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 
-SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). 
+SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
 With intuitive and practical features, SimplyKitchen can get food management tasks done faster and more efficiently than traditional GUI apps.
 
 SimplyKitchen aims to aid the domestic individuals who manage their kitchens at home by providing an apt food inventory management system.
@@ -24,11 +24,11 @@ This document is a Developer Guide meant to assist project developers in underst
 
 The `Setting up, getting started` section of this document guides you in setting up the code base on your computer and helps you begin working on the project.
 
-The `Design` section of this document can help you understand the design of the code base as a whole and its various components. 
+The `Design` section of this document can help you understand the design of the code base as a whole and its various components.
 This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
 
 The `Implementation` section contains details about the implementation of some of the features in SimplyKitchen.
-It also provides details about design considerations and implementation alternatives. 
+It also provides details about design considerations and implementation alternatives.
 This section allows you to understand our thought process and make your own design considerations.
 
 This is followed by a section consisting of guides for `Documentation`, `Logging`, `Testing`, `Configuration` and `DevOps`.
@@ -277,7 +277,7 @@ The following sequence diagram illustrates how the command `sortdesc` works:
 
 Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
 
-Sorting information is stored as user preferences, to allow for the information to be retained when the application closes. Thus, the user's preferred sorting mechanism is stored, to enhance user experience. 
+Sorting information is stored as user preferences, to allow for the information to be retained when the application closes. Thus, the user's preferred sorting mechanism is stored, to enhance user experience.
 
 Furthermore, this helps for items added or edited by calling `AddCommand` and `EditCommand` in the list to be updated dynamically according to the sorting mechanism. Thus, the user does not need to sort the list again.
 
