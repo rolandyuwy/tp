@@ -1,8 +1,10 @@
 package seedu.simplykitchen.ui;
 
+import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.simplykitchen.model.food.Food;
@@ -31,6 +33,8 @@ public class ExpiredFoodListCard extends UiPart<Region> {
     private Label description;
     @FXML
     private Label expiryDate;
+    @FXML
+    private FlowPane tags;
 
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
@@ -40,6 +44,18 @@ public class ExpiredFoodListCard extends UiPart<Region> {
         this.food = food;
         description.setText(food.getDescription().fullDescription);
         expiryDate.setText(food.getExpiryDate().value);
+        food.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> {
+                    Label newTag = new Label(tag.tagName);
+                    newTag.setWrapText(true);
+                    cardPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+                        newTag.setMaxWidth((double) newVal * 0.9);
+                    });
+                    tags.getChildren().add(newTag);
+                });
+        // Default min width of FlowPane is largest tag label, which may cause the tags to not wrap, so set to 0
+        tags.setMinWidth(0);
     }
 
     @Override
