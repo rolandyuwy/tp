@@ -41,7 +41,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Responsible for scheduling and tracking all project tasks
     * Responsible for maintaining the issue tracker
     * Responsible for ensuring all project deliverables and deadlines are met
-    * Refactored AddressBook-Level3 project code to fit project idea (Pull request [\#59]())
+    * Refactored AddressBook-Level3 project code to fit project idea (Pull request [\#59]()) **TO UPDATE LINKS**
     * Managed shared team project document
     * Consolidated and vetted through all bugs from Mock Practical Exam
 
@@ -51,7 +51,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **Documentation**:
     * User Guide:
-        * Added documentation for the features `clear`, `edit`, `sortdesc`, `sortexiry` and `sortpriority` (Pull requests [\#73]() and [\#118]())
+        * Added documentation for the features `clear`, `edit`, `sortdesc`, `sortexpiry` and `sortpriority` (Pull requests [\#73]() and [\#118]())
         * Added Ui Diagram at the introduction **TO UPDATE**
     * Developer Guide:
         * Added implementation details of the sorting feature. (Pull request [\#95]())
