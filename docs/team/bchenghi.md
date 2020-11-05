@@ -32,8 +32,8 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Highlights: This required changes to test cases on duplicate food items as well as the error messages for commands due to duplicate food items.
 
 * **Enhancements to existing features**:
-  * Expired and Expiring lists shows tags for each `Food`, and ensured the tags are always visible by wrapping them if they are larger than the width of the GUI. Implementation was difficult as it required a good understanding of FlowPane, widthProperty of Nodes and use of listeners to update width of nodes in JavaFX. It involved many tests and trials. (Pull requests [\#173](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/173))
-  * The order of food cards in the Expired and Expiring lists used to change unexpectedly, which occurred when fields of foods in the lists were edited. This was remedied by sorting them by their `Description` then `ExpiryDate`. (Pull requests [\#181](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/181))
+  * Expired and Expiring lists shows tags for each `Food`, and ensured the tags are always visible by wrapping them if they are larger than the width of the GUI. Implementation was difficult as it required an understanding of FlowPane, widthProperty of Nodes and use of listeners to update width of nodes in JavaFX for the wrapping to work correctly. It also involved many tests and trials. (Pull request [\#173](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/173))
+  * The order of food cards in the Expired and Expiring lists used to change unexpectedly when fields of foods in the lists were edited. This was remedied by sorting them by their `Description` first, then `ExpiryDate`, when previously it was sorted by just `ExpiryDate`. (Pull request [\#181](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/181))
 
 * **Code contributed**:
 [[Functional code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=bchenghi&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=bchenghi&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)]  [[Testing code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=bchenghi&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=bchenghi&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)]
@@ -45,7 +45,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Added benefits to each command description for user to understand the purpose of each command better. [\#131](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/131)
   * Developer Guide:
     * Added use cases, user stories, and description of implementation for `undo` and `redo`. [\#87](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/87), [\#128](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/128)
-    * Updated all existing UML diagrams to have class and object names used in SimplyKitchen, and updated occurrences of AddressBook and its related terms in the guide to suit SimplyKitchen. [\#84](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/84)
+    * Updated all existing UML diagrams to have class and object names used in SimplyKitchen, and updated occurrences of AddressBook and its related terms in the guide to terms for SimplyKitchen. [\#84](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/84)
     * Added a table of contents, added \"Back to top buttons\" and updated the \"About this document\" section with hyperlinks. [\#182](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/182)
 
 * **Review/mentoring contributions:**:
@@ -53,6 +53,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **Community**:
   * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/25), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/222), [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/223))
+  * Reported bugs and suggestions for other teams (examples: [1](https://github.com/bchenghi/ped/issues/12), [2](https://github.com/bchenghi/ped/issues/2), [3](https://github.com/bchenghi/ped/issues/9))
 
 * **Miscellaneous**:
   * Created the fridge icon in the SimplyKitchen logo.
