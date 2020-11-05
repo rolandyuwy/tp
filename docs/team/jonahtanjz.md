@@ -1,14 +1,17 @@
----
-layout: page
-title: Jonah Tan's Project Portfolio Page
----
+# Jonah Tan - Project Portfolio
 
 # Project: SimplyKitchen
+
+![Application Logo](../images/Logo.png)
+
+![SimplyKitchen UI](../images/SimplyKitchenPPP.png)
+
+## Overview
 
 SimplyKitchen is a desktop food inventory application used for managing household kitchen. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
 
-## Contributions
+## Summary of contributions
 
 ### New Features:
 
@@ -37,7 +40,7 @@ SimplyKitchen is a desktop food inventory application used for managing househol
     * Cosmetic tweaks to enhance UI/UX
   * Added validation for user input
     * Check for invalid prefixes in command
-    * Check for duplicate prefixes that are not supposed to be repeated in the command
+    * Check for duplicate prefixes that are not supposed to be repeated in the command 
   * Wrote additional tests for new and existing features to increase coverage.
 
 #### Code contributed: 
