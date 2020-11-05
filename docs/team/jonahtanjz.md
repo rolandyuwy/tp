@@ -20,11 +20,11 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Added **Priority attribute to food items**.
     * What it does: Allows the user to specify a priority, either high, medium or low, for a food item.
     * Justification: This feature provides a convenient way for the user to mark the importance of different food items.
-    * Highlights: This enhancement affects existing commands and commands to be added in future. It required the parser to identify a new prefix and perform necessary validation to ensure that the priority specified in the command is valid.
+    * Highlights: This enhancement affects existing commands and commands to be added in future. It requires the parser to identify a new prefix and perform necessary validation to ensure that the priority specified in the command is valid.
 
   * Added a **popup window to show a list of expired food items**.
-    * What it does: If there are expired items in the inventory, a popup will automatically be launched during the start-up of the application, showing a list of expired food items. This popup can also be launch using the 'expired' command.
-    * Justification: This feature alerts the user of expired items in their inventory whenever the application is launched so that they will be reminded to dispose these items and not accidentally consume them. The user can also open this popup using the 'expired' command so that they can access this list at any point of time.
+    * What it does: If there are expired items in the inventory, a popup will automatically be launched during the start-up of the application, showing a list of expired food items. This popup can also be launch using the `expired` command.
+    * Justification: This feature alerts the user of expired items in their inventory whenever the application is launched so that they will be reminded to dispose these items and not accidentally consume them. The user can also open this popup using the `expired` command so that they can access this list at any point of time.
     * Highlights: This enhancement requires an additional `FilteredList` and `Predicate`. A new command needs to be added for the user to open the popup on call. During the initialization of the application, it will need to check if there exists expired items. If no expired items are in the inventory, then the popup will not show up. 
 
   * Ability to **search for food items using description, expiry date, priority and/or tags**.
