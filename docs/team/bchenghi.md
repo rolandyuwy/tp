@@ -23,7 +23,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Implemented undo/redo commands.
     * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
     * Justification: This feature benefits users greatly as it provides them with an easy way to remedy any incorrect input entered into the application, improving the user-friendliness of the application.
-    * Highlights: This enhancement affected commands that were added after implementation, and will affect commands added in the future. It required discussions with team members who implemented commands that were undoable, and we discussed the method of implementation for new commands.
+    * Highlights: This enhancement affected commands that were added after implementation, and will affect commands added in the future. It required discussions with team members who implemented commands that were undoable, and we discussed the method of implementation for those commands.
     * Credits: *{https://github.com/se-edu/addressbook-level4 was referenced for this feature, but changes were made to fit into the architecture of the application}*
 
   * Added conditions for duplicate food items.
@@ -32,7 +32,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Highlights: This required changes to test cases on duplicate food items as well as the error messages for commands due to duplicate food items.
 
 * **Enhancements to existing features**:
-  * Expired and Expiring lists shows tags for each `Food`, and ensured the tags are always visible by wrapping them if they are larger than the width of the GUI. (Pull requests [\#173](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/173))
+  * Expired and Expiring lists shows tags for each `Food`, and ensured the tags are always visible by wrapping them if they are larger than the width of the GUI. Implementation was difficult as it required a good understanding of FlowPane, widthProperty of Nodes and use of listeners to update width of nodes in JavaFX. It involved many tests and trials. (Pull requests [\#173](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/173))
   * The order of food cards in the Expired and Expiring lists used to change unexpectedly, which occurred when fields of foods in the lists were edited. This was remedied by sorting them by their `Description` then `ExpiryDate`. (Pull requests [\#181](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/181))
 
 * **Code contributed**:
@@ -45,7 +45,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Added benefits to each command description for user to understand the purpose of each command better. [\#131](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/131)
   * Developer Guide:
     * Added use cases, user stories, and description of implementation for `undo` and `redo`. [\#87](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/87), [\#128](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/128)
-    * Updated all existing UML diagrams to have class and object names used in SimplyKitchen, and occurrences of AddressBook to SimplyKitchen. [\#84](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/84)
+    * Updated all existing UML diagrams to have class and object names used in SimplyKitchen, and updated occurrences of AddressBook and its related terms in the guide to suit SimplyKitchen. [\#84](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/84)
     * Added a table of contents, added \"Back to top buttons\" and updated the \"About this document\" section with hyperlinks. [\#182](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/182)
 
 * **Review/mentoring contributions:**:
@@ -53,7 +53,6 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **Community**:
   * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/25), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/222), [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/223))
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
 
 * **Miscellaneous**:
   * Created the fridge icon in the SimplyKitchen logo.
