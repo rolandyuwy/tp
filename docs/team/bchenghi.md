@@ -17,11 +17,12 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 ## Summary of contributions
 * **Enhancements**:
   * Implemented `Description` field for `Food`.
+    * What it does: User can specify a description for each food item to identify them in the app.
     * Justification: A description suits our application better as in addition to a food item's name, a description of the food item will allow the user to provide more information of the food, making it easier to identify each food item.
     * Highlights: This update required good coordination with team members, as they were updating different fields as well. Our updates often occurred on the same files, resulting in many merge conflicts each time a member merged their changes. We managed to streamline the merging process by communicating the order of merge, to reduce merge conflicts.
 
   * Implemented undo/redo commands.
-    * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
+    * What it does: Allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
     * Justification: This feature benefits users greatly as it provides them with an easy way to remedy any incorrect input entered into the application, improving the user-friendliness of the application.
     * Highlights: This enhancement affected commands that were added after implementation, and will affect commands added in the future. It required discussions with team members who implemented commands that were undoable, and we discussed the method of implementation for those commands.
     * Credits: *{https://github.com/se-edu/addressbook-level4 was referenced for this feature, but changes were made to fit into the architecture of the application}*
@@ -53,7 +54,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **Community**:
   * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/25), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/222), [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/223))
-  * Reported bugs and suggestions for other teams (examples: [1](https://github.com/bchenghi/ped/issues/12), [2](https://github.com/bchenghi/ped/issues/2), [3](https://github.com/bchenghi/ped/issues/9))
+  * Reported bugs and suggestions for other teams (examples: [1](https://github.com/bchenghi/ped/issues/2), [2](https://github.com/bchenghi/ped/issues/9), [3](https://github.com/bchenghi/ped/issues/12))
 
 * **Miscellaneous**:
   * Created the fridge icon in the SimplyKitchen logo.
