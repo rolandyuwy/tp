@@ -95,4 +95,9 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public boolean isDataFileInvalid() {
+        return model.isDataFileInvalid();
+    }
 }

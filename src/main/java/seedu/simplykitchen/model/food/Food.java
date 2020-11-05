@@ -107,10 +107,10 @@ public class Food {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Description: " + getDescription()).append("\n")
-                .append("Expiry Date: " + getExpiryDate()).append("\n")
-                .append("Priority: " + getPriority()).append("\n")
-                .append("Quantity: " + getQuantity()).append("\n")
+        builder.append("Description: " + getDescription()).append("\n  ")
+                .append("Expiry Date: " + getExpiryDate()).append("\n  ")
+                .append("Priority: " + getPriority()).append("\n  ")
+                .append("Quantity: " + getQuantity()).append("\n  ")
                 .append("Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

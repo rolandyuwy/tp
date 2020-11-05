@@ -59,6 +59,7 @@ public class ExpiredFoodWindow extends UiPart<Stage> {
     }
 
     void show() {
+        logger.info("Opening expired window popup");
         getRoot().show();
         getRoot().centerOnScreen();
     }
@@ -74,6 +75,7 @@ public class ExpiredFoodWindow extends UiPart<Stage> {
      * Hides the help window.
      */
     public void hide() {
+        logger.info("Closing expired window popup");
         getRoot().hide();
     }
 
@@ -89,6 +91,7 @@ public class ExpiredFoodWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleExit() {
-        getRoot().hide();
+        this.hide();
     }
+
 }

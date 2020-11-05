@@ -1,16 +1,11 @@
 package seedu.simplykitchen.model.food;
 
 import java.util.function.Predicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import seedu.simplykitchen.commons.core.LogsCenter;
 
 /**
  * Tests that a {@code Food}'s {@code Priority} matches the search given.
  */
 public class ExpiryDateSearchPredicate implements Predicate<Food> {
-    private static Logger logger = LogsCenter.getLogger("ExpiryDateSearchPredicate.class");
 
     private final String expiryDateSearch;
 
@@ -18,11 +13,8 @@ public class ExpiryDateSearchPredicate implements Predicate<Food> {
      * @param expiryDateSearch The expiry date to search for.
      */
     public ExpiryDateSearchPredicate(String expiryDateSearch) {
-        logger.log(Level.INFO, "Creating a new ExpiryDateSearchPredicate object");
         assert expiryDateSearch.length() > 0 : "Expiry date cannot be blank.";
-        logger.log(Level.INFO, "Search expiry date: " + expiryDateSearch);
         this.expiryDateSearch = expiryDateSearch;
-        logger.log(Level.INFO, "Object created");
     }
 
     @Override

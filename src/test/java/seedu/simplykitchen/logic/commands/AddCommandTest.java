@@ -218,6 +218,11 @@ public class AddCommandTest {
         public Predicate<Food> getExpiredPredicate() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean isDataFileInvalid() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

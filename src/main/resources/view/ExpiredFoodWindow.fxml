@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
 <?import java.net.URL?>
-<fx:root resizable="false" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<fx:root resizable="true" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="Expired Food" minWidth="350" minHeight="467" onCloseRequest="#handleExit">
     <icons>
         <Image url="@/images/expired_food_icon.png" />
