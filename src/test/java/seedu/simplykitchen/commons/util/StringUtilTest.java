@@ -26,7 +26,7 @@ public class StringUtilTest {
         // EP: zero
         assertFalse(StringUtil.isNonZeroUnsignedPositiveInteger("0"));
 
-        // EP: zero as prefix
+        // EP: zero as prefix, should return true
         assertTrue(StringUtil.isNonZeroUnsignedPositiveInteger("01"));
 
         // EP: signed numbers
@@ -45,53 +45,61 @@ public class StringUtilTest {
         assertTrue(StringUtil.isNonZeroUnsignedPositiveInteger("10"));
     }
 
-    //---------------- Tests for isNonZeroSignedDouble ---------------------------------------
+    //---------------- Tests for isNonZeroSignedDoubleWithinRange ----------------------------
 
     @Test
-    public void isNonZeroSignedDouble() {
+    public void isNonZeroSignedDoubleWithinRange() {
 
         // EP: empty strings
-        assertFalse(StringUtil.isNonZeroSignedDouble("")); // Boundary value
-        assertFalse(StringUtil.isNonZeroSignedDouble("  "));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("")); // Boundary value
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("  "));
 
         // EP: not a double
-        assertFalse(StringUtil.isNonZeroSignedDouble("a"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("aaa"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("a"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("aaa"));
 
         // EP: zero
-        assertFalse(StringUtil.isNonZeroSignedDouble("0"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("+0"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("+.0"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("-0.00"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("0"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("-0"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+0.00"));
 
-        // EP: zero as prefix
-        assertTrue(StringUtil.isNonZeroSignedDouble("+01"));
-        assertTrue(StringUtil.isNonZeroSignedDouble("-01.00"));
+        // EP: zero as prefix, should return true
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("-01"));
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("+01.00"));
 
-        // EP: only a sign and a decimal point
-        assertFalse(StringUtil.isNonZeroSignedDouble("+."));
+        // EP: ending with a decimal point
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("-."));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+1."));
 
-        // EP: unsigned doubles
-        assertFalse(StringUtil.isNonZeroSignedDouble("2"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("2.00"));
+        // EP: unsigned numbers
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("2"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("2.00"));
 
         // EP: numbers with white space
-        assertFalse(StringUtil.isNonZeroSignedDouble(" +10 ")); // Leading/trailing spaces
-        assertFalse(StringUtil.isNonZeroSignedDouble("+ 10")); // Space between sign and magnitude
-        assertFalse(StringUtil.isNonZeroSignedDouble("+1 0")); // Spaces in the middle of a double value
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange(" +10 ")); // Leading/trailing spaces
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+ 10")); // Space between sign and magnitude
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+1 0")); // Spaces in the middle of a number
 
         // EP: numbers with more than 2 decimal places
-        assertFalse(StringUtil.isNonZeroSignedDouble("+1.234"));
-        assertFalse(StringUtil.isNonZeroSignedDouble("-5.678"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("-1.234"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+5.678"));
 
-        // EP: numbers starting with a decimal point
-        assertTrue(StringUtil.isNonZeroSignedDouble("+.5"));
-        assertTrue(StringUtil.isNonZeroSignedDouble("-.50"));
+        // EP: exceed boundary value size
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("-100000.00"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+100000.00"));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("-" + Integer.MAX_VALUE));
+        assertFalse(StringUtil.isNonZeroSignedDoubleWithinRange("+" + Integer.MAX_VALUE));
 
-        // EP: valid signed doubles, should return true
-        assertTrue(StringUtil.isNonZeroSignedDouble("+1")); // Integer will be converted to a double
-        assertTrue(StringUtil.isNonZeroSignedDouble("-0.5"));
-        assertTrue(StringUtil.isNonZeroSignedDouble("+2.50"));
+        // EP: valid numbers starting with a decimal point, should return true
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("-.5"));
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("+.50"));
+
+        // EP: valid signed numbers, should return true
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("+1")); // Integer will be converted to a double
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("-0.01"));
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("+0.01"));
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("-99999.99"));
+        assertTrue(StringUtil.isNonZeroSignedDoubleWithinRange("+99999.99"));
     }
 
     //---------------- Tests for containsWordIgnoreCase --------------------------------------

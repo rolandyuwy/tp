@@ -13,6 +13,9 @@ Class HelpWindow
 Class ResultDisplay
 Class ExpiringFoodListPanel
 Class ExpiringFoodListCard
+Class ExpiredFoodWindow
+Class ExpiredFoodListPanel
+Class ExpiredFoodListCard
 Class FoodListPanel
 Class FoodCard
 Class StatusBarFooter
@@ -38,9 +41,12 @@ MainWindow *-down-> ResultDisplay
 MainWindow *-down-> ExpiringFoodListPanel
 MainWindow *-down-> FoodListPanel
 MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> ExpiredFoodWindow
 
 FoodListPanel -down-> FoodCard
 ExpiringFoodListPanel -down-> ExpiringFoodListCard
+ExpiredFoodWindow -down-> ExpiredFoodListPanel
+ExpiredFoodListPanel -down-> ExpiredFoodListCard
 
 MainWindow -left-|> UiPart
 
@@ -48,20 +54,28 @@ ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 ExpiringFoodListPanel --|> UiPart
 ExpiringFoodListCard --|> UiPart
+ExpiredFoodWindow --|> UiPart
+ExpiredFoodListPanel --|> UiPart
+ExpiredFoodListCard --|> UiPart
 FoodListPanel --|> UiPart
 FoodCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
 
-FoodCard ..> Model
-ExpiringFoodListCard ..> Model
+FoodCard .down.> Model
+ExpiringFoodListCard .down.> Model
+ExpiredFoodListCard .down.> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
+ExpiredFoodWindow -left-> Logic
 
 FoodListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
+ExpiredFoodListPanel -[hidden]left- ExpiringFoodListPanel
 
 MainWindow -[hidden]-|> UiPart
+UiPart -[hidden]-|> Model
+
 @enduml

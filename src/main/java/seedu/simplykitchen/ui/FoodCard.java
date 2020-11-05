@@ -87,7 +87,7 @@ public class FoodCard extends UiPart<Region> {
     private void setExpiryDateLabel() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
         ExpiryDate dateToday = new ExpiryDate(LocalDate.now().format(dateFormat));
-        ExpiryDate dateNextWeek = new ExpiryDate(LocalDate.now().plusDays(7).format(dateFormat));
+        ExpiryDate dateNextWeek = new ExpiryDate(LocalDate.now().plusDays(8).format(dateFormat));
 
         if (dateToday.isAfter(food.getExpiryDate())) {
             expiryLabel.setText("EXPIRED");

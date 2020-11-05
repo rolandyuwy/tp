@@ -2,7 +2,7 @@ package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESC_THEN_ASC_EXPIRY;
 import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
 import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
 
@@ -36,6 +36,8 @@ public class ModelManager implements Model {
     private final FilteredList<Food> expiredFilteredFoods;
     private SortedList<Food> expiringSortedFoods;
 
+    private boolean isDataFileInvalid;
+
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
      */
@@ -58,6 +60,14 @@ public class ModelManager implements Model {
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
         expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiredFilteredFoods.setPredicate(getExpiredPredicate());
+    }
+
+    /**
+     * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     */
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs, boolean isDataFileInvalid) {
+        this(foodInventory, userPrefs);
+        this.isDataFileInvalid = isDataFileInvalid;
     }
 
     public ModelManager() {
@@ -222,7 +232,7 @@ public class ModelManager implements Model {
     // ============== Expiring Food List ========================================================================
     @Override
     public void updateExpiringSortedFoodList() {
-        expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
+        expiringSortedFoods.setComparator(SORT_BY_DESC_THEN_ASC_EXPIRY);
     }
 
     @Override
@@ -288,6 +298,11 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods)
                 && expiringFilteredFoods.equals(other.expiringFilteredFoods);
+    }
+
+    @Override
+    public boolean isDataFileInvalid() {
+        return this.isDataFileInvalid;
     }
 
 }

@@ -143,7 +143,7 @@ public class FindCommandTest {
         String expectedMessage = String.format(MESSAGE_FOODS_LISTED_OVERVIEW, 1);
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate = Optional.empty();
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
-                Optional.of(new ExpiryDateSearchPredicate("31-01-2022"));
+                Optional.of(new ExpiryDateSearchPredicate("31-01-2020"));
         Optional<PrioritySearchPredicate> priorityPredicate = Optional.empty();
         Optional<TagSearchPredicate> tagPredicate = Optional.empty();
 
@@ -180,7 +180,7 @@ public class FindCommandTest {
         Optional<DescriptionContainsKeywordsPredicate> descriptionPredicate =
                 Optional.of(preparePredicate("Bagel"));
         Optional<ExpiryDateSearchPredicate> expiryDatePredicate =
-                Optional.of(new ExpiryDateSearchPredicate("01-02-2022"));
+                Optional.of(new ExpiryDateSearchPredicate("01-02-2020"));
         Optional<PrioritySearchPredicate> priorityPredicate =
                 Optional.of(new PrioritySearchPredicate(Priority.Level.LOW));
         HashSet<Tag> setOfTags = new HashSet<>();

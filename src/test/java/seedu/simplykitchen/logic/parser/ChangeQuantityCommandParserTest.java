@@ -7,6 +7,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_AMOUNT_
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_AMOUNT_SIZE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_AMOUNT_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_AMOUNT_BREAD;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.MULTIPLE_SAME_PREFIX;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.simplykitchen.logic.parser.ParserUtil.MESSAGE_INVALID_AMOUNT;
@@ -50,7 +51,8 @@ public class ChangeQuantityCommandParserTest {
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/ string", "Invalid prefix \"i/\" detected. "
+                + "Please remove it and re-enter the command.");
     }
 
     @Test
@@ -70,20 +72,16 @@ public class ChangeQuantityCommandParserTest {
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_multipleRepeatedFields_failure() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + AMOUNT_DESC_APPLE_PIE + AMOUNT_DESC_BREAD;
-        ChangeQuantityCommand expectedCommand =
-                new ChangeQuantityCommand(targetIndex, Double.parseDouble(VALID_AMOUNT_BREAD));
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "a/"));
     }
 
     @Test
-    public void parse_invalidValueFollowedByValidValue() {
+    public void parse_invalidValueFollowedByValidValue_failure() {
         Index targetIndex = INDEX_THIRD_FOOD;
         String userInput = targetIndex.getOneBased() + INVALID_AMOUNT_DESC + AMOUNT_DESC_BREAD;
-        ChangeQuantityCommand expectedCommand =
-                new ChangeQuantityCommand(targetIndex, Double.parseDouble(VALID_AMOUNT_BREAD));
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "a/"));
     }
 }
