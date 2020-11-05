@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 
+import seedu.simplykitchen.logic.commands.ChangeQuantityCommand;
+
 /**
  * Helper functions for handling strings.
  */
@@ -68,19 +70,21 @@ public class StringUtil {
 
     /**
      * Returns true if {@code s} represents a non-zero signed double with a maximum of 2 decimal places
-     * e.g. ..., -2.99, -1, +1, +2.99, ... <br>
+     * and within the range of (-100,000.00, 0) and (0, +100,000.00)
+     * e.g. -99999.99, ..., -2.99, -1, +1, +2.99, ..., +99.999.99 <br>
      * Will return false for any other non-null string input
      * e.g. empty string, "0", " +1.5 " (untrimmed), "+ 1.5" (contains whitespace), "+1a" (contains letters),
      *      "-1.123" (more than 2 decimal places)
      * @throws NullPointerException if {@code s} is null.
      */
-    public static boolean isNonZeroSignedDouble(String s) {
+    public static boolean isNonZeroSignedDoubleWithinRange(String s) {
         requireNonNull(s);
 
         try {
             double value = Double.parseDouble(s);
-            String valueValidationRegex = "[+-][0-9]*[.]?[0-9]?[0-9]?";
-            return value != 0 && s.matches(valueValidationRegex);
+            String valueValidationRegex = "[+-][0-9]*([.][0-9][0-9]?)?";
+            return value != 0.00 && s.matches(valueValidationRegex)
+                    && value > -ChangeQuantityCommand.MAX_AMOUNT && value < ChangeQuantityCommand.MAX_AMOUNT;
         } catch (NumberFormatException nfe) {
             return false;
         }
