@@ -29,7 +29,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
   * Added conditions for duplicate food items.
     * What it does: This requires users to add a `Food` that do not have the same `Description`, `ExpiryDate` and `Tags` as another `Food`. The app shows an appropriate error message when the user attempts to add a duplicate `Food` or edit an existing `Food` to be a duplicate.
-    * Justification: Previously, a `Person` was a duplicate if it had the same `Name`, and either the same `Email` or `Phone`. This no longer applied to the application after the first iteration as these fields were all updated, and it would have caused confusion to users. The duplicate condition was changed to check for fields that we thought were appropriate fields for identifying food items.
+    * Justification: Previously, a `Food` was a duplicate if it had the same `Description`, and either the same `Priority` or `ExpiryDate`. This was not very applicable to the application, and it would have caused confusion to users. The duplicate condition was changed to check for fields that we thought were appropriate fields for identifying food items.
     * Highlights: This required changes to test cases on duplicate food items as well as the error messages for commands due to duplicate food items.
 
 * **Enhancements to existing features**:
