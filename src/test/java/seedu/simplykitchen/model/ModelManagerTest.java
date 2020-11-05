@@ -222,13 +222,6 @@ public class ModelManagerTest {
         pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
                 .withExpiryDate(dateTomorrow).withQuantity("1.5").withTags("cheese").build();
         assertFalse(predicate.test(pizza)); // expiring 2 days from today
-
-        LocalDate lastYear = LocalDate.now().minusDays(365);
-        String dateLastYear = lastYear.format(dateFormat);
-
-        pizza = new FoodBuilder().withDescription("Pizza").withPriority("low")
-                .withExpiryDate(dateLastYear).withQuantity("1.5").withTags("cheese").build();
-        assertTrue(predicate.test(pizza)); // expired a year ago
     }
 
     @Test
