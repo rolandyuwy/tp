@@ -14,8 +14,6 @@ title: User Guide
   * [Editing a food item](#editing-a-food-item)
   * [Deleting a food item](#deleting-a-food-item)
   * [Listing all food items](#listing-all-food-items)
-  * [Undoing previous command](#undoing-previous-command)
-  * [Redoing previously undone command](#redoing-previously-undone-command)
   * [Searching for a food item](#searching-for-a-food-item)
   * [Sort food items by description](#sort-food-items-by-description)
   * [Sort food items by expiry date](#sort-food-items-by-expiry-date)
@@ -23,6 +21,8 @@ title: User Guide
   * [Viewing expired food items](#viewing-expired-food-items)
   * [Changing the quantity of a food item](#changing-the-quantity-of-a-food-item)
   * [Clearing all entries](#clearing-all-entries)
+  * [Undoing previous command](#undoing-previous-command)
+  * [Redoing previously undone command](#redoing-previously-undone-command)
   * [Exiting the program](#exiting-the-program)
   * [Saving the data](#saving-the-data)
 * [FAQs](#faq)
@@ -196,31 +196,6 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
-## Undoing previous command
-
-The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
-Undoable commands are commands that modify your food inventory's content (`add`, `delete`, `edit` and `clear`)
-
-**Format:** `undo`
-
-**Examples:**
-* `delete 1` then `undo` will reverse the delete command.
-* `delete 1` `clear` then `undo` will reverse the `clear` command.
-
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
-
-## Redoing previously undone command
-
-The `redo` command restores your food inventory to a state before an undo command was executed. This lets you easily redo commands that were incorrectly undone.
-
-**Format:** `redo`
-
-**Examples:**
-* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food item was added.
-* `clear` `undo` then `redo` will redo the `clear` command.
-
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
-
 ## Searching for a food item
 
 The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
@@ -339,6 +314,31 @@ The `clear` command clears all entries from your food inventory. This lets you e
 Note that the data saved in your hard disk will also be cleared!
 
 **Format:** `clear`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+
+## Undoing previous command
+
+The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
+Undoable commands are commands that modify your food inventory's content (`add`, `delete`, `edit` and `clear`)
+
+**Format:** `undo`
+
+**Examples:**
+* `delete 1` then `undo` will reverse the delete command.
+* `delete 1` `clear` then `undo` will reverse the `clear` command.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+
+## Redoing previously undone command
+
+The `redo` command restores your food inventory to a state before an undo command was executed. This lets you easily redo commands that were incorrectly undone.
+
+**Format:** `redo`
+
+**Examples:**
+* `add d/Donut p/medium e/21-2-2021` `undo` then `redo` will reverse the state to when the food item was added.
+* `clear` `undo` then `redo` will redo the `clear` command.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
