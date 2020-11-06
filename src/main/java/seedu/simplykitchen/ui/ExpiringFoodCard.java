@@ -36,6 +36,8 @@ public class ExpiringFoodCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+    private final static double PERCENTAGE_OF_CARD_WIDTH_FOR_TAG_WIDTH = 0.9;
+
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
      */
@@ -50,7 +52,7 @@ public class ExpiringFoodCard extends UiPart<Region> {
                     Label newTag = new Label(tag.tagName);
                     newTag.setWrapText(true);
                     cardPane.widthProperty().addListener((obs, oldVal, newVal) -> {
-                        newTag.setMaxWidth((double) newVal * 0.9);
+                        newTag.setMaxWidth((double) newVal * PERCENTAGE_OF_CARD_WIDTH_FOR_TAG_WIDTH);
                     });
                     tags.getChildren().add(newTag);
                 });
