@@ -1,7 +1,4 @@
----
-layout: page
-title: Sagar Sureka's Project Portfolio Page
----
+# Sagar Sureka - Project Portfolio
 
 ## Project: SimplyKitchen
 
@@ -28,7 +25,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Justification: <br>The features improves the application significantly as it helps manage another entity relevant to food items.
     * Highlights: <br>This enhancement involved consideration of multiple alternatives of implementation. 
     Keeping to the criteria of making it user friendly, the `unit` of quantity field was made optional and customisable. 
-    Instead of giving some specfic options, the user can have any word as the unit.
+    Instead of giving some specific options, the user can have any word as the unit.
   * Adding a list for **expiring food items**:
     * What it does: <br>Displays a list panel consisting of food items expiring within 7 days, in ascending order of expiry date.
     * Justification: <br>Keeping with the motivation of reducing food wastage by food inventory management, the expiring food list allows the user to make informed choices in their meals and avoid having to waste expired food.
@@ -46,7 +43,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     This can be found in our [Developer Guide requirements appendix](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#appendix-requirements).
   * Compiled the comments received on the team's User and Developer Guides from peers.
   * Responsible for proper integration of the various parts of the software to form a whole.
-  * Responsible to ensure that the project code maintains high coding standards.
+  * Responsible for ensuring that the project code maintains high coding standards.
   
 * **Documentation**:
   * User Guide:
