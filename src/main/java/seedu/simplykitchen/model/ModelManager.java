@@ -51,6 +51,7 @@ public class ModelManager implements Model {
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
         this.sortingComparators = getComparator(userPrefs.getSortingComparatorsDescription());
+        sortFoodInventoryBySortingComparators();
 
         filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
 
