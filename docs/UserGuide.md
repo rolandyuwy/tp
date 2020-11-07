@@ -88,12 +88,13 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 --------------------------------------------------------------------------------------------------------------------
 
 # 4. Features
+This section will show you the features of SimplyKitchen and the respective commands that you can use.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
 
-* Items with the format `lower_case/` are prefixes.<br>
+* Items with the format `lower_case/` are prefixes. They denote the different parameters.<br>
   e.g. `d/`, `e/`, `q/`
 
 * You have to supply values for parameters in `UPPER_CASE`.<br>
