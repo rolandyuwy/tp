@@ -224,7 +224,7 @@ If you have used up all the flour, use the [`delete`](#deleting-a-food-item) com
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
 ## 4.2. Sorting Commands
-The commands in this section can be used to sort the food list.
+The commands in this section can be used to sort the food list. Before the list of food items is sorted for the first time, it will be ordered by `description`.
 
 ## 4.2.1. Sort food items by description
 
