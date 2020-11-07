@@ -223,6 +223,11 @@ public class AddCommandTest {
         public boolean isDataFileInvalid() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public String getDataFileErrorMessage() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
