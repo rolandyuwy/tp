@@ -254,7 +254,7 @@ The search will return food items with matching description, priority, expiry da
 
 ## Sort food items by description
 
-The `sortdesc` command sorts the list of food items by description. This function is useful if you forget a food item's exact spelling, and you are unable to use the `find` command for it.
+The `sortdesc` command sorts the list of food items by description. This function provides you with a convenient and sorted overview of all food items.
 
 **Format:** `sortdesc`
 
@@ -344,7 +344,7 @@ Note that the data saved in your hard disk will also be cleared!
 
 ## Exiting the program
 
-The `exit` command closes the app.
+The `exit` command closes the app. This lets you easily exit the application from the CLI, without lifting your hands from the keyboard.
 
 **Format:** `exit`
 
