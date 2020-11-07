@@ -13,8 +13,6 @@ import seedu.simplykitchen.model.food.Food;
  * Contains utility comparators for sorting food lists.
  */
 public class ComparatorUtil {
-    public static final Comparator<Food> DEFAULT = (food1, food2) -> 0;
-    public static final Comparator<Food>[] DEFAULT_COMPARATOR_ARRAY = new Comparator[]{(food1, food2) -> 0};
     public static final Comparator<Food> SORT_BY_ASCENDING_EXPIRY_DATE = (food1, food2) ->
                 food1.getExpiryDate().isAfter(food2.getExpiryDate())
                     ? 1
@@ -39,8 +37,6 @@ public class ComparatorUtil {
      */
     public static Comparator<Food>[] getComparator(String comparatorDescription) {
         switch (comparatorDescription) {
-        case "default without ordering":
-            return DEFAULT_COMPARATOR_ARRAY;
         case "ascending expiry date":
             return SORT_EXPIRY_COMPARATORS;
         case "descending priority":
@@ -56,9 +52,7 @@ public class ComparatorUtil {
      * Returns a String describing the sorting used according to {@code foodInventorySortingComparators}.
      */
     public static String generateSortingComparatorsDescription(Comparator<Food>[] sortingComparators) {
-        if (sortingComparators.equals(DEFAULT_COMPARATOR_ARRAY)) {
-            return "default without ordering";
-        } else if (sortingComparators.equals(SORT_EXPIRY_COMPARATORS)) {
+        if (sortingComparators.equals(SORT_EXPIRY_COMPARATORS)) {
             return "ascending expiry date";
         } else if (sortingComparators.equals(SORT_PRIORITY_COMPARATORS)) {
             return "descending priority";

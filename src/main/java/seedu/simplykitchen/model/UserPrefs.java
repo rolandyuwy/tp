@@ -15,7 +15,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path foodInventoryFilePath = Paths.get("data" , "foodInventory.json");
-    private String sortingComparatorsDescription = "default without ordering";
+    private String sortingComparatorsDescription = "description";
 
     /**
      * Creates a {@code UserPrefs} with default values.
