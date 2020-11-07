@@ -88,7 +88,7 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 --------------------------------------------------------------------------------------------------------------------
 
 # 4. Features
-This section will show you the features of SimplyKitchen and the respective commands that you can use.
+This section contains information on the features of SimplyKitchen and the respective commands that you can use.
 
 <div markdown="block" class="alert alert-info">
 
