@@ -22,7 +22,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index should be a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_AMOUNT =
-            "Amount should be a non-zero signed number with a maximum of 2 decimal places. "
+            "Amount should be a non-zero signed number with a maximum of 2 decimal places.\n"
             + "It should be more than -100000.00 and less than +100000.00 but not zero.";
 
     /**
