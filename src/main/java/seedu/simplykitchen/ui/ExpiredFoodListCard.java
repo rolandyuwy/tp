@@ -16,6 +16,8 @@ public class ExpiredFoodListCard extends UiPart<Region> {
 
     private static final String FXML = "ExpiredFoodListCard.fxml";
 
+    private static final double PERCENTAGE_OF_CARD_WIDTH_FOR_TAG_WIDTH = 0.9;
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -36,7 +38,6 @@ public class ExpiredFoodListCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    private final static double PERCENTAGE_OF_CARD_WIDTH_FOR_TAG_WIDTH = 0.9;
 
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
