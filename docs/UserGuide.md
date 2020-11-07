@@ -20,7 +20,7 @@ title: User Guide
     * [4.2.3. Sort food items by priority](#423-sort-food-items-by-priority)
   * [4.3. Viewing Commands](#43-viewing-commands)    
     * [4.3.1. Listing all food items](#431-listing-all-food-items)
-    * [4.3.2. Searching for a food item](#432-searching-for-a-food-item)
+    * [4.3.2. Finding food items](#432-finding-food-items)
     * [4.3.3. Viewing expired food items](#433-viewing-expired-food-items)
   * [4.4. Miscellaneous Commands](#44-miscellaneous-commands)
     * [4.4.1. Undoing previous command](#441-undoing-previous-command)
@@ -28,7 +28,7 @@ title: User Guide
     * [4.4.3. Clearing all entries](#443-clearing-all-entries)
     * [4.4.4. Viewing help](#444-viewing-help)
     * [4.4.5. Exiting the program](#445-exiting-the-program)
-    * [4.4.6. Saving the data](#446-saving-the-data)
+  * [4.5. Saving the data](#45-saving-the-data)
 * [5. FAQs](#5-faq)
 * [6. Command summary](#6-command-summary)
 * [7. Glossary](#7-glossary)
@@ -386,7 +386,7 @@ The `exit` command closes the app.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
-## 4.4.6. Saving the data
+## 4.5. Saving the data
 
 Your food inventory data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
