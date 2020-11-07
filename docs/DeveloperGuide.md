@@ -347,8 +347,8 @@ A `quantity` field for food items is implemented to track the dynamic changes in
 The `quantity` field has been implemented as a class in the `model.food` package.
 
 * Quantity class contains 2 attributes: `value` and `unit`.
-* The `value` has to be a positive number. It can be an integer or a decimal value.
-* The `unit` in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
+* The `value` is a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
+* The `unit` is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
 * If the unit is not provided, a default unit - `unit` - will be given.
 
 #### Implementation rationale:
@@ -356,6 +356,8 @@ The `quantity` field has been implemented as a class in the `model.food` package
 The constraints above have been applied after careful consideration of the needs of the target audience.
 
 * The `value` in the quantity field must be a positive value. A negative or zero value does not carry any meaning and would defeat the purpose of the feature.
+* The maximum `value` allowed is 100,000.00. This value is chosen to accommodate users storing the volume of liquids they have in their kitchens.
+  * Any value bigger than 100,000.00 is not realistic in the context of a domestic household.
 * Users would want to track the quantity precisely in some cases. To allow this, SimplyKitchen accepts decimal values as the `value` attribute.
 * The `value` attribute in the Quantity field has been stored as a `double` value.
 * Users will have different kinds of units while tracking the quantity of their food items. For example, kg, can, bottle etc.
