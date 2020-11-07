@@ -403,7 +403,9 @@ The method will calculate the new quantity and throw a `CommandException` if the
 * The `oldQuantity#updateQuantityValue` method is called within the `changeQuantityCommand#updateFoodQuantity` method.
 * In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the amount to be incremented/decremented by. This is due to accuracy errors when performing arithmetic opetations on double values.
 
-The following sequence diagram illustrates how the command `changeqty` works: **TBU**
+The following sequence diagram illustrates how the command `changeqty` works:
+
+![ChangeqtySequenceDiagram](images/ChangeqtySequenceDiagram.png)
 
 #### Design consideration:
 
