@@ -1,6 +1,7 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.AMOUNT_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.AMOUNT_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_AMOUNT_DESC;
@@ -42,10 +43,10 @@ public class ChangeQuantityCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + AMOUNT_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + AMOUNT_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // zero index
-        assertParseFailure(parser, "0" + AMOUNT_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + AMOUNT_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
