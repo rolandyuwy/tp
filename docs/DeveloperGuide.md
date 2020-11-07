@@ -3,18 +3,9 @@ layout: page
 title: Developer Guide
 ---
 
-SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
-With intuitive and practical features, SimplyKitchen can get food management tasks done faster and more efficiently than traditional GUI apps.
-
-SimplyKitchen aims to aid the domestic individuals who manage their kitchens at home by providing an apt food inventory management system.
-We have taken into consideration the common problems our target audience may face while managing their kitchen, and have created specialized features in our application in order to address those problems.
-Since it is meant for general households, care has been taken to make the app more intuitive and not overwhelming to facilitate comfortable usage for all.
-We hope to make SimplyKitchen a household name in Singapore and appreciate your assistance in helping us do so!
-
---------------------------------------------------------------------------------------------------------------------
-
 # Table of contents
 
+* [Introduction](#introduction)
 * [About this document](#about-this-document)
 * [Setting up, getting started](#setting-up-getting-started)
 * [Design](#design)
@@ -27,15 +18,16 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 * [Implementation](#implementation)
   * [Undo/Redo feature](#undoredo-feature)
   * [Sorting feature](#sorting-feature)
-  * [Quantity Field in Food Items](#quantity-field-in-food-items)
+  * [Quantity field in food items](#quantity-field-in-food-items)
+  * [Change quantity feature](#change-quantity-feature)
   * [Find feature](#find-feature)
-* [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+* [Documentation, logging, testing, configuration and dev-ops](#documentation-logging-testing-configuration-and-dev-ops)
 * [Appendix: Requirements](#appendix-requirements)
   * [Product scope](#product-scope)
   * [Glossary](#glossary)
   * [User stories](#user-stories)
   * [Use cases](#use-cases)
-  * [Non-Functional Requirements](#non-functional-requirements)
+  * [Non-Functional requirements](#non-functional-requirements)
 * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
   * [Launch and shutdown](#launch-and-shutdown)
   * [Deleting a food item](#deleting-a-food-item)
@@ -43,27 +35,37 @@ We hope to make SimplyKitchen a household name in Singapore and appreciate your 
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **Introduction**
+
+SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
+With intuitive and practical features, it can get food management tasks done faster and more efficiently than traditional GUI apps.
+
+SimplyKitchen aims to help the domestic individuals who manage their kitchens at home by providing a food inventory management system.
+We have taken into consideration the common problems our target audience may face while managing their kitchens and have created specialised features to address them.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **About this document**
 
 This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
 
-The [Setting up, getting started](#setting-up-getting-started) section of this document guides you in setting up the code base on your computer and helps you begin working on the project.
+The [Setting up, getting started](#setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
 
-The [Design](#design) section of this document can help you understand the design of the code base as a whole and its various components.
+The [Design](#design) section of helps you understand the design of the code base as a whole and its various components.
 This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
 
-The [Implementation](#implementation) section contains details about the implementation of some of the features in SimplyKitchen.
+The [Implementation](#implementation) section contains details about the implementation of some features in SimplyKitchen.
 It also provides details about design considerations and implementation alternatives.
 This section allows you to understand our thought process and make your own design considerations.
 
 This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops).
-Each of these guides give specific assistance in the context of the project.
+Each guide gives specific assistance in the context of the project.
 
-The [Appendix for Requirements](#appendix-requirements) consists of the details of the planning stage of the project.
+The [appendix for requirements](#appendix-requirements) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The [Glossary](#glossary) and [Non-Functional Requirements](#non-functional-requirements) provide other key information relevant to the document and the app.
+The [glossary](#glossary) and [non-Functional requirements](#non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an [Appendix for Instructions for Manual Testing](#appendix-instructions-for-manual-testing).
+This document ends with an [appendix for instructions for manual testing](#appendix-instructions-for-manual-testing).
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
@@ -121,6 +123,8 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 ### UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
@@ -136,6 +140,8 @@ The `UI` component,
 
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Logic component
 
@@ -157,6 +163,8 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 ### Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
@@ -170,14 +178,13 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Food>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-
 <div markdown="span" class="alert alert-info">
 :information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `FoodInventory`, which `Food` references. This allows `FoodInventory` to only require one `Tag` object per unique `Tag`, instead of each `Food` needing their own `Tag` object.<br>
 </div>
 
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
-
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Storage component
 
@@ -188,6 +195,8 @@ The `Model`,
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the food inventory data in json format and read it back.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Common classes
 
@@ -207,9 +216,9 @@ This section describes some noteworthy details on how certain features are imple
 
 The feature is implemented with a `VersionedFoodInventory`. The `VersionedFoodInventory` contains the different states of the food inventory. The states are stored in a `foodInventoryStateList` and the current state is tracked with a `currentStatePointer`. It also implements the following methods:
 
-* `VersionedFoodInventory#commit()` — Saves the current food inventory state in its states list.
-* `VersionedFoodInventory#undo()` — Restores the previous food inventory state from its states list.
-* `VersionedFoodInventory#redo()` — Restores a previously undone food inventory state from its states list.
+* `VersionedFoodInventory#commit()` — Saves the current food inventory state in its states list.
+* `VersionedFoodInventory#undo()` — Restores the previous food inventory state from its states list.
+* `VersionedFoodInventory#redo()` — Restores a previously undone food inventory state from its states list.
 
 These operations are exposed in the `Model` interface as `Model#commitFoodInventory()`, `Model#undoFoodInventory()` and `Model#redoFoodInventory()` respectively.
 
@@ -280,6 +289,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the food item being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Sorting feature
 
@@ -326,7 +336,9 @@ Furthermore, this helps for items added or edited by calling `AddCommand` and `E
   * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
   * Cons: Sorting is not permanent, thus lists stored are sorted by description by default.
 
-### Quantity Field in Food Items
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
+### Quantity field in food items
 
 A `quantity` field for food items is implemented to track the dynamic changes in the quantity of a food in the FoodInventory.
 
@@ -339,7 +351,7 @@ The `quantity` field has been implemented as a class in the `model.food` package
 * The `unit` in quantity field is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
 * If the unit is not provided, a default unit - `unit` - will be given.
 
-#### Implementation Rationale:
+#### Implementation rationale:
 
 The constraints above have been applied after careful consideration of the needs of the target audience.
 
@@ -352,7 +364,7 @@ The constraints above have been applied after careful consideration of the needs
 * Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
 * The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish.
 
-#### Design Consideration:
+#### Design consideration:
 
 ##### Aspect: Implementation
 
@@ -362,6 +374,8 @@ The constraints above have been applied after careful consideration of the needs
 * <b>Alternative 2: </b> Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Change quantity feature
 
@@ -384,7 +398,7 @@ The selected food item will have its quantity updated through the `changeQuantit
 The method will check if the new quantity is less than or equal to zero, in which it will throw a `ParseException` to notify the user that the updated quantity cannot go below 0.
 If the new quantity is 0, the user will also be prompted to use the `delete` command to delete the food item instead of setting the quantity to 0.
 
-#### Design Consideration:
+#### Design consideration:
 
 Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
 This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
@@ -402,6 +416,8 @@ This allows users to not be burdened by calculations and to focus more on having
     * Cons: Only the quantity field of a `food` object is changed so a `Descriptor` class may be an overkill.
     * Cons: The Law of Demeter will still be violated and this problem is merely transferred from one place to another.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 ### Find feature
 
 The find feature allows users to search for food items based on description, expiration date, priority and/or tags.
@@ -414,19 +430,17 @@ The following sequence diagram illustrates how the command `find d/apple e/30-9-
 
 ![FindSequenceDiagram](images/FindSequenceDiagram.png)
 
-#### Find command
-
 The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
 
 The following is the class diagram for the Find feature:
 
 ![FindClasseDiagram](images/FindClassDiagram.png)
 
-#### Implementation Rationale:
+#### Implementation rationale:
 
 Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
 
-#### Design Consideration:
+#### Design consideration:
 
 Each parameter of the search can be mapped to a `predicate`. This allows for scalability in the future as when a new attribute is added to `Food`, a new `predicate` implementing the `Predicate<Food>` interface can be created to search for this field without affecting the `predicates` of the other attributes.
 
@@ -443,7 +457,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **Documentation, logging, testing, configuration and dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -470,42 +484,43 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **GUI**: Graphical User Interface
 * **Food inventory**: a complete list of food items stored in Simply Kitchen
 
-*{More to be added}*
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | User role (As a …)                        | Function (I want to …)                                     | Benefit (So that I can …)                                    |
-| -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------ |
-| `* * *`  | user                                      | add food items                                             |                                                              |
-| `* * *`  | user                                      | delete food items                                          |                                                              |
-| `* * *`  | user                                      | edit the fields of a food item                          | change the details of the food item after adding it          |
-| `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                             |
-| `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                 |
-| `* * *`  | user                                      | clear all food items                                       |                                                              |
-| `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                   |
-| `* * *`  | user                                 | use more intuitive commands   | be more comfortable with using the app              |
-| `* * *`  | user who likes efficiency                           | search for food items based on their priorities   | know which food items belong to a certain priority          |
-| `* * *`  | user                           | search for food items based on their expiry dates   | know which food items are expiring on a certain date          |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities              |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                     |
-| `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen |
-| `* * *`  | forgetful user                            | be notified of expired food items          | know which food items are expired and can be thrown away      |
-| `* * *`  | forgetful user                            | be notified of expiring food items         | know which food items are expiring soon and use them before they expired     |
-| `* * *`    | user                                      | undo and redo my actions                                               | easily fix the mistakes when using the application                  |
-| `* *`     | user                                      | tag food items                                             | add additional information pertaining/relating to them       |
-| `* *`  | user                           | search for food items based on their tags   | know which food items are tagged with a certain information          |
-| `*`  | user                           | see some sample data populated in the app   | understand how the app will look like and what benefits it has       |
+| Priority | User role (As a …)                        | Function (I want to …)                                     | Benefit (So that I can …)                                                |
+| -------- | ----------------------------------------- | ---------------------------------------------------------  | ------------------------------------------------------------------------ |
+| `* * *`  | user                                      | add food items                                             |                                                                          |
+| `* * *`  | user                                      | delete food items                                          |                                                                          |
+| `* * *`  | user                                      | edit the fields of a food item                             | change the details of the food item after adding it                      |
+| `* * *`  | user                                      | search for food items based on keywords of the description | find them easily                                                         |
+| `* * *`  | user                                      | view a list of all food items I have added                 | have a complete display of all my food items                             |
+| `* * *`  | user                                      | clear all food items                                       |                                                                          |
+| `* * *`  | user who cares about some food items more | have different priority for different food items           | prioritise some food items                                               |
+| `* * *`  | user                                      | use more intuitive commands                                | be more comfortable with using the app                                   |
+| `* * *`  | user who likes efficiency                 | search for food items based on their priorities            | know which food items belong to a certain priority                       |
+| `* * *`  | user                                      | search for food items based on their expiry dates          | know which food items are expiring on a certain date                     |
+| `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities                          |
+| `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                                 |
+| `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen             |
+| `* * *`  | forgetful user                            | be notified of expired food items                          | know which food items are expired and can be thrown away                 |
+| `* * *`  | forgetful user                            | be notified of expiring food items                         | know which food items are expiring soon and use them before they expired |
+| `* * *`  | user                                      | undo and redo my actions                                   | easily fix the mistakes when using the application                       |
+| `* *`    | user                                      | tag food items                                             | add additional information pertaining/relating to them                   |
+| `* *`    | user                                      | search for food items based on their tags                  | know which food items are tagged with a certain information              |
+| `*`      | user                                      | see some sample data populated in the app                  | understand how the app will look like and what benefits it has           |
 
-
-*{More to be added}*
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Use cases
 
@@ -817,17 +832,14 @@ Use case ends.
 
 <br/>
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
-*{More to be added}*
-
-### Non-Functional Requirements
+### Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
 * The app should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A user should be able to see food items clearly on the GUI to facilitate command typing.
-
-*{More to be added}*
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
@@ -857,7 +869,7 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Deleting a food item
 
@@ -874,7 +886,7 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
 ### Saving data
 
@@ -882,6 +894,6 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
-
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
+--------------------------------------------------------------------------------------------------------------------
