@@ -304,6 +304,7 @@ The search will return food items with matching description, priority, expiry da
   * Tags with only whitespace(s) are not allowed.
   * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
   * Food items with tags matching at least one of the search tags will be returned (i.e `OR` search). e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags.
+* The description and tag can contain a maximum of 50 and 72 characters respectively.
 
 **Examples:**
 * `find d/chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
