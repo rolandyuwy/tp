@@ -37,6 +37,7 @@ public class ModelManager implements Model {
     private SortedList<Food> expiringSortedFoods;
 
     private boolean isDataFileInvalid;
+    private String dataFileErrorMessage;
 
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
@@ -63,11 +64,13 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     * Initializes a ModelManager with the given Food Inventory and userPrefs with an error message.
      */
-    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs, boolean isDataFileInvalid) {
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs, boolean isDataFileInvalid,
+                        String dataFileErrorMessage) {
         this(foodInventory, userPrefs);
         this.isDataFileInvalid = isDataFileInvalid;
+        this.dataFileErrorMessage = dataFileErrorMessage;
     }
 
     public ModelManager() {
@@ -303,6 +306,11 @@ public class ModelManager implements Model {
     @Override
     public boolean isDataFileInvalid() {
         return this.isDataFileInvalid;
+    }
+
+    @Override
+    public String getDataFileErrorMessage() {
+        return this.dataFileErrorMessage;
     }
 
 }
