@@ -10,7 +10,7 @@ title: Setting up and getting started
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Setting up the project in your computer
+# Setting up the project in your computer
 
 <div markdown="span" class="alert alert-warning">
 
@@ -35,7 +35,7 @@ If you plan to use Intellij IDEA (highly recommended):
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Before writing code
+# Before writing code
 
 1. **Configure the coding style**
 
