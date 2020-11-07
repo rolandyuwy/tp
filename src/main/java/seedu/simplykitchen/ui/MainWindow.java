@@ -124,7 +124,7 @@ public class MainWindow extends UiPart<Stage> {
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-        checkDataFileValidity();
+        checkDataFileOrUserPrefsDataValidity();
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getFoodInventoryFilePath());
         statusBarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -225,9 +225,9 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    private void checkDataFileValidity() {
-        if (logic.isDataFileInvalid()) {
-            resultDisplay.setFeedbackToUser(logic.getDataFileErrorMessage());
+    private void checkDataFileOrUserPrefsDataValidity() {
+        if (logic.isDataFileOrUserPrefsDataInvalid()) {
+            resultDisplay.setFeedbackToUser(logic.getInvalidDataFileOrUserPrefsDataErrorMessage());
         }
     }
 }
