@@ -17,7 +17,7 @@ public class Quantity {
     public static final String QUANTITY_UNIT_CONSTRAINTS =
             "The unit in the quantity field is optional. If provided, the unit should only contain alphabets."
             + "\nIf the unit is not provided, a default unit - \"unit\" - will be given."
-            + "\nThe maximum length of the quantity length is 20 characters.";
+            + "\nThe maximum length of the quantity unit is 20 characters.";
     public static final String MESSAGE_UNIT_EXCEED_LIMIT = "Quantity unit should not exceed 20 characters.";
     public static final String MESSAGE_CONSTRAINTS =
             "The quantity field must contain a positive number followed by an optional unit.\n"

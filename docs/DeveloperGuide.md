@@ -902,7 +902,6 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: Delete the `foodInventory.json` file in the `data` folder.<br>
       Expected: Status message shows that the data file has not been found and that the application will be starting with a sample food inventory.
-      The application starts with a sample food inventory.
    
    2. Test case: Remove the `description` field from one of the food items in the `foodInventory.json` file in the `data` folder.<br>
       Expected: An error message shown in the status message reporting corrupted data file format. 
