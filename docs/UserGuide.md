@@ -69,18 +69,18 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 
 # 3. Quick start
 
-* Ensure that you have Java 11 or above installed on your computer.
-* Download the most recent SimplyKitchen.jar file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
-* Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
-* Double click on the SimplyKitchen.jar file to launch the app. An app window similar to the one shown below should appear in a few seconds.
+* Ensure that you have `Java 11` or above installed on your computer.
+* Download the most recent `SimplyKitchen.jar` file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
+* Copy the downloaded jar file into a folder which will be your _*home folder*_ for SimplyKitchen.
+* Double click on the `SimplyKitchen.jar` file to launch the app. An app window similar to the one shown below should appear in a few seconds.
 
   ![GUI for the app](images/Ui.png)
 
-* Notice how the app is populated with some sample data. Some food items from the sample data are expired. A pop up window will appear as below, which indicates the expired items. 
+* Notice how the app is populated with some sample data. Some food items from the sample data are expired. A pop up window will appear as below, which indicates the `expired items`. 
  
   ![Pop up window of expired items](images/UiPopUp.png)
 
-* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
+* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
 * Refer to the [features section in this guide](#features) for help on how to use the app.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
