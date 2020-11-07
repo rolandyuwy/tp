@@ -109,7 +109,7 @@ This section contains information on the features of SimplyKitchen and the respe
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]...`, the command can have zero or more tags, as in `t/spicy t/mustard`.
 
-* Parameters without ellipsis can only appear once.
+* Parameters without ellipsis can only appear once.<br>
   e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
 
 * Extra whitespaces leading and succeeding the parameter will be ignored.<br>
