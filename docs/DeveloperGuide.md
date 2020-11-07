@@ -5,7 +5,7 @@ title: Developer Guide
 
 # Table of contents
 
-* [Introduction](#introduction#)
+* [Introduction](#introduction)
 * [About this document](#about-this-document)
 * [Setting up, getting started](#setting-up-getting-started)
 * [Design](#design)
@@ -49,23 +49,23 @@ We have taken into consideration the common problems our target audience may fac
 
 This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
 
-The [Setting up, getting started](#setting-up-getting-started#) section guides you in setting up the code base on your computer and helps you begin working on the project.
+The [Setting up, getting started](#setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
 
-The [Design](#design#) section helps you understand the design of the code base as a whole and its various components.
+The [Design](#design) section helps you understand the design of the code base as a whole and its various components.
 This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
 
-The [Implementation](#implementation#) section contains details about the implementation of some features in SimplyKitchen.
+The [Implementation](#implementation) section contains details about the implementation of some features in SimplyKitchen.
 It also provides details about design considerations and implementation alternatives.
 This section allows you to understand our thought process and make your own design considerations.
 
-This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops#).
+This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
 The [appendix for requirements](#appendix-requirements) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The [glossary](#glossary) and [non-Functional requirements](#non-functional-requirements#) provide other key information relevant to the document and the app.
+The [glossary](#glossary) and [non-Functional requirements](#non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an [appendix for instructions for manual testing](#appendix-instructions-for-manual-testing#).
+This document ends with an [appendix for instructions for manual testing](#appendix-instructions-for-manual-testing).
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
