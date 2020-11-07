@@ -35,8 +35,17 @@ import seedu.simplykitchen.ui.UiManager;
  * Runs the application.
  */
 public class MainApp extends Application {
+    public static final Version VERSION = new Version(1, 4, 0, true);
 
-    public static final Version VERSION = new Version(1, 3, 0, true);
+    private static final String INVALID_DATA_FORMAT = "Data file is not in the correct format. "
+            + "Will be starting with an empty Food Inventory.\n"
+            + "Please double check the data file and fix all incorrect formatting and restart the app.\n"
+            + "If you add a new food item now, all previous data will be lost.";
+
+    private static final String DATA_FILE_NOT_FOUND = "Data file not found. Will be starting with "
+            + "a sample Food Inventory.";
+    private static final String DATA_FILE_IO_ERROR = "Problem while reading from the file."
+            + "Will be starting with an empty Food Inventory.";
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -82,22 +91,23 @@ public class MainApp extends Application {
         ReadOnlyFoodInventory initialData;
         try {
             simplyKitchenInventoryOptional = storage.readFoodInventory();
-            if (!simplyKitchenInventoryOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample FoodInventory");
-            }
             initialData = simplyKitchenInventoryOptional.orElseGet(SampleDataUtil::getSampleFoodInventory);
+            if (!simplyKitchenInventoryOptional.isPresent()) {
+                logger.info(DATA_FILE_NOT_FOUND);
+                return new ModelManager(initialData, userPrefs, true, DATA_FILE_NOT_FOUND);
+            }
+            return new ModelManager(initialData, userPrefs);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. "
                     + "Will be starting with an empty FoodInventory");
             initialData = new FoodInventory();
-            return new ModelManager(initialData, userPrefs, true);
+            return new ModelManager(initialData, userPrefs, true, INVALID_DATA_FORMAT);
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty FoodInventory");
+            logger.warning(DATA_FILE_IO_ERROR);
             initialData = new FoodInventory();
+            return new ModelManager(initialData, userPrefs, true, DATA_FILE_IO_ERROR);
         }
 
-        return new ModelManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {

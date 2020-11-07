@@ -58,4 +58,9 @@ public interface Logic {
      * Returns true if the data file format is invalid.
      */
     boolean isDataFileInvalid();
+
+    /**
+     * Returns the message to describe the error of the data file.
+     */
+    String getDataFileErrorMessage();
 }

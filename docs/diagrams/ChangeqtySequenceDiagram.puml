@@ -1,0 +1,71 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FoodInventoryParser" as FoodInventoryParser LOGIC_COLOR
+participant ":ChangeQuantityCommandParser" as ChangeQuantityCommandParser LOGIC_COLOR
+participant "c:ChangeQuantityCommand" as ChangeQuantityCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("changeqty 1 a/+2")
+activate LogicManager
+
+LogicManager -> FoodInventoryParser : parseCommand("changeqty 1 a/+2")
+activate FoodInventoryParser
+
+create ChangeQuantityCommandParser
+FoodInventoryParser -> ChangeQuantityCommandParser
+activate ChangeQuantityCommandParser
+
+ChangeQuantityCommandParser --> FoodInventoryParser
+deactivate ChangeQuantityCommandParser
+
+FoodInventoryParser -> ChangeQuantityCommandParser : parse("1 a/+2")
+activate ChangeQuantityCommandParser
+
+create ChangeQuantityCommand
+ChangeQuantityCommandParser -> ChangeQuantityCommand
+activate ChangeQuantityCommand
+
+ChangeQuantityCommand --> ChangeQuantityCommandParser : c
+deactivate ChangeQuantityCommand
+
+ChangeQuantityCommandParser --> FoodInventoryParser : c
+deactivate ChangeQuantityCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+ChangeQuantityCommandParser -[hidden]-> FoodInventoryParser
+destroy ChangeQuantityCommandParser
+
+FoodInventoryParser --> LogicManager : c
+deactivate FoodInventoryParser
+
+LogicManager -> ChangeQuantityCommand : execute()
+activate ChangeQuantityCommand
+
+ChangeQuantityCommand -> ChangeQuantityCommand : updateFoodQuantity(originalFood, +2)
+
+ChangeQuantityCommand -> Model : setFood(foodToEdit, editedFood)
+activate Model
+
+Model --> ChangeQuantityCommand
+deactivate Model
+
+create CommandResult
+ChangeQuantityCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> ChangeQuantityCommand
+deactivate CommandResult
+
+ChangeQuantityCommand --> LogicManager : result
+deactivate ChangeQuantityCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

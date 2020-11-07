@@ -100,4 +100,9 @@ public class LogicManager implements Logic {
     public boolean isDataFileInvalid() {
         return model.isDataFileInvalid();
     }
+
+    @Override
+    public String getDataFileErrorMessage() {
+        return model.getDataFileErrorMessage();
+    }
 }
