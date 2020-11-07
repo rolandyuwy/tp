@@ -120,7 +120,7 @@ After entering this command, you should see a pop-up window similar to the one s
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
-## Adding a food item
+### Adding a food item
 
 The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
@@ -254,7 +254,7 @@ The search will return food items with matching description, priority, expiry da
 
 ## Sort food items by description
 
-The `sortdesc` command sorts the list of food items by description. This function provides you with a convenient and sorted overview of all food items.
+The `sortdesc` command sorts the list of food items by description. This function provides you with a convenient and sorted overview of all food items in the food inventory.
 
 **Format:** `sortdesc`
 
@@ -407,3 +407,12 @@ Action | Format, Examples
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Glossary ##
+Term | Definition/Description
+**Lexicographical Order** | Let there be two words we are trying to order. Traverse down each character from the left in two separate words, until we encounter two different characters or one is shorter than the other, whichever comes first. The shorter word will precede the longer word. If we encountered different characters, the different characters in the two words decides their order. Capital letters always precedes lower-case letters. If they are the same case, they are ordered using the alphabet. An apostrophe always precedes any letter in the alphabet. A space precedes both apostrophe and letters.
+**CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text.
+**GUI** | GUI stands for Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons.
+**Tag** | Tags are additional information that can be added to food items.
+**Duplicate Food Item** | Two food items are considered duplicates if their descriptions, expiry dates and tags are all the same. The comparison for their descriptions and tags is case-insensitive.
+**Expiring Food Item** | A food item is expiring if it expires from today, to 7 days after today. e.g. If today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
