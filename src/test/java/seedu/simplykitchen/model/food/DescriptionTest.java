@@ -1,5 +1,6 @@
 package seedu.simplykitchen.model.food;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.testutil.Assert.assertThrows;
@@ -36,5 +37,48 @@ public class DescriptionTest {
         assertTrue(Description.isValidDescription("TWG 1864")); // alphanumeric characters
         assertTrue(Description.isValidDescription("Capital Tan")); // with capital letters
         assertTrue(Description.isValidDescription("Lay's Sour Cream Flavoured Potato Chips")); // long description
+    }
+
+    @Test
+    public void compareFirstCharacterTo_nullDescription_throwsNullPointerException() {
+        Description currentDescription = new Description("description");
+        assertThrows(NullPointerException.class, () -> currentDescription.compareFirstCharacterTo(null));
+    }
+
+    @Test
+    public void compareFirstCharacterToHigherPrecedence_success() {
+        Description currentDescription = new Description("apple");
+
+        //upper case
+        assertEquals(-1, currentDescription.compareFirstCharacterTo(new Description("Apple")));
+
+        //higher precedence lexicographically
+        assertEquals(-1, currentDescription.compareFirstCharacterTo(new Description("banana")));
+        assertEquals(-1, currentDescription.compareFirstCharacterTo(new Description("cabbage")));
+    }
+
+    @Test
+    public void compareFirstCharacterToEqualPrecedence_success() {
+        Description currentDescription1 = new Description("apple");
+        Description currentDescription2 = new Description("Apple");
+
+        //both lower case
+        assertEquals(0, currentDescription1.compareFirstCharacterTo(new Description("a")));
+        assertEquals(0, currentDescription1.compareFirstCharacterTo(new Description("apricot")));
+
+        //both upper case
+        assertEquals(0, currentDescription2.compareFirstCharacterTo(new Description("Apricot")));
+    }
+
+    @Test
+    public void compareFirstCharacterToLowerPrecedence_success() {
+        Description currentDescription = new Description("Cabbage");
+
+        //lower case
+        assertEquals(1, currentDescription.compareFirstCharacterTo(new Description("carrot")));
+
+        //lower precedence lexicographically
+        assertEquals(1, currentDescription.compareFirstCharacterTo(new Description("Apple")));
+        assertEquals(1, currentDescription.compareFirstCharacterTo(new Description("banana")));
     }
 }
