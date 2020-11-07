@@ -36,12 +36,14 @@ public class SortDescCommandTest {
     private Model expectedModel;
 
     public void setUp(Food... foodsToAdd) {
-        FoodInventory unsortedFoodInventory = getTypicalFoodInventory();
+        FoodInventory preSortedFoodInventory = getTypicalFoodInventory();
+        FoodInventory expectedPreSortedFoodInventory = getTypicalFoodInventory();
         for (Food food : foodsToAdd) {
-            unsortedFoodInventory.addFood(food);
+            preSortedFoodInventory.addFood(food);
+            expectedPreSortedFoodInventory.addFood(food);
         }
-        model = new ModelManager(unsortedFoodInventory, new UserPrefs());
-        expectedModel = new ModelManager(model.getFoodInventory(), new UserPrefs());
+        model = new ModelManager(preSortedFoodInventory, new UserPrefs());
+        expectedModel = new ModelManager(expectedPreSortedFoodInventory, new UserPrefs());
     }
 
     @Test
