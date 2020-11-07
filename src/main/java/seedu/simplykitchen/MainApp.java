@@ -93,7 +93,7 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyFoodInventory> simplyKitchenInventoryOptional;
         ReadOnlyFoodInventory initialData;
-        ReadOnlyUserPrefs inputUserPrefs;
+
         try {
             if (!isSortingComparatorsDescriptionValid(userPrefs.getSortingComparatorsDescription())) {
                 logger.info(INVALID_USER_PREFS_SORTING_DESCRIPTION);
