@@ -300,7 +300,6 @@ The search will return food items with matching description, priority, expiry da
 
 * You must specify at least one parameter for this command to be valid.
 * The search is case-insensitive. e.g `fish` will match `Fish`.
-* The order of the descriptions does not matter. e.g. `Cake Fish` will match `Fish Cake`.
 * Only full words in description will be matched. e.g. `fis` will not match `fish`.
 * Food items with description matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`.
 * The expiry date field only accepts a date in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
