@@ -370,10 +370,10 @@ The constraints above have been applied after careful consideration of the needs
 
 ##### Aspect: Implementation
 
-* <b>Alternative 1 (current choice): </b> Value and unit stored as double and string fields in the Quantity class.
+* **Alternative 1 (current choice):** Value and unit stored as double and string fields in the Quantity class.
     * Pros: Easy to implement given the tight project timeframe.
     * Cons: Less OOP compared to the other alternative.
-* <b>Alternative 2: </b> Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
+* **Alternative 2:** Value and Unit extracted to different classes. Quantity class' attributes are objects of these Value and Unit classes.
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
 
@@ -388,6 +388,7 @@ The change quantity feature allows users to increment or decrement the quantity 
 The `ChangeQuantityCommandParser` class parses the command by first extracting the index of the food item within the food list displayed to the user.
 
 Next, the `amount` is parsed. It is a non-zero signed double value.
+Similar to the constraints applied to the quantity field, the magnitude of the amount should be more than -100,000.00 and less than +100,000.00 but not zero.
 
 * Having a quantity change of zero is meaningless.
 * The signed value is used to denote the increment or decrement of the quantity value.
@@ -396,9 +397,13 @@ Next, the `amount` is parsed. It is a non-zero signed double value.
 
 A new `ChangeQuantityCommand` object is created with the extracted index and amount. It will retrieve the correct food item from the filtered list of food item provided by the `model` object.
 
-The selected food item will have its quantity updated through the `changeQuantityCommand#updateQuantity` method.
-The method will check if the new quantity is less than or equal to zero, in which it will throw a `ParseException` to notify the user that the updated quantity cannot go below 0.
-If the new quantity is 0, the user will also be prompted to use the `delete` command to delete the food item instead of setting the quantity to 0.
+The selected food item will have its quantity updated through the `changeQuantityCommand#updateFoodQuantity` method.
+The method will calculate the new quantity and throw a `CommandException` if the new quantity is less than or equal to zero, or more than 100,000.00.
+
+* The `oldQuantity#updateQuantityValue` method is called within the `changeQuantityCommand#updateFoodQuantity` method.
+* In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the amount to be incremented/decremented by. This is due to accuracy errors when performing arithmetic opetations on double values.
+
+The following sequence diagram illustrates how the command `changeqty` works: **TBU**
 
 #### Design consideration:
 
@@ -407,16 +412,15 @@ This means that users have to calculate the quantity themselves and calculation 
 To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
 This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
 
-##### Aspect: Modifying a food item's quantity
+##### Aspect: Updating a food item's quantity
 
-* <b>Alternative 1 (current choice): </b> Extract the value from the `quantity` object, update it and append it to the unit of the same object.
+* **Alternative 1 (current choice):** Update the quantity value of a food item by calling the `updateQuantityValue` method of the `Quantity` class.
     * Pros: Easy to implement given the tight project timeframe.
-    * Cons: Violates Law of Demeter when extracting relevant fields from the `quantity` object.
-* <b>Alternative 2: </b> Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
+    * Cons: All other fields of a `food` object need to be extracted and passed into the `Food` constructor.
+* **Alternative 2:** Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
     * Cons: Only the quantity field of a `food` object is changed so a `Descriptor` class may be an overkill.
-    * Cons: The Law of Demeter will still be violated and this problem is merely transferred from one place to another.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
