@@ -900,7 +900,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Test case: Delete the `foodInventory.json` file in the `data` folder.<br>
+      Expected: Status message shows that the data file has not been found and that the application will be starting with a sample food inventory.
+      The application starts with a sample food inventory.
+   
+   2. Test case: Remove the `description` field from one of the food items in the `foodInventory.json` file in the `data` folder.<br>
+      Expected: An error message shown in the status message reporting corrupted data file format. 
+      Error message also gives scenarios of how to proceed, either fix the data file or start with a new inventory by adding a food item. 
+      
+   3. Test case: Remove any of the other fields - `expiryDate`, `priority`, `quantity`, `tagged` - from a food item in the `foodInventory.json` file.<br>
+      Expected: Similar to previous.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
