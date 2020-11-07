@@ -35,6 +35,8 @@ import seedu.simplykitchen.ui.UiManager;
  * Runs the application.
  */
 public class MainApp extends Application {
+    public static final Version VERSION = new Version(1, 4, 0, true);
+
     private static final String INVALID_DATA_FORMAT = "Data file is not in the correct format. "
             + "Will be starting with an empty Food Inventory.\n"
             + "Please double check the data file and fix all incorrect formatting and restart the app.\n"
@@ -44,8 +46,6 @@ public class MainApp extends Application {
             + "a sample Food Inventory.";
     private static final String DATA_FILE_IO_ERROR = "Problem while reading from the file."
             + "Will be starting with an empty Food Inventory.";
-
-    public static final Version VERSION = new Version(1, 4, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
