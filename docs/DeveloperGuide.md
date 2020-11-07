@@ -51,7 +51,7 @@ This document is a Developer Guide meant to assist project developers in underst
 
 The [Setting up, getting started](#setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
 
-The [Design](#design) section of helps you understand the design of the code base as a whole and its various components.
+The [Design](#design) section helps you understand the design of the code base as a whole and its various components.
 This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
 
 The [Implementation](#implementation) section contains details about the implementation of some features in SimplyKitchen.
