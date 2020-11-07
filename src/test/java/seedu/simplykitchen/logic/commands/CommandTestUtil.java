@@ -55,18 +55,14 @@ public class CommandTestUtil {
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
             + "D&nut"; // '&' not allowed in descriptions
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "lower"; // 'lower' not valid priority
-    public static final String INVALID_EXPIRY_DATE_FORMAT_DESC = " " + PREFIX_EXPIRY_DATE + "1--1-2020"; // extra dash
-    public static final String INVALID_EXPIRY_DATE_SHORTENED_DESC = " " + PREFIX_EXPIRY_DATE
-            + "1-1-22"; // shortened year
-    public static final String INVALID_EXPIRY_DATE_DESC = " " + PREFIX_EXPIRY_DATE
-            + "29-2-2021"; // non-existent expiry date
+    public static final String INVALID_EXPIRY_DATE_DESC = " " + PREFIX_EXPIRY_DATE + "1--1-2020"; // extra dash
     public static final String INVALID_QUANTITY_UNIT = " " + PREFIX_QUANTITY + "1 @@"; // only alphabets allowed
     public static final String INVALID_QUANTITY_VALUE = " " + PREFIX_QUANTITY + "-1"; // only positive numbers allowed
     public static final String INVALID_QUANTITY_ZERO_VALUE = " " + PREFIX_QUANTITY
             + "0 UNIT"; // only positive numbers allowed
     public static final String INVALID_AMOUNT_DESC = " " + PREFIX_AMOUNT + "+1.234"; // more than 2 decimal places
     public static final String INVALID_AMOUNT_SIZE_DESC = " " + PREFIX_AMOUNT + "+"
-            + Double.MAX_VALUE; // amount size too big
+            + Integer.MAX_VALUE; // amount size too big
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

@@ -9,7 +9,9 @@ import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
@@ -24,6 +26,7 @@ import seedu.simplykitchen.model.tag.TagSearchPredicate;
  * Parses input arguments and creates a new FindCommand object
  */
 public class FindCommandParser implements Parser<FindCommand> {
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
@@ -35,6 +38,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_DESCRIPTION, PREFIX_PRIORITY, PREFIX_EXPIRY_DATE, PREFIX_TAG);
 
         if (!argMultimap.getPreamble().isEmpty()) {
+            logger.info("Invalid Preamble in Find command");
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
@@ -48,6 +52,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 && prioritySearchPredicate.isEmpty()
                 && expiryDateSearchPredicate.isEmpty()
                 && tagSearchPredicate.isEmpty()) {
+            logger.info("Missing all fields in Find command");
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }

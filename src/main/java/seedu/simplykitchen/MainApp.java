@@ -36,7 +36,7 @@ import seedu.simplykitchen.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(1, 3, 0, true);
+    public static final Version VERSION = new Version(1, 4, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -90,6 +90,7 @@ public class MainApp extends Application {
             logger.warning("Data file not in the correct format. "
                     + "Will be starting with an empty FoodInventory");
             initialData = new FoodInventory();
+            return new ModelManager(initialData, userPrefs, true);
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
                     + "Will be starting with an empty FoodInventory");

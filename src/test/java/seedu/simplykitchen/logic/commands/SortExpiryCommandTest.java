@@ -47,6 +47,7 @@ public class SortExpiryCommandTest {
         setUp();
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
+
         expectedModel.sortFoodInventory(SORT_EXPIRY_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -59,6 +60,7 @@ public class SortExpiryCommandTest {
         setUp(CHEAP_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
+
         expectedModel.sortFoodInventory(SORT_EXPIRY_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -71,6 +73,7 @@ public class SortExpiryCommandTest {
         setUp(WHITE_CHOCOLATE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
+
         expectedModel.sortFoodInventory(SORT_EXPIRY_COMPARATORS);
         expectedModel.commitFoodInventory();
         assertCommandSuccess(command, model, expectedMessage, expectedModel);

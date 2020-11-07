@@ -165,4 +165,9 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateExpiringSortedFoodList();
+
+    /**
+     * Returns true if the data file format is invalid.
+     */
+    boolean isDataFileInvalid();
 }
