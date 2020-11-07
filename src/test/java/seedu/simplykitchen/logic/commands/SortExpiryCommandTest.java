@@ -58,7 +58,7 @@ public class SortExpiryCommandTest {
     }
 
     @Test
-    public void execute_sortByPrioritySameExpiryDifferentPriority_success() {
+    public void execute_sortByExpirySameExpiryDifferentPriority_success() {
         setUp(CHEAP_EGGS);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
@@ -71,7 +71,7 @@ public class SortExpiryCommandTest {
     }
 
     @Test
-    public void execute_sortByPrioritySameExpirySamePriorityDifferentDescription_success() {
+    public void execute_sortByExpirySameExpirySamePriorityDifferentDescription_success() {
         setUp(WHITE_CHOCOLATE);
         String expectedMessage = String.format(MESSAGE_SUCCESS);
         SortExpiryCommand command = new SortExpiryCommand();
