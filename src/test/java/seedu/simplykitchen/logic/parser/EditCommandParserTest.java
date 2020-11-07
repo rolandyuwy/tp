@@ -6,7 +6,7 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
@@ -89,7 +89,7 @@ public class EditCommandParserTest {
                 + INVALID_DESCRIPTION_DESC, Description.MESSAGE_CONSTRAINTS); // invalid description
         assertParseFailure(parser, "1" + INVALID_PRIORITY_DESC,
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
-        assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_FORMAT_DESC,
+        assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_DESC,
                 ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
         assertParseFailure(parser, "1" + INVALID_QUANTITY_UNIT,
                 Quantity.QUANTITY_UNIT_CONSTRAINTS); // invalid quantity unit
@@ -116,7 +116,7 @@ public class EditCommandParserTest {
                 Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRY_DATE_FORMAT_DESC
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRY_DATE_DESC
                 + VALID_PRIORITY_APPLE_PIE + VALID_QUANTITY_APPLY_PIE, Description.MESSAGE_CONSTRAINTS);
     }
 

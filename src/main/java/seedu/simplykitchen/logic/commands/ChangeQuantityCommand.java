@@ -3,8 +3,6 @@ package seedu.simplykitchen.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.simplykitchen.model.Model.PREDICATE_SHOW_ALL_FOODS;
-import static seedu.simplykitchen.model.food.Quantity.changeQuantityValue;
-import static seedu.simplykitchen.model.food.Quantity.updateQuantity;
 
 import java.util.List;
 import java.util.Set;
@@ -30,22 +28,18 @@ public class ChangeQuantityCommand extends Command {
 
     public static final String COMMAND_WORD = "changeqty";
 
-    public static final String MESSAGE_USAGE = " Usage: " + COMMAND_WORD + " INDEX "
+    public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
             + PREFIX_AMOUNT + "AMOUNT\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "  Example: " + COMMAND_WORD + " 1 "
             + PREFIX_AMOUNT + "+1";
 
     public static final String MESSAGE_SUCCESS = "The following food item has its quantity changed:\n  %1$s";
-    public static final String MESSAGE_NEGATIVE_QUANTITY =
-            "The quantity of the food item cannot be updated to a value less than zero.\n";
-    public static final String MESSAGE_ZERO_QUANTITY =
-            "The quantity of the food item cannot be updated to 0. Delete the food item instead.\n";
-    public static final String MESSAGE_TOO_BIG_QUANTITY =
-            "The quantity of the food item cannot be changed by such a big value.\n";
+    public static final String MESSAGE_QUANTITY_ERROR = "The quantity of the food item cannot be updated to a value "
+            + "less than or equal to zero or more than 100000.00.\n";
 
-    public static final double MAX_AMOUNT = 999999;
+    public static final double MAX_AMOUNT = Quantity.MAX_VALUE;
 
-    private static Logger logger = LogsCenter.getLogger("ChangeQuantityCommand.class");
+    private static final Logger logger = LogsCenter.getLogger("ChangeQuantityCommand.class");
 
     private final Index index;
     private final double amount;
@@ -56,7 +50,7 @@ public class ChangeQuantityCommand extends Command {
      */
     public ChangeQuantityCommand(Index index, double amount) {
         requireNonNull(index);
-        assert amount != 0;
+        assert amount != 0 && amount > -MAX_AMOUNT && amount < MAX_AMOUNT;
 
         this.index = index;
         this.amount = amount;
@@ -81,32 +75,24 @@ public class ChangeQuantityCommand extends Command {
     }
 
     /**
-     * Updates the quantity of a food item's by a certain amount.
+     * Updates the quantity of the {@code originalFood} by a certain {@code amount}.
      */
     private Food updateFoodQuantity(Food originalFood, double amount) throws CommandException {
-        // check validity of amount
-        if (amount > MAX_AMOUNT || amount < -MAX_AMOUNT) {
-            throw new CommandException(MESSAGE_TOO_BIG_QUANTITY);
-        }
-
-        // update quantity
+        // update quantity value
         Quantity oldQuantity = originalFood.getQuantity();
+        double newQuantityValue = oldQuantity.updateQuantityValue(amount);
+        logger.log(Level.INFO, "User is trying to update the quantity to " + newQuantityValue);
 
         // check validity of new quantity value
-        double newQuantityValue = changeQuantityValue(oldQuantity, amount);
-        logger.log(Level.INFO, "User is trying to update the quantity to " + newQuantityValue);
-        if (newQuantityValue == 0) {
-            throw new CommandException(MESSAGE_ZERO_QUANTITY);
+        if (newQuantityValue <= 0.00 || newQuantityValue > Quantity.MAX_VALUE) {
+            throw new CommandException(MESSAGE_QUANTITY_ERROR);
         }
-        if (newQuantityValue < 0) {
-            throw new CommandException(MESSAGE_NEGATIVE_QUANTITY);
-        }
-        assert newQuantityValue != 0;
 
+        // update food with new quantity
         Description description = originalFood.getDescription();
         Priority priority = originalFood.getPriority();
         ExpiryDate expiryDate = originalFood.getExpiryDate();
-        Quantity newQuantity = updateQuantity(oldQuantity, newQuantityValue);
+        Quantity newQuantity = oldQuantity.updateQuantity(newQuantityValue);
         Set<Tag> tags = originalFood.getTags();
 
         return new Food(description, priority, expiryDate, newQuantity, tags);

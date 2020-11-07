@@ -31,6 +31,8 @@ public class ComparatorUtil {
                 food1.getDescription().fullDescription.compareTo(food2.getDescription().fullDescription);
     public static final Comparator<Food> SORT_BY_FIRST_CHARACTER = (food1, food2) ->
                 food1.getDescription().compareFirstCharacterTo(food2.getDescription());
+    public static final Comparator<Food> SORT_BY_DESC_THEN_ASC_EXPIRY = SORT_BY_ASCENDING_EXPIRY_DATE
+            .thenComparing(SORT_BY_FIRST_CHARACTER).thenComparing(SORT_BY_LEXICOGRAPHICAL_ORDER);
 
     /**
      * Returns the foodInventorySortingComparators information according to {@code comparatorDescription}.

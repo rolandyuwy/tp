@@ -137,17 +137,9 @@ public class FindCommandParserTest {
         assertParseFailure(parser, " d/Bagel p/lower e/1-2-2022 t/sugar-free t/cheese",
                 Priority.MESSAGE_CONSTRAINTS);
 
-        // invalid expiry date format
+        // invalid expiry date
         assertParseFailure(parser, " d/Bagel p/low e/1-2--2022 t/sugar-free t/cheese",
                 ExpiryDate.MESSAGE_CONSTRAINTS);
-
-        // invalid shortened expiry date
-        assertParseFailure(parser, " d/Bagel p/low e/1-2-22 t/sugar-free t/cheese",
-                ExpiryDate.MESSAGE_SHORTENED_YEAR);
-
-        // invalid non-existent expiry date
-        assertParseFailure(parser, " d/Bagel p/low e/29-2-2022 t/sugar-free t/cheese",
-                ExpiryDate.MESSAGE_INVALID_DATE);
 
         // invalid tag
         assertParseFailure(parser, " d/Bagel p/low e/1-2-2022 t/sugar-free} t/cheese",

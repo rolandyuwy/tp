@@ -8,8 +8,6 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_SHORTENED_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
@@ -108,18 +106,8 @@ public class AddCommandParserTest {
 
         // invalid expiry date format
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + INVALID_EXPIRY_DATE_FORMAT_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_CONSTRAINTS);
-
-        // invalid shortened expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + INVALID_EXPIRY_DATE_SHORTENED_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_SHORTENED_YEAR);
-
-        // invalid non-existent expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + INVALID_EXPIRY_DATE_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_INVALID_DATE);
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_CONSTRAINTS);
 
         // invalid unit in quantity field
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
@@ -143,7 +131,7 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD
-                        + QUANTITY_DESC_BREAD + INVALID_EXPIRY_DATE_FORMAT_DESC,
+                        + QUANTITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC,
                 Description.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
