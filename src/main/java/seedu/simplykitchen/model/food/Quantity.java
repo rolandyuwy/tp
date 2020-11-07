@@ -16,10 +16,13 @@ public class Quantity {
                     + "The value must have a maximum of two decimal places.";
     public static final String QUANTITY_UNIT_CONSTRAINTS =
             "The unit in the quantity field is optional. If provided, the unit should only contain alphabets."
-            + "\nIf the unit is not provided, a default unit - \"unit\" - will be given.";
+            + "\nIf the unit is not provided, a default unit - \"unit\" - will be given."
+            + "\nThe maximum length of the quantity length is 20 characters.";
+    public static final String MESSAGE_UNIT_EXCEED_LIMIT = "Quantity unit should not exceed 20 characters.";
     public static final String MESSAGE_CONSTRAINTS =
             "The quantity field must contain a positive number followed by an optional unit.\n"
                     + "It should not be blank.";
+    public static final int MAXIMUM_UNIT_LENGTH = 20;
 
     public static final String UNIT_VALIDATION_REGEX = "[a-zA-Z]*";
     public static final String VALUE_VALIDATION_REGEX = "[0-9]*([.][0-9][0-9]?)?";
@@ -77,6 +80,10 @@ public class Quantity {
             unit = quantity.substring(indexOfSpace).trim();
         }
 
+        if (unit.length() > MAXIMUM_UNIT_LENGTH) {
+            return false;
+        }
+
         // check validity of value and unit
         if (value.matches(VALUE_VALIDATION_REGEX) && unit.matches(UNIT_VALIDATION_REGEX)) {
             try {
@@ -124,6 +131,11 @@ public class Quantity {
         if (indexOfSpace > 0) {
             value = quantity.substring(0, indexOfSpace);
             unit = quantity.substring(indexOfSpace).trim();
+        }
+
+        if (unit.length() > MAXIMUM_UNIT_LENGTH) {
+            // unit greater than 20 characters
+            return MESSAGE_UNIT_EXCEED_LIMIT;
         }
 
         if (!value.matches(VALUE_VALIDATION_REGEX)) {

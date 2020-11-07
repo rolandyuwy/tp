@@ -22,7 +22,7 @@ public class Description {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}' ]*";
-
+    public static final int MAXIMUM_DESCRIPTION_LENGTH = 50;
     public final String fullDescription;
 
     /**
@@ -40,7 +40,7 @@ public class Description {
      * Returns true if a given string is a valid description.
      */
     public static boolean isValidDescription(String test) {
-        if (test.length() > 50) {
+        if (test.length() > MAXIMUM_DESCRIPTION_LENGTH) {
             return false;
         }
         return test.matches(VALIDATION_REGEX);
@@ -79,7 +79,7 @@ public class Description {
      * @return A string describing the error message.
      */
     public static String generateErrorMessage(String invalidDescription) {
-        if (invalidDescription.length() > 50) {
+        if (invalidDescription.length() > MAXIMUM_DESCRIPTION_LENGTH) {
             return MESSAGE_EXCEED_LIMIT;
         }
         return MESSAGE_CONSTRAINTS;
