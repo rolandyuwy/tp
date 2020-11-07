@@ -93,20 +93,25 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 
 **:information_source: Notes about the command format:**<br>
 
+* Items with the format `lower_case/` are prefixes.<br>
+  e.g. `d/`, `e/`, `q/`
+
 * You have to supply values for parameters in `UPPER_CASE`.<br>
   e.g. In `add d/DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add d/cucumber`.
 
-* Parameters are compulsory unless they are in square brackets.<br>
+* Items in square brackets are optional.<br>
   e.g `d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` can be used as `d/bread e/30-09-2020` or as `d/bread e/30-09-2020 p/low`.
-  However, it cannot be used as `e/30-09-2020 p/low` because the description is missing.
 
 * Parameters can be in any order.<br>
   e.g. If the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
 
-* Ellipis after a parameter indicates that multiple entries of that parameter can be given.<br>
-  e.g. In `[t/TAG]…`, the relevant command can have zero or more tags each with the prefix `t/`, as in `t/spicy t/mustard`.
+* Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
+  e.g. In `[t/TAG]...`, the command can have zero or more tags, as in `t/spicy t/mustard`.
 
-* For all parameters, the extra whitespaces leading and succeeding the parameter will be ignored.<br>
+* Parameters without ellipsis can only appear once.
+  e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
+
+* Extra whitespaces leading and succeeding the parameter will be ignored.<br>
   e.g. The description parameter `d/    cashew  nuts   `, will be stored as `d/cashew  nuts`.
 
 </div>
