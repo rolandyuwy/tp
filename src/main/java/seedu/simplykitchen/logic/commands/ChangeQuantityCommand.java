@@ -28,9 +28,9 @@ public class ChangeQuantityCommand extends Command {
 
     public static final String COMMAND_WORD = "changeqty";
 
-    public static final String MESSAGE_USAGE = " Usage: " + COMMAND_WORD + " INDEX "
+    public static final String MESSAGE_USAGE = "Usage: " + COMMAND_WORD + " INDEX "
             + PREFIX_AMOUNT + "AMOUNT\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "  Example: " + COMMAND_WORD + " 1 "
             + PREFIX_AMOUNT + "+1";
 
     public static final String MESSAGE_SUCCESS = "The following food item has its quantity changed:\n  %1$s";
