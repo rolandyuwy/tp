@@ -274,7 +274,7 @@ The `sortpriority` command sorts the list of food items by priority from high to
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
 
 ## 4.3. Viewing Commands
-The commands in this section can used to show different food items.
+The commands in this section can used to list different types of food items.
 
 ## 4.3.1. Listing all food items
 
