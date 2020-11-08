@@ -31,7 +31,7 @@ If you plan to use Intellij IDEA (highly recommended):
    1. Run the `seedu.simplykitchen.Main` and try a few commands.
    1. [Run the tests](Testing.md) to ensure they all pass.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -62,6 +62,6 @@ If you plan to use Intellij IDEA (highly recommended):
    * [Removing fields](tutorials/RemovingFields.md)
    * [Adding a new command](tutorials/AddRemark.md)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
