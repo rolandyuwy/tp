@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.simplykitchen.commons.core.GuiSettings;
 import seedu.simplykitchen.logic.commands.AddCommand;
 import seedu.simplykitchen.logic.commands.CommandResult;
 import seedu.simplykitchen.logic.commands.ListCommand;
@@ -91,6 +92,11 @@ public class LogicManagerTest {
     }
 
     @Test
+    public void getFoodInventory_success() {
+        assertEquals(logic.getFoodInventory(), model.getFoodInventory());
+    }
+
+    @Test
     public void getFilteredFoodList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredFoodList().remove(0));
     }
@@ -103,6 +109,35 @@ public class LogicManagerTest {
     @Test
     public void getFilteredExpiredFoodList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredExpiredFoodList().remove(0));
+    }
+
+    @Test
+    public void getFoodInventoryFilePath_success() {
+        assertEquals(logic.getFoodInventoryFilePath(), model.getFoodInventoryFilePath());
+    }
+
+    @Test
+    public void getGuiSettings_success() {
+        assertEquals(logic.getGuiSettings(), model.getGuiSettings());
+    }
+
+    @Test
+    public void setGuiSettings_success() {
+        GuiSettings guiSettings = new GuiSettings();
+        logic.setGuiSettings(guiSettings);
+        model.setGuiSettings(guiSettings);
+        assertEquals(logic.getGuiSettings(), model.getGuiSettings());
+    }
+
+    @Test
+    public void isDataFileOrUserPrefsDataInvalid_success() {
+        assertEquals(logic.isDataFileOrUserPrefsDataInvalid(), model.isDataFileOrUserPrefsInvalid());
+    }
+
+    @Test
+    public void getInvalidDataFileOrUserPrefsDataErrorMessage_success() {
+        assertEquals(logic.getInvalidDataFileOrUserPrefsDataErrorMessage(),
+                model.getInvalidDataFileOrUserPrefsErrorMessage());
     }
 
     /**

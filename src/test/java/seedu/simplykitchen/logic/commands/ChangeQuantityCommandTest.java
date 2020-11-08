@@ -1,5 +1,6 @@
 package seedu.simplykitchen.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.ChangeQuantityCommand.MESSAGE_QUANTITY_ERROR;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -199,4 +200,30 @@ public class ChangeQuantityCommandTest {
         expectedModel.redoFoodInventory();
         assertCommandSuccess(new RedoCommand(), model, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
+
+    @Test
+    public void equals() {
+        double amount = -0.01;
+        final ChangeQuantityCommand standardCommand = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+
+        // same values -> returns true
+        final ChangeQuantityCommand commandWithSameValues = new ChangeQuantityCommand(INDEX_FIRST_FOOD, amount);
+        assertTrue(standardCommand.equals(commandWithSameValues));
+
+        // same object -> returns true
+        assertTrue(standardCommand.equals(standardCommand));
+
+        // null -> returns false
+        assertFalse(standardCommand.equals(null));
+
+        // different types -> returns false
+        assertFalse(standardCommand.equals(new ClearCommand()));
+
+        // different index -> returns false
+        assertFalse(standardCommand.equals(new ChangeQuantityCommand(INDEX_SECOND_FOOD, amount)));
+
+        // different amount -> returns false
+        assertFalse(standardCommand.equals(new ChangeQuantityCommand(INDEX_FIRST_FOOD, +0.01)));
+    }
+
 }

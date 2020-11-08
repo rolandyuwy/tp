@@ -54,29 +54,32 @@ public class FoodInventoryParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
-
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+        case ChangeQuantityCommand.COMMAND_WORD:
+            return new ChangeQuantityCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+        case DeleteCommand.COMMAND_WORD:
+            return new DeleteCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
-
-        case ChangeQuantityCommand.COMMAND_WORD:
-            return new ChangeQuantityCommandParser().parse(arguments);
+        case EditCommand.COMMAND_WORD:
+            return new EditCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
+        case ExpiredCommand.COMMAND_WORD:
+            return new ExpiredCommand();
+
+        case FindCommand.COMMAND_WORD:
+            return new FindCommandParser().parse(arguments);
+
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case ListCommand.COMMAND_WORD:
+            return new ListCommand();
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
@@ -92,9 +95,6 @@ public class FoodInventoryParser {
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
-
-        case ExpiredCommand.COMMAND_WORD:
-            return new ExpiredCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
