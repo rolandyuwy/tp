@@ -46,7 +46,7 @@ We have taken into consideration the common problems you may face while managing
 Since the app is meant for the general households, care has been taken to make it more intuitive and not overwhelming to facilitate comfortable usage for all.
 We hope to make SimplyKitchen a household name in Singapore and appreciate your assistance in helping us do so!
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -63,60 +63,66 @@ The [FAQs](#faq) section contains some Frequently Asked Questions with regard to
 
 Finally, the [command summary](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
 # 3. Quick start
 
-* Ensure that you have Java 11 or above installed on your computer.
-* Download the most recent SimplyKitchen.jar file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
-* Copy the downloaded jar file into a folder which will be your home folder for SimplyKitchen.
-* Double click on the SimplyKitchen.jar file to launch the app. An app window similar to the one shown below should appear in a few seconds.
+* Ensure that you have `Java 11` or above installed on your computer.
+* Download the most recent `SimplyKitchen.jar` file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
+* Copy the downloaded jar file into a folder which will be your _*home folder*_ for SimplyKitchen.
+* Double click on the `SimplyKitchen.jar` file to launch the app. An app window similar to the one shown below should appear in a few seconds.
 
   ![GUI for the app](images/Ui.png)
 
-* Notice how the app is populated with some sample data. Some food items from the sample data are expired. A pop up window will appear as below, which indicates the expired items. 
+* Notice how the app is populated with some sample data. Some food items from the sample data are expired. A pop up window will appear as below, which indicates the `expired items`. 
  
   ![Pop up window of expired items](images/UiPopUp.png)
 
-* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
+* Start using the app by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
 * Refer to the [features section in this guide](#features) for help on how to use the app.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
 # 4. Features
+This section contains information on the features of SimplyKitchen and the respective commands that you can use.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
 
+* Items with the format `lower_case/` are prefixes. They denote the different parameters.<br>
+  e.g. `d/`, `e/`, `q/`
+
 * You have to supply values for parameters in `UPPER_CASE`.<br>
   e.g. In `add d/DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `add d/cucumber`.
 
-* Parameters are compulsory unless they are in square brackets.<br>
+* Items in square brackets are optional.<br>
   e.g `d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` can be used as `d/bread e/30-09-2020` or as `d/bread e/30-09-2020 p/low`.
-  However, it cannot be used as `e/30-09-2020 p/low` because the description is missing.
 
 * Parameters can be in any order.<br>
   e.g. If the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
 
-* Ellipis after a parameter indicates that multiple entries of that parameter can be given.<br>
-  e.g. In `[t/TAG]…`, the relevant command can have zero or more tags each with the prefix `t/`, as in `t/spicy t/mustard`.
+* Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
+  e.g. In `[t/TAG]...`, the command can have zero or more tags, as in `t/spicy t/mustard`.
 
-* For all parameters, the extra whitespaces leading and succeeding the parameter will be ignored.<br>
+* Parameters without ellipsis can only appear once.<br>
+  e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
+
+* Extra whitespaces leading and succeeding the parameter will be ignored.<br>
   e.g. The description parameter `d/    cashew  nuts   `, will be stored as `d/cashew  nuts`.
 
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 4.1. Basic Commands
 The commands in this section can be used to manipulate food items.
 
-## 4.1.1. Adding a food item
+### 4.1.1. Adding a food item
 
 The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
@@ -131,6 +137,7 @@ You can then access the food item later on for editing, deleting etc.
 * The quantity field consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
   * The `value` is compulsory. It must be a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
   * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, spaces and special characters are not allowed. If not provided, the default unit - `unit` - will be given.
+    The maximum length of the quantity unit is 20 characters.
 * The priority field can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `low`.
 * The tag field accepts `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
@@ -143,9 +150,9 @@ You can then access the food item later on for editing, deleting etc.
 
   ![result for 'add d/Apple pie e/11-11-2020 q/2 p/medium t/frozen t/$15 t/contains nuts'](images/Add.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.1.2. Editing a food item
+### 4.1.2. Editing a food item
 
 The edit command edits the details of an existing food item in your food inventory.
 If an entry is incorrect, you can easily edit the entry without deleting and re-adding the food item.
@@ -159,7 +166,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to the [`add`](#adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* Similar to the [add](#411-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
 
 <div markdown="block" class="alert alert-info">
 
@@ -173,9 +180,9 @@ The constraints for the individual parameters of this command (description, expi
 * `edit 1 d/baked beans e/1-1-2020` edits the food description and expiry date of the 1st food item to be `baked beans` and `01-01-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.50 can` and clears all existing tags.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.1.3. Deleting a food item
+### 4.1.3. Deleting a food item
 
 The `delete` command deletes a specified food item from your food inventory, so that you can stop tracking it.
 
@@ -189,9 +196,9 @@ The `delete` command deletes a specified food item from your food inventory, so 
 * `list` followed by `delete 2` deletes the 2nd food item in your food inventory.
 * `find d/tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.1.4. Changing the quantity of a food item
+### 4.1.4. Changing the quantity of a food item
 
 The `changeqty` command changes the quantity of an existing food item in your food inventory without you having to calculate it yourself.
 Use this command if you have bought new food items or used/discarded some existing food items.
@@ -202,6 +209,7 @@ Use this command if you have bought new food items or used/discarded some existi
   * The index **must be a positive integer** 1, 2, 3, …
 * The amount is the quantity of a food item you want to change by.
   * The amount is a non-zero signed number with a maximum of 2 decimal places. It should be more than -100,000.00 and less than +100,000.00, but not zero.
+  * Indicate a positive or negative sign before the value to show increment or decrement respectively.
   * Do not add a whitespace between the sign and the value. e.g. `+1` is acceptable but not `+ 1`.
 * Do not specify the unit of the food item. The existing unit will be used instead.
 
@@ -221,12 +229,12 @@ If you have used up all the flour, use the [`delete`](#deleting-a-food-item) com
 * `list` followed by `changeqty 1 a/+1` increases the quantity of the 1st food item in your food inventory by 1.
 * `find d/tuna` followed by `changeqty 2 a/-2.50` decreases the quantity of the 2nd food item from the result of the `find` command by 2.50.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 4.2. Sorting Commands
 The commands in this section can be used to sort the food list. Before the list of food items is sorted for the first time, it will be ordered by `description`.
 
-## 4.2.1. Sort food items by description
+### 4.2.1. Sort food items by description
 
 The `sortdesc` command sorts the list of food items by description. This function is useful if you forget a food item's exact spelling, and you are unable to use the `find` command for it.
 
@@ -243,9 +251,9 @@ The `sortdesc` command sorts the list of food items by description. This functio
 
   ![sorting by description](images/SortDesc.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.2.2. Sort food items by expiry date
+### 4.2.2. Sort food items by expiry date
 
 The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which food items are expiring first.
 
@@ -257,9 +265,9 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 
   ![sorting by expiry date from oldest to newest](images/SortExpiry.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.2.3. Sort food items by priority
+### 4.2.3. Sort food items by priority
 
 The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which food items have higher priority.
 
@@ -271,21 +279,21 @@ The `sortpriority` command sorts the list of food items by priority from high to
 
 ![sorting by priority from HIGH to LOW](images/SortPriority.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 4.3. Viewing Commands
 The commands in this section can used to list different types of food items.
 
-## 4.3.1. Listing all food items
+### 4.3.1. Listing all food items
 
 The `list` command shows the complete list of food items in your food inventory.
 This command is suitable if you want to get a glimpse of all your food items currently in your kitchen.
 
 **Format:** `list`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.3.2. Finding food items
+### 4.3.2. Finding food items
 
 The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
 The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
@@ -294,7 +302,6 @@ The search will return food items with matching description, priority, expiry da
 
 * You must specify at least one parameter for this command to be valid.
 * The search is case-insensitive. e.g `fish` will match `Fish`.
-* The order of the descriptions does not matter. e.g. `Cake Fish` will match `Fish Cake`.
 * Only full words in description will be matched. e.g. `fis` will not match `fish`.
 * Food items with description matching at least one keyword will be returned (i.e `OR` search). e.g. `fish` will return `Fish Cake`, `Tuna Fish`.
 * The expiry date field only accepts a date in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
@@ -303,6 +310,7 @@ The search will return food items with matching description, priority, expiry da
   * Tags with only whitespace(s) are not allowed.
   * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
   * Food items with tags matching at least one of the search tags will be returned (i.e `OR` search). e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags.
+* The description and tag can contain a maximum of 50 and 72 characters respectively.
 
 **Examples:**
 * `find d/chocolate` returns `Chocolate Pie` and `Chocolate Cake`.
@@ -314,9 +322,9 @@ The search will return food items with matching description, priority, expiry da
   
   ![result for 'find d/biscuits p/medium e/30-12-2020 t/cat t/dog'](images/Find.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.3.3. Viewing expired food items
+### 4.3.3. Viewing expired food items
 
 When you launch the app, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
 If there is any expired food item, a pop-up window similar to the one shown below will appear with the list of expired food item(s).
@@ -328,12 +336,12 @@ If you want to see the list of expired food items when using the app, you can us
 
 **Format:** `expired`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 4.4. Miscellaneous Commands
 These are additional commands that you are able to use to enhance your experience with SimplyKitchen.
 
-## 4.4.1. Undoing previous command
+### 4.4.1. Undoing previous command
 
 The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
 Undoable commands are commands that modify your food inventory's content (`add`, `delete`, `edit`, `changeqty` and `clear`).
@@ -344,9 +352,9 @@ Undoable commands are commands that modify your food inventory's content (`add`,
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.4.2. Redoing previously undone command
+### 4.4.2. Redoing previously undone command
 
 The `redo` command restores your food inventory to a state before an undo command was executed. This lets you easily redo commands that were incorrectly undone.
 
@@ -356,18 +364,18 @@ The `redo` command restores your food inventory to a state before an undo comman
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` followed by `undo` then `redo` will redo the `clear` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.4.3. Clearing all entries
+### 4.4.3. Clearing all entries
 
 The `clear` command clears all entries from your food inventory. This lets you easily clear the sample data, or start on a clean food inventory.
 Note that the data saved in your hard disk will also be cleared!
 
 **Format:** `clear`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.4.4. Viewing help
+### 4.4.4. Viewing help
 
 The `help` command shows a help message explaining how to access the user guide.
 After entering this command, you should see a pop-up window similar to the one shown below.
@@ -376,21 +384,21 @@ After entering this command, you should see a pop-up window similar to the one s
 
 **Format:** `help`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-## 4.4.5. Exiting the program
+### 4.4.5. Exiting the program
 
-The `exit` command closes the app.
+The `exit` command closes the app. This lets you easily exit the application from the CLI.
 
 **Format:** `exit`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 4.5. Saving the data
 
 Your food inventory data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -417,7 +425,7 @@ Whether the `priority` and the `quantity` are same or different is not considere
 
 ![duplicate food example](images/duplicateFood.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -441,9 +449,23 @@ Action | Format, Examples
 **Redo** | `redo`
 **Exit** | `exit`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-# 7. Glossary
+## 7. Glossary
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+Term | Definition/Description
+-------|------------------
+**CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
+**Description** | The description of a food item.
+**Duplicate Food Item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
+**Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
+**Expiry Date** | The expiry date of a food item.
+**GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
+**Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
+**Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
+**Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
+**Tag** | Tags are additional information that can be added to food items.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------

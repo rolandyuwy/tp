@@ -57,5 +57,10 @@ public interface Logic {
     /**
      * Returns true if the data file format is invalid.
      */
-    boolean isDataFileInvalid();
+    boolean isDataFileOrUserPrefsDataInvalid();
+
+    /**
+     * Returns the message to describe the error of the invalid data file or user prefs data.
+     */
+    String getInvalidDataFileOrUserPrefsDataErrorMessage();
 }

@@ -1,10 +1,12 @@
 package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.simplykitchen.MainApp.INVALID_USER_PREFS_SORTING_DESCRIPTION;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESC_THEN_ASC_EXPIRY;
 import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
 import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
+import static seedu.simplykitchen.model.util.ComparatorUtil.isSortingComparatorsDescriptionValid;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -36,10 +38,12 @@ public class ModelManager implements Model {
     private final FilteredList<Food> expiredFilteredFoods;
     private SortedList<Food> expiringSortedFoods;
 
-    private boolean isDataFileInvalid;
+    private boolean isDataFileOrUserPrefsInvalid;
+    private String invalidDataFileOrUserPrefsErrorMessage = "";
 
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     * Default sorting is used if sorting comparators description in {@code userPrefs} is invalid.
      */
     public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -50,7 +54,12 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
-        this.sortingComparators = getComparator(userPrefs.getSortingComparatorsDescription());
+        if (!isSortingComparatorsDescriptionValid(userPrefs.getSortingComparatorsDescription())) {
+            this.isDataFileOrUserPrefsInvalid = true;
+            this.invalidDataFileOrUserPrefsErrorMessage += INVALID_USER_PREFS_SORTING_DESCRIPTION;
+        }
+        this.sortingComparators = getComparator(this.userPrefs.getSortingComparatorsDescription());
+        sortFoodInventoryBySortingComparators();
 
         filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
 
@@ -63,11 +72,13 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     * Initializes a ModelManager with the given Food Inventory and with reference to userPrefs with an error message.
      */
-    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs, boolean isDataFileInvalid) {
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs,
+                        boolean isDataFileOrUserPrefsInvalid, String invalidDataFileOrUserPrefsErrorMessage) {
         this(foodInventory, userPrefs);
-        this.isDataFileInvalid = isDataFileInvalid;
+        this.isDataFileOrUserPrefsInvalid = isDataFileOrUserPrefsInvalid;
+        this.invalidDataFileOrUserPrefsErrorMessage += invalidDataFileOrUserPrefsErrorMessage;
     }
 
     public ModelManager() {
@@ -301,8 +312,13 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean isDataFileInvalid() {
-        return this.isDataFileInvalid;
+    public boolean isDataFileOrUserPrefsInvalid() {
+        return this.isDataFileOrUserPrefsInvalid;
+    }
+
+    @Override
+    public String getInvalidDataFileOrUserPrefsErrorMessage() {
+        return this.invalidDataFileOrUserPrefsErrorMessage;
     }
 
 }
