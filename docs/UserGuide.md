@@ -525,9 +525,13 @@ Your food inventory data is saved in the hard disk automatically after any comma
 
 Allows storage location information to be tracked for a food item, using the `s/` prefix.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+
 ### 6.1.2. Moving a food item
  
 Moves a food item from one storage location to another storage location.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 **Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
 
@@ -537,11 +541,15 @@ Moves a food item from one storage location to another storage location.
 
 Sorts the list of food items in reverse order to the `sortdesc` command.
 
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+
 ### 6.2.2. Checking sorting order
 
 Displays the current sorting order of the food list.
 
 **Format:** `vieworder`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 6.3. Find Command
 
@@ -556,7 +564,7 @@ Allows for food items to match when their fields match partially to the search f
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. Frequently asked questions (FAQs)
+# 7. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the data file in your previous SimplyKitchen home folder.
@@ -585,7 +593,7 @@ Therefore, the food item to be added is considered a duplicate.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 8. Command summary
+# 8. Command summary
 
 Action | Format, Examples
 -------|------------------
@@ -609,7 +617,7 @@ Action | Format, Examples
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 9. Glossary
+# 9. Glossary
 
 Term | Definition/Description
 -----|------------------
