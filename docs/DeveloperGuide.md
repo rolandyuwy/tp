@@ -17,7 +17,7 @@ title: Developer Guide
   * [Common classes](#common-classes)
 * [Implementation](#implementation)
   * [Undo/Redo feature](#undoredo-feature)
-  * [Sorting feature](#sorting-feature)
+  * [Sort feature](#sort-feature)
   * [Quantity field in food items](#quantity-field-in-food-items)
   * [Change quantity feature](#change-quantity-feature)
   * [Find feature](#find-feature)
@@ -58,7 +58,7 @@ The [Implementation](#implementation) section contains details about the impleme
 It also provides details about design considerations and implementation alternatives.
 This section allows you to understand our thought process and make your own design considerations.
 
-This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops).
+This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-and-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
 The [appendix for requirements](#appendix-requirements) section consists of details of the planning stage of the project.
@@ -291,7 +291,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
 
-### Sorting feature
+### Sort feature
 
 #### Implementation
 
@@ -748,7 +748,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by expiry date.
 
-**2.** SimplyKitchen displays the food list sorted by expiry date.
+**2.** SimplyKitchen sorts the food list by expiry date.
 
 Use case ends.
 
@@ -768,7 +768,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by priority.
 
-**2.** SimplyKitchen displays the food list sorted by priority.
+**2.** SimplyKitchen sorts the food list by priority.
 
 Use case ends.
 
@@ -788,7 +788,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by description.
 
-**2.** SimplyKitchen displays the food list sorted by description.
+**2.** SimplyKitchen sorts the food list by description.
 
 Use case ends.
 
@@ -895,6 +895,23 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+
+### Sorting the food list
+
+1. Deleting a food item while all food items are being shown
+
+   1. Prerequisites: List all food items using the `list` command. Multiple food items in the list.
+
+   1. Test case: `delete 1`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `delete 0`<br>
+      Expected: No food item is deleted. Error details shown in the status message. Status bar remains the same.
+
+   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Saving data
 
