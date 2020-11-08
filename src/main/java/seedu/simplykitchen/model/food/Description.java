@@ -60,6 +60,7 @@ public class Description {
      * is of lower precedence, and -1 otherwise.
      */
     public int compareFirstCharacterTo(Description description) {
+        requireNonNull(description);
         Character character1 = this.fullDescription.charAt(0);
         Character character2 = description.fullDescription.charAt(0);
         int comparedValue = compare(toLowerCase(character1), toLowerCase(character2));

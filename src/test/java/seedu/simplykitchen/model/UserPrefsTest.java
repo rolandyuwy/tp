@@ -23,4 +23,11 @@ public class UserPrefsTest {
         UserPrefs userPrefs = new UserPrefs();
         assertThrows(NullPointerException.class, () -> userPrefs.setSortingComparatorsDescription(null));
     }
+
+    @Test
+    public void isSortingComparatorsDescriptionValid_nullSortingComparatorsDescription_throwsNullPointerException() {
+        UserPrefs userPrefs = new UserPrefs();
+        assertThrows(NullPointerException.class, () -> userPrefs.isSortingComparatorsDescriptionValid(null));
+    }
+
 }

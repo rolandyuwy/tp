@@ -97,6 +97,7 @@ public class ExpiryDate {
      * Returns true if a given {@code expiryDate}'s expiry date is after the expiry date.
      */
     public boolean isAfter(ExpiryDate expiryDate) {
+        requireNonNull(expiryDate);
         try {
             String expiryDateString1 = padDayAndMonthWithZero(replaceSlashWithDash(this.value));
             String expiryDateString2 = padDayAndMonthWithZero(replaceSlashWithDash(expiryDate.value));
