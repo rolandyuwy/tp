@@ -3,8 +3,6 @@ layout: page
 title: Boh Cheng Hin's Project Portfolio Page
 ---
 
-# Boh Cheng Hin - Project Portfolio
-
 ## Project: SimplyKitchen
 
 <img src="../images/Logo.png" alt="Application Logo" height="125">
