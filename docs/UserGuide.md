@@ -557,7 +557,7 @@ Allows for food items to match when their fields match partially to the search f
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. Frequently asked questions (FAQs)
+# 7. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the data file in your previous SimplyKitchen home folder.
@@ -586,7 +586,7 @@ Therefore, the food item to be added is considered a duplicate.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 8. Command summary
+# 8. Command summary
 
 Action | Format, Examples
 -------|------------------
@@ -610,7 +610,7 @@ Action | Format, Examples
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 9. Glossary
+# 9. Glossary
 
 Term | Definition/Description
 -----|------------------
