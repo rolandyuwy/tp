@@ -55,13 +55,6 @@ If you plan to use Intellij IDEA (highly recommended):
 
    When you are ready to start coding, we recommend that you get some sense of the overall design by reading about [SimplyKitchen’s architecture](DeveloperGuide.md#architecture).
 
-1. **Do the tutorials**
-   These tutorials will help you get acquainted with the codebase.
-
-   * [Tracing code](tutorials/TracingCode.md)
-   * [Removing fields](tutorials/RemovingFields.md)
-   * [Adding a new command](tutorials/AddRemark.md)
-
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------

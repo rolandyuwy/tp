@@ -7,7 +7,7 @@ title: Song Yi's Project Portfolio Page
 
 ![Application Logo](../images/Logo.png)
 
-![SimplyKitchen UI](../images/SimplyKitchenPPP.png)
+![SimplyKitchen UI](../images/Ui.png)
 
 SimplyKitchen is a desktop app for food inventory management, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). With intuitive and practical features, SimplyKitchen can get food management tasks done faster and more efficiently than traditional GUI apps.
 Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
