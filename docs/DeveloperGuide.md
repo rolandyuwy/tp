@@ -17,7 +17,7 @@ title: Developer Guide
   * [Common classes](#common-classes)
 * [Implementation](#implementation)
   * [Undo/Redo feature](#undoredo-feature)
-  * [Sorting feature](#sorting-feature)
+  * [Sort feature](#sort-feature)
   * [Quantity field in food items](#quantity-field-in-food-items)
   * [Change quantity feature](#change-quantity-feature)
   * [Find feature](#find-feature)
@@ -58,7 +58,7 @@ The [Implementation](#implementation) section contains details about the impleme
 It also provides details about design considerations and implementation alternatives.
 This section allows you to understand our thought process and make your own design considerations.
 
-This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-dev-ops).
+This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-and-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
 The [appendix for requirements](#appendix-requirements) section consists of details of the planning stage of the project.
@@ -291,27 +291,34 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### Sorting feature
+### Sort feature
 
 #### Implementation
 
-The sorting feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
+The sort feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
 The sorting order is in accordance to what is likely the most useful order for the user.
 
-Thus, `SortDescCommand` sorts the list of food displayed by description, then by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`.
+Thus, `SortDescCommand` sorts the list of food by description, with items of the same description sorted by expiry date from oldest to newest, 
+and items of the same description and expiry date sorted by priority from `HIGH` to `LOW`.
 
-Similarly, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by description.
+Similarly, `SortExpiryCommand` sorts the list of food by expiry date from oldest to newest, with items of the same expiry date sorted by priority from `HIGH` to `LOW`, 
+and items of the same expiry date and priority sorted by description.
 
-Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by description.
+Similarly, `SortPriorityCommand` sorts the list of food by priority from `HIGH` to `LOW`, with items of the same priority sorted by expiry date from oldest to newest, 
+and items of the same priority and expiry date sorted by description.
 
-When the commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `versionedFoodInventory` attribute in `model` is sorted.
+When the sort commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, 
+the `versionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `internalList` attribute in `UniqueFoodList`.
 
-This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` with the relevant `comparators` for sorting.
+This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` which takes in a variable number of relevant `comparators` in order to sort the food list.
 
-`model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` are then called to save the sorting information.
+Following which, `model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` 
+are called to save the sorting information in the user's `preferences.json` file. 
 
-Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
+When invalid sorting information is read from `preferences.json` file, an error message will be displayed in the Result Box of the GUI, and the stored sorting order will be set to the default sorting: by description.
+
+Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI dynamically when `MainWindow` calls `logic#getFilteredFoodList()`.
 
 The following sequence diagram illustrates how the command `sortdesc` works:
 
@@ -319,22 +326,22 @@ The following sequence diagram illustrates how the command `sortdesc` works:
 
 #### Design consideration:
 
-Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
+Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders and commands.
 
 Sorting information is stored as user preferences, to allow for the information to be retained when the application closes. Thus, the user's preferred sorting mechanism is stored, to enhance user experience.
 
-Furthermore, this helps for items added or edited by calling `AddCommand` and `EditCommand` in the list to be updated dynamically according to the sorting mechanism. Thus, the user does not need to sort the list again.
+Furthermore, this allows for dynamic updates of the food item list according to the stored sorting preference. In other words,
+ when a food item is added or edited by calling `AddCommand` and `EditCommand`, the food item will be sorted dynamically according to the stored sorting mechanism. Thus, there is reduced hassle as the user does not need to sort the list again.
 
 ##### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
-  * Pros: Less hassle if a specific sorting order is preferred by the user.
-  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user, as sorting is useful for narrowed down lists.
-    However, they may achieve the same result by first sorting, then executing `FindCommand` or `ListCommand`
+  * Pros: There is less hassle when refreshing the app, as the specific sorting order preferred by the user is stored.
+  * Cons: If the user wishes to sort displayed lists temporarily, they may only achieve this by sorting, then undoing the command, which may be a hassle.
 
-* **Alternative 2:** Lists are sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
-  * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
-  * Cons: Sorting is not permanent, thus lists stored are sorted by description by default.
+* **Alternative 2:** Lists are always sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
+  * Pros: The user is able to sort the lists temporarily if they prefer to do so.
+  * Cons: Sorting is not permanent, thus lists stored are sorted by description by default, which is not desirable if the user has other preferred sorting orders.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
@@ -518,11 +525,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                      | use more intuitive commands                                | be more comfortable with using the app                                   |
 | `* * *`  | user who likes efficiency                 | search for food items based on their priorities            | know which food items belong to a certain priority                       |
 | `* * *`  | user                                      | search for food items based on their expiry dates          | know which food items are expiring on a certain date                     |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities                          |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                                 |
+| `* * *`  | busy user                                 | sort my list of food items by their priorities             | know which food items are of certain priorities                          |
+| `* * *`  | busy user                                 | sort my list of food items by their expiry dates           | know which food items are expiring first                                 |
+| `* * *`  | busy user                                 | sort my list of food items by their description            | view a systematic list of food items sorted by description               |
+| `* * *`  | busy user                                 | store my current sorting order                             | refresh the app while maintaining my current sorting order               |
 | `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen             |
-| `* * *`  | forgetful user                            | be notified of expired food items                          | know which food items are expired and can be thrown away                 |
-| `* * *`  | forgetful user                            | be notified of expiring food items                         | know which food items are expiring soon and use them before they expired |
+| `* * *`  | forgetful user                            | be able to view a list of expired food items               | know which food items are expired and can be thrown away                 |
+| `* * *`  | forgetful user                            | be able to view a list of expiring food items              | know which food items are expiring soon and use them before they expired |
 | `* * *`  | user                                      | undo and redo my actions                                   | easily fix the mistakes when using the application                       |
 | `* *`    | user                                      | tag food items                                             | add additional information pertaining/relating to them                   |
 | `* *`    | user                                      | search for food items based on their tags                  | know which food items are tagged with a certain information              |
@@ -748,7 +757,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by expiry date.
 
-**2.** SimplyKitchen displays the food list sorted by expiry date.
+**2.** SimplyKitchen sorts the food list by expiry date.
 
 Use case ends.
 
@@ -768,7 +777,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by priority.
 
-**2.** SimplyKitchen displays the food list sorted by priority.
+**2.** SimplyKitchen sorts the food list by priority.
 
 Use case ends.
 
@@ -788,7 +797,7 @@ Use case ends.
 
 **1.** User requests to sort the food list by description.
 
-**2.** SimplyKitchen displays the food list sorted by description.
+**2.** SimplyKitchen sorts the food list by description.
 
 Use case ends.
 
@@ -893,6 +902,24 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+
+### Sorting the food list
+
+1. Sorting the food list while some or all food items are being shown
+
+   1. Prerequisites: List all food items using the `list` command, or use `find` command to display the list of food matching the search fields.
+   There should be multiple food items displayed in the list. 
+
+   2. Test case: `sortdesc`<br>
+      Expected: The food items in the list is sorted by description.
+
+   3. Test case: `sortpriority`<br>
+      Expected: The food items in the list is sorted by priority from high to low.
+
+   4. Test case: `sortexpiry`<br>
+      Expected: The food items in the list is sorted by expiry date from oldest to newest.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 

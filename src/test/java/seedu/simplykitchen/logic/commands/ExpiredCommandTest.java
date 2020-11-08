@@ -1,5 +1,7 @@
 package seedu.simplykitchen.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.ExpiredCommand.NO_EXPIRED_ITEMS;
 import static seedu.simplykitchen.logic.commands.ExpiredCommand.SHOWING_EXPIRED_MESSAGE;
@@ -18,6 +20,7 @@ public class ExpiredCommandTest {
     public void execute_expired_success() {
         CommandResult expectedCommandResultWithNoExpiredItems =
                 new CommandResult(NO_EXPIRED_ITEMS, false, false, false);
+        assertFalse(expectedCommandResultWithNoExpiredItems.isShowExpired());
         assertCommandSuccess(new ExpiredCommand(), model, expectedCommandResultWithNoExpiredItems, expectedModel);
 
         model.addFood(new FoodBuilder().withDescription("Pizza").withPriority("low")
@@ -26,6 +29,7 @@ public class ExpiredCommandTest {
                 .withExpiryDate("1-1-2020").withQuantity("1.5").withTags("cheese").build());
         CommandResult expectedCommandResultWithExpiredItems =
                 new CommandResult(SHOWING_EXPIRED_MESSAGE, true, false, false);
+        assertTrue(expectedCommandResultWithExpiredItems.isShowExpired());
         assertCommandSuccess(new ExpiredCommand(), model, expectedCommandResultWithExpiredItems, expectedModel);
     }
 }
