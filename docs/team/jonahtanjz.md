@@ -4,7 +4,7 @@
 
 ![Application Logo](../images/Logo.png)
 
-![SimplyKitchen UI](../images/SimplyKitchenPPP.png)
+![SimplyKitchen UI](../images/Ui.png)
 
 ## Overview
 

@@ -28,7 +28,7 @@ Read [this Gradle Tutorial from the se-edu/guides](https://se-education.org/guid
 
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -43,6 +43,6 @@ This project has three types of tests:
 1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
    e.g. `seedu.simplykitchen.logic.LogicManagerTest`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------

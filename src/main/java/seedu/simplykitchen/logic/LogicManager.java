@@ -97,7 +97,12 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public boolean isDataFileInvalid() {
-        return model.isDataFileInvalid();
+    public boolean isDataFileOrUserPrefsDataInvalid() {
+        return model.isDataFileOrUserPrefsInvalid();
+    }
+
+    @Override
+    public String getInvalidDataFileOrUserPrefsDataErrorMessage() {
+        return model.getInvalidDataFileOrUserPrefsErrorMessage();
     }
 }
