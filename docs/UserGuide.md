@@ -16,9 +16,9 @@ title: User Guide
     * [5.1.3. Deleting a food item](#513-deleting-a-food-item)
     * [5.1.4. Changing the quantity of a food item](#514-changing-the-quantity-of-a-food-item)
   * [5.2. Sorting Commands](#52-sorting-commands)  
-    * [5.2.1. Sort food items by description](#521-sorting-food-items-by-description)
-    * [5.2.2. Sort food items by expiry date](#522-sorting-food-items-by-expiry-date)
-    * [5.2.3. Sort food items by priority](#523-sorting-food-items-by-priority)
+    * [5.2.1. Sorting food items by description](#521-sorting-food-items-by-description)
+    * [5.2.2. Sorting food items by expiry date](#522-sorting-food-items-by-expiry-date)
+    * [5.2.3. Sorting food items by priority](#523-sorting-food-items-by-priority)
   * [5.3. Viewing Commands](#53-viewing-commands)    
     * [5.3.1. Listing all food items](#531-listing-all-food-items)
     * [5.3.2. Finding food items](#532-finding-food-items)
@@ -274,9 +274,9 @@ Use this command if you have bought new food items or used/discarded some existi
 
 Choose an amount such that the **final** quantity of the food item is not less than or equal to zero, or more than 100,000.
 
-For example, you have already added 5 grams of flour in your food inventory with the [`add`](#adding-a-food-item) command.
+For example, you have already added 5 grams of flour in your food inventory with the [`add`](#511-adding-a-food-item) command.
 You can use the `changeqty` command to add 0.01 to 99,995.00 grams of flour or subtract 0.01 to 4.99 grams of flour.
-If you have used up all the flour, use the [`delete`](#deleting-a-food-item) command instead.
+If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item) command instead.
 
 </div>
 
@@ -288,7 +288,7 @@ If you have used up all the flour, use the [`delete`](#deleting-a-food-item) com
 
 ## 5.2. Sorting Commands
 The commands in this section can be used to sort the food list. Before the list of food items is sorted for the first time, it will be ordered by `description` by default. 
-Refer to [`5.2.1. Sorting food items by description`](#521-sort-food-items-by-description) for a detailed explanation of sorting by description.
+Refer to [`5.2.1. Sorting food items by description`](#521-sorting-food-items-by-description) for a detailed explanation of sorting by description.
 
 ### 5.2.1. Sorting food items by description
 

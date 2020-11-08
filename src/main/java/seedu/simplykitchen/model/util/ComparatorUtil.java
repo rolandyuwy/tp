@@ -6,7 +6,10 @@ import static seedu.simplykitchen.logic.commands.SortExpiryCommand.SORT_EXPIRY_C
 import static seedu.simplykitchen.logic.commands.SortPriorityCommand.SORT_PRIORITY_COMPARATORS;
 
 import java.util.Comparator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.model.food.Food;
 
 
@@ -33,6 +36,11 @@ public class ComparatorUtil {
     public static final Comparator<Food> SORT_BY_DESC_THEN_ASC_EXPIRY = SORT_BY_ASCENDING_EXPIRY_DATE
             .thenComparing(SORT_BY_FIRST_CHARACTER).thenComparing(SORT_BY_LEXICOGRAPHICAL_ORDER);
 
+    private static Logger logger = LogsCenter.getLogger("ComparatorUtil.class");
+
+    /**
+     * Enumerates all comparator information required for sorting commands.
+     */
     public enum ComparatorInformation {
         PRIORITY("descending priority", SORT_PRIORITY_COMPARATORS),
         DESCRIPTION("description", SORT_DESC_COMPARATORS),
@@ -77,6 +85,7 @@ public class ComparatorUtil {
      */
     public static Comparator<Food>[] getComparator(String comparatorDescription) {
         requireNonNull(comparatorDescription);
+        logger.log(Level.INFO, "Getting sorting comparators for: " + comparatorDescription);
         for (ComparatorInformation comparatorInformation : ComparatorInformation.values()) {
             if (comparatorDescription.equals(comparatorInformation.getDescription())) {
                 return comparatorInformation.getSortingComparators();
@@ -92,8 +101,11 @@ public class ComparatorUtil {
      */
     public static String generateSortingComparatorsDescription(Comparator<Food>[] sortingComparators) {
         requireNonNull(sortingComparators);
+        logger.log(Level.INFO, "Generating sorting comparators description");
         for (ComparatorInformation comparatorInformation : ComparatorInformation.values()) {
             if (sortingComparators.equals(comparatorInformation.getSortingComparators())) {
+                logger.log(Level.INFO, "Sorting comparators description generated: "
+                        + comparatorInformation.getDescription());
                 return comparatorInformation.getDescription();
             }
         }
