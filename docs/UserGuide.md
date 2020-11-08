@@ -57,7 +57,7 @@ With a Command Line Interface (CLI), SimplyKitchen is best suited to those who c
 
 SimplyKitchen hopes to empower you to work towards a Tidy Kitchen, with Tiny Wastage!
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ The [FAQs](#faq) section contains some Frequently Asked Questions with regard to
 
 Finally, the [command summary](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing enter will open the help window.
 * Refer to the [features section in this guide](#features) for help on how to use the application.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -129,7 +129,9 @@ The table below provides the descriptions of the displayed food item components:
   Priority   | The priority of a food item. (i.e. `high`, `medium` or `low`)
   Expiry Date   | The expiry date of a food item
   Quantity   | The quantity of a food item. (e.g. `2 loafs`, `3.5 g`)
- 
+  
+ <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------
 # 5. Features
 This section contains information on the features of SimplyKitchen and the respective commands that you can use.
@@ -478,7 +480,7 @@ Allows for food items to match when their fields match partially to the search f
 **Examples:**
 * `find d/can` matches food items with descriptions `canned fish` and `cans of beans`.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -505,7 +507,7 @@ Whether the `priority` and the `quantity` are same or different is not considere
 
 ![duplicate food example](images/duplicateFood.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -529,7 +531,7 @@ Action | Format, Examples
 **Redo** | `redo`
 **Exit** | `exit`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
