@@ -1,10 +1,15 @@
+---
+layout: page
+title: Boh Cheng Hin's Project Portfolio Page
+---
+
 # Boh Cheng Hin - Project Portfolio
 
 ## Project: SimplyKitchen
 
-![Application Logo](../images/Logo.png)
+<img src="../images/Logo.png" alt="Application Logo" height="125">
 
-![Labelled Ui Diagram](../images/SimplyKitchenPPP.png)
+<img src="../images/SimplyKitchenPPP.png" alt="Labelled Ui Diagram" height="300">
 
 # Overview
 SimplyKitchen is a desktop application for food inventory management.
