@@ -101,11 +101,11 @@ This section will guide you in setting up and launching SimplyKitchen on your co
 
 **:information_source: Problems launching the app?**<br>
 
-In case the application does not start after you double-click on the file, try doing the following based on your computer's Operating System:
+In case the application does not start after you double-click on the `SimplyKitchen.jar` file, try doing the following based on your computer's Operating System:
 
 _*For Mac OS users*_
 
-* Launch the terminal and navigate to your SimplyKitchen home folder, or right-click on the folder and click on _*New Terminal at Folder*_
+* Launch the terminal and navigate to your SimplyKitchen home folder, or right-click on the folder and click on _*New Terminal at Folder*_.
 * Enter `java -jar SimplyKitchen.jar` into the terminal.
 
 _*For Windows users*_
