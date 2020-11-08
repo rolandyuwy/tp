@@ -518,11 +518,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                      | use more intuitive commands                                | be more comfortable with using the app                                   |
 | `* * *`  | user who likes efficiency                 | search for food items based on their priorities            | know which food items belong to a certain priority                       |
 | `* * *`  | user                                      | search for food items based on their expiry dates          | know which food items are expiring on a certain date                     |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their priorities   | know which food items are of certain priorities                          |
-| `* * *`  | busy user                                 | view a list of all food items sorted by their expiry dates | know which food items are expiring first                                 |
+| `* * *`  | busy user                                 | sort my list of food items by their priorities             | know which food items are of certain priorities                          |
+| `* * *`  | busy user                                 | sort my list of food items by their expiry dates           | know which food items are expiring first                                 |
+| `* * *`  | busy user                                 | sort my list of food items by their description            | view a systematic list of food items sorted by description               |
+| `* * *`  | busy user                                 | store my current sorting order                             | refresh the app while maintaining my current sorting order               |
 | `* * *`  | user                                      | update the quantity of food items when I use them          | have an updated record of food items available in my kitchen             |
-| `* * *`  | forgetful user                            | be notified of expired food items                          | know which food items are expired and can be thrown away                 |
-| `* * *`  | forgetful user                            | be notified of expiring food items                         | know which food items are expiring soon and use them before they expired |
+| `* * *`  | forgetful user                            | be able to view a list of expired food items               | know which food items are expired and can be thrown away                 |
+| `* * *`  | forgetful user                            | be able to view a list of expiring food items              | know which food items are expiring soon and use them before they expired |
 | `* * *`  | user                                      | undo and redo my actions                                   | easily fix the mistakes when using the application                       |
 | `* *`    | user                                      | tag food items                                             | add additional information pertaining/relating to them                   |
 | `* *`    | user                                      | search for food items based on their tags                  | know which food items are tagged with a certain information              |
@@ -898,18 +900,19 @@ testers are expected to do more *exploratory* testing.
 
 ### Sorting the food list
 
-1. Deleting a food item while all food items are being shown
+1. Sorting the food list while some or all food items are being shown
 
-   1. Prerequisites: List all food items using the `list` command. Multiple food items in the list.
+   1. Prerequisites: List all food items using the `list` command, or use `find` command to display the list of food matching the search fields.
+   There should be multiple food items displayed in the list. 
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `sortdesc`<br>
+      Expected: The food items in the list is sorted by description.
 
-   1. Test case: `delete 0`<br>
-      Expected: No food item is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `sortpriority`<br>
+      Expected: The food items in the list is sorted by priority from high to low.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   4. Test case: `sortexpiry`<br>
+      Expected: The food items in the list is sorted by expiry date from oldest to newest.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
