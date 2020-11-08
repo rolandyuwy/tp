@@ -7,7 +7,7 @@ title: Boh Cheng Hin's Project Portfolio Page
 
 <img src="../images/Logo.png" alt="Application Logo" height="125">
 
-<img src="../images/SimplyKitchenPPP.png" alt="Labelled Ui Diagram" height="300">
+<img src="../images/SimplyKitchenPPP.png" alt="Labelled Ui Diagram" height="280">
 
 # Overview
 SimplyKitchen is a desktop application for food inventory management.
@@ -22,17 +22,17 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Implemented `Description` field for `Food`.
     * What it does: User can specify a description for each food item to identify them in the app.
     * Justification: A description suits our application better as in addition to a food item's name, a description of the food item will allow the user to provide more information of the food, making it easier to identify each food item.
-    * Highlights: This update required good coordination with team members, as they were updating different fields as well. Our updates often occurred on the same files, resulting in many merge conflicts each time a member merged their changes. We managed to streamline the merging process by communicating the order of merge, to reduce merge conflicts.
+    * Highlights: This update required good coordination with team members, as they were updating different fields as well. We managed to streamline the merging process by communicating the order of merge, to reduce merge conflicts.
 
   * Implemented undo/redo commands.
     * What it does: Allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
     * Justification: This feature benefits users greatly as it provides them with an easy way to remedy any incorrect input entered into the application, improving the user-friendliness of the application.
-    * Highlights: This enhancement affected commands that were added after implementation, and will affect commands added in the future. It required discussions with team members who implemented commands that were undoable, and we discussed the method of implementation for those commands.
+    * Highlights: This enhancement affected commands that were added after implementation. It required discussions with team members who implemented commands that were undoable, and we discussed the method of implementation for those commands.
     * Credits: *{https://github.com/se-edu/addressbook-level4 was referenced for this feature, but changes were made to fit into the architecture of the application}*
 
   * Added conditions for duplicate food items.
     * What it does: This requires users to add a `Food` that do not have the same `Description`, `ExpiryDate` and `Tags` as another `Food`. The app shows an appropriate error message when the user attempts to add a duplicate `Food` or edit an existing `Food` to be a duplicate.
-    * Justification: Previously, a `Food` was a duplicate if it had the same `Description`, and either the same `Priority` or `ExpiryDate`. This was not very applicable to the application, and it would have caused confusion to users. The duplicate condition was changed to check for fields that we thought were appropriate fields for identifying food items.
+    * Justification: Previously, a `Food` was a duplicate if it had the same `Description`, and either the same `Priority` or `ExpiryDate`. This was not very applicable to the application, and it would have caused confusion to users. The duplicate condition was changed to check for fields that were more appropriate.
     * Highlights: This required changes to test cases on duplicate food items as well as the error messages for commands due to duplicate food items.
 
 * **Enhancements to existing features**:
