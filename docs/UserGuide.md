@@ -86,6 +86,8 @@ Finally, the [glossary](#9-glossary) section provides explanations for commonly 
 
 # 3. Quick start
 
+This section will guide you in setting up and launching SimplyKitchen on your computer.
+
 * Ensure that you have `Java 11` or above installed on your computer.
 * Download the most recent `SimplyKitchen.jar` file from [this link](https://github.com/AY2021S1-CS2103T-F13-4/tp/releases).
 * Copy the downloaded jar file into a folder which will be your _*home folder*_ for SimplyKitchen.
@@ -94,6 +96,26 @@ Finally, the [glossary](#9-glossary) section provides explanations for commonly 
   ![App window](images/AppWindow.png)
   
   <p style="text-align: center; text-decoration: underline">Figure 1: SimplyKitchen app window</p>
+  
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Problems launching the app?**<br>
+
+In case the application does not start after you double-click on the `SimplyKitchen.jar` file, try doing the following based on your computer's Operating System:
+
+_*For Mac OS users*_
+
+* Launch the terminal and navigate to your SimplyKitchen home folder, or right-click on the folder and click on _*New Terminal at Folder*_.
+* Enter `java -jar SimplyKitchen.jar` into the terminal.
+
+_*For Windows users*_
+
+* Launch the command prompt and navigate to your SimplyKitchen home folder.
+* Enter `java -jar SimplyKitchen.jar` into the command prompt.
+
+**SimplyKitchen should launch a few seconds after you have entered the command.**
+
+</div>
 
 * Notice how the application is populated with some sample data. Some food items from the sample data are expired and displayed in a separate pop-up window as shown in Figure 2.
  
@@ -376,7 +398,7 @@ A possible valid ordering of priority is shown in Figure 9.
 
 ## 5.3. Viewing commands
 
-The commands in this sections are used when navigating food item information on the application.
+The commands in this section are used when navigating food item information on the application.
 
 ### 5.3.1. Listing all food items
 
@@ -629,6 +651,8 @@ Action | Format, Examples
 Term | Definition/Description
 -----|------------------
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
+**Terminal** | A CLI system for Mac OS which allows users to control their Operating System by entering commands.
+**Command Prompt** | A CLI system for Windows which allows users to control their Operating System by entering commands.
 **Description** | The description of a food item.
 **Duplicate Food Item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
 **Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
