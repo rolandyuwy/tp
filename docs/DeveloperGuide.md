@@ -511,7 +511,7 @@ Term | Definition/Description
 **Duplicate Food Item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
 **Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
 **Expiry Date** | The expiry date of a food item.
-**Food inventory** | a complete list of food items stored in Simply Kitchen.
+**Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
 **Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
 **Mainstream OS** | Windows, Linux, Unix, OS-X.
