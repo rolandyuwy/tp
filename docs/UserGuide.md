@@ -208,6 +208,7 @@ Use this command if you have bought new food items or used/discarded some existi
   * The index **must be a positive integer** 1, 2, 3, …
 * The amount is the quantity of a food item you want to change by.
   * The amount is a non-zero signed number with a maximum of 2 decimal places. It should be more than -100,000.00 and less than +100,000.00, but not zero.
+  * Indicate a positive or negative sign before the value to show increment or decrement respectively.
   * Do not add a whitespace between the sign and the value. e.g. `+1` is acceptable but not `+ 1`.
 * Do not specify the unit of the food item. The existing unit will be used instead.
 
