@@ -1,6 +1,7 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.simplykitchen.testutil.TypicalIndexes.INDEX_FIRST_FOOD;
@@ -27,6 +28,13 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
+        // EP: non-integer
         assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+
+        // EP: negative integer
+        assertParseFailure(parser, "-1", MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
+
+        // EP: integer overflow
+        assertParseFailure(parser, String.valueOf(Integer.MAX_VALUE + 1), MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
     }
 }
