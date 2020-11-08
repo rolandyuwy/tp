@@ -8,7 +8,7 @@ title: User Guide
 * [1. Introduction](#1-introduction)
 * [2. About this document](#2-about-this-document)
 * [3. Quick start](#3-quick-start)
-* [4. Application Layout](#4-application-layout)
+* [4. Application layout](#4-application-layout)
 * [5. Features](#5-features)
   * [5.1. Basic Commands](#51-basic-commands)
     * [5.1.1. Adding a food item](#511-adding-a-food-item)
@@ -16,9 +16,9 @@ title: User Guide
     * [5.1.3. Deleting a food item](#513-deleting-a-food-item)
     * [5.1.4. Changing the quantity of a food item](#514-changing-the-quantity-of-a-food-item)
   * [5.2. Sorting Commands](#52-sorting-commands)  
-    * [5.2.1. Sort food items by description](#521-sort-food-items-by-description)
-    * [5.2.2. Sort food items by expiry date](#522-sort-food-items-by-expiry-date)
-    * [5.2.3. Sort food items by priority](#523-sort-food-items-by-priority)
+    * [5.2.1. Sorting food items by description](#521-sorting-food-items-by-description)
+    * [5.2.2. Sorting food items by expiry date](#522-sorting-food-items-by-expiry-date)
+    * [5.2.3. Sorting food items by priority](#523-sorting-food-items-by-priority)
   * [5.3. Viewing Commands](#53-viewing-commands)    
     * [5.3.1. Listing all food items](#531-listing-all-food-items)
     * [5.3.2. Finding food items](#532-finding-food-items)
@@ -30,7 +30,7 @@ title: User Guide
     * [5.4.4. Viewing help](#544-viewing-help)
     * [5.4.5. Exiting the program](#545-exiting-the-program)
   * [5.5. Saving the data](#55-saving-the-data)
-* [6. Upcoming Features](#6-upcoming-features-coming-in-v20)
+* [6. Upcoming features](#6-upcoming-features-coming-in-v20)
   * [6.1. Storage](#61-storage)
     * [6.1.1. Adding a storage location for a food item](#611-adding-a-storage-location-for-a-food-item)
     * [6.1.2. Moving a food item ](#612-moving-a-food-item)
@@ -39,7 +39,7 @@ title: User Guide
     * [6.2.2. Checking sorting order](#622-checking-sorting-order)
   * [6.3. Find Command](#63-find-command)
     * [6.3.1. Finding food items based on partial search fields](#631-finding-food-items-based-on-partial-search-fields)
-* [7. FAQs](#7-faq)
+* [7. Frequently asked questions (FAQs)](#7-frequently-asked-questions-faqs)
 * [8. Command summary](#8-command-summary)
 * [9. Glossary](#9-glossary)
 
@@ -98,7 +98,7 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 4. Application Layout
+# 4. Application layout
 This section provides an introduction to SimplyKitchen's Graphical User Interface (GUI) layout. 
 
 The figure below (Figure 3) details the main components:
@@ -129,7 +129,9 @@ The table below provides the descriptions of the displayed food item components:
   Priority   | The priority of a food item. (i.e. `high`, `medium` or `low`)
   Expiry Date   | The expiry date of a food item
   Quantity   | The quantity of a food item. (e.g. `2 loafs`, `3.5 g`)
- 
+  
+ <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+
 --------------------------------------------------------------------------------------------------------------------
 # 5. Features
 This section contains information on the features of SimplyKitchen and the respective commands that you can use.
@@ -272,9 +274,9 @@ Use this command if you have bought new food items or used/discarded some existi
 
 Choose an amount such that the **final** quantity of the food item is not less than or equal to zero, or more than 100,000.
 
-For example, you have already added 5 grams of flour in your food inventory with the [`add`](#adding-a-food-item) command.
+For example, you have already added 5 grams of flour in your food inventory with the [`add`](#511-adding-a-food-item) command.
 You can use the `changeqty` command to add 0.01 to 99,995.00 grams of flour or subtract 0.01 to 4.99 grams of flour.
-If you have used up all the flour, use the [`delete`](#deleting-a-food-item) command instead.
+If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item) command instead.
 
 </div>
 
@@ -285,28 +287,29 @@ If you have used up all the flour, use the [`delete`](#deleting-a-food-item) com
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 5.2. Sorting Commands
-The commands in this section can be used to sort the food list. Before the list of food items is sorted for the first time, it will be ordered by `description`.
+The commands in this section can be used to sort the food list. Before the list of food items is sorted for the first time, it will be ordered by `description` by default. 
+Refer to [`5.2.1. Sorting food items by description`](#521-sorting-food-items-by-description) for a detailed explanation of sorting by description.
 
-### 5.2.1. Sort food items by description
+### 5.2.1. Sorting food items by description
 
 The `sortdesc` command sorts the list of food items by description, allowing you to view your food items by description.
 
 **Format:** `sortdesc`
 
-* Sorting by description consists of first sorting lexicographically, then by the descriptions' first characters.
-* If the first characters are the same letters, descriptions with upper case first characters will be ordered lower than descriptions with lower case first characters.
+* Sorting by description consists of first sorting lexicographically, then comparing the descriptions' first characters.
+* If the first characters of two food item's descriptions are the same letters (i.e. `apple` and `Apricot`), 
+descriptions with upper case first characters will be ordered lower compared to descriptions with lower case first characters.
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
-* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
 **Examples:**
-* A possible valid ordering of descriptions would be: "apple", "apricot", "Acorn"
+* A possible valid ordering of descriptions would be: `apple`, then `apricot`, then `Acorn`.
 
   ![sorting by description](images/SortDesc.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-### 5.2.2. Sort food items by expiry date
+### 5.2.2. Sorting food items by expiry date
 
 The `sortexpiry` command sorts the list of food items by expiry date from oldest to newest. With this, you can easily tell which food items are expiring first.
 
@@ -314,13 +317,12 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 
 * Food items of the same expiry date will be sorted by priority from high to low.
 * Food items of the same expiry date and same priority will be sorted by description.
-* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
   ![sorting by expiry date from oldest to newest](images/SortExpiry.png)
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
-### 5.2.3. Sort food items by priority
+### 5.2.3. Sorting food items by priority
 
 The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which food items have higher priority.
 
@@ -328,7 +330,6 @@ The `sortpriority` command sorts the list of food items by priority from high to
 
 * If two food items have the same priority, they will be ordered by expiry date from oldest to newest.
 * If two food items have the same priority and expiry date, they will be ordered by description.
-* Before the list of food items is sorted for the first time, it will be ordered by the time of input from oldest to newest.
 
 ![sorting by priority from HIGH to LOW](images/SortPriority.png)
 
@@ -455,7 +456,7 @@ Your food inventory data is saved in the hard disk automatically after any comma
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 6. Upcoming Features [coming in v2.0]
+# 6. Upcoming features [coming in v2.0]
 
 ## 6.1. Storage
 
@@ -482,11 +483,11 @@ Allows for food items to match when their fields match partially to the search f
 **Examples:**
 * `find d/can` matches food items with descriptions `canned fish` and `cans of beans`.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. FAQ
+## 7. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SimplyKitchen home folder.
