@@ -295,23 +295,30 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### Implementation
 
-The sorting feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
+The sort feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
 The sorting order is in accordance to what is likely the most useful order for the user.
 
-Thus, `SortDescCommand` sorts the list of food displayed by description, then by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`.
+Thus, `SortDescCommand` sorts the list of food by description, with items of the same description sorted by expiry date from oldest to newest, 
+and items of the same description and expiry date sorted by priority from `HIGH` to `LOW`.
 
-Similarly, `SortExpiryCommand` sorts the list of food displayed by expiry date from oldest to newest, followed by priority from `HIGH` to `LOW`, followed by description.
+Similarly, `SortExpiryCommand` sorts the list of food by expiry date from oldest to newest, with items of the same expiry date sorted by priority from `HIGH` to `LOW`, 
+and items of the same expiry date and priority sorted by description.
 
-Similarly, `SortPriorityCommand` sorts the list of food displayed by priority from `HIGH` to `LOW`, followed by expiry date from oldest to newest, followed by description.
+Similarly, `SortPriorityCommand` sorts the list of food by priority from `HIGH` to `LOW`, with items of the same priority sorted by expiry date from oldest to newest, 
+and items of the same priority and expiry date sorted by description.
 
-When the commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, the `versionedFoodInventory` attribute in `model` is sorted.
+When the sort commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, 
+the `versionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `internalList` attribute in `UniqueFoodList`.
 
-This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` with the relevant `comparators` for sorting.
+This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` which takes in a variable number of relevant `comparators` in order to sort the food list.
 
-`model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` are then called to save the sorting information.
+Following which, `model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` 
+are called to save the sorting information in the user's `preferences.json` file. 
 
-Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI when `MainWindow` calls `logic#getFilteredFoodList()`.
+When invalid sorting information is read from `preferences.json` file, an error message will be displayed in the Result Box of the GUI, and the stored sorting order will be set to the default sorting: by description.
+
+Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI dynamically when `MainWindow` calls `logic#getFilteredFoodList()`.
 
 The following sequence diagram illustrates how the command `sortdesc` works:
 
@@ -319,24 +326,24 @@ The following sequence diagram illustrates how the command `sortdesc` works:
 
 #### Design consideration:
 
-Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders.
+Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders and commands.
 
 Sorting information is stored as user preferences, to allow for the information to be retained when the application closes. Thus, the user's preferred sorting mechanism is stored, to enhance user experience.
 
-Furthermore, this helps for items added or edited by calling `AddCommand` and `EditCommand` in the list to be updated dynamically according to the sorting mechanism. Thus, the user does not need to sort the list again.
+Furthermore, this allows for dynamic updates of the food item list according to the stored sorting preference. In other words,
+ when a food item is added or edited by calling `AddCommand` and `EditCommand`, the food item will be sorted dynamically according to the stored sorting mechanism. Thus, there is reduced hassle as the user does not need to sort the list again.
 
 ##### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
-  * Pros: Less hassle if a specific sorting order is preferred by the user.
-  * Cons: User is unable to sort lists after executing `FindCommand` or `ListCommand`, a likely useful feature for the user, as sorting is useful for narrowed down lists.
-    However, they may achieve the same result by first sorting, then executing `FindCommand` or `ListCommand`
+  * Pros: There is less hassle when refreshing the app, as the specific sorting order preferred by the user is stored.
+  * Cons: If the user wishes to sort displayed lists temporarily, they may only achieve this by sorting, then undoing the command, which may be a hassle.
 
-* **Alternative 2:** Lists are sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
-  * Pros: User may sort the items on displayed lists, after executing `FindCommand` or `ListCommand`.
-  * Cons: Sorting is not permanent, thus lists stored are sorted by description by default.
+* **Alternative 2:** Lists are always sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
+  * Pros: The user is able to sort the lists temporarily if they prefer to do so.
+  * Cons: Sorting is not permanent, thus lists stored are sorted by description by default, which is not desirable if the user has other preferred sorting orders.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Quantity field in food items
 
