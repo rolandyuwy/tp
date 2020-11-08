@@ -406,7 +406,7 @@ The `find` command searches for food items in your food inventory that match the
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note about the `description` and `tag` parameters:**<br>
+**:information_source: Note about the description and tag parameters:**<br>
 
 Each description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
 
