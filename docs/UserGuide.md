@@ -112,7 +112,7 @@ Finally, the [glossary](#9-glossary) section provides explanations for commonly 
 
 This section provides an introduction to SimplyKitchen's Graphical User Interface (GUI) layout. 
 
-The figure below (Figure 3) details the main components:
+Figure 3 details the main components:
 
 ![Labelled UI Diagram](images/LabelledUIDiagram.png)
   
@@ -129,7 +129,7 @@ Expired Food Window | A pop-up window containing a list of your expired food ite
 Result Box          | A panel which displays the response messages relevant to you while using the application
 Command Box         | A text field for you to type your commands
  
-The figure below (Figure 4) provides a breakdown of the food item components displayed in the food list:
+Figure 4 provides a breakdown of the food item components displayed in the food list:
 
 ![Food Item UI Diagram](images/FoodItemUIDiagram.png)
 
