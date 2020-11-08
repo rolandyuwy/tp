@@ -4,7 +4,7 @@
 
 ![Application Logo](../images/Logo.png)
 
-![Labelled Ui Diagram](../images/SimplyKitchenPPP.png)
+![Labelled Ui Diagram](../images/Ui.png)
 
 # Overview
 SimplyKitchen is a desktop application for food inventory management.
