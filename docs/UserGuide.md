@@ -397,13 +397,20 @@ The `find` command searches for food items in your food inventory that match the
 * The search is case-insensitive (e.g `fish` will match `Fish`).
 * Only full words in description will be matched (e.g. `fis` will not match `fish`).
 * Food items with description matching at least one keyword (i.e `OR` search) will be returned (e.g. `fish` will return `Fish Cake`, `Tuna Fish`).
-* Each description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The priority can either be `high`, `medium` or `low`.
 * The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
   * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
   * Food items with tags matching at least one of the search tags (i.e `OR` search) will be returned (e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags).
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note about the `description` and `tag` parameters:**<br>
+
+Each description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
+
+</div>
 
 **Examples:**
 * `find d/chocolate` can return `Chocolate Pie` and `Chocolate Cake`.
