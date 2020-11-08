@@ -65,18 +65,18 @@ SimplyKitchen hopes to empower you to work towards a Tidy Kitchen, with Tiny Was
 
 This document is a User Guide meant to assist you in using SimplyKitchen to manage your food inventory.
 
-The [quick start](#quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
+The [quick start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
 
 The [application layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
 
-The [features](#features) section helps you understand and use the features of SimplyKitchen.
+The [features](#5-features) section helps you understand and use the features of SimplyKitchen.
 It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
 
 The [upcoming features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion of SimplyKitchen.
 
-The [FAQs](#faq) section contains some Frequently Asked Questions with regard to SimplyKitchen.
+The [FAQs](#7-frequently-asked-questions-faqs) section contains some Frequently Asked Questions with regard to SimplyKitchen.
 
-The [command summary](#command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
+The [command summary](#8-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
 Finally, the [glossary](#9-glossary) section provides explanations for commonly used terms.
 
@@ -102,7 +102,7 @@ Finally, the [glossary](#9-glossary) section provides explanations for commonly 
   <p style="text-align: center; text-decoration: underline">Figure 2: SimplyKitchen pop-up window listing all the expired food items</p>
 
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
-* Refer to the [features section in this guide](#features) for help on how to use the app.
+* Refer to the [features section in this guide](#5-features) for help on how to use the app.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -251,7 +251,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 
 **:information_source: Note about the parameters:**<br>
 
-The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#adding-a-food-item) command.
+The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
 
 </div>
 
@@ -436,7 +436,7 @@ If you want to see the pop-up window while using the application, you can use th
 
 **:information_source: Updating your food inventory:**<br>
 
-If you have discarded the expired food item, please remember to delete the associated food item from the application using the [`delete`](#deleting-a-food-item) command.
+If you have discarded the expired food item, please remember to delete the associated food item from the application using the [`delete`](#513-deleting-a-food-item) command.
 
 </div>
 
