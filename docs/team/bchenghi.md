@@ -12,7 +12,7 @@ title: Boh Cheng Hin's Project Portfolio Page
 # Overview
 SimplyKitchen is a desktop application for food inventory management.
 More importantly, SimplyKitchen is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
-It is built using Java and JavaFX. It utilises Gradle Build Tool for build automation, GitHub Actions for continuous integration, and tests are implemented using JUnit.
+It is built using Java and JavaFX. It utilises Gradle Build Tool for build automation, GitHub Actions for continuous integration, and JUnit for tests.
 
 This is a brown-field project, and was developed from the [AddressBook-Level3](https://github.com/se-edu/addressbook-level3) project created by the [SE-EDU initiative](https://se-education.org/).
 
