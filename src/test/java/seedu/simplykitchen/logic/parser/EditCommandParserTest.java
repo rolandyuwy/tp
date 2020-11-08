@@ -6,11 +6,14 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_TOO_LONG;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT_TOO_LONG;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_TOO_LONG;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.QUANTITY_DESC_APPLE_PIE;
@@ -87,15 +90,21 @@ public class EditCommandParserTest {
     public void parse_invalidValue_failure() {
         assertParseFailure(parser, "1"
                 + INVALID_DESCRIPTION_DESC, Description.MESSAGE_CONSTRAINTS); // invalid description
+        assertParseFailure(parser, "1"
+                + INVALID_DESCRIPTION_TOO_LONG, Description.MESSAGE_EXCEED_LIMIT); // invalid description - too long
         assertParseFailure(parser, "1" + INVALID_PRIORITY_DESC,
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
         assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_DESC,
                 ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
         assertParseFailure(parser, "1" + INVALID_QUANTITY_UNIT,
                 Quantity.QUANTITY_UNIT_CONSTRAINTS); // invalid quantity unit
+        assertParseFailure(parser, "1" + INVALID_QUANTITY_UNIT_TOO_LONG,
+                Quantity.MESSAGE_UNIT_EXCEED_LIMIT); // invalid quantity unit - too long
         assertParseFailure(parser, "1" + INVALID_QUANTITY_VALUE,
                 Quantity.QUANTITY_VALUE_CONSTRAINTS); // invalid quantity value
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
+        assertParseFailure(parser, "1" + INVALID_TAG_TOO_LONG,
+                Tag.MESSAGE_EXCEED_LIMIT); // invalid tag - too long
 
         // invalid priority followed by valid expiry date
         assertParseFailure(parser, "1" + INVALID_PRIORITY_DESC + EXPIRY_DATE_DESC_APPLE_PIE,
