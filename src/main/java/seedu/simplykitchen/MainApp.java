@@ -1,5 +1,7 @@
 package seedu.simplykitchen;
 
+import static seedu.simplykitchen.model.util.ComparatorUtil.isSortingComparatorsDescriptionValid;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -37,15 +39,16 @@ import seedu.simplykitchen.ui.UiManager;
 public class MainApp extends Application {
     public static final Version VERSION = new Version(1, 4, 0, true);
 
+    public static final String INVALID_USER_PREFS_SORTING_DESCRIPTION =
+            "Sorting description not valid. Food list will be sorted by description.\n";
     private static final String INVALID_DATA_FORMAT = "Data file is not in the correct format. "
             + "Will be starting with an empty Food Inventory.\n"
             + "Please double check the data file and fix all incorrect formatting and restart the app.\n"
-            + "If you add a new food item now, all previous data will be lost.";
-
+            + "If you add a new food item now, all previous data will be lost.\n";
     private static final String DATA_FILE_NOT_FOUND = "Data file not found. Will be starting with "
-            + "a sample Food Inventory.";
+            + "a sample Food Inventory.\n";
     private static final String DATA_FILE_IO_ERROR = "Problem while reading from the file."
-            + "Will be starting with an empty Food Inventory.";
+            + "Will be starting with an empty Food Inventory.\n";
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -85,13 +88,19 @@ public class MainApp extends Application {
      * {@code storage}'s food inventory is not found,
      * or an empty food inventory will be used instead if errors occur
      * when reading {@code storage}'s food inventory.
+     * Default sorting is used if sorting comparators description in {@code userPrefs} is invalid.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyFoodInventory> simplyKitchenInventoryOptional;
         ReadOnlyFoodInventory initialData;
+
         try {
+            if (!isSortingComparatorsDescriptionValid(userPrefs.getSortingComparatorsDescription())) {
+                logger.info(INVALID_USER_PREFS_SORTING_DESCRIPTION);
+            }
             simplyKitchenInventoryOptional = storage.readFoodInventory();
             initialData = simplyKitchenInventoryOptional.orElseGet(SampleDataUtil::getSampleFoodInventory);
+
             if (!simplyKitchenInventoryOptional.isPresent()) {
                 logger.info(DATA_FILE_NOT_FOUND);
                 return new ModelManager(initialData, userPrefs, true, DATA_FILE_NOT_FOUND);

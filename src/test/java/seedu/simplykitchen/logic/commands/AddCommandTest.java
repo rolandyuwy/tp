@@ -220,12 +220,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean isDataFileInvalid() {
+        public boolean isDataFileOrUserPrefsInvalid() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public String getDataFileErrorMessage() {
+        public String getInvalidDataFileOrUserPrefsErrorMessage() {
             throw new AssertionError("This method should not be called.");
         }
     }
