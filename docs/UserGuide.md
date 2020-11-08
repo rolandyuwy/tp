@@ -398,7 +398,7 @@ A possible valid ordering of priority is shown in Figure 9.
 
 ## 5.3. Viewing commands
 
-The commands in this section can used to show different types of food items on the food list.
+The commands in this section are used when navigating food item information on the application.
 
 ### 5.3.1. Listing all food items
 
