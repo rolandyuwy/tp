@@ -39,6 +39,8 @@ public class QuantityTest {
         assertFalse(Quantity.isValidQuantity("1 @u")); // special character in unit
         assertFalse(Quantity.isValidQuantity("1 2u")); // number in unit
         assertFalse(Quantity.isValidQuantity("1 u n")); // space in unit
+        assertFalse(Quantity.isValidQuantity("1 abcdefghijklmnopqrstu")); // 21 characters in the unit
+        assertFalse(Quantity.isValidQuantity("1 abcdefghijklmnopqrstuvwxy")); // 25 characters in the unit
 
         // EP: valid quantities
         assertTrue(Quantity.isValidQuantity("01")); // zero as prefix
@@ -50,6 +52,8 @@ public class QuantityTest {
         assertTrue(Quantity.isValidQuantity(String.valueOf(Quantity.ZERO_VALUE + 0.01))); // lower bound
         assertTrue(Quantity.isValidQuantity(String.valueOf(Quantity.MAX_VALUE))); // upper bound
         assertTrue(Quantity.isValidQuantity("100000")); // upper bound converted to integer
+        assertTrue(Quantity.isValidQuantity("1.5 abcdefghijklmnopqrs")); // 19 characters in the unit
+        assertTrue(Quantity.isValidQuantity("1 abcdefghijklmnopqrst")); // 20 characters in the unit
     }
 
     @Test

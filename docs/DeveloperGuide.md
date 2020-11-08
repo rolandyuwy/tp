@@ -67,7 +67,7 @@ The [glossary](#glossary) and [non-Functional requirements](#non-functional-requ
 
 This document ends with an [appendix for instructions for manual testing](#appendix-instructions-for-manual-testing).
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ This document ends with an [appendix for instructions for manual testing](#appen
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -123,7 +123,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### UI component
 
@@ -141,7 +141,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Logic component
 
@@ -163,7 +163,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Model component
 
@@ -184,7 +184,7 @@ The `Model`,
 
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Storage component
 
@@ -196,13 +196,13 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the food inventory data in json format and read it back.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Common classes
 
 Classes used by multiple components are in the `seedu.simplykitchen.commons` package.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -289,7 +289,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the food item being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Sort feature
 
@@ -384,7 +384,7 @@ The constraints above have been applied after careful consideration of the needs
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Change quantity feature
 
@@ -431,7 +431,7 @@ This allows users to not be burdened by calculations and to focus more on having
     * Cons: Unnecessarily complicates the code.
     * Cons: Only the quantity field of a `food` object is changed so a `Descriptor` class may be an overkill.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Find feature
 
@@ -468,7 +468,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
     * Pros: Able to get all the food items that are going to expire in a certain period with one search.
     * Cons: Will need more validation to ensure the date range provided is valid.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -480,7 +480,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -499,7 +499,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Glossary
 
@@ -507,7 +507,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 * **GUI**: Graphical User Interface
 * **Food inventory**: a complete list of food items stored in Simply Kitchen
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### User stories
 
@@ -537,7 +537,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user                                      | search for food items based on their tags                  | know which food items are tagged with a certain information              |
 | `*`      | user                                      | see some sample data populated in the app                  | understand how the app will look like and what benefits it has           |
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Use cases
 
@@ -849,7 +849,7 @@ Use case ends.
 
 <br/>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Non-Functional requirements
 
@@ -858,7 +858,7 @@ Use case ends.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A user should be able to see food items clearly on the GUI to facilitate command typing.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -886,7 +886,7 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Deleting a food item
 
@@ -903,7 +903,7 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### Sorting the food list
 
@@ -927,8 +927,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Test case: Delete the `foodInventory.json` file in the `data` folder.<br>
+      Expected: Status message shows that the data file has not been found and that the application will be starting with a sample food inventory.
+   
+   2. Test case: Remove the `description` field from one of the food items in the `foodInventory.json` file in the `data` folder.<br>
+      Expected: An error message shown in the status message reporting corrupted data file format. 
+      Error message also gives scenarios of how to proceed, either fix the data file or start with a new inventory by adding a food item. 
+      
+   3. Test case: Remove any of the other fields - `expiryDate`, `priority`, `quantity`, `tagged` - from a food item in the `foodInventory.json` file.<br>
+      Expected: Similar to previous.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html">^ Back to top</a></div>
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
