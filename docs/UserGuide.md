@@ -92,7 +92,7 @@ Finally, the [command summary](#command-summary) section acts as a quick referen
   ![Pop up window of expired items](images/UiPopUp.png)
 
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
-* Refer to the [features section in this guide](#features) for help on how to use the app.
+* Refer to the [features section in this guide](#5-features) for help on how to use the app.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
