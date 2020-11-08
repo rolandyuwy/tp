@@ -398,7 +398,7 @@ These are additional commands that you are able to use to enhance your experienc
 ### 5.4.1. Undoing previous command
 
 The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
-Undoable commands are commands that modify your food inventory's content (`add`, `delete`, `edit`, `changeqty` and `clear`).
+Undoable commands are commands that modify your food inventory's content (`add`, `edit`, `delete` , `changeqty` and `clear`) and commands that sort food items (`sortdesc`, `sortexpiry`, `sortpriority`).
 
 **Format:** `undo`
 
