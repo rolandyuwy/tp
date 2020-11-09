@@ -204,7 +204,7 @@ This section contains information on the features and commands of SimplyKitchen.
   e.g `d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` can be used as `d/bread e/30-09-2020` or as `d/bread e/30-09-2020 p/low`.
 
 * Parameters can be in any order.<br>
-  e.g. If the command specifies `p/PRIORITY q/QUANTITY`, `q/QUANTITY p/PRIORITY` is also acceptable.
+  e.g. If the command specifies `p/PRIORITY q/QUANTITY`, `q/QUANTITY p/PRIORITY` is accepted.
 
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/dog`.
@@ -668,7 +668,7 @@ Action | Format, Examples
 **Sort by priority** | `sortpriority`
 **List** | `list`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`<br> e.g. `find d/biscuits e/30-12-2020 p/medium t/cat t/dog`
-**View expired food**      | `expired`
+**View expired food items**      | `expired`
 **Undo** | `undo`
 **Redo** | `redo`
 **Clear** | `clear`
