@@ -43,8 +43,8 @@ title: User Guide
 * [8. Command summary](#8-command-summary)
 * [9. Glossary](#9-glossary)
 
---------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div> 
+
 # 1. Introduction
 
 Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
@@ -84,6 +84,7 @@ Finally, the [Glossary](#9-glossary) section provides explanations for the commo
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 3. Quick start
 
 This section will guide you in setting up and launching SimplyKitchen on your computer.
@@ -130,6 +131,7 @@ _*For Windows users*_
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 4. Application layout
 
 This section provides an introduction to SimplyKitchen's Graphical User Interface (GUI) layout. 
@@ -171,6 +173,7 @@ Quantity    | The quantity of a food item. The quantity consists of 2 entities -
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 5. Features
 
 This section contains information on the features of SimplyKitchen and the respective commands that you can use.
@@ -549,6 +552,7 @@ Your food inventory data is saved in the hard disk automatically after any comma
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 6. Upcoming features [coming in v2.0]
 
 ## 6.1. Storage
@@ -596,6 +600,7 @@ Allows for food items to match when their fields match partially to the search f
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 7. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another computer?<br>
@@ -625,6 +630,7 @@ Therefore, the food item to be added is considered a duplicate.
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 8. Command summary
 
 Action | Format, Examples
@@ -649,6 +655,7 @@ Action | Format, Examples
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 9. Glossary
 
 Term | Definition/Description
