@@ -3,14 +3,14 @@ layout: page
 title: Roland Yu's Project Portfolio
 ---
       
-# Project: SimplyKitchen
+## Project: SimplyKitchen
            
 ## Overview
 
 SimplyKitchen is a desktop application for food inventory management.
 More importantly, SimplyKitchen is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
 With intuitive and user-friendly features, SimplyKitchen facilitates food management tasks which can be done faster and more efficiently than traditional GUI applications.
-Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 12 kLoC.
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 

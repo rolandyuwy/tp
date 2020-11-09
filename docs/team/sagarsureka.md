@@ -10,7 +10,7 @@ title: Sagar Sureka's Project Portfolio
 SimplyKitchen is a desktop application for food inventory management.
 More importantly, SimplyKitchen is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
 With intuitive and user-friendly features, SimplyKitchen facilitates food management tasks which can be done faster and more efficiently than traditional GUI applications.
-The GUI for SimplyKitchen has been created with JavaFX. It is written in Java, and has about 10K LoC.
+The GUI for SimplyKitchen has been created with JavaFX. It is written in Java, and has about 12K LoC.
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 

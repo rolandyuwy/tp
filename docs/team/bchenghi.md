@@ -3,7 +3,7 @@ layout: page
 title: Boh Cheng Hin's Project Portfolio
 ---
 
-# Project: SimplyKitchen
+## Project: SimplyKitchen
 
 ## Overview
 
