@@ -12,6 +12,8 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
+## Summary of contributions:
+
   * **New Features:**
     * Added **Priority attribute to food items**.
       * What it does: Allows the user to specify a priority, either high, medium or low, for a food item.
