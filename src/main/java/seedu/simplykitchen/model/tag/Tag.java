@@ -11,7 +11,7 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Tags should only contain alphanumeric, spaces or these special characters: #$%&-()";
-    public static final String MESSAGE_EXCEED_LIMIT = "Tags should not exceed 72 characters.";
+    public static final String MESSAGE_EXCEED_LIMIT = "Tags should not exceed 30 characters.";
     public static final String VALIDATION_REGEX = "[#$%&()\\-\\s\\p{Alnum}]+";
     public static final int MAXIMUM_TAG_LENGTH = 30;
 
