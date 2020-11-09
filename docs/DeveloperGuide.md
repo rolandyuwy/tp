@@ -38,11 +38,15 @@ title: Developer Guide
 
 # 1. Introduction
 
-SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
-With intuitive and practical features, it can get food management tasks done faster and more efficiently than traditional GUI apps.
+SimplyKitchen is a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
-SimplyKitchen aims to help the domestic individuals who manage their kitchens at home by providing a food inventory management system.
-We have taken into consideration the common problems our target audience may face while managing their kitchens and have created specialised features to address them.
+SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
+With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
+
+With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
+SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic visualization of your food information for the ideal user experience.
+
+SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
@@ -51,6 +55,7 @@ We have taken into consideration the common problems our target audience may fac
 # 2. About this document
 
 This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
+The purpose of this document is to describe the architecture and software design decisions of SimplyKitchen.
 
 The [Setting up, getting started](#3-setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
 
@@ -64,11 +69,11 @@ This section allows you to understand our thought process and make your own desi
 This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#6-documentation-logging-testing-configuration-and-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
-The [appendix for requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
-It gives an idea of the requirements of the target audience of SimplyKitchen, along with [use cases](#74-use-cases) of how they will use the app.
-The [glossary](#72-glossary) and [non-Functional requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
+The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
+It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
+The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an [appendix for instructions for manual testing](#8-appendix-instructions-for-manual-testing).
+This document ends with an [Appendix for Instructions for Manual Testing](#8-appendix-instructions-for-manual-testing).
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
@@ -450,7 +455,7 @@ This allows users to not be burdened by calculations and to focus more on having
 #### Aspect: Updating a food item's quantity
 
 * **Alternative 1 (current choice):** Update the `quantity` value of a food item by calling the `updateQuantityValue` method of the `Quantity` class.
-    * Pros: Easy to implement given the tight project timeframe.
+    * Pros: Easy to implement given the tight project time frame.
     * Cons: All other fields of a `food` object need to be extracted and passed into the `Food` constructor.
 * **Alternative 2:** Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
     * Pros: Improves OOP aspect of the code.
@@ -470,7 +475,6 @@ The find feature is achieved by setting a `predicate` on the `filteredList` loca
 The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
 
 ![FindSequenceDiagram](images/FindSequenceDiagram.png)
-<img src="images/FindSequenceDiagram.png" height="200">
 
 The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
 
@@ -531,13 +535,17 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 ## 7.2. Glossary
 
 Term | Definition/Description
--------|------------------
+-----|------------------
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
-**Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
+**Description** | The description of a food item.
+**Expiring food item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
+**Expiry date** | The expiry date of a food item.
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
-**Lexicographical Order** | It is the order used in dictionaries.
-**Mainstream OS** | Windows, Linux, Unix, OS-X
+**Mainstream OS** | Windows, Linux, Unix, OS-X.
+**Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
+**Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
+**Tag** | Tags are additional information that can be tagged to food items.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
