@@ -225,7 +225,7 @@ You can then access the food item later on for editing, deleting etc.
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`
 
 * A food item with the same description, expiry date and tags as another food item is considered a duplicate.
-* The description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
+* The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
 * The description and tag are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
@@ -430,7 +430,7 @@ The `find` command searches for food items in your food inventory that match the
 
 **:information_source: Note about the description and tag parameters:**<br>
 
-Each description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
+Each description can contain a maximum of 50 characters. Each tag can contain a maximum of 30 characters, including whitespaces.
 
 </div>
 
