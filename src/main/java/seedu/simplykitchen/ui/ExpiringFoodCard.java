@@ -38,7 +38,6 @@ public class ExpiringFoodCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
      */
