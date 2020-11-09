@@ -1,11 +1,10 @@
-# Roland Yu - Project Portfolio
-
-## Project: SimplyKitchen
-
-![Application Logo](../images/Logo.png)
-
-![Labelled Ui Diagram](../images/TentativeLabelledUIDiagram.png)
-
+---
+layout: page
+title: Roland Yu's Project Portfolio
+---
+      
+# Project: SimplyKitchen
+           
 ## Overview
 
 SimplyKitchen is a desktop application for food inventory management.
@@ -16,6 +15,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
 ## Summary of contributions
+
 * **Code contributed**:  [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#search=rolandyuwy&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&until=2020-12-02)
 //**to update link**//
 
