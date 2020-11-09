@@ -95,7 +95,7 @@ This section will guide you in setting up and launching SimplyKitchen on your co
 
   ![App window](images/AppWindow.png)
   
-  <p style="text-align: center; text-decoration: underline">Figure 1: SimplyKitchen app window</p>
+  <p style="text-align: center; text-decoration: underline">Figure 1: SimplyKitchen main window</p>
   
 <div markdown="block" class="alert alert-info">
 
@@ -121,7 +121,7 @@ _*For Windows users*_
  
   ![Pop up window of expired food items](images/ExpiredPopUpWindow.png)
 
-  <p style="text-align: center; text-decoration: underline">Figure 2: SimplyKitchen pop-up window listing all the expired food items</p>
+  <p style="text-align: center; text-decoration: underline">Figure 2: The SimplyKitchen pop-up window displays all the expired food items</p>
 
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
 * Refer to the [features section in this guide](#5-features) for help on how to use the app.
@@ -245,11 +245,11 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 ![Before executing the add command](images/AddCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the add command being typed into the command box</p>
 
 ![After executing the add command](images/AddCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list.</p>
+<p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list</p>
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -617,7 +617,7 @@ Therefore, the food item to be added is considered a duplicate.
 
 ![Example of a duplicate food item](images/DuplicateFood.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 13: An error message is displayed in the result box when adding a duplicate food item.</p>
+<p style="text-align: center; text-decoration: underline">Figure 13: The result box displays an error message when adding a duplicate food item</p>
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
