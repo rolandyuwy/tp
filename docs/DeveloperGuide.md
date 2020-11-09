@@ -44,6 +44,7 @@ title: Developer Guide
   * [F.2. Deleting a food item](#f2-deleting-a-food-item)
   * [F.3. Sorting the food list](#f3-sorting-the-food-list)
   * [F.4. Saving data](#f4-saving-data)
+  
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. Introduction
