@@ -83,9 +83,9 @@ This is followed by a section consisting of guides for [Documentation, Logging, 
 Each guide gives specific assistance in the context of the project.
 
 <div style="page-break-after: always;"></div>
-The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
+The [Appendix](#appendix-a-product-scope) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
+The [Glossary](#appendix-b-glossary) and [Non-Functional Requirements](#appendix-e-non-functional-requirements) provide other key information relevant to the document and the app.
 
 This document ends with an [Appendix for Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing).
 
