@@ -82,6 +82,8 @@ This section allows you to understand our thought process and make your own desi
 This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#6-documentation-logging-testing-configuration-and-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
+<div style="page-break-after: always;"></div>
+
 The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
 The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
@@ -99,6 +101,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 # 4. Design
 
