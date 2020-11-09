@@ -429,7 +429,7 @@ The `find` command searches for food items in your food inventory that match the
 
 **:information_source: Note about the parameters:**<br>
 
-The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
+The constraints for the individual parameters of this command (each description in the descriptions parameter, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
 
 </div>
 

@@ -165,7 +165,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <div markdown="span" class="alert alert-info">
 
-**:information_source: Note:**<br> 
+**:information_source: Note:**<br>
 
 The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
@@ -470,6 +470,7 @@ The find feature is achieved by setting a `predicate` on the `filteredList` loca
 The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
 
 ![FindSequenceDiagram](images/FindSequenceDiagram.png)
+<img src="images/FindSequenceDiagram.png" height="200">
 
 The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
 
@@ -899,7 +900,7 @@ Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">
 
-**:information_source: Note:**<br> 
+**:information_source: Note:**<br>
 
 These instructions only provide a starting point for testers to work on; testers are expected to do more *exploratory* testing.
 
