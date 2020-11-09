@@ -469,7 +469,7 @@ The find feature is achieved by setting a `predicate` on the `filteredList` loca
 
 The following sequence diagram illustrates how the command `find d/apple e/30-9-2020 p/medium t/frozen` works:
 
-<img src="images/FindSequenceDiagram.png" width="2000">
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
 
 The `find` command uses `ArgumentMultimap` to get the parameters of each `prefix`, similar to the `add` command. The `find` command needs to have at least one `prefix` present. If a `prefix` is present, then its respective `predicate` will be generated.
 
