@@ -69,7 +69,7 @@ public class CommandTestUtil {
             + Integer.MAX_VALUE; // amount size too big
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
     public static final String INVALID_TAG_LENGTH = " " + PREFIX_TAG
-            + "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeeffffffffffgggggggggghhh"; // tag exceeds 72 characters
+            + "aaaaaaaaaabbbbbbbbbbccccccccccd"; // tag exceeds 30 characters
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

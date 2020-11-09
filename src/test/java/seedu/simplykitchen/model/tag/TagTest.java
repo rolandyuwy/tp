@@ -26,14 +26,12 @@ public class TagTest {
 
         // valid tag
         assertTrue(Tag.isValidTagName("a1#$%&-()")); // acceptable characters
-        assertTrue(Tag.isValidTagName(
-                "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeeffffffffffgggggggggghh")); // 72 characters
+        assertTrue(Tag.isValidTagName("aaaaaaaaaabbbbbbbbbbcccccccccc")); // 30 characters
 
         // invalid tag
         assertFalse(Tag.isValidTagName("")); // empty tag
         assertFalse(Tag.isValidTagName("@")); // unacceptable character
-        assertFalse(Tag.isValidTagName(
-                "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeeffffffffffgggggggggghhh")); // 72 characters
+        assertFalse(Tag.isValidTagName("aaaaaaaaaabbbbbbbbbbccccccccccd")); // 31 characters
     }
 
 }
