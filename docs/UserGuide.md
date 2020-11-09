@@ -162,10 +162,10 @@ The table below provides the descriptions of the displayed food item components:
 Component   | Description
 ------------|-------------------------------------------------------------
 Description | The description of a food item
-Tag         | A tag to a food item (e.g. `spicy`, `for family`, `vegan`)
+Tag         | A tag to a food item. Tags are additional information that can be tagged to a food item. (e.g. `spicy`, `for family`, `vegan`)
 Priority    | The priority of a food item (i.e. `high`, `medium` or `low`)
 Expiry Date | The expiry date of a food item
-Quantity    | The quantity of a food item (e.g. `1 loaf`, `3.5 g`)
+Quantity    | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`. (e.g. `1 loaf`, `3.5 g`)
   
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -348,9 +348,9 @@ The `sortdesc` command sorts the list of food items by description, allowing you
 
 **Format:** `sortdesc`
 
-* Sorting by description consists of 2 steps.
-* Firstly, the list is sorted in lexicographical order and is case insensitive to the descriptions' first characters.
-* Next, if the first characters of two food items' descriptions are the same letters (e.g. `apple` and `Acorn`), descriptions with upper case first characters will be ordered lower compared to descriptions with lower case first characters (i.e. `Acorn` will be ordered below `apple`).
+* Sorting by description consists of 2 steps:
+    * Firstly, the list is sorted in lexicographical order and is case insensitive to the descriptions' first characters.
+    * Next, if the first characters of two food items' descriptions are the same letters (e.g. `apple` and `Acorn`), descriptions with upper case first characters will be ordered lower compared to descriptions with lower case first characters (i.e. `Acorn` will be ordered below `apple`).
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
 
@@ -658,20 +658,15 @@ Action | Format, Examples
 Term | Definition/Description
 -----|------------------
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
-**Terminal** | A CLI system for Mac OS which allows users to control their Operating System by entering commands.
-**Command Prompt** | A CLI system for Windows which allows users to control their Operating System by entering commands.
+**Command prompt** | A CLI system for Windows which allows users to control their Operating System by entering commands.
 **Case insensitive** | Treating or interpreting uppercase and lowercase letters as being the same.
-**Description** | The description of a food item.
-**Duplicate Food Item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
-**Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
-**Expiry Date** | The expiry date of a food item.
+**Duplicate food item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
+**Expiring food item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
-**Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
+**Lexicographical order** | The ordering used in dictionaries. 
 **Mainstream OS** | Windows, Linux, Unix, OS-X.
-**Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
-**Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
-**Tag** | Tags are additional information that can be tagged to food items.
+**Terminal** | A CLI system for Mac OS which allows users to control their Operating System by entering commands.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
