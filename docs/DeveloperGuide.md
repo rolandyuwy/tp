@@ -118,7 +118,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
-
+<div style="page-break-after: always;"></div>
 [**`Commons`**](#46-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
@@ -150,7 +150,6 @@ The sections below give more details of each component.
 ## 4.2. UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
-
 <div style="page-break-after: always;"></div>
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/Ui.java)
@@ -169,7 +168,6 @@ The `UI` component,
 ## 4.3. Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
-
 <div style="page-break-after: always;"></div>
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/logic/Logic.java)
@@ -193,7 +191,6 @@ The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but 
 </div>
 
 [Back to top](#table-of-contents)
-
 <div style="page-break-after: always;"></div>
 ## 4.4. Model component
 
@@ -239,7 +236,6 @@ Classes used by multiple components are in the [`seedu.simplykitchen.commons`](h
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
 <div style="page-break-after: always;"></div>
 # 5. Implementation
 
@@ -282,7 +278,7 @@ If a command fails its execution, it will not call `Model#commitFoodInventory()`
 Step 4. The user now decides that adding the food item was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoFoodInventory()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous food inventory state, and restores the food inventory to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
-
+<div style="page-break-after: always;"></div>
 <div markdown="span" class="alert alert-info">
 
 **:information_source: Note:**<br>
@@ -314,7 +310,7 @@ If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, po
 </div>
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the food inventory, such as `list`, will usually not call `Model#commitFoodInventory()`, `Model#undoFoodInventory()` or `Model#redoFoodInventory()`. Thus, the `foodInventoryStateList` remains unchanged.
-
+<div style="page-break-after: always;"></div>
 ![UndoRedoState4](images/UndoRedoState4.png)
 
 Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Since the `currentStatePointer` is not pointing at the end of the `foodInventoryStateList`, all food inventory states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add d/Donut …​` command.
