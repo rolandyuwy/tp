@@ -543,7 +543,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
 [Back to top](#table-of-contents)
-
+<div style="page-break-after: always;"></div>
 # Appendix B: Glossary
 
 Term | Definition/Description
