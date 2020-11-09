@@ -60,7 +60,7 @@ SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic
 
 SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -87,7 +87,7 @@ The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functiona
 
 This document ends with an [Appendix for Instructions for Manual Testing](#8-appendix-instructions-for-manual-testing).
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -95,7 +95,7 @@ This document ends with an [Appendix for Instructions for Manual Testing](#8-app
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 4.2. UI component
 
@@ -161,7 +161,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 4.3. Logic component
 
@@ -188,7 +188,7 @@ The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but 
 
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 4.4. Model component
 
@@ -213,7 +213,7 @@ An alternative (arguably, a more OOP) model is given below. It has a `Tag` list 
 
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 4.5. Storage component
 
@@ -225,13 +225,13 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the food inventory data in json format and read it back.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 4.6. Common classes
 
 Classes used by multiple components are in the [`seedu.simplykitchen.commons`](https://github.com/AY2021S1-CS2103T-F13-4/tp/tree/master/src/main/java/seedu/simplykitchen/commons) package.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -332,7 +332,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the food item being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.2. Sort feature
 The sort feature allows users to sort the list of food items based on description, expiry date and priority.
@@ -387,7 +387,7 @@ Furthermore, this allows for dynamic updates of the food item list according to 
   * Pros: The user is able to sort the lists temporarily if they prefer to do so.
   * Cons: Sorting is not permanent, thus lists stored are sorted by description by default, which is not desirable if the user has other preferred sorting orders.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.3. Quantity field in food items
 
@@ -428,7 +428,7 @@ The constraints above have been applied after careful consideration of the needs
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.4. Change quantity feature
 
@@ -475,7 +475,7 @@ This allows users to not be burdened by calculations and to focus more on having
     * Cons: Unnecessarily complicates the code.
     * Cons: Only the `quantity` field of a `food` object is changed so a `Descriptor` class may be an overkill.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.5. Find feature
 
@@ -512,7 +512,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
     * Pros: Able to get all the food items that are going to expire in a certain period with one search.
     * Cons: Will need more validation to ensure the date range provided is valid.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -524,7 +524,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -541,7 +541,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 # Appendix B: Glossary
 
@@ -558,7 +558,7 @@ Term | Definition/Description
 **Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
 **Tag** | Tags are additional information that can be tagged to food items.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 # Appendix C: User stories
 
@@ -588,7 +588,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user                                      | search for food items based on their tags                  | know which food items are tagged with a certain information              |
 | `*`      | user                                      | see some sample data populated in the app                  | understand how the app will look like and what benefits it has           |
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 # Appendix D: Use cases
 
@@ -900,7 +900,7 @@ Use case ends.
 
 <br/>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 # Appendix E: Non-Functional requirements
 
@@ -909,7 +909,7 @@ Use case ends.
 * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 * A user should be able to see food items clearly on the GUI to facilitate command typing.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -940,7 +940,7 @@ These instructions only provide a starting point for testers to work on; testers
    2. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## F.2. Deleting a food item
 
@@ -958,7 +958,7 @@ These instructions only provide a starting point for testers to work on; testers
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## F.3. Changing the quantity of a food item
 
@@ -982,7 +982,7 @@ These instructions only provide a starting point for testers to work on; testers
 
       ![Error message](images/ChangeQuantityConstraintErrorMessage.png)
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## F.4. Sorting the food list
 
@@ -1000,7 +1000,7 @@ These instructions only provide a starting point for testers to work on; testers
    4. Test case: `sortexpiry`<br>
       Expected: The food items in the list is sorted by expiry date from oldest to newest.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## F.5. Saving data
 
@@ -1016,6 +1016,6 @@ These instructions only provide a starting point for testers to work on; testers
    3. Test case: Remove any of the other fields - `expiryDate`, `priority`, `quantity`, `tagged` - from a food item in the `foodInventory.json` file.<br>
       Expected: Similar to previous.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
