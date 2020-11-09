@@ -31,7 +31,7 @@ If you plan to use Intellij IDEA (highly recommended):
    1. Run the `seedu.simplykitchen.Main` and try a few commands.
    1. [Run the tests](Testing.md) to ensure they all pass.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -55,6 +55,6 @@ If you plan to use Intellij IDEA (highly recommended):
 
    When you are ready to start coding, we recommend that you get some sense of the overall design by reading about [SimplyKitchen’s architecture](DeveloperGuide.md#architecture).
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/SettingUp.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
