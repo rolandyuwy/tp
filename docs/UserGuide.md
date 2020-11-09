@@ -63,22 +63,22 @@ SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny W
 
 # 2. About this document
 
-This document is a User Guide meant to assist you in using SimplyKitchen to manage your food inventory.
+This document is a User Guide meant to assist users in using SimplyKitchen for food inventory management.
 
 The [Quick Start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
 
 The [Application Layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
 
-The [Features](#5-features) section helps you understand and use the features of SimplyKitchen.
-It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
+The [Features](#5-features) section contains all features of SimplyKitchen for your understanding.
+It provides the description, purpose, format, conditions and examples for each feature.
 
-The [Upcoming Features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion of SimplyKitchen.
+The [Upcoming Features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion plans for SimplyKitchen.
 
-The [FAQs](#7-frequently-asked-questions-faqs) section contains some Frequently Asked Questions with regard to SimplyKitchen.
+The [FAQs](#7-frequently-asked-questions-faqs) section contains some Frequently Asked Questions about SimplyKitchen.
 
 The [Command Summary](#8-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-Finally, the [Glossary](#9-glossary) section provides explanations for commonly used terms.
+Finally, the [Glossary](#9-glossary) section provides explanations for the commonly used terms in this document and SimplyKitchen.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
