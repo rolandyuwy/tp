@@ -37,4 +37,35 @@ public class PriorityTest {
         assertTrue(Priority.isValidPriority("medium")); // medium priority
         assertTrue(Priority.isValidPriority("high")); // high priority
     }
+
+    @Test
+    public void isHigherPriority_nullOtherPriority_throwsNullPointerException() {
+        Priority currentPriority = new Priority("high");
+        assertThrows(NullPointerException.class, () -> currentPriority.isHigherPriority(null));
+    }
+
+    @Test
+    public void isHigherPriorityHigherPriority_returnsTrue() {
+        Priority highPriority = new Priority("high");
+        Priority mediumPriority = new Priority("medium");
+        Priority lowPriority = new Priority("low");
+
+        assertTrue(highPriority.isHigherPriority(mediumPriority));
+        assertTrue(highPriority.isHigherPriority(lowPriority));
+        assertTrue(mediumPriority.isHigherPriority(lowPriority));
+    }
+
+    @Test
+    public void isHigherPriorityLowerPriority_returnsFalse() {
+        Priority highPriority = new Priority("high");
+        Priority mediumPriority = new Priority("medium");
+        Priority lowPriority = new Priority("low");
+
+        assertFalse(highPriority.isHigherPriority(highPriority));
+        assertFalse(mediumPriority.isHigherPriority(mediumPriority));
+        assertFalse(lowPriority.isHigherPriority(lowPriority));
+        assertFalse(lowPriority.isHigherPriority(mediumPriority));
+        assertFalse(mediumPriority.isHigherPriority(highPriority));
+        assertFalse(lowPriority.isHigherPriority(highPriority));
+    }
 }

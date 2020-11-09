@@ -16,9 +16,8 @@ import java.time.format.DateTimeParseException;
 public class ExpiryDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "The expiry date should be of the format DD-MM-YYYY or DD/MM/YYYY. ";
-    public static final String MESSAGE_SHORTENED_YEAR = "The year should be 4 digits long. ";
-    public static final String MESSAGE_INVALID_DATE = "The expiry date does not exist. ";
+            "The expiry date should be a valid date of the format DD-MM-YYYY or DD/MM/YYYY.\n"
+                    + "The year should be between 2020 and 2120, both inclusive.";
     public static final String DATE_PATTERN = "d-M-yyyy";
 
     public final String value;
@@ -30,7 +29,7 @@ public class ExpiryDate {
      */
     public ExpiryDate(String expiryDateString) {
         requireNonNull(expiryDateString);
-        checkArgument(isValidExpiryDate(expiryDateString), generateErrorMessage(expiryDateString));
+        checkArgument(isValidExpiryDate(expiryDateString), MESSAGE_CONSTRAINTS);
         value = padDayAndMonthWithZero(replaceSlashWithDash(expiryDateString));
     }
 
@@ -46,36 +45,16 @@ public class ExpiryDate {
             simpleDateFormatter.setLenient(false);
             simpleDateFormatter.parse(testExpiryDateString);
 
-            // check for shortened year or invalid expiry date
+            // check for invalid expiry date
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
-            LocalDate.parse(testExpiryDateString, formatter);
+            LocalDate expiryDate = LocalDate.parse(testExpiryDateString, formatter);
+            int expiryYear = expiryDate.getYear();
 
-            return true;
+            // check for invalid year
+            return isValidYear(expiryYear);
         } catch (ParseException | DateTimeParseException e) {
             return false;
         }
-    }
-
-    /**
-     * Generates an error message based on why the expiry date is invalid.
-     *
-     * @param invalidExpiryDateString An invalid expiry date.
-     * @return A string describing the error message.
-     */
-    public static String generateErrorMessage(String invalidExpiryDateString) {
-        invalidExpiryDateString = replaceSlashWithDash(invalidExpiryDateString);
-        String[] split = invalidExpiryDateString.split("-");
-        if (split.length != 3) {
-            // invalid formatting of expiry date
-            return MESSAGE_CONSTRAINTS;
-        }
-        if (!isFourDigitYear(split[2])) {
-            // year of expiry date is not 4 digits long
-            return MESSAGE_SHORTENED_YEAR;
-        }
-
-        // expiry date does not exist
-        return MESSAGE_INVALID_DATE;
     }
 
     /**
@@ -110,14 +89,15 @@ public class ExpiryDate {
     /**
      * Guarantees: The date string is formatted correctly.
      */
-    private static boolean isFourDigitYear(String yearString) {
-        return yearString.length() == 4;
+    private static boolean isValidYear(int year) {
+        return year >= 2020 && year <= 2120;
     }
 
     /**
      * Returns true if a given {@code expiryDate}'s expiry date is after the expiry date.
      */
     public boolean isAfter(ExpiryDate expiryDate) {
+        requireNonNull(expiryDate);
         try {
             String expiryDateString1 = padDayAndMonthWithZero(replaceSlashWithDash(this.value));
             String expiryDateString2 = padDayAndMonthWithZero(replaceSlashWithDash(expiryDate.value));

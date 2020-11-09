@@ -27,12 +27,12 @@ public class ParserUtilTest {
     private static final String INVALID_QUANTITY_NEGATIVE_VALUE = "-1 unit";
     private static final String INVALID_QUANTITY_ZERO_VALUE = "0 unit";
     private static final String INVALID_AMOUNT = "1";
-    private static final String INVALID_AMOUNT_SIZE = "+" + Double.MAX_VALUE;
     private static final String INVALID_EXPIRY_DATE = "32-9-2020";
     private static final String INVALID_TAG = "^frozen";
     private static final String VALID_DESCRIPTION = "Raspberry Jam";
     private static final String VALID_PRIORITY = "MEDIUM";
     private static final String VALID_QUANTITY = "1 jar";
+    private static final String VALID_AMOUNT = "+1";
     private static final String VALID_EXPIRY_DATE = "1-1-2022";
     private static final String VALID_TAG_1 = "sugar-free";
     private static final String VALID_TAG_2 = "$100";
@@ -134,11 +134,6 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseQuantity_invalidQuantityUnit_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_UNIT));
-    }
-
-    @Test
     public void parseQuantity_invalidQuantityValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_NEGATIVE_VALUE));
     }
@@ -149,19 +144,39 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseQuantity_invalidQuantityUnit_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_QUANTITY_UNIT));
+    }
+
+    @Test
+    public void parseQuantity_validQuantityWithoutWhitespace_returnsQuantity() throws Exception {
+        Quantity expectedQuantity = new Quantity(VALID_QUANTITY);
+        assertEquals(expectedQuantity, ParserUtil.parseQuantity(VALID_QUANTITY));
+    }
+
+    @Test
+    public void parseQuantity_validQuantityWithWhitespace_returnsTrimmedQuantity() throws Exception {
+        String validQuantityWithWhitespace = WHITESPACE + VALID_QUANTITY + WHITESPACE;
+        Quantity expectedQuantity = new Quantity(VALID_QUANTITY);
+        assertEquals(expectedQuantity, ParserUtil.parseQuantity(validQuantityWithWhitespace));
+    }
+
+    @Test
     public void parseAmount_invalidAmount_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseAmount(INVALID_AMOUNT));
     }
 
     @Test
-    public void parseAmount_invalidAmountSize_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAmount(INVALID_AMOUNT_SIZE));
+    public void parseAmount_validAmountWithoutWhitespace_returnsDouble() throws Exception {
+        double expectedAmount = 1;
+        assertEquals(expectedAmount, ParserUtil.parseAmount(VALID_AMOUNT));
     }
 
     @Test
-    public void parseQuantity_validQuantity_returnsValidQuantity() throws Exception {
-        Quantity expectedQuantity = new Quantity(VALID_QUANTITY);
-        assertEquals(expectedQuantity, ParserUtil.parseQuantity(VALID_QUANTITY));
+    public void parseAmount_validAmountWithWhitespace_returnsTrimmedDouble() throws Exception {
+        String validAmountWithWhitespace = WHITESPACE + VALID_AMOUNT + WHITESPACE;
+        double expectedAmount = 1;
+        assertEquals(expectedAmount, ParserUtil.parseAmount(validAmountWithWhitespace));
     }
 
     @Test

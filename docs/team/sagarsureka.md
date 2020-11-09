@@ -1,46 +1,62 @@
 ---
 layout: page
-title: Sagar Sureka's Project Portfolio Page
+title: Sagar Sureka's Project Portfolio
 ---
 
-## Project: AddressBook Level 3
+# Project: SimplyKitchen
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+## Overview
 
-Given below are my contributions to the project.
+SimplyKitchen is a desktop application for food inventory management.
+More importantly, SimplyKitchen is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
+With intuitive and user-friendly features, SimplyKitchen facilitates food management tasks which can be done faster and more efficiently than traditional GUI applications.
+The GUI for SimplyKitchen has been created with JavaFX. It is written in Java, and has about 12K LoC.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+## Summary of contributions
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [Link to RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=Sagar&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=sagarsureka&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
-* **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+* **Enhancements**:
+  * Added a **quantity field** for food items:
+    * What it does: <br>Allows the user to track the quantity of each food item.
+    * Justification: <br>The features improves the application significantly as it helps manage another entity relevant to food items.
+    * Highlights: <br>This enhancement involved consideration of multiple alternatives of implementation. 
+    Keeping to the criteria of making it user friendly, the `unit` of quantity field was made optional and customisable. 
+    Instead of giving some specific options, the user can have any word as the unit.
+  * Adding a list for **expiring food items**:
+    * What it does: <br>Displays a list panel consisting of food items expiring within 7 days, in ascending order of expiry date.
+    * Justification: <br>Keeping with the motivation of reducing food wastage by food inventory management, the expiring food list allows the user to make informed choices in their meals and avoid having to waste expired food.
+    * Highlights: <br>This enhancement required the introduction of another list into the GUI of the app.
+    In order to keep the GUI clean and not make it too clustered, the expiring food list panel was kept smaller and the food cards in the list had only the minimum details required to properly differentiate the items from each other.
 
-* **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+* **Minor Enhancements**:
+  * Contributed in adapting the AB3 code to SimplyKitchen by removing the address field which was no longer needed. [\#70](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/70)
+  * Improved the responses given to the user by making it more readable and informative. [\#79](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/79)  
+  * Improved the product User Guide by fixing bugs reported in the Mock Practical Exam. [\#174](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/174)  
+
+* **Project Management and contribution to team-based tasks**:
+  * Participated in the planning of the project idea (Management of food inventory to reduce food wastage).
+  * Participated in drafting the initial requirements for SimplyKitchen - *Product Scope, Glossary, User Stories, Use Cases and Non-Functional Requirements.* 
+    This can be found in our [Developer Guide requirements appendix](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#appendix-requirements).
+  * Compiled the comments received on the team's User and Developer Guides from peers.
+  * Responsible for proper integration of the various parts of the software to form a whole.
+  * Responsible for ensuring that the project code maintains high coding standards.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Made updates to all the features affected by the implementation of the `quantity` field. [\#90](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/90)
+    * Added the `Introduction`, `About this document` and `Quick start` sections. Also improved navigability of the guide by linking the headings and subheadings to the table of contents and vice versa. [\#123](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/123)     
+    * Added to the sections of `Notes about the command format` and the `FAQs`. [\#174](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/174)                 
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
+    * Added the design details of the `quantity` field along with the alternatives considered while implementing the feature. [\#90](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/90)
+    * Added the `Introduction` and `About this document` sections. [\#123](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/123)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
+  * Pull Requests reviewed (with non-trivial review comments): [\#54](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/54), [\#118](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/118)
+  * Reported bugs and suggestions for other teams in the module.
 
 * **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+  * Initial setup of project tools - GitHub Organisation.
+  * Participated in the managing of GitHub project board and issue tracker for project management, milestones and bugs.

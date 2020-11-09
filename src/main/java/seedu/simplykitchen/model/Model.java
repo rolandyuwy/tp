@@ -165,4 +165,14 @@ public interface Model {
      * @throws NullPointerException if {@code comparator} is null.
      */
     void updateExpiringSortedFoodList();
+
+    /**
+     * Returns true if the data file format is invalid.
+     */
+    boolean isDataFileOrUserPrefsInvalid();
+
+    /**
+     * Returns the message to describe the error of the invalid data file or user prefs data.
+     */
+    String getInvalidDataFileOrUserPrefsErrorMessage();
 }

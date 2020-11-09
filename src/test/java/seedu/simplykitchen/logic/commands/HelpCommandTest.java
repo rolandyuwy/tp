@@ -1,5 +1,6 @@
 package seedu.simplykitchen.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.simplykitchen.logic.commands.HelpCommand.SHOWING_HELP_MESSAGE;
 
@@ -15,6 +16,7 @@ public class HelpCommandTest {
     @Test
     public void execute_help_success() {
         CommandResult expectedCommandResult = new CommandResult(SHOWING_HELP_MESSAGE, false, true, false);
+        assertTrue(expectedCommandResult.isShowHelp());
         assertCommandSuccess(new HelpCommand(), model, expectedCommandResult, expectedModel);
     }
 }

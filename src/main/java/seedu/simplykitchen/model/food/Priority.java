@@ -27,6 +27,7 @@ public class Priority {
         priority = priority.toLowerCase();
         requireNonNull(priority);
         checkArgument(isValidPriority(priority), MESSAGE_CONSTRAINTS);
+
         switch(priority) {
         case "low":
             value = Level.LOW;
@@ -54,6 +55,7 @@ public class Priority {
      * Returns true if a given {@code otherPriority} has a lower priority level.
      */
     public boolean isHigherPriority(Priority otherPriority) {
+        requireNonNull(otherPriority);
         return ((this.value == Level.HIGH) && (otherPriority.value == Level.MEDIUM))
                 || ((this.value == Level.HIGH) && (otherPriority.value == Level.LOW))
                 || ((this.value == Level.MEDIUM) && (otherPriority.value == Level.LOW));

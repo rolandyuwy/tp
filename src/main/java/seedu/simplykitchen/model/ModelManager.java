@@ -1,10 +1,12 @@
 package seedu.simplykitchen.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.simplykitchen.MainApp.INVALID_USER_PREFS_SORTING_DESCRIPTION;
 import static seedu.simplykitchen.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_ASCENDING_EXPIRY_DATE;
+import static seedu.simplykitchen.model.util.ComparatorUtil.SORT_BY_DESC_THEN_ASC_EXPIRY;
 import static seedu.simplykitchen.model.util.ComparatorUtil.generateSortingComparatorsDescription;
 import static seedu.simplykitchen.model.util.ComparatorUtil.getComparator;
+import static seedu.simplykitchen.model.util.ComparatorUtil.isSortingComparatorsDescriptionValid;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -36,8 +38,12 @@ public class ModelManager implements Model {
     private final FilteredList<Food> expiredFilteredFoods;
     private SortedList<Food> expiringSortedFoods;
 
+    private boolean isDataFileOrUserPrefsInvalid;
+    private String invalidDataFileOrUserPrefsErrorMessage = "";
+
     /**
      * Initializes a ModelManager with the given Food Inventory and userPrefs.
+     * Default sorting is used if sorting comparators description in {@code userPrefs} is invalid.
      */
     public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -48,7 +54,12 @@ public class ModelManager implements Model {
 
         this.versionedFoodInventory = new VersionedFoodInventory(foodInventory);
         this.userPrefs = new UserPrefs(userPrefs);
-        this.sortingComparators = getComparator(userPrefs.getSortingComparatorsDescription());
+        if (!isSortingComparatorsDescriptionValid(userPrefs.getSortingComparatorsDescription())) {
+            this.isDataFileOrUserPrefsInvalid = true;
+            this.invalidDataFileOrUserPrefsErrorMessage += INVALID_USER_PREFS_SORTING_DESCRIPTION;
+        }
+        this.sortingComparators = getComparator(this.userPrefs.getSortingComparatorsDescription());
+        sortFoodInventoryBySortingComparators();
 
         filteredFoods = new FilteredList<>(this.versionedFoodInventory.getFoods());
 
@@ -56,8 +67,19 @@ public class ModelManager implements Model {
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
+
         expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiredFilteredFoods.setPredicate(getExpiredPredicate());
+    }
+
+    /**
+     * Initializes a ModelManager with the given Food Inventory and with reference to userPrefs with an error message.
+     */
+    public ModelManager(ReadOnlyFoodInventory foodInventory, ReadOnlyUserPrefs userPrefs,
+                        boolean isDataFileOrUserPrefsInvalid, String invalidDataFileOrUserPrefsErrorMessage) {
+        this(foodInventory, userPrefs);
+        this.isDataFileOrUserPrefsInvalid = isDataFileOrUserPrefsInvalid;
+        this.invalidDataFileOrUserPrefsErrorMessage += invalidDataFileOrUserPrefsErrorMessage;
     }
 
     public ModelManager() {
@@ -222,7 +244,7 @@ public class ModelManager implements Model {
     // ============== Expiring Food List ========================================================================
     @Override
     public void updateExpiringSortedFoodList() {
-        expiringSortedFoods.setComparator(SORT_BY_ASCENDING_EXPIRY_DATE);
+        expiringSortedFoods.setComparator(SORT_BY_DESC_THEN_ASC_EXPIRY);
     }
 
     @Override
@@ -288,6 +310,16 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFoods.equals(other.filteredFoods)
                 && expiringFilteredFoods.equals(other.expiringFilteredFoods);
+    }
+
+    @Override
+    public boolean isDataFileOrUserPrefsInvalid() {
+        return this.isDataFileOrUserPrefsInvalid;
+    }
+
+    @Override
+    public String getInvalidDataFileOrUserPrefsErrorMessage() {
+        return this.invalidDataFileOrUserPrefsErrorMessage;
     }
 
 }

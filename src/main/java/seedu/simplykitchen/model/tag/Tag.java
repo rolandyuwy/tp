@@ -11,8 +11,9 @@ public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Tags should only contain alphanumeric, spaces or these special characters: #$%&-()";
-    public static final String MESSAGE_EXCEED_LIMIT = "Tags should not exceed 72 characters.";
+    public static final String MESSAGE_EXCEED_LIMIT = "Tags should not exceed 30 characters.";
     public static final String VALIDATION_REGEX = "[#$%&()\\-\\s\\p{Alnum}]+";
+    public static final int MAXIMUM_TAG_LENGTH = 30;
 
     public final String tagName;
 
@@ -31,7 +32,7 @@ public class Tag {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidTagName(String test) {
-        if (test.length() > 72) {
+        if (test.length() > MAXIMUM_TAG_LENGTH) {
             return false;
         }
         return test.matches(VALIDATION_REGEX);
@@ -44,7 +45,7 @@ public class Tag {
      * @return A string describing the error message.
      */
     public static String generateErrorMessage(String invalidTag) {
-        if (invalidTag.length() > 72) {
+        if (invalidTag.length() > MAXIMUM_TAG_LENGTH) {
             return MESSAGE_EXCEED_LIMIT;
         }
         return MESSAGE_CONSTRAINTS;
