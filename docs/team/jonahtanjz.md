@@ -46,7 +46,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Added validation for user input
     * Check for invalid prefixes in command
     * Check for duplicate prefixes that are not supposed to be repeated in the command 
-  * Refactor AB3 code to adapt to SimplyKitchen  
+  * Refactored AB3 code to adapt to SimplyKitchen  
   * Wrote additional tests for new and existing features to increase coverage.
 
 #### Code contributed: 
