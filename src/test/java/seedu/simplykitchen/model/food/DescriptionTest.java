@@ -30,6 +30,8 @@ public class DescriptionTest {
         assertFalse(Description.isValidDescription(" ")); // spaces only
         assertFalse(Description.isValidDescription("^")); // only non-alphanumeric characters
         assertFalse(Description.isValidDescription("peanut*")); // contains non-alphanumeric characters
+        assertFalse(Description.isValidDescription(
+                "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeef")); // more than 50 characters
 
         // valid description
         assertTrue(Description.isValidDescription("peanut butter")); // alphabets only
@@ -37,6 +39,8 @@ public class DescriptionTest {
         assertTrue(Description.isValidDescription("TWG 1864")); // alphanumeric characters
         assertTrue(Description.isValidDescription("Capital Tan")); // with capital letters
         assertTrue(Description.isValidDescription("Lay's Sour Cream Flavoured Potato Chips")); // long description
+        assertTrue(Description.isValidDescription(
+                "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeee")); // 50 characters
     }
 
     @Test

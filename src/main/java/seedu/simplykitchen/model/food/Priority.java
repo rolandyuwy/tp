@@ -27,6 +27,7 @@ public class Priority {
         priority = priority.toLowerCase();
         requireNonNull(priority);
         checkArgument(isValidPriority(priority), MESSAGE_CONSTRAINTS);
+
         switch(priority) {
         case "low":
             value = Level.LOW;

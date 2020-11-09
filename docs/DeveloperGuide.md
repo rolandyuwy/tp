@@ -532,16 +532,11 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 Term | Definition/Description
 -------|------------------
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
-**Description** | The description of a food item.
 **Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
-**Expiry Date** | The expiry date of a food item.
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
-**Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
-**Mainstream OS** | Windows, Linux, Unix, OS-X.
-**Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
-**Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
-**Tag** | Tags are additional information that can be tagged to food items.
+**Lexicographical Order** | It is the order used in dictionaries.
+**Mainstream OS** | Windows, Linux, Unix, OS-X
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 

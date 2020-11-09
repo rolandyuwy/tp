@@ -1,13 +1,9 @@
 ---
 layout: page
-title: Jonah Tan's Project Portfolio Page
+title: Jonah Tan's Project Portfolio
 ---
 
-## Project: SimplyKitchen
-
-![Application Logo](../images/Logo.png)
-
-![SimplyKitchen UI](../images/Ui.png)
+# Project: SimplyKitchen
 
 ## Overview
 
@@ -51,7 +47,6 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 #### Code contributed: 
 [[Functional code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)] [[Test code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)]
-
 
 ### Documentation:
   * User Guide:
