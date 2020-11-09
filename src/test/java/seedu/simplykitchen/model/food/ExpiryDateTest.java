@@ -65,4 +65,30 @@ public class ExpiryDateTest {
         assertTrue(ExpiryDate.isValidExpiryDate("1/1/2020")); // lower bound with slash
         assertTrue(ExpiryDate.isValidExpiryDate("12/12/2120")); // upper bound with dash
     }
+
+    @Test
+    public void isAfter_nullExpiryDate_throwsNullPointerException() {
+        ExpiryDate currentExpiryDate = new ExpiryDate("1-1-2020");
+        assertThrows(NullPointerException.class, () -> currentExpiryDate.isAfter(null));
+    }
+
+    @Test
+    public void isAfter_returnsTrue() {
+        ExpiryDate currentExpiryDate = new ExpiryDate("5-3-2021");
+
+        assertTrue(currentExpiryDate.isAfter(new ExpiryDate("4-3-2021"))); //a day before
+        assertTrue(currentExpiryDate.isAfter(new ExpiryDate("5-2-2021"))); //a month before
+        assertTrue(currentExpiryDate.isAfter(new ExpiryDate("5-3-2020"))); //a year before
+        assertTrue(currentExpiryDate.isAfter(new ExpiryDate("23-12-2020"))); //random date before
+    }
+
+    @Test
+    public void isAfter_returnsFalse() {
+        ExpiryDate currentExpiryDate = new ExpiryDate("1-1-2020");
+
+        assertFalse(currentExpiryDate.isAfter(new ExpiryDate("2-1-2020"))); //a day later
+        assertFalse(currentExpiryDate.isAfter(new ExpiryDate("1-2-2020"))); //a month later
+        assertFalse(currentExpiryDate.isAfter(new ExpiryDate("1-1-2021"))); //a year later
+        assertFalse(currentExpiryDate.isAfter(new ExpiryDate("23-12-2024"))); //random date later
+    }
 }

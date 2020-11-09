@@ -24,6 +24,11 @@ import seedu.simplykitchen.logic.commands.ExpiredCommand;
 import seedu.simplykitchen.logic.commands.FindCommand;
 import seedu.simplykitchen.logic.commands.HelpCommand;
 import seedu.simplykitchen.logic.commands.ListCommand;
+import seedu.simplykitchen.logic.commands.RedoCommand;
+import seedu.simplykitchen.logic.commands.SortDescCommand;
+import seedu.simplykitchen.logic.commands.SortExpiryCommand;
+import seedu.simplykitchen.logic.commands.SortPriorityCommand;
+import seedu.simplykitchen.logic.commands.UndoCommand;
 import seedu.simplykitchen.logic.parser.exceptions.ParseException;
 import seedu.simplykitchen.model.food.DescriptionContainsKeywordsPredicate;
 import seedu.simplykitchen.model.food.ExpiryDateSearchPredicate;
@@ -82,6 +87,12 @@ public class FoodInventoryParserTest {
     }
 
     @Test
+    public void parseCommand_expired() throws Exception {
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD) instanceof ExpiredCommand);
+        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD + " 3") instanceof ExpiredCommand);
+    }
+
+    @Test
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
@@ -96,12 +107,6 @@ public class FoodInventoryParserTest {
     }
 
     @Test
-    public void parseCommand_expired() throws Exception {
-        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD) instanceof ExpiredCommand);
-        assertTrue(parser.parseCommand(ExpiredCommand.COMMAND_WORD + " 3") instanceof ExpiredCommand);
-    }
-
-    @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
@@ -111,6 +116,36 @@ public class FoodInventoryParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_redo() throws Exception {
+        assertTrue(parser.parseCommand(RedoCommand.COMMAND_WORD) instanceof RedoCommand);
+        assertTrue(parser.parseCommand(RedoCommand.COMMAND_WORD + " 3") instanceof RedoCommand);
+    }
+
+    @Test
+    public void parseCommand_sortDesc() throws Exception {
+        assertTrue(parser.parseCommand(SortDescCommand.COMMAND_WORD) instanceof SortDescCommand);
+        assertTrue(parser.parseCommand(SortDescCommand.COMMAND_WORD + " 3") instanceof SortDescCommand);
+    }
+
+    @Test
+    public void parseCommand_sortExpiry() throws Exception {
+        assertTrue(parser.parseCommand(SortExpiryCommand.COMMAND_WORD) instanceof SortExpiryCommand);
+        assertTrue(parser.parseCommand(SortExpiryCommand.COMMAND_WORD + " 3") instanceof SortExpiryCommand);
+    }
+
+    @Test
+    public void parseCommand_sortPriority() throws Exception {
+        assertTrue(parser.parseCommand(SortPriorityCommand.COMMAND_WORD) instanceof SortPriorityCommand);
+        assertTrue(parser.parseCommand(SortPriorityCommand.COMMAND_WORD + " 3") instanceof SortPriorityCommand);
+    }
+
+    @Test
+    public void parseCommand_undo() throws Exception {
+        assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
+        assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD + " 3") instanceof UndoCommand);
     }
 
     @Test

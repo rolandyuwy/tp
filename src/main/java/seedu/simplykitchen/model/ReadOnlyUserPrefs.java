@@ -15,4 +15,5 @@ public interface ReadOnlyUserPrefs {
 
     String getSortingComparatorsDescription();
 
+    boolean isSortingComparatorsDescriptionValid(String sortingComparatorsDescription);
 }

@@ -111,7 +111,7 @@ public class Food {
                 .append("Expiry Date: " + getExpiryDate()).append("\n  ")
                 .append("Priority: " + getPriority()).append("\n  ")
                 .append("Quantity: " + getQuantity()).append("\n  ")
-                .append("Tags: ");
+                .append("Tag(s): ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
