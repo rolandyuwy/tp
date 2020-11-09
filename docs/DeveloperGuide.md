@@ -101,7 +101,6 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
-
 # 4. Design
 
 ## 4.1. Architecture
@@ -171,6 +170,7 @@ The `UI` component,
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
+<div style="page-break-after: always;"></div>
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/logic/Logic.java)
 
