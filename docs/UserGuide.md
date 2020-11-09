@@ -124,7 +124,7 @@ _*For Windows users*_
   <p style="text-align: center; text-decoration: underline">Figure 2: SimplyKitchen pop-up window listing all the expired food items</p>
 
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
-* Refer to the [features section in this guide](#5-features) for help on how to use the app.
+* Refer to the [features section](#5-features) in this guide for help on how to use the app.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -224,16 +224,18 @@ You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
-* A food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* A food item with the same description, expiry date and tags as another food item is considered a duplicate. Duplicates cannot be added to the food inventory.
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
+* The description accepts `alphanumeric` characters, `whitespaces` and `apostrophes`. 
+  * Descriptions with only whitespace(s) or apostrophe(s) are not allowed.
 * The description and tag are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
   * The `value` is compulsory. It must be a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
   * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, spaces and special characters are not allowed. If not provided, the default unit - `unit` - will be given.
     The maximum length of the quantity unit is 20 characters, including whitespaces.
-* The priority can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `LOW`.
-* The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
+* The priority parameter can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `LOW`.
+* The tag can contain `alphanumeric` characters, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
   * A food item can have any number of tags (including 0).
 
@@ -267,7 +269,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
+* Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate, and you cannot edit a food item into a duplicate.
 
 <div markdown="block" class="alert alert-info">
 
@@ -419,12 +421,8 @@ The `find` command searches for food items in your food inventory that match the
 * The search is case-insensitive (e.g `fish` will match `Fish`).
 * Only full words in description will be matched (e.g. `fis` will not match `fish`).
 * Food items with description matching at least one keyword (i.e `OR` search) will be returned (e.g. `fish` will return `Fish Cake`, `Tuna Fish`).
-* The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
-* The priority can either be `high`, `medium` or `low`.
-* The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
-  * Tags with only whitespace(s) are not allowed.
-  * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
-  * Food items with tags matching at least one of the search tags (i.e `OR` search) will be returned (e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags).
+* Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
+* Food items with tags matching at least one of the search tags (i.e `OR` search) will be returned (e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags).
 
 <div markdown="block" class="alert alert-info">
 
@@ -453,7 +451,7 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 ### 5.3.3. Viewing expired food items
 
 When you launch the application, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
-If there is any expired food item, a pop-up window similar to the one shown in Figure 11 will appear with the list of expired food item(s).
+If there are any expired food items, a pop-up window similar to the one shown in Figure 11 will appear with the list of expired food item(s).
 If you want to see the pop-up window while using the application, you can use the `expired` command.
 
 ![Pop up window of expired food items](images/ExpiredPopUpWindow.png)
@@ -479,7 +477,7 @@ These are additional commands you can use to enhance your experience with Simply
 ### 5.4.1. Undoing previous command
 
 The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
-Undoable commands are commands that modify your food inventory's content (`add`, `edit`, `delete` , `changeqty` and `clear`) and commands that sort food items (`sortdesc`, `sortexpiry`, `sortpriority`).
+Undoable commands are commands that modify your food inventory's content ([`add`](#511-adding-a-food-item), [`edit`](#512-editing-a-food-item), [`delete`](#513-deleting-a-food-item) , [`changeqty`](#514-changing-the-quantity-of-a-food-item) and [`clear`](#543-clearing-all-entries)) and commands that sort food items ([`sortdesc`](#521-sorting-food-items-by-description), [`sortexpiry`](#522-sorting-food-items-by-expiry-date), [`sortpriority`](#523-sorting-food-items-by-priority)).
 
 **Format:** `undo`
 
@@ -491,7 +489,7 @@ Undoable commands are commands that modify your food inventory's content (`add`,
 
 ### 5.4.2. Redoing previously undone command
 
-The `redo` command restores your food inventory to a state before an undo command was executed. This lets you easily redo commands that were incorrectly undone.
+The `redo` command restores your food inventory to a state before an [`undo`](#541-undoing-previous-command) command was executed. This lets you easily redo commands that were incorrectly undone.
 
 **Format:** `redo`
 
@@ -606,12 +604,12 @@ Allows for food items to match when their fields match partially to the search f
 
 **Q**: What does SimplyKitchen consider as a duplicate food item?<br>
 **A**: In SimplyKitchen, two food items are duplicates if they have the same `description`, `expiry date` and `tags`. 
-* All the tags must be the same.
-* The capitalisation of the characters in the description or tag is ignored while checking for duplicates.
-* The priority and quantity of food items are not considered while checking for duplicates.<br>
+* All the `tags` must be the same.
+* The capitalisation of the characters in the `description` or `tag` is ignored while checking for duplicates.
+* The `priority` and `quantity` of food items are not considered while checking for duplicates.<br>
 
 Figure 13 shows what the application will look like if you try to add a duplicate food item.
-In this case, the description, expiry date and tag of the food item to be added is the same as the food item already inside the food inventory.
+In this case, the `description`, `expiry date` and `tag` of the food item to be added is the same as the food item already inside the food inventory.
 Therefore, the food item to be added is considered a duplicate.
 
 ![Example of a duplicate food item](images/DuplicateFood.png)
