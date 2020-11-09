@@ -578,7 +578,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user who likes efficiency                 | search for food items based on their priorities            | know which food items belong to a certain priority                       |
 | `* * *`  | user                                      | search for food items based on their expiry dates          | know which food items are expiring on a certain date                     |
 | `* * *`  | busy user                                 | sort my list of food items by their priorities             | know which food items are of certain priorities                          |
-<div style="page-break-after: always;"></div>
 | `* * *`  | busy user                                 | sort my list of food items by their expiry dates           | know which food items are expiring first                                 |
 | `* * *`  | busy user                                 | sort my list of food items by their description            | view a systematic list of food items sorted by description               |
 | `* * *`  | busy user                                 | store my current sorting order                             | refresh the app while maintaining my current sorting order               |
