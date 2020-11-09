@@ -7,15 +7,15 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_TOO_LONG;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_LENGTH;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT_TOO_LONG;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT_LENGTH;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_ZERO_VALUE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_TOO_LONG;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_TAG_LENGTH;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.PRIORITY_DESC_APPLE_PIE;
@@ -103,7 +103,7 @@ public class AddCommandParserTest {
                 + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Description.MESSAGE_CONSTRAINTS);
 
         // invalid description - too long
-        assertParseFailure(parser, INVALID_DESCRIPTION_TOO_LONG + PRIORITY_DESC_BREAD
+        assertParseFailure(parser, INVALID_DESCRIPTION_LENGTH + PRIORITY_DESC_BREAD
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD
                 + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Description.MESSAGE_EXCEED_LIMIT);
 
@@ -124,7 +124,7 @@ public class AddCommandParserTest {
 
         // invalid unit in quantity field - too long
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_UNIT_TOO_LONG
+                + EXPIRY_DATE_DESC_BREAD + INVALID_QUANTITY_UNIT_LENGTH
                 + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, Quantity.MESSAGE_UNIT_EXCEED_LIMIT);
 
         // invalid value in quantity field
@@ -145,7 +145,7 @@ public class AddCommandParserTest {
         // invalid tag - too long
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD
-                + INVALID_TAG_TOO_LONG + VALID_TAG_FROZEN, Tag.MESSAGE_EXCEED_LIMIT);
+                + INVALID_TAG_LENGTH + VALID_TAG_FROZEN, Tag.MESSAGE_EXCEED_LIMIT);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD

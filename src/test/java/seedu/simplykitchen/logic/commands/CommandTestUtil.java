@@ -54,12 +54,12 @@ public class CommandTestUtil {
 
     public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION
             + "D&nut"; // '&' not allowed in descriptions
-    public static final String INVALID_DESCRIPTION_TOO_LONG = " " + PREFIX_DESCRIPTION
+    public static final String INVALID_DESCRIPTION_LENGTH = " " + PREFIX_DESCRIPTION
             + "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeef"; // description exceeds 50 characters
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "lower"; // 'lower' not valid priority
     public static final String INVALID_EXPIRY_DATE_DESC = " " + PREFIX_EXPIRY_DATE + "1--1-2020"; // extra dash
     public static final String INVALID_QUANTITY_UNIT = " " + PREFIX_QUANTITY + "1 @@"; // only alphabets allowed
-    public static final String INVALID_QUANTITY_UNIT_TOO_LONG = " " + PREFIX_QUANTITY
+    public static final String INVALID_QUANTITY_UNIT_LENGTH = " " + PREFIX_QUANTITY
             + "100000.00 aaaaaaaaaabbbbbbbbbbc"; // unit exceeds 20 characters
     public static final String INVALID_QUANTITY_VALUE = " " + PREFIX_QUANTITY + "-1"; // only positive numbers allowed
     public static final String INVALID_QUANTITY_ZERO_VALUE = " " + PREFIX_QUANTITY
@@ -68,7 +68,7 @@ public class CommandTestUtil {
     public static final String INVALID_AMOUNT_SIZE_DESC = " " + PREFIX_AMOUNT + "+"
             + Integer.MAX_VALUE; // amount size too big
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "frozen?"; // '?' not allowed in tags
-    public static final String INVALID_TAG_TOO_LONG = " " + PREFIX_TAG
+    public static final String INVALID_TAG_LENGTH = " " + PREFIX_TAG
             + "aaaaaaaaaabbbbbbbbbbccccccccccddddddddddeeeeeeeeeeffffffffffgggggggggghhh"; // tag exceeds 72 characters
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
