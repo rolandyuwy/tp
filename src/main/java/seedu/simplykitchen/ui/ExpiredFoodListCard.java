@@ -37,7 +37,7 @@ public class ExpiredFoodListCard extends UiPart<Region> {
     private Label expiryDate;
     @FXML
     private FlowPane tags;
-    
+
     /**
      * Creates a {@code FoodCard} with the given {@code Food} and index to display.
      */
