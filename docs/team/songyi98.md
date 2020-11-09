@@ -6,7 +6,7 @@ title: Song Yi's Project Portfolio Page
 ## Project: SimplyKitchen
 
 SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). With intuitive and practical features, SimplyKitchen can get food management tasks done faster and more efficiently than traditional GUI apps.
-Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 12 kLoC.
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
@@ -40,7 +40,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Enabled assertions in the gradle file (e.g. [\#82](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/82))
   * Standardised formatting of User Guide, updated table of contents with hyperlinks and updated About this Document section (e.g. [\#127](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/127))
   * Updated Developer Guide to include use case and user stories (e.g. [\#80](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/80))
-  * Added test cases to improve code coverage by **TBU** (e.g. [\#209](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/209), [\#215](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/215))
+  * Added test cases to improve code coverage of existing code base (e.g. [\#209](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/209), [\#215](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/215))
   * Responsible for documentation - ensured the quality of all project documents.
 
 * **Review contributions**:

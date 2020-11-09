@@ -3,23 +3,19 @@ layout: page
 title: Roland Yu's Project Portfolio
 ---
       
-# Project: SimplyKitchen
+## Project: SimplyKitchen
            
 ## Overview
 
-SimplyKitchen is a desktop application for food inventory management.
-More importantly, SimplyKitchen is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
+SimplyKitchen is a desktop application for food inventory management, and is optimised for users who prefer working with a Command Line Interface (CLI), while still having the benefits of a Graphical User Interface (GUI).
 With intuitive and user-friendly features, SimplyKitchen facilitates food management tasks which can be done faster and more efficiently than traditional GUI applications.
-Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Users interact with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 12 kLoC.
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
 ## Summary of contributions
 
-* **Code contributed**:  [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#search=rolandyuwy&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&until=2020-12-02)
-//**to update link**//
-
-* **Enhancements**:
+* **New Enhancements**:
     * Added the **ability to sort food items** by description, priority and expiry date
       * What it does: allows the user to sort the list of food items permanently.
       * Justification: This feature improves the product significantly because the user's experience when navigating the list of food items in the app relies on their preference on the list's order.
@@ -31,7 +27,12 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
       Furthermore, when the user closes and reopens the application, the list of food items remains ordered according to the stored sorting preference.
       * Highlights: This enhancement affects existing commands and commands to be added in future. It involved changes in the way the food list is processed when it changes, for commands such as `add` and `edit`.
 
-* **Project management** and **Contributions to team-based tasks**:
+* **Enhancements to existing features**:
+    * Improved aesthetics of GUI by fixing bugs (Pull request [\#176](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/176))
+    * Conceptualised the GUI color scheme (Pull request [\#170](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/170))
+
+* **Project management and contributions to team-based tasks**:
+    * Took on role of Team Lead for the project
     * Conceptualised project idea (Management of food inventory to reduce food wastage)
     * Designed product icon
     * Conceptualised project theme and colour scheme
@@ -41,27 +42,24 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Responsible for scheduling and tracking all project tasks
     * Responsible for maintaining the issue tracker
     * Responsible for ensuring all project deliverables and deadlines are met
-    * Refactored AddressBook-Level3 project code to fit project idea (Pull request [\#59]()) **TO UPDATE LINKS**
+    * Refactored AddressBook-Level3 project code to fit project idea (Pull request [\#59](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/59)) 
     * Managed shared team project document
     * Consolidated and vetted through all bugs from Mock Practical Exam
 
-* **Enhancements to existing features**:
-    * Improved aesthetics of GUI by fixing bugs (Pull request [\#176]())
-    * Conceptualised the GUI color scheme (Pull request [\#170]())
+* **Code contributed**:
+[[Functional code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=rolandyuwy&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-10&tabAuthor=rolandyuwy&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)] [[Test code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=rolandyuwy&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-10&tabAuthor=rolandyuwy&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)]
 
 * **Documentation**:
     * User Guide:
-        * Added documentation for the features `clear`, `edit`, `sortdesc`, `sortexpiry` and `sortpriority` (Pull requests [\#73]() and [\#118]())
-        * Added Ui Diagram at the introduction **TO UPDATE**
+        * Added documentation for the features `clear`, `edit`, `sortdesc`, `sortexpiry` and `sortpriority` (Pull requests [\#73](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/73) and [\#118](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/118))
+        * Added GUI layout section (Pull request [\#205](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/205))
+        * Added upcoming features section (Pull request [\#205](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/205))
     * Developer Guide:
-        * Added implementation details of the sorting feature. (Pull request [\#95]())
+        * Added implementation details of the sort feature. (Pull request [\#95](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/95))
 
-* **Review/mentoring contributions**:
-//to update: Links to PRs reviewed, instances of helping team members in other ways//
-
-* **Community**:
-  * Pull requests reviewed (with non-trivial review comments): [\#50](), [\#55](), [\#96](), [\#123](), [\#172]()
-  * Reported bugs and suggestions for other teams (examples: [1](), [2](), [3]()) **TO UPDATE**
+* **Community and review contributions**:
+  * Pull requests reviewed (with non-trivial review comments): [\#50](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/50), [\#55](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/55), [\#96](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/96), [\#123](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/123), [\#172](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/172)
+  * Reported bugs and suggestions for other teams
 
 * **Tools**:
   * Initial setup of project tools - Github organisation
