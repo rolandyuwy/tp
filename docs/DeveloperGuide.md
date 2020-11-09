@@ -22,18 +22,28 @@ title: Developer Guide
   * [5.4. Change quantity feature](#54-change-quantity-feature)
   * [5.5. Find feature](#55-find-feature)
 * [6. Documentation, logging, testing, configuration and dev-ops](#6-documentation-logging-testing-configuration-and-dev-ops)
-* [7. Appendix: Requirements](#7-appendix-requirements)
-  * [7.1. Product scope](#71-product-scope)
-  * [7.2. Glossary](#72-glossary)
-  * [7.3. User stories](#73-user-stories)
-  * [7.4. Use cases](#74-use-cases)
-  * [7.5. Non-Functional requirements](#75-non-functional-requirements)
-* [8. Appendix: Instructions for manual testing](#8-appendix-instructions-for-manual-testing)
-  * [8.1 Launch and shutdown](#81-launch-and-shutdown)
-  * [8.2 Deleting a food item](#82-deleting-a-food-item)
-  * [8.3 Sorting the food list](#83-sorting-the-food-list)
-  * [8.4 Saving data](#84-saving-data)
-
+* [Appendix A: Product scope](#appendix-a-product-scope)
+* [Appendix B: Glossary](#appendix-b-glossary)
+* [Appendix C: User stories](#appendix-c-user-stories)
+* [Appendix D: Use cases](#appendix-d-use-cases)
+  * [D.1. UC01: Add a food item](#d1-uc01-add-a-food-item)
+  * [D.2. UC02: Delete a food item](#d2-uc02-delete-a-food-item)
+  * [D.3. UC03: Edit a food item](#d3-uc03-edit-a-food-item)
+  * [D.4. UC04: Change the quantity of a food item](#d4-uc04-change-the-quantity-of-a-food-item)
+  * [D.5. UC05: Find a food item](#d5-uc05-find-a-food-item)
+  * [D.6. UC06: List all food items](#d6-uc06-list-all-food-items)
+  * [D.7. UC07: Clear all food items](#d7-uc07-clear-all-food-items)
+  * [D.8. UC08: Sort food items by expiry date](#d8-uc08-sort-food-items-by-expiry-date)
+  * [D.9. UC09: Sort food items by priority](#d9-uc09-sort-food-items-by-priority)
+  * [D.10. UC10: Sort food items by description](#d10-uc10-sort-food-items-by-description)
+  * [D.11. UC11: Undo most recent undoable command](#d11-uc11-undo-most-recent-undoable-command)
+  * [D.12. UC12: Redo most recent undo command](#d12-uc12-redo-most-recent-undo-command)
+* [Appendix E: Non-Functional requirements](#appendix-e-non-functional-requirements)
+* [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing)
+  * [F.1. Launch and shutdown](#f1-launch-and-shutdown)
+  * [F.2. Deleting a food item](#f2-deleting-a-food-item)
+  * [F.3. Sorting the food list](#f3-sorting-the-food-list)
+  * [F.4. Saving data](#f4-saving-data)
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. Introduction
@@ -515,9 +525,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 7. Appendix: Requirements
-
-## 7.1. Product scope
+# Appendix A: Product scope
 
 **Target user profile**:
 
@@ -532,7 +540,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.2. Glossary
+# Appendix B: Glossary
 
 Term | Definition/Description
 -----|------------------
@@ -549,7 +557,7 @@ Term | Definition/Description
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.3. User stories
+# Appendix C: User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -579,11 +587,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.4. Use cases
+# Appendix D: Use cases
 
 For all use cases, the **System** is SimplyKitchen, and the **Actor** is the User, unless otherwise specified.
 
-### UC01: Add a food item
+## D.1. UC01: Add a food item
 
 **Guarantees:** The food item is added into the food inventory.
 
@@ -609,7 +617,7 @@ Use case ends.
 
 <br/>
 
-### UC02: Delete a food item
+## D.2. UC02: Delete a food item
 
 **Precondition:** The food item to be deleted is currently in the food inventory.
 
@@ -645,7 +653,7 @@ Use case ends.
 
 <br/>
 
-### UC03: Edit a food item
+## D.3. UC03: Edit a food item
 
 **Precondition:** The food item to be edited is currently in the food inventory.
 
@@ -691,7 +699,7 @@ Use case ends.
 
 <br/>
 
-### UC04: Change the quantity of a food item
+## D.4. UC04: Change the quantity of a food item
 
 **Guarantees:**  The food item has its quantity changed.
 
@@ -735,7 +743,7 @@ Use case ends.
 
 <br/>
 
-### UC05: Find a food item
+## D.5. UC05: Find a food item
 
 **Guarantees:**  All food items in the food inventory that match the query are listed.
 
@@ -761,7 +769,7 @@ Use case ends.
 
 <br/>
 
-### UC06: List all food items
+## D.6. UC06: List all food items
 
 **Guarantees:**  All food items in the food inventory are listed.
 
@@ -775,7 +783,7 @@ Use case ends.
 
 <br/>
 
-### UC07: Clear all food items
+## D.7. UC07: Clear all food items
 
 **Guarantees:**  All food items in the food inventory are cleared.
 
@@ -789,7 +797,7 @@ Use case ends.
 
 <br/>
 
-### UC08: Sort food items by expiry date
+## D.8. UC08: Sort food items by expiry date
 
 **Guarantees:** The food items in the food list are sorted by expiry date.
 
@@ -809,7 +817,7 @@ Use case ends.
 
 <br/>
 
-### UC09: Sort food items by priority
+## D.9. UC09: Sort food items by priority
 
 **Guarantees:** The food items in the food list are sorted by priority.
 
@@ -829,7 +837,7 @@ Use case ends.
 
 <br/>
 
-### UC10: Sort food items by description
+## D.10. UC10: Sort food items by description
 
 **Guarantees:** The food items in the food list are sorted by description.
 
@@ -849,7 +857,7 @@ Use case ends.
 
 <br/>
 
-### UC11: Undo most recent undoable command
+## D.11. UC11: Undo most recent undoable command
 
 **Guarantees** The most recent undoable command (add, changeqty, clear, delete, edit, sortdesc, sortexpiry, sortpriority) requested will be undone.
 
@@ -869,7 +877,7 @@ Use case ends.
 
 <br/>
 
-### UC12: Redo most recent undo command
+## D.12. UC12: Redo most recent undo command
 
 **Guarantees** It redoes the most recent undo command.
 
@@ -891,7 +899,7 @@ Use case ends.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.5. Non-Functional requirements
+# Appendix E: Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
 * The app should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
@@ -902,7 +910,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 8. Appendix: Instructions for manual testing
+# Appendix F: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
@@ -914,7 +922,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 </div>
 
-## 8.1. Launch and shutdown
+## F.1. Launch and shutdown
 
 1. Initial launch
 
@@ -931,7 +939,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.2. Deleting a food item
+## F.2. Deleting a food item
 
 1. Deleting a food item while all food items are being shown
 
@@ -948,7 +956,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.3. Sorting the food list
+## F.3. Sorting the food list
 
 1. Sorting the food list while some or all food items are being shown
 
@@ -966,7 +974,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.4. Saving data
+## F.4. Saving data
 
 1. Dealing with missing/corrupted data files
 
