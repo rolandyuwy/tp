@@ -860,7 +860,7 @@ Use case ends.
 Use case ends.
 
 <br/>
-
+<div style="page-break-after: always;"></div>
 ## D.11. UC11: Undo most recent undoable command
 
 **Guarantees** The most recent undoable command (add, changeqty, clear, delete, edit, sortdesc, sortexpiry, sortpriority) requested will be undone.
@@ -902,7 +902,7 @@ Use case ends.
 <br/>
 
 [Back to top](#table-of-contents)
-
+<div style="page-break-after: always;"></div>
 # Appendix E: Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
