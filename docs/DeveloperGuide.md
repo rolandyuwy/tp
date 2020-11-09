@@ -293,6 +293,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ### 5.2. Sort feature
+The sort feature allows users to sort the list of food items based on description, expiry date and priority.
 
 #### Implementation
 
@@ -300,17 +301,17 @@ The sort feature consists of three commands, `SortDescCommand`, `SortExpiryComma
 
 The sorting order is in accordance to what is likely the most useful order for the user.
 
-Thus, `SortDescCommand` sorts the list of food by description, with items of the same description sorted by expiry date from oldest to newest, 
+* `SortDescCommand` sorts the list of food by description, with items of the same description sorted by expiry date from oldest to newest, 
 and items of the same description and expiry date sorted by priority from `HIGH` to `LOW`.
 
-Similarly, `SortExpiryCommand` sorts the list of food by expiry date from oldest to newest, with items of the same expiry date sorted by priority from `HIGH` to `LOW`, 
+* `SortExpiryCommand` sorts the list of food by expiry date from oldest to newest, with items of the same expiry date sorted by priority from `HIGH` to `LOW`, 
 and items of the same expiry date and priority sorted by description.
 
-Similarly, `SortPriorityCommand` sorts the list of food by priority from `HIGH` to `LOW`, with items of the same priority sorted by expiry date from oldest to newest, 
+* `SortPriorityCommand` sorts the list of food by priority from `HIGH` to `LOW`, with items of the same priority sorted by expiry date from oldest to newest, 
 and items of the same priority and expiry date sorted by description.
 
 When the sort commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, 
-the `versionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `internalList` attribute in `UniqueFoodList`.
+the `VersionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `ObservableList<Food>` attribute in `UniqueFoodList`.
 
 This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` which takes in a variable number of relevant `comparators` in order to sort the food list.
 
@@ -319,7 +320,7 @@ are called to save the sorting information in the user's `preferences.json` file
 
 When invalid sorting information is read from `preferences.json` file, an error message will be displayed in the Result Box of the GUI, and the stored sorting order will be set to the default sorting: by description.
 
-Sorting of the `versionedFoodInventory` attribute in `model` is reflected in the GUI dynamically when `MainWindow` calls `logic#getFilteredFoodList()`.
+Sorting of the `VersionedFoodInventory` attribute in `model` is reflected in the GUI dynamically when `MainWindow` calls `logic#getFilteredFoodList()`.
 
 The following sequence diagram illustrates how the command `sortdesc` works:
 
@@ -436,7 +437,7 @@ This allows users to not be burdened by calculations and to focus more on having
 
 ### 5.5. Find feature
 
-The find feature allows users to search for food items based on description, expiration date, priority and/or tags.
+The find feature allows users to search for food items based on description, expiry date, priority and/or tags.
 
 #### Implementation:
 
@@ -454,7 +455,7 @@ The following is the class diagram for the Find feature:
 
 #### Implementation rationale:
 
-Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
+Since the user can search for food items based on either the description, expiry date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
 
 #### Design consideration:
 
@@ -713,7 +714,7 @@ Use case ends.
 
 **MSS:**
 
-**1.** User requests to list food items according to the description, priority, expiration date and/or tag.
+**1.** User requests to list food items according to the description, priority, expiry date and/or tag.
 
 **2.** SimplyKitchen displays all food items matching the search query.
 
