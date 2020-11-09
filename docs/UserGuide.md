@@ -204,7 +204,7 @@ This section contains information on the features and commands of SimplyKitchen.
   e.g `d/DESCRIPTION e/EXPIRY_DATE [p/PRIORITY]` can be used as `d/bread e/30-09-2020` or as `d/bread e/30-09-2020 p/low`.
 
 * Parameters can be in any order.<br>
-  e.g. If the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
+  e.g. If the command specifies `p/PRIORITY q/QUANTITY`, `q/QUANTITY p/PRIORITY` is also acceptable.
 
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/dog`.
@@ -463,10 +463,9 @@ The constraints for the individual parameters of this command (each description 
 * `find d/apple tuna` can return `Apple Pie` and `Tuna Can`.
 * `find e/30-12-2020` returns all food items with expiry date on `30-12-2020`.
 * `find d/apple p/high` can return `Apple Pie` and `Apple Jam` if both items have a `HIGH` priority.
+<div style="page-break-after: always;"></div>
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with either `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` or have either `cat` or `dog` as tags.
-
-<div style="page-break-after: always;"></div>
 
 The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is shown in Figure 10.
 
@@ -531,6 +530,8 @@ The `redo` command restores your food inventory to a state before an [`undo`](#5
 
 [Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### 5.4.3. Clearing all entries
 
 The `clear` command clears all entries from your food inventory. This lets you easily clear the sample data, or start on a clean food inventory.
@@ -546,8 +547,6 @@ Note that the data saved in your hard disk will be cleared when you use this com
 </div>
 
 [Back to top](#table-of-contents)
-
-<div style="page-break-after: always;"></div>
 
 ### 5.4.4. Viewing help
 
@@ -669,7 +668,7 @@ Action | Format, Examples
 **Sort by priority** | `sortpriority`
 **List** | `list`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`<br> e.g. `find d/biscuits e/30-12-2020 p/medium t/cat t/dog`
-**View expired food** | `expired`
+**View expired food**      | `expired`
 **Undo** | `undo`
 **Redo** | `redo`
 **Clear** | `clear`
