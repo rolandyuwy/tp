@@ -430,7 +430,7 @@ The constraints above have been applied after careful consideration of the needs
     * Cons: Unnecessarily complicates the code.
 
 [Back to top](#table-of-contents)
-
+<div style="page-break-after: always;"></div>
 ## 5.4. Change quantity feature
 
 The change quantity feature allows users to increment or decrement the quantity of a food item by a certain amount.
@@ -454,7 +454,7 @@ The method will calculate the new `quantity` and throw a `CommandException` if t
 
 * The `oldQuantity#updateQuantityValue` method is called within the `changeQuantityCommand#updateFoodQuantity` method.
 * In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the `amount` to be incremented/decremented by. This is due to accuracy errors when performing arithmetic operations on double values.
-
+<div style="page-break-after: always;"></div>
 The following sequence diagram illustrates how the command `changeqty` works:
 
 ![ChangeqtySequenceDiagram](images/ChangeqtySequenceDiagram.png)
