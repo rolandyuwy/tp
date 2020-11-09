@@ -53,7 +53,7 @@ SimplyKitchen is developed by 5 dedicated students who hope to assist and allevi
 With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
 
 With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
-SimplyKitchen also uses a Graphical User Interface (GUI) to provide the ideal user experience.
+SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic visualization of your food information for the ideal user experience.
 
 SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
@@ -65,20 +65,20 @@ SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny W
 
 This document is a User Guide meant to assist you in using SimplyKitchen to manage your food inventory.
 
-The [quick start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
+The [Quick Start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
 
-The [application layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
+The [Application Layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
 
-The [features](#5-features) section helps you understand and use the features of SimplyKitchen.
+The [Features](#5-features) section helps you understand and use the features of SimplyKitchen.
 It gives clear examples for each feature to ensure that the purpose and constraints of the feature are evident.
 
-The [upcoming features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion of SimplyKitchen.
+The [Upcoming Features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion of SimplyKitchen.
 
 The [FAQs](#7-frequently-asked-questions-faqs) section contains some Frequently Asked Questions with regard to SimplyKitchen.
 
-The [command summary](#8-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
+The [Command Summary](#8-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-Finally, the [glossary](#9-glossary) section provides explanations for commonly used terms.
+Finally, the [Glossary](#9-glossary) section provides explanations for commonly used terms.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
