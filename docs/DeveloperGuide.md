@@ -45,6 +45,7 @@ title: Developer Guide
   * [F.3. Changing the quantity of a food item](#f3-changing-the-quantity-of-a-food-item)
   * [F.4. Sorting the food list](#f4-sorting-the-food-list)
   * [F.5. Saving data](#f5-saving-data)
+* [Appendix G: Effort](#appendix-g-effort)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1015,6 +1016,43 @@ These instructions only provide a starting point for testers to work on; testers
       
    3. Test case: Remove any of the other fields - `expiryDate`, `priority`, `quantity`, `tagged` - from a food item in the `foodInventory.json` file.<br>
       Expected: Similar to previous.
+
+[Back to top](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Appendix G: Effort
+
+Overall, our team is satisfied to create SimplyKitchen as a product that is both intuitive and user-friendly for our target audience, domestic individuals who manage their food inventory at home.
+Throughout this fulfilling journey, our team has cultivated a good project system and has been able to meet the deadlines of our tasks.
+Our team has managed to contribute about 12kLOC, roughly the same amount as that of developing AB3.<br>
+
+The `Food` model in SimplyKitchen is more complex as compared to the `Person` model in AB3.
+The `Food` model has attributes such as `Expiry Date` and `Quantity` where ensuring validation of the inputs was complex.
+For example, the `Quantity` class includes a compulsory value and an optional unit.
+Parsing of the quantity input needs to take into account many different constraints such as the size limit, the number of decimal places, the length of the unit and the characters allowed in the unit.
+Restricting the inputs to these various conditions was tedious but necessary and helpful to the user.<br>
+ 
+A challenge our group had faced was to be concise with the constraints and functionality of our `add` and `find` commands in the User Guide.
+Due to the many parameters of these two commands, our explanations were detailed but quite long.
+We had to strike a balance between being concise while ensuring that the users can take full advantage of our commands so that they can have an enriching experience using our application to manage their food inventory.<br>
+
+Another key challenge for our group was to decide on the type of sorting to implement in SimplyKitchen.
+To preserve the CLI nature of the application, we decided to introduce three new sorting commands to sort food items based on the expiry date, description and priority.
+Sorting by description proved to be difficult as we decided to enhance sorting by lexicographical order to account for uppercase and lowercase characters.
+This enables the user to sort the list more intuitively. This way, users would not have items with descriptions differing by the casing of the first characters (e.g. “apple” and “Apple juice”) far apart in the list with a lexicographical order.<br>
+
+We also implemented many new commands such as `changeqty`, `undo`, `redo`, and so on.
+These new commands brought about new ways to interact with the application unlike AB3.
+For example, the `changeqty` command relieves users of the burden of having to calculate a new quantity of the food item every time he or she buys/uses/discards food items.<br>
+
+In terms of UI, a significant change we made which catered very well to our target audience was the creation of a pop-up window to display the list of expired food items.
+This pop-up window can also be called by using the `expired` command.
+Additionally, a side panel showing the list of food items that are expiring within a week was added to the main application window.
+We have to ensure that this side panel is constantly updated whenever the user adds/edits a food item that expires within a week from the current date, which was slightly challenging.<br>
+
+Each of these challenges was learning experiences for our team members.
+As a team, we are glad to have overcome these challenges to create an impressive, immersive and lasting product, SimplyKitchen.<br>
 
 [Back to top](#table-of-contents)
 
