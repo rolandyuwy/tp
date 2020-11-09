@@ -29,10 +29,11 @@ title: Developer Guide
   * [7.4. Use cases](#74-use-cases)
   * [7.5. Non-Functional requirements](#75-non-functional-requirements)
 * [8. Appendix: Instructions for manual testing](#8-appendix-instructions-for-manual-testing)
-  * [8.1 Launch and shutdown](#81-launch-and-shutdown)
-  * [8.2 Deleting a food item](#82-deleting-a-food-item)
-  * [8.3 Sorting the food list](#83-sorting-the-food-list)
-  * [8.4 Saving data](#84-saving-data)
+  * [8.1. Launch and shutdown](#81-launch-and-shutdown)
+  * [8.2. Deleting a food item](#82-deleting-a-food-item)
+  * [8.3. Changing the quantity of a food item](#83-changing-the-quantity-of-a-food-item)
+  * [8.4. Sorting the food list](#84-sorting-the-food-list)
+  * [8.5. Saving data](#85-saving-data)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -894,14 +895,14 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   2. Re-launch the app by double-clicking the jar file.<br>
+      Expected: The most recent window size and location is retained.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
@@ -909,20 +910,45 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a food item while all food items are being shown
 
-   1. Prerequisites: List all food items using the `list` command. Multiple food items in the list.
+   1. Prerequisites: List all food items using the `list` command, or use `find` command to display the list of food matching the search fields.
+      There should be multiple food items displayed in the food list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `delete 1`<br>
+      Expected: The first food item is deleted from the food list. Details of the first food item is shown in the result box.
 
-   1. Test case: `delete 0`<br>
-      Expected: No food item is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `delete 0`<br>
+      Expected: No food item is deleted. An error message is shown in the result box.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.3. Sorting the food list
+## 8.3. Changing the quantity of a food item
+
+1. Changing the quantity of a food item while some or all food items are being shown
+
+   1. Prerequisites: List all food items using the `list` command, or use `find` command to display the list of food matching the search fields.
+   There should be multiple food items displayed in the list.
+
+   2. Assumption: The first food item displayed in the food list has a quantity of 5.00.
+
+   3. Test case: `changeqty 1 a/+1.00`
+      Expected: The first food item has its quantity updated to 6.00. Updated details of the first food item is shown in the result box.
+
+   4. Test case: `changeqty 1 a/1.00` or `changeqty 1 a/+1.000`
+      Expected: The first food item remains the same. An error message similar to the one shown below is displayed in the result box.
+      
+      ![Error message](images/ChangeQuantityErrorMessage.png)
+
+   5. Test case: `changeqty 1 a/x` (where x is smaller than or equal to -5.00 OR larger than +99,995.00)
+      Expected: The first food item remains the same. An error message similar to the one shown below is displayed in the result box.
+
+      ![Error message](images/ChangeQuantityConstraintErrorMessage.png)
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+
+## 8.4. Sorting the food list
 
 1. Sorting the food list while some or all food items are being shown
 
@@ -940,7 +966,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.4. Saving data
+## 8.5. Saving data
 
 1. Dealing with missing/corrupted data files
 
