@@ -258,7 +258,7 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 ### 5.1.2. Editing a food item
 
-The edit command edits the details of an existing food item in your food inventory.
+The `edit` command edits the details of an existing food item in your food inventory.
 If an entry is incorrect, you can easily edit the entry without deleting and re-adding the food item.
 
 **Format:** `edit INDEX [d/DESCRIPTION] [e/EXPIRY_DATE] [q/QUANTITY] [p/PRIORITY] [t/TAG]...`
@@ -653,9 +653,9 @@ Action | Format, Examples
 
 Term | Definition/Description
 -----|------------------
+**Case insensitive** | Treating or interpreting uppercase and lowercase letters as being the same.
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
 **Command prompt** | A CLI system for Windows which allows users to control their Operating System by entering commands.
-**Case insensitive** | Treating or interpreting uppercase and lowercase letters as being the same.
 **Duplicate food item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
 **Expiring food item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
