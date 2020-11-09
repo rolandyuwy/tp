@@ -87,7 +87,7 @@ The [Appendix for Requirements](#7-appendix-requirements) section consists of de
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
 The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an [Appendix for Instructions for Manual Testing](#8-appendix-instructions-for-manual-testing).
+This document ends with an [Appendix for Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing).
 
 [Back to top](#table-of-contents)
 
@@ -101,6 +101,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 4. Design
 
 ## 4.1. Architecture
@@ -192,6 +193,7 @@ The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but 
 
 [Back to top](#table-of-contents)
 <div style="page-break-after: always;"></div>
+
 ## 4.4. Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
@@ -237,6 +239,7 @@ Classes used by multiple components are in the [`seedu.simplykitchen.commons`](h
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
+
 # 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -431,6 +434,7 @@ The constraints above have been applied after careful consideration of the needs
 
 [Back to top](#table-of-contents)
 <div style="page-break-after: always;"></div>
+
 ## 5.4. Change quantity feature
 
 The change quantity feature allows users to increment or decrement the quantity of a food item by a certain amount.
@@ -544,6 +548,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 [Back to top](#table-of-contents)
 <div style="page-break-after: always;"></div>
+
 # Appendix B: Glossary
 
 Term | Definition/Description
@@ -561,6 +566,7 @@ Term | Definition/Description
 
 [Back to top](#table-of-contents)
 <div style="page-break-after: always;"></div>
+
 # Appendix C: User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -861,6 +867,7 @@ Use case ends.
 
 <br/>
 <div style="page-break-after: always;"></div>
+
 ## D.11. UC11: Undo most recent undoable command
 
 **Guarantees** The most recent undoable command (add, changeqty, clear, delete, edit, sortdesc, sortexpiry, sortpriority) requested will be undone.
@@ -903,6 +910,7 @@ Use case ends.
 
 [Back to top](#table-of-contents)
 <div style="page-break-after: always;"></div>
+
 # Appendix E: Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
