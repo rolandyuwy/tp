@@ -47,7 +47,7 @@ title: User Guide
 
 # 1. Introduction
 
-Welcome to SimplyKitchen, a desktop application for food inventory management suited for household individuals who manage their kitchens' food items.
+Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
 SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
 With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
@@ -55,7 +55,7 @@ With intuitive and practical features, SimplyKitchen can get your food managemen
 With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
 SimplyKitchen also uses a Graphical User Interface (GUI) to provide the ideal user experience.
 
-SimplyKitchen hopes to empower you to work towards a Tidy Kitchen, with Tiny Wastage!
+SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -236,6 +236,7 @@ You can then access the food item later on for editing, deleting etc.
 * The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
   * A food item can have any number of tags (including 0).
+  * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
 
 **Examples:**
 * `add d/Canned tuna e/1-1-2021 q/1.5 can p/low` adds an item having description `Canned tuna`, expiry date `01-01-2021`, quantity `1.50 can` and priority `LOW`.
@@ -267,6 +268,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
+  * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
 * Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate.
 
 <div markdown="block" class="alert alert-info">
@@ -561,9 +563,9 @@ Allows storage location information to be tracked for a food item, using the `s/
  
 Moves a food item from one storage location to another storage location.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
-
 **Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 6.2. Sort Command
 
