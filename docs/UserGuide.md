@@ -657,6 +657,7 @@ Term | Definition/Description
 **Expiry Date** | The expiry date of a food item.
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
+**GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
 **Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
 **Mainstream OS** | Windows, Linux, Unix, OS-X.
 **Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
