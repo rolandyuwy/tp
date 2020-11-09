@@ -83,6 +83,7 @@ This is followed by a section consisting of guides for [Documentation, Logging, 
 Each guide gives specific assistance in the context of the project.
 
 <div style="page-break-after: always;"></div>
+
 The [Appendix](#appendix-a-product-scope) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
 The [Glossary](#appendix-b-glossary) and [Non-Functional Requirements](#appendix-e-non-functional-requirements) provide other key information relevant to the document and the app.
@@ -120,6 +121,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 <div style="page-break-after: always;"></div>
+
 [**`Commons`**](#46-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
@@ -152,6 +154,7 @@ The sections below give more details of each component.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 <div style="page-break-after: always;"></div>
+
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/Ui.java)
 
@@ -170,6 +173,7 @@ The `UI` component,
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 <div style="page-break-after: always;"></div>
+
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/logic/Logic.java)
 
@@ -282,6 +286,7 @@ Step 4. The user now decides that adding the food item was a mistake, and decide
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 <div style="page-break-after: always;"></div>
+
 <div markdown="span" class="alert alert-info">
 
 **:information_source: Note:**<br>
@@ -314,6 +319,7 @@ If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, po
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the food inventory, such as `list`, will usually not call `Model#commitFoodInventory()`, `Model#undoFoodInventory()` or `Model#redoFoodInventory()`. Thus, the `foodInventoryStateList` remains unchanged.
 <div style="page-break-after: always;"></div>
+
 ![UndoRedoState4](images/UndoRedoState4.png)
 
 Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Since the `currentStatePointer` is not pointing at the end of the `foodInventoryStateList`, all food inventory states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add d/Donut …​` command.
