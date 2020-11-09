@@ -12,7 +12,7 @@ Users interact with it using a CLI, and it has a GUI created with JavaFX. It is 
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/).
 
-  * **New Feature:**
+  * **New Features:**
     * Added **Priority attribute to food items**.
       * What it does: Allows the user to specify a priority, either high, medium or low, for a food item.
       * Justification: This feature provides a convenient way for the user to mark the importance of different food items.
@@ -55,12 +55,12 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **Documentation contributed:** [[User Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)] [[Developer Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html)]
 
- * **Project management and contributions to team-based tasks:**
+* **Project management and contributions to team-based tasks:**
   * Managed releases `v1.3` - `v1.4` (2 releases) on GitHub
   * Responsible for testing - ensured proper testing and quality assurance of the features of the application.
   * Responsible for integration - versioning of code, maintaining code repository and integrating various parts of the software to create a whole.
   * Contributed to planning and ideation of the application - product scope, user stories, use cases and non-functional requirements. 
 
- * **Community:**
+* **Community:**
   * Reviewed PRs of peers
   * Reported bugs and suggestions for other teams
