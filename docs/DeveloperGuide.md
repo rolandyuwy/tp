@@ -22,18 +22,29 @@ title: Developer Guide
   * [5.4. Change quantity feature](#54-change-quantity-feature)
   * [5.5. Find feature](#55-find-feature)
 * [6. Documentation, logging, testing, configuration and dev-ops](#6-documentation-logging-testing-configuration-and-dev-ops)
-* [7. Appendix: Requirements](#7-appendix-requirements)
-  * [7.1. Product scope](#71-product-scope)
-  * [7.2. Glossary](#72-glossary)
-  * [7.3. User stories](#73-user-stories)
-  * [7.4. Use cases](#74-use-cases)
-  * [7.5. Non-Functional requirements](#75-non-functional-requirements)
-* [8. Appendix: Instructions for manual testing](#8-appendix-instructions-for-manual-testing)
-  * [8.1 Launch and shutdown](#81-launch-and-shutdown)
-  * [8.2 Deleting a food item](#82-deleting-a-food-item)
-  * [8.3 Sorting the food list](#83-sorting-the-food-list)
-  * [8.4 Saving data](#84-saving-data)
-
+* [Appendix A: Product scope](#appendix-a-product-scope)
+* [Appendix B: Glossary](#appendix-b-glossary)
+* [Appendix C: User stories](#appendix-c-user-stories)
+* [Appendix D: Use cases](#appendix-d-use-cases)
+  * [D.1. UC01: Add a food item](#d1-uc01-add-a-food-item)
+  * [D.2. UC02: Delete a food item](#d2-uc02-delete-a-food-item)
+  * [D.3. UC03: Edit a food item](#d3-uc03-edit-a-food-item)
+  * [D.4. UC04: Change the quantity of a food item](#d4-uc04-change-the-quantity-of-a-food-item)
+  * [D.5. UC05: Find a food item](#d5-uc05-find-a-food-item)
+  * [D.6. UC06: List all food items](#d6-uc06-list-all-food-items)
+  * [D.7. UC07: Clear all food items](#d7-uc07-clear-all-food-items)
+  * [D.8. UC08: Sort food items by expiry date](#d8-uc08-sort-food-items-by-expiry-date)
+  * [D.9. UC09: Sort food items by priority](#d9-uc09-sort-food-items-by-priority)
+  * [D.10. UC10: Sort food items by description](#d10-uc10-sort-food-items-by-description)
+  * [D.11. UC11: Undo most recent undoable command](#d11-uc11-undo-most-recent-undoable-command)
+  * [D.12. UC12: Redo most recent undo command](#d12-uc12-redo-most-recent-undo-command)
+* [Appendix E: Non-Functional requirements](#appendix-e-non-functional-requirements)
+* [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing)
+  * [F.1. Launch and shutdown](#f1-launch-and-shutdown)
+  * [F.2. Deleting a food item](#f2-deleting-a-food-item)
+  * [F.3. Sorting the food list](#f3-sorting-the-food-list)
+  * [F.4. Saving data](#f4-saving-data)
+  
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. Introduction
@@ -105,14 +116,14 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#46-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#42-ui-component): The UI of the App.
+* [**`Logic`**](#43-logic-component): The command executor.
+* [**`Model`**](#44-model-component): Holds the data of the App in memory.
+* [**`Storage`**](#45-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
@@ -168,7 +179,12 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
 </div>
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
@@ -187,7 +203,11 @@ The `Model`,
 * does not depend on any of the other three components.
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `FoodInventory`, which `Food` references. This allows `FoodInventory` to only require one `Tag` object per unique `Tag`, instead of each `Food` needing their own `Tag` object.<br>
+
+**:information_source: Note:**<br>
+
+An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `FoodInventory`, which `Food` references. This allows `FoodInventory` to only require one `Tag` object per unique `Tag`, instead of each `Food` needing their own `Tag` object.
+
 </div>
 
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
@@ -208,7 +228,7 @@ The `Storage` component,
 
 ## 4.6. Common classes
 
-Classes used by multiple components are in the `seedu.simplykitchen.commons` package.
+Classes used by multiple components are in the [`seedu.simplykitchen.commons`](https://github.com/AY2021S1-CS2103T-F13-4/tp/tree/master/src/main/java/seedu/simplykitchen/commons) package.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
@@ -244,7 +264,11 @@ Step 3. The user executes `add d/Donut …​` to add a new food item. The `add`
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitFoodInventory()`, so the food inventory state will not be saved into the `foodInventoryStateList`.
+<div markdown="span" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+If a command fails its execution, it will not call `Model#commitFoodInventory()`, so the food inventory state will not be saved into the `foodInventoryStateList`.
 
 </div>
 
@@ -252,9 +276,11 @@ Step 4. The user now decides that adding the food item was a mistake, and decide
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial food inventory state, then there are no previous food inventory states to restore. The `undo` command uses `Model#canUndoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">
 
-than attempting to perform the undo.
+**:information_source: Note:**<br>
+
+If the `currentStatePointer` is at index 0, pointing to the initial food inventory state, then there are no previous food inventory states to restore. The `undo` command uses `Model#canUndoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 
 </div>
 
@@ -262,13 +288,21 @@ The following sequence diagram shows how the undo operation works:
 
 ![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </div>
 
 The `redo` command does the opposite — it calls `Model#redoFoodInventory()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the food inventory to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, pointing to the latest food inventory state, then there are no undone food inventory states to restore. The `redo` command uses `Model#canRedoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, pointing to the latest food inventory state, then there are no undone food inventory states to restore. The `redo` command uses `Model#canRedoFoodInventory()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
@@ -403,20 +437,20 @@ The change quantity feature allows users to increment or decrement the quantity 
 The `ChangeQuantityCommandParser` class parses the command by first extracting the index of the food item within the food list displayed to the user.
 
 Next, the `amount` is parsed. It is a non-zero signed double value.
-Similar to the constraints applied to the quantity field, the magnitude of the amount should be more than -100,000.00 and less than +100,000.00 but not zero.
+Similar to the constraints applied to the `quantity` field, the magnitude of the `amount` should be more than -100,000.00 and less than +100,000.00 but not zero.
 
-* Having a quantity change of zero is meaningless.
-* The signed value is used to denote the increment or decrement of the quantity value.
-* The amount value is constrained to a maximum of 2 decimal places. Any additional decimal places used will not be meaningful from the user's point of view.
-* A unit is not required as it can be derived from the existing unit of the food item when the user wants to change its quantity.
+* Having a `quantity` change of zero is meaningless.
+* The signed value is used to denote the increment or decrement of the `quantity` value.
+* The `amount` value is constrained to a maximum of 2 decimal places. Any additional decimal places used will not be meaningful from the user's point of view.
+* A unit is not required as it can be derived from the existing unit of the food item when the user wants to change its `quantity`.
 
-A new `ChangeQuantityCommand` object is created with the extracted index and amount. It will retrieve the correct food item from the filtered list of food item provided by the `model` object.
+A new `ChangeQuantityCommand` object is created with the extracted index and `amount`. It will retrieve the correct food item from the filtered list of food item provided by the `model` object.
 
 The selected food item will have its quantity updated through the `changeQuantityCommand#updateFoodQuantity` method.
-The method will calculate the new quantity and throw a `CommandException` if the new quantity is less than or equal to zero, or more than 100,000.00.
+The method will calculate the new `quantity` and throw a `CommandException` if the new `quantity` is less than or equal to zero, or more than 100,000.00.
 
 * The `oldQuantity#updateQuantityValue` method is called within the `changeQuantityCommand#updateFoodQuantity` method.
-* In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the amount to be incremented/decremented by. This is due to accuracy errors when performing arithmetic opetations on double values.
+* In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the `amount` to be incremented/decremented by. This is due to accuracy errors when performing arithmetic operations on double values.
 
 The following sequence diagram illustrates how the command `changeqty` works:
 
@@ -424,26 +458,26 @@ The following sequence diagram illustrates how the command `changeqty` works:
 
 ### Design consideration:
 
-Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
-This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
+Although the `quantity` of a food item can be changed using the `edit` command, the command will replace the old `quantity` value with a value supplied by the user.
+This means that users have to calculate the `quantity` themselves and calculation errors may occur as a result.
 To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
 This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
 
 #### Aspect: Updating a food item's quantity
 
-* **Alternative 1 (current choice):** Update the quantity value of a food item by calling the `updateQuantityValue` method of the `Quantity` class.
+* **Alternative 1 (current choice):** Update the `quantity` value of a food item by calling the `updateQuantityValue` method of the `Quantity` class.
     * Pros: Easy to implement given the tight project time frame.
     * Cons: All other fields of a `food` object need to be extracted and passed into the `Food` constructor.
 * **Alternative 2:** Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
     * Pros: Improves OOP aspect of the code.
     * Cons: Unnecessarily complicates the code.
-    * Cons: Only the quantity field of a `food` object is changed so a `Descriptor` class may be an overkill.
+    * Cons: Only the `quantity` field of a `food` object is changed so a `Descriptor` class may be an overkill.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 ## 5.5. Find feature
 
-The find feature allows users to search for food items based on description, expiration date, priority and/or tags.
+The find feature allows users to search for food items based on `description`, `expiry date`, `priority` and/or `tags`.
 
 ### Implementation:
 
@@ -461,7 +495,7 @@ The following is the class diagram for the Find feature:
 
 ### Implementation rationale:
 
-Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
+Since the user can search for food items based on either the `description`, `expiry date`, `priority` or `tags`, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
 
 ### Design consideration:
 
@@ -469,10 +503,10 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 #### Aspect: Implementation
 
-* <b>Alternative 1 (current choice): </b> The expiry date in the `find` command looks for a single specific expiry date.
+* <b>Alternative 1 (current choice): </b> The `expiry date` in the `find` command looks for a single specific `expiry date`.
     * Pros: Easy to implement and search is more specific.
     * Cons: If the user wants to get all the expiring food items in a certain period, multiple searches will be required.
-* <b>Alternative 2: </b> The expiry date in the `find` command can be a date range.
+* <b>Alternative 2: </b> The `expiry date` in the `find` command can be a date range.
     * Pros: Able to get all the food items that are going to expire in a certain period with one search.
     * Cons: Will need more validation to ensure the date range provided is valid.
 
@@ -492,9 +526,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 7. Appendix: Requirements
-
-## 7.1. Product scope
+# Appendix A: Product scope
 
 **Target user profile**:
 
@@ -509,7 +541,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.2. Glossary
+# Appendix B: Glossary
 
 Term | Definition/Description
 -----|------------------
@@ -526,7 +558,7 @@ Term | Definition/Description
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.3. User stories
+# Appendix C: User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -556,11 +588,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.4. Use cases
+# Appendix D: Use cases
 
-For all use cases, the **System** is `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified.
+For all use cases, the **System** is SimplyKitchen, and the **Actor** is the User, unless otherwise specified.
 
-### UC01: Add a food item
+## D.1. UC01: Add a food item
 
 **Guarantees:** The food item is added into the food inventory.
 
@@ -586,7 +618,7 @@ Use case ends.
 
 <br/>
 
-### UC02: Delete a food item
+## D.2. UC02: Delete a food item
 
 **Precondition:** The food item to be deleted is currently in the food inventory.
 
@@ -622,7 +654,7 @@ Use case ends.
 
 <br/>
 
-### UC03: Edit a food item
+## D.3. UC03: Edit a food item
 
 **Precondition:** The food item to be edited is currently in the food inventory.
 
@@ -668,7 +700,7 @@ Use case ends.
 
 <br/>
 
-### UC04: Change the quantity of a food item
+## D.4. UC04: Change the quantity of a food item
 
 **Guarantees:**  The food item has its quantity changed.
 
@@ -712,7 +744,7 @@ Use case ends.
 
 <br/>
 
-### UC05: Find a food item
+## D.5. UC05: Find a food item
 
 **Guarantees:**  All food items in the food inventory that match the query are listed.
 
@@ -738,7 +770,7 @@ Use case ends.
 
 <br/>
 
-### UC06: List all food items
+## D.6. UC06: List all food items
 
 **Guarantees:**  All food items in the food inventory are listed.
 
@@ -752,7 +784,7 @@ Use case ends.
 
 <br/>
 
-### UC07: Clear all food items
+## D.7. UC07: Clear all food items
 
 **Guarantees:**  All food items in the food inventory are cleared.
 
@@ -766,7 +798,7 @@ Use case ends.
 
 <br/>
 
-### UC08: Sort food items by expiry date
+## D.8. UC08: Sort food items by expiry date
 
 **Guarantees:** The food items in the food list are sorted by expiry date.
 
@@ -786,7 +818,7 @@ Use case ends.
 
 <br/>
 
-### UC09: Sort food items by priority
+## D.9. UC09: Sort food items by priority
 
 **Guarantees:** The food items in the food list are sorted by priority.
 
@@ -806,7 +838,7 @@ Use case ends.
 
 <br/>
 
-### UC10: Sort food items by description
+## D.10. UC10: Sort food items by description
 
 **Guarantees:** The food items in the food list are sorted by description.
 
@@ -826,9 +858,9 @@ Use case ends.
 
 <br/>
 
-### UC11: Undo most recent undoable command
+## D.11. UC11: Undo most recent undoable command
 
-**Guarantees** The most recent undoable command (add, delete, edit, sort, clear) requested will be undone.
+**Guarantees** The most recent undoable command (add, changeqty, clear, delete, edit, sortdesc, sortexpiry, sortpriority) requested will be undone.
 
 **MSS:**
 
@@ -846,7 +878,7 @@ Use case ends.
 
 <br/>
 
-### UC12: Redo most recent undo command
+## D.12. UC12: Redo most recent undo command
 
 **Guarantees** It redoes the most recent undo command.
 
@@ -868,7 +900,7 @@ Use case ends.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 7.5. Non-Functional requirements
+# Appendix E: Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
 * The app should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
@@ -879,16 +911,19 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 8. Appendix: Instructions for manual testing
+# Appendix F: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+These instructions only provide a starting point for testers to work on; testers are expected to do more *exploratory* testing.
 
 </div>
 
-## 8.1. Launch and shutdown
+## F.1. Launch and shutdown
 
 1. Initial launch
 
@@ -905,7 +940,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.2. Deleting a food item
+## F.2. Deleting a food item
 
 1. Deleting a food item while all food items are being shown
 
@@ -922,7 +957,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.3. Sorting the food list
+## F.3. Sorting the food list
 
 1. Sorting the food list while some or all food items are being shown
 
@@ -940,7 +975,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-## 8.4. Saving data
+## F.4. Saving data
 
 1. Dealing with missing/corrupted data files
 
