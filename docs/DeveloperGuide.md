@@ -356,7 +356,7 @@ and items of the same priority and expiry date sorted by description.
 
 When the sort commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, 
 the `VersionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `ObservableList<Food>` attribute in `UniqueFoodList`.
-
+<div style="page-break-after: always;"></div>
 This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` which takes in a variable number of relevant `comparators` in order to sort the food list.
 
 Following which, `model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` 
@@ -378,7 +378,7 @@ Sorting information is stored as user preferences, to allow for the information 
 
 Furthermore, this allows for dynamic updates of the food item list according to the stored sorting preference. In other words,
  when a food item is added or edited by calling `AddCommand` and `EditCommand`, the food item will be sorted dynamically according to the stored sorting mechanism. Thus, there is reduced hassle as the user does not need to sort the list again.
-
+<div style="page-break-after: always;"></div>
 #### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
