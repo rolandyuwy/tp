@@ -141,7 +141,8 @@ Figure 3 details the main components:
 ![Labelled UI Diagram](images/LabelledUIDiagram.png)
   
 <p style="text-align: center; text-decoration: underline">Figure 3: Main components of SimplyKitchen</p>
-  
+
+<div style="page-break-after: always;"></div>
 The table below provides the descriptions of the main components:
 
 Component           | Description
@@ -158,6 +159,8 @@ Figure 4 provides a breakdown of the food item components displayed in the food 
 ![Food Item UI Diagram](images/FoodItemUIDiagram.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 4: Components of a food item</p>
+
+<div style="page-break-after: always;"></div>
 
 The table below provides the descriptions of the displayed food item components:
 
@@ -176,7 +179,7 @@ Quantity    | The quantity of a food item. The quantity consists of 2 entities -
 
 # 5. Features
 
-This section contains information on the features of SimplyKitchen and the respective commands that you can use.
+This section contains information on the features and commands of SimplyKitchen.
 
 <div markdown="block" class="alert alert-info">
 
@@ -204,7 +207,7 @@ This section contains information on the features of SimplyKitchen and the respe
   e.g. If the command specifies `d/DESCRIPTION e/EXPIRY_DATE`, `e/EXPIRY_DATE d/DESCRIPTION` is also acceptable.
 
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
-  e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/mustard`.
+  e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/dog`.
 
 * Parameters without an ellipsis can only appear once.<br>
   e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
@@ -242,6 +245,7 @@ You can then access the food item later on for editing, deleting etc.
   * Tags with only whitespace(s) are not allowed.
   * A food item can have any number of tags (including 0).
   * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
+<div style="page-break-after: always;"></div>
 
 **Examples:**
 * `add d/Canned tuna e/1-1-2021 q/1.5 can p/low` adds an item having description `Canned tuna`, expiry date `01-01-2021`, quantity `1.50 can` and priority `LOW`.
@@ -258,6 +262,8 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 <p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list</p>
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### 5.1.2. Editing a food item
 
@@ -289,6 +295,8 @@ The constraints for the individual parameters of this command (description, expi
 
 [Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### 5.1.3. Deleting a food item
 
 The `delete` command deletes a specified food item from your food inventory, so that you can stop tracking it.
@@ -319,6 +327,8 @@ Use this command if you have bought new food items or used/discarded some existi
   * Indicate a positive or negative sign before the value to show increment or decrement respectively.
   * Do not add a whitespace between the sign and the value (e.g. `+1` is acceptable but not `+ 1`).
 * Do not specify the unit of the food item. The existing unit will be used instead.
+
+<div style="page-break-after: always;"></div>
 
 <div markdown="block" class="alert alert-info">
 
@@ -358,6 +368,8 @@ The `sortdesc` command sorts the list of food items by description, allowing you
 * Food items of the same description will be sorted by expiry date from oldest to newest.
 * Food items of the same description and same expiry date will be sorted by priority from high to low.
 
+<div style="page-break-after: always;"></div>
+
 **Example:**
 
 A possible valid ordering of description is shown in Figure 7.
@@ -367,6 +379,8 @@ A possible valid ordering of description is shown in Figure 7.
 <p style="text-align: center; text-decoration: underline">Figure 7: Food items sorted by description</p>
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### 5.2.2. Sorting food items by expiry date
 
@@ -387,6 +401,8 @@ A possible valid ordering of expiry date is shown in Figure 8.
 
 [Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### 5.2.3. Sorting food items by priority
 
 The `sortpriority` command sorts the list of food items by priority from high to low. With this, you can easily tell which food items have higher priorities.
@@ -405,6 +421,8 @@ A possible valid ordering of priority is shown in Figure 9.
 <p style="text-align: center; text-decoration: underline">Figure 9: Food items sorted by priority</p>
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ## 5.3. Viewing commands
 
@@ -448,6 +466,8 @@ The constraints for the individual parameters of this command (each description 
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with either `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` or have either `cat` or `dog` as tags.
 
+<div style="page-break-after: always;"></div>
+
 The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is shown in Figure 10.
 
 ![After executing the find command](images/FindCommand.png)
@@ -455,6 +475,8 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 <p style="text-align: center; text-decoration: underline">Figure 10: Food list displaying the result of the find command</p>
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### 5.3.3. Viewing expired food items
 
@@ -477,6 +499,8 @@ If you have discarded the expired food item, please remember to delete the assoc
 **Format:** `expired`
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ## 5.4. Miscellaneous commands
 
@@ -522,6 +546,8 @@ Note that the data saved in your hard disk will be cleared when you use this com
 </div>
 
 [Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### 5.4.4. Viewing help
 
@@ -599,7 +625,6 @@ Allows for food items to match when their fields match partially to the search f
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
 
 # 7. Frequently asked questions (FAQs)
 
@@ -637,14 +662,14 @@ Action | Format, Examples
 -------|------------------
 **Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`<br> e.g. `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
 **Edit** | `edit INDEX [d/DESCRIPTION] [e/EXPIRY_DATE] [q/QUANTITY] [p/PRIORITY] [t/TAG]...`<br> e.g. `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
-**Delete** | `delete INDEX`<br> e.g. `delete 3`
-**Change quantity** | `changeqty INDEX a/AMOUNT`<br> e.g. `changeqty 1 a/+1.50`
+**Delete** | `delete INDEX` e.g. `delete 3`
+**Change quantity** | `changeqty INDEX a/AMOUNT` e.g. `changeqty 1 a/+1.50`
 **Sort by description** | `sortdesc`
 **Sort by expiry date** | `sortexpiry`
 **Sort by priority** | `sortpriority`
 **List** | `list`
 **Find** | `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`<br> e.g. `find d/biscuits e/30-12-2020 p/medium t/cat t/dog`
-**View expired food items** | `expired`
+**View expired food** | `expired`
 **Undo** | `undo`
 **Redo** | `redo`
 **Clear** | `clear`
