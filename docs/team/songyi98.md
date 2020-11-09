@@ -35,13 +35,13 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
     * Added documentation and implementation details of the `changeqty` feature (e.g. [\#99](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/99), [\#191](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/191))
 
 * **Project management and contributions to team-based tasks**:
-  * Contributed to planning and ideation of application
+  * Contributed to planning and ideation of application - product scope, user stories, use cases and non-functional requirements
   * Set up the GitHub team org and repo
   * Enabled assertions in the gradle file (e.g. [\#82](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/82))
   * Standardised formatting of User Guide, updated table of contents with hyperlinks and updated About this Document section (e.g. [\#127](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/127))
   * Updated Developer Guide to include use case and user stories (e.g. [\#80](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/80))
   * Added test cases to improve code coverage by **TBU** (e.g. [\#209](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/209), [\#215](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/215))
-  * In charge of documentation: Responsible for the quality of all project documents.
+  * Responsible for documentation - ensured the quality of all project documents.
 
 * **Review contributions**:
   * Reviewed PRs (e.g. [\#59](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/59), [\#90](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/90), [\#200](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/200))
