@@ -1,10 +1,9 @@
-# Sagar Sureka - Project Portfolio
+---
+layout: page
+title: Sagar Sureka's Project Portfolio
+---
 
-## Project: SimplyKitchen
-
-![Application Logo](../images/Logo.png)
-
-![Labelled Ui Diagram](../images/TentativeLabelledUIDiagram.png)
+# Project: SimplyKitchen
 
 ## Overview
 
@@ -44,7 +43,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Compiled the comments received on the team's User and Developer Guides from peers.
   * Responsible for proper integration of the various parts of the software to form a whole.
   * Responsible for ensuring that the project code maintains high coding standards.
-  
+
 * **Documentation**:
   * User Guide:
     * Made updates to all the features affected by the implementation of the `quantity` field. [\#90](https://github.com/AY2021S1-CS2103T-F13-4/tp/pull/90)
