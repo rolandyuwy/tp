@@ -320,7 +320,7 @@ Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Si
 The following activity diagram summarizes what happens when a user executes a new command:
 
 ![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
+<div style="page-break-after: always;"></div>
 ### Design consideration:
 
 #### Aspect: How undo & redo executes
@@ -384,9 +384,8 @@ Furthermore, this allows for dynamic updates of the food item list according to 
 * **Alternative 1 (current choice):** Permanently sort lists.
   * Pros: There is less hassle when refreshing the app, as the specific sorting order preferred by the user is stored.
   * Cons: If the user wishes to sort displayed lists temporarily, they may only achieve this by sorting, then undoing the command, which may be a hassle.
-
 * **Alternative 2:** Lists are always sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
-  * Pros: The user is able to sort the lists temporarily if they prefer to do so.
+  * Pros: The user is able to sort the lists temporarily if they prefer to do so.<div style="page-break-after: always;"></div>
   * Cons: Sorting is not permanent, thus lists stored are sorted by description by default, which is not desirable if the user has other preferred sorting orders.
 
 [Back to top](#table-of-contents)
@@ -418,7 +417,7 @@ The constraints above have been applied after careful consideration of the needs
 * Constraints on the content of the `unit` field have been applied to prevent misuse of the feature.
 * Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
 * The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish.
-
+<div style="page-break-after: always;"></div>
 ### Design consideration:
 
 #### Aspect: Implementation
