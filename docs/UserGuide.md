@@ -45,7 +45,7 @@ title: User Guide
 
 <div style="page-break-after: always;"></div> 
 
-## 1. Introduction
+# 1. Introduction
 
 Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
