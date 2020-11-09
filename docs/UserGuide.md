@@ -256,7 +256,7 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 ### 5.1.2. Editing a food item
 
-The edit command edits the details of an existing food item in your food inventory.
+The `edit` command edits the details of an existing food item in your food inventory.
 If an entry is incorrect, you can easily edit the entry without deleting and re-adding the food item.
 
 **Format:** `edit INDEX [d/DESCRIPTION] [e/EXPIRY_DATE] [q/QUANTITY] [p/PRIORITY] [t/TAG]...`
