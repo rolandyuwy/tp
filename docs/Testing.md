@@ -3,28 +3,36 @@ layout: page
 title: Testing guide
 ---
 
-* Table of Contents
-{:toc}
+# Table of contents
+
+* [Running tests](#running-tests)
+* [Types of tests](#types-of-tests)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Running tests
+# Running tests
 
 There are two ways to run tests.
 
 * **Method 1: Using IntelliJ JUnit test runner**
   * To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`
-  * To run a subset of tests, you can right-click on a test package,
-    test class, or a test and choose `Run 'ABC'`
+  * To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`
 * **Method 2: Using Gradle**
   * Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
-<div markdown="span" class="alert alert-secondary">:link: **Link**: Read [this Gradle Tutorial from the se-edu/guides](https://se-education.org/guides/tutorials/gradle.html) to learn more about using Gradle.
+<div markdown="span" class="alert alert-secondary">
+
+:link: **Link**:
+
+Read [this Gradle Tutorial from the se-edu/guides](https://se-education.org/guides/tutorials/gradle.html) to learn more about using Gradle.
+
 </div>
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Types of tests
+# Types of tests
 
 This project has three types of tests:
 
@@ -34,3 +42,7 @@ This project has three types of tests:
    e.g. `seedu.simplykitchen.storage.StorageManagerTest`
 1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
    e.g. `seedu.simplykitchen.logic.LogicManagerTest`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/Testing.html#">^ Back to top</a></div>
+
+--------------------------------------------------------------------------------------------------------------------

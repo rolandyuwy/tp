@@ -1,11 +1,12 @@
 package seedu.simplykitchen.logic.parser;
 
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.DESCRIPTION_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_APPLE_PIE;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
+import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
@@ -25,6 +26,8 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FROZEN;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.ILLEGAL_PREFIX;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.MULTIPLE_SAME_PREFIX;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -68,16 +71,16 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // zero index
-        assertParseFailure(parser, "0" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + DESCRIPTION_DESC_APPLE_PIE, MESSAGE_INVALID_FOOD_DISPLAYED_INDEX);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/ string", String.format(ILLEGAL_PREFIX, "i/"));
     }
 
     @Test
@@ -86,7 +89,7 @@ public class EditCommandParserTest {
                 + INVALID_DESCRIPTION_DESC, Description.MESSAGE_CONSTRAINTS); // invalid description
         assertParseFailure(parser, "1" + INVALID_PRIORITY_DESC,
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
-        assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_FORMAT_DESC,
+        assertParseFailure(parser, "1" + INVALID_EXPIRY_DATE_DESC,
                 ExpiryDate.MESSAGE_CONSTRAINTS); // invalid date
         assertParseFailure(parser, "1" + INVALID_QUANTITY_UNIT,
                 Quantity.QUANTITY_UNIT_CONSTRAINTS); // invalid quantity unit
@@ -101,7 +104,7 @@ public class EditCommandParserTest {
         // valid priority followed by invalid priority. The test case for invalid priority followed by valid priority
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
         assertParseFailure(parser, "1" + PRIORITY_DESC_BREAD + INVALID_PRIORITY_DESC,
-                Priority.MESSAGE_CONSTRAINTS);
+                "Multiple p/ detected. Please remove one of them.");
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Food} being edited,
         // parsing it together with a valid tag results in error
@@ -113,7 +116,7 @@ public class EditCommandParserTest {
                 Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRY_DATE_FORMAT_DESC
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC + INVALID_EXPIRY_DATE_DESC
                 + VALID_PRIORITY_APPLE_PIE + VALID_QUANTITY_APPLY_PIE, Description.MESSAGE_CONSTRAINTS);
     }
 
@@ -121,10 +124,10 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_BREAD + TAG_DESC_WHOLEMEAL
-                + EXPIRY_DATE_DESC_APPLE_PIE + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN + QUANTITY_DESC_BREAD;
+                + EXPIRY_DATE_DESC_BREAD + DESCRIPTION_DESC_APPLE_PIE + TAG_DESC_FROZEN + QUANTITY_DESC_BREAD;
 
         EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withDescription(VALID_DESCRIPTION_APPLE_PIE)
-                .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_APPLE_PIE)
+                .withPriority(VALID_PRIORITY_BREAD).withExpiryDate(VALID_EXPIRY_DATE_BREAD)
                 .withQuantity(VALID_QUANTITY_BREAD)
                 .withTags(VALID_TAG_WHOLEMEAL, VALID_TAG_FROZEN).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -180,7 +183,7 @@ public class EditCommandParserTest {
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_multipleRepeatedFields_failure() {
         Index targetIndex = INDEX_FIRST_FOOD;
         String userInput = targetIndex.getOneBased() + PRIORITY_DESC_APPLE_PIE
                 + EXPIRY_DATE_DESC_APPLE_PIE + TAG_DESC_FROZEN + PRIORITY_DESC_APPLE_PIE
@@ -188,31 +191,20 @@ public class EditCommandParserTest {
                 + EXPIRY_DATE_DESC_BREAD + TAG_DESC_WHOLEMEAL + QUANTITY_DESC_APPLE_PIE
                 + QUANTITY_DESC_BREAD;
 
-        EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
-                .withExpiryDate(VALID_EXPIRY_DATE_BREAD)
-                .withTags(VALID_TAG_FROZEN, VALID_TAG_WHOLEMEAL)
-                .withQuantity(VALID_QUANTITY_BREAD).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "p/"));
     }
 
     @Test
-    public void parse_invalidValueFollowedByValidValue_success() {
+    public void parse_invalidValueFollowedByValidValue_failure() {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_FOOD;
         String userInput = targetIndex.getOneBased() + INVALID_PRIORITY_DESC + PRIORITY_DESC_BREAD;
-        EditCommand.EditFoodDescriptor descriptor = new EditFoodDescriptorBuilder()
-                .withPriority(VALID_PRIORITY_BREAD).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "p/"));
 
         // other valid values specified
         userInput = targetIndex.getOneBased() + EXPIRY_DATE_DESC_BREAD + INVALID_PRIORITY_DESC + PRIORITY_DESC_BREAD;
-        descriptor = new EditFoodDescriptorBuilder().withPriority(VALID_PRIORITY_BREAD)
-                .withExpiryDate(VALID_EXPIRY_DATE_BREAD).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
+
+        assertParseFailure(parser, userInput, String.format(MULTIPLE_SAME_PREFIX, "p/"));
     }
 
     @Test

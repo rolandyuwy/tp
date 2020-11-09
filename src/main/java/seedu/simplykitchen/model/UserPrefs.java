@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 import seedu.simplykitchen.commons.core.GuiSettings;
+import seedu.simplykitchen.model.util.ComparatorUtil;
+import seedu.simplykitchen.model.util.ComparatorUtil.ComparatorInformation;
 
 /**
  * Represents User's preferences.
@@ -15,7 +17,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path foodInventoryFilePath = Paths.get("data" , "foodInventory.json");
-    private String sortingComparatorsDescription = "default without ordering";
+    private String sortingComparatorsDescription = ComparatorInformation.DESCRIPTION.getDescription();
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -24,6 +26,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
+     * Sets to default sorting by description if sorting comparators description in {@code userPrefs} is invalid.
      */
     public UserPrefs(ReadOnlyUserPrefs userPrefs) {
         this();
@@ -32,6 +35,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
+     * Sets to default sorting by description if sorting comparators description in {@code userPrefs} is invalid.
      */
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
@@ -62,9 +66,21 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return sortingComparatorsDescription;
     }
 
+    /**
+     * Checks if the description of sorting comparators {@code sortingComparatorsDescription} is valid.
+     */
+    public boolean isSortingComparatorsDescriptionValid(String sortingComparatorsDescription) {
+        requireNonNull(sortingComparatorsDescription);
+        return ComparatorUtil.isSortingComparatorsDescriptionValid(sortingComparatorsDescription);
+    }
+
     public void setSortingComparatorsDescription(String sortingComparatorsDescription) {
         requireNonNull(sortingComparatorsDescription);
-        this.sortingComparatorsDescription = sortingComparatorsDescription;
+        if (isSortingComparatorsDescriptionValid(sortingComparatorsDescription)) {
+            this.sortingComparatorsDescription = sortingComparatorsDescription;
+        } else {
+            this.sortingComparatorsDescription = ComparatorInformation.DESCRIPTION.getDescription();
+        }
     }
 
     @Override

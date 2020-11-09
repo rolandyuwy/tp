@@ -8,8 +8,6 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DES
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.EXPIRY_DATE_DESC_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_FORMAT_DESC;
-import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_EXPIRY_DATE_SHORTENED_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_UNIT;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.INVALID_QUANTITY_VALUE;
@@ -28,6 +26,8 @@ import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_EXPIRY_DA
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_QUANTITY_BREAD;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_FROZEN;
 import static seedu.simplykitchen.logic.commands.CommandTestUtil.VALID_TAG_WHOLEMEAL;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.ILLEGAL_PREFIX;
+import static seedu.simplykitchen.logic.parser.ArgumentTokenizer.MULTIPLE_SAME_PREFIX;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.simplykitchen.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.simplykitchen.testutil.TypicalFood.APPLE_PIE;
@@ -53,18 +53,6 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
-        // multiple descriptions - last description accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_APPLE_PIE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
-        // multiple priorities - last priority accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_APPLE_PIE + PRIORITY_DESC_BREAD
-                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
-
-        // multiple expiry dates - last expiry date accepted
-        assertParseSuccess(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_APPLE_PIE
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN, new AddCommand(expectedFood));
 
         // multiple tags - all accepted
@@ -118,18 +106,8 @@ public class AddCommandParserTest {
 
         // invalid expiry date format
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + INVALID_EXPIRY_DATE_FORMAT_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_CONSTRAINTS);
-
-        // invalid shortened expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
-                + INVALID_EXPIRY_DATE_SHORTENED_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_SHORTENED_YEAR);
-
-        // invalid non-existent expiry date
-        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + INVALID_EXPIRY_DATE_DESC + QUANTITY_DESC_BREAD
-                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_INVALID_DATE);
+                + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN, ExpiryDate.MESSAGE_CONSTRAINTS);
 
         // invalid unit in quantity field
         assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
@@ -153,12 +131,36 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_DESCRIPTION_DESC + PRIORITY_DESC_BREAD
-                        + QUANTITY_DESC_BREAD + INVALID_EXPIRY_DATE_FORMAT_DESC,
+                        + QUANTITY_DESC_BREAD + INVALID_EXPIRY_DATE_DESC,
                 Description.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
                 + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_WHOLEMEAL + TAG_DESC_FROZEN,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_multipleSameFields_failure() {
+        // multiple descriptions - last description accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_APPLE_PIE + DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN,
+                String.format(MULTIPLE_SAME_PREFIX, "d/"));
+
+        // multiple priorities - last priority accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_APPLE_PIE + PRIORITY_DESC_BREAD
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN,
+                String.format(MULTIPLE_SAME_PREFIX, "p/"));
+
+        // multiple expiry dates - last expiry date accepted
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + PRIORITY_DESC_BREAD + EXPIRY_DATE_DESC_APPLE_PIE
+                + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD + TAG_DESC_FROZEN,
+                String.format(MULTIPLE_SAME_PREFIX, "e/"));
+    }
+
+    @Test
+    public void parse_invalidPrefix_failure() {
+        assertParseFailure(parser, DESCRIPTION_DESC_BREAD + EXPIRY_DATE_DESC_BREAD + QUANTITY_DESC_BREAD
+                + PRIORITY_DESC_BREAD + TAG_DESC_WHOLEMEAL + " o/testing", String.format(ILLEGAL_PREFIX, "o/"));
     }
 }

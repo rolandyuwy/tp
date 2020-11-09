@@ -39,7 +39,27 @@ public class JsonUtilTest {
         assertEquals(serializableTestClass.getMapOfIntegerToString(), SerializableTestClass.getHashMapTestValues());
     }
 
-    //TODO: @Test jsonUtil_readJsonStringToObjectInstance_correctObject()
+    @Test
+    public void readJsonStringToObjectInstance_correctObject() throws IOException {
+        String jsonString = FileUtil.readFromFile(SERIALIZATION_FILE);
 
-    //TODO: @Test jsonUtil_writeThenReadObjectToJson_correctObject()
+        SerializableTestClass serializableTestClass = JsonUtil
+                .fromJsonString(jsonString, SerializableTestClass.class);
+
+        assertEquals(serializableTestClass.getName(), SerializableTestClass.getNameTestValue());
+        assertEquals(serializableTestClass.getListOfLocalDateTimes(), SerializableTestClass.getListTestValues());
+        assertEquals(serializableTestClass.getMapOfIntegerToString(), SerializableTestClass.getHashMapTestValues());
+    }
+
+    @Test
+    public void writeThenReadObjectToJson_correctObject() throws IOException {
+        SerializableTestClass serializableTestClass = new SerializableTestClass();
+        serializableTestClass.setTestValues();
+        String initialJsonString = JsonUtil.toJsonString(serializableTestClass);
+
+        FileUtil.writeToFile(SERIALIZATION_FILE, initialJsonString);
+
+        assertEquals(FileUtil.readFromFile(SERIALIZATION_FILE), SerializableTestClass.JSON_STRING_REPRESENTATION);
+    }
+
 }

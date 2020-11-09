@@ -2,6 +2,9 @@ package seedu.simplykitchen.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.simplykitchen.commons.core.Messages.MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
+import static seedu.simplykitchen.commons.util.StringUtil.isIntegerOverflow;
+import static seedu.simplykitchen.commons.util.StringUtil.isNonPositiveUnsignedDouble;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_EXPIRY_DATE;
 import static seedu.simplykitchen.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -12,7 +15,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.simplykitchen.commons.core.LogsCenter;
 import seedu.simplykitchen.commons.core.index.Index;
 import seedu.simplykitchen.logic.commands.EditCommand;
 import seedu.simplykitchen.logic.commands.EditCommand.EditFoodDescriptor;
@@ -23,6 +28,7 @@ import seedu.simplykitchen.model.tag.Tag;
  * Parses input arguments and creates a new EditCommand object
  */
 public class EditCommandParser implements Parser<EditCommand> {
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -40,7 +46,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            logger.info(generateParseExceptionMessage(args));
+            throw new ParseException(generateParseExceptionMessage(argMultimap.getPreamble()), pe);
         }
 
         EditFoodDescriptor editFoodDescriptor = new EditCommand.EditFoodDescriptor();
@@ -84,6 +91,17 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
+    }
+
+    /**
+     * Generate the error message for the invalid index number.
+     */
+    private String generateParseExceptionMessage(String args) {
+        if (isNonPositiveUnsignedDouble(args.trim()) || isIntegerOverflow(args.trim())) {
+            return MESSAGE_INVALID_FOOD_DISPLAYED_INDEX;
+        } else {
+            return String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
+        }
     }
 
 }
