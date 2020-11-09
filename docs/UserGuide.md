@@ -430,8 +430,8 @@ The `find` command searches for food items in your food inventory that match the
 
 **:information_source: Note about the description and tag parameters:**<br>
 
-Each description can contain a maximum of 50 characters.<br>
-Each tag can contain a maximum of 30 characters, including whitespaces.
+Each description in the search query can contain a maximum of 50 characters.<br>
+Each tag in the search query can contain a maximum of 30 characters, including whitespaces.
 
 </div>
 
