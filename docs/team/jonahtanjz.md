@@ -1,10 +1,9 @@
-# Jonah Tan - Project Portfolio
+---
+layout: page
+title: Jonah Tan's Project Portfolio
+---
 
 # Project: SimplyKitchen
-
-![Application Logo](../images/Logo.png)
-
-![SimplyKitchen UI](../images/Ui.png)
 
 ## Overview
 
@@ -43,15 +42,16 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Added validation for user input
     * Check for invalid prefixes in command
     * Check for duplicate prefixes that are not supposed to be repeated in the command 
+  * Refactored AB3 code to adapt to SimplyKitchen  
   * Wrote additional tests for new and existing features to increase coverage.
 
 #### Code contributed: 
 [[Functional code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code)] [[Test code](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=jonahtanjz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&until=2020-11-04&tabAuthor=jonahtanjz&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=test-code)]
 
-
 ### Documentation:
   * User Guide:
     * Added documentation for the features `find` and `expired`
+    * Contributed to the section `Notes about the command format` and `Command Summary`   
     * Did cosmetic tweaks to existing documentation
   * Developer Guide:
     * Added implementation details of the `find` feature including sequence and class diagram
@@ -61,8 +61,11 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 #### Documentation contributed: 
 [[User Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html)] [[Developer Guide](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html)]
 
-### Project management:
-  * Managed releases `v1.2` - `v1.4` (3 releases) on GitHub
+### Project management and contributions to team-based tasks:
+  * Managed releases `v1.3` - `v1.4` (2 releases) on GitHub
+  * Responsible for testing - ensured proper testing and quality assurance of the features of the application.
+  * Responsible for integration - versioning of code, maintaining code repository and integrating various parts of the software to create a whole.
+  * Contributed to planning and ideation of the application - product scope, user stories, use cases and non-functional requirements. 
 
 ### Community:
   * Reviewed PRs of peers
