@@ -7,7 +7,7 @@ title: Developer Guide
 
 * [1. Introduction](#1-introduction)
 * [2. About this document](#2-about-this-document)
-* [3. Getting up, getting started](#3-setting-up-getting-started)
+* [3. Setting up, getting started](#3-setting-up-getting-started)
 * [4. Design](#4-design)
   * [4.1. Architecture](#41-architecture)
   * [4.2. UI component](#42-ui-component)
