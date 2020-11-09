@@ -411,8 +411,7 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 ### 5.3.2. Finding food items
 
-The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
-The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
+The `find` command searches for food items in your food inventory that match the search query and displays the result on your food list. You can easily find a specific food item, or a group of food items.
 
 **Format:** `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`
 
@@ -420,13 +419,20 @@ The search will return food items with matching description, priority, expiry da
 * The search is case-insensitive (e.g `fish` will match `Fish`).
 * Only full words in description will be matched (e.g. `fis` will not match `fish`).
 * Food items with description matching at least one keyword (i.e `OR` search) will be returned (e.g. `fish` will return `Fish Cake`, `Tuna Fish`).
-* The description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The priority can either be `high`, `medium` or `low`.
 * The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
   * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
   * Food items with tags matching at least one of the search tags (i.e `OR` search) will be returned (e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags).
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note about the description and tag parameters:**<br>
+
+Each description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
+
+</div>
 
 **Examples:**
 * `find d/chocolate` can return `Chocolate Pie` and `Chocolate Cake`.
