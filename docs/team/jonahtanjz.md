@@ -56,6 +56,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 ### Documentation:
   * User Guide:
     * Added documentation for the features `find` and `expired`
+    * Contributed to the section `Notes about the command format` and `Command Summary`   
     * Did cosmetic tweaks to existing documentation
   * Developer Guide:
     * Added implementation details of the `find` feature including sequence and class diagram
