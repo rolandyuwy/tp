@@ -402,7 +402,7 @@ The `quantity` field has been implemented as a class in the `model.food` package
 * The `value` is a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
 * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
 * If the unit is not provided, a default unit - `unit` - will be given.
-
+<div style="page-break-after: always;"></div>
 ### Implementation rationale:
 
 The constraints above have been applied after careful consideration of the needs of the target audience.
@@ -417,7 +417,7 @@ The constraints above have been applied after careful consideration of the needs
 * Constraints on the content of the `unit` field have been applied to prevent misuse of the feature.
 * Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
 * The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish.
-<div style="page-break-after: always;"></div>
+
 ### Design consideration:
 
 #### Aspect: Implementation
