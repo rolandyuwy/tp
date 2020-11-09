@@ -47,7 +47,7 @@ title: User Guide
 
 # 1. Introduction
 
-Welcome to SimplyKitchen, a desktop application for food inventory management suited for household individuals who manage their kitchens' food items.
+Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
 SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
 With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
@@ -55,7 +55,7 @@ With intuitive and practical features, SimplyKitchen can get your food managemen
 With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
 SimplyKitchen also uses a Graphical User Interface (GUI) to provide the ideal user experience.
 
-SimplyKitchen hopes to empower you to work towards a Tidy Kitchen, with Tiny Wastage!
+SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -561,9 +561,9 @@ Allows storage location information to be tracked for a food item, using the `s/
  
 Moves a food item from one storage location to another storage location.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
-
 **Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 6.2. Sort Command
 
