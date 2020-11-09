@@ -47,7 +47,7 @@ title: User Guide
 
 # 1. Introduction
 
-Welcome to SimplyKitchen, a desktop application for food inventory management suited for household individuals who manage their kitchens' food items.
+Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
 SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
 With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
@@ -55,7 +55,7 @@ With intuitive and practical features, SimplyKitchen can get your food managemen
 With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
 SimplyKitchen also uses a Graphical User Interface (GUI) to provide the ideal user experience.
 
-SimplyKitchen hopes to empower you to work towards a Tidy Kitchen, with Tiny Wastage!
+SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
@@ -225,7 +225,7 @@ You can then access the food item later on for editing, deleting etc.
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`
 
 * A food item with the same description, expiry date and tags as another food item is considered a duplicate.
-* The description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
+* The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
 * The description and tag are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
@@ -411,8 +411,7 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 ### 5.3.2. Finding food items
 
-The `find` command searches for food items in your food inventory and displays the result on your food list. You can easily find a specific food item, or a group of food items.
-The search will return food items with matching description, priority, expiry date and tags (i.e `[d/DESCRIPTION OR [MORE_DESCRIPTIONS]...] AND [p/PRIORITY] AND [e/EXPIRY DATE] AND [t/TAG] OR ...`).
+The `find` command searches for food items in your food inventory that match the search query and displays the result on your food list. You can easily find a specific food item, or a group of food items.
 
 **Format:** `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`
 
@@ -420,13 +419,21 @@ The search will return food items with matching description, priority, expiry da
 * The search is case-insensitive (e.g `fish` will match `Fish`).
 * Only full words in description will be matched (e.g. `fis` will not match `fish`).
 * Food items with description matching at least one keyword (i.e `OR` search) will be returned (e.g. `fish` will return `Fish Cake`, `Tuna Fish`).
-* The description and tag can contain a maximum of 50 and 72 characters respectively, including whitespaces.
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The priority can either be `high`, `medium` or `low`.
 * The tag can contain `alphanumeric`, `whitespaces` and these special characters: `#$%&-()`.
   * Tags with only whitespace(s) are not allowed.
   * Only full tags will be matched e.g. `nuts` will not match `contains nuts`.
   * Food items with tags matching at least one of the search tags (i.e `OR` search) will be returned (e.g. `frozen` will return all food items with tags `frozen` regardless of their other tags).
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note about the description and tag parameters:**<br>
+
+Each description in the search query can contain a maximum of 50 characters.<br>
+Each tag in the search query can contain a maximum of 30 characters, including whitespaces.
+
+</div>
 
 **Examples:**
 * `find d/chocolate` can return `Chocolate Pie` and `Chocolate Cake`.
@@ -554,9 +561,9 @@ Allows storage location information to be tracked for a food item, using the `s/
  
 Moves a food item from one storage location to another storage location.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
-
 **Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
 
 ## 6.2. Sort Command
 
