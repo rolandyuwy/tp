@@ -44,7 +44,7 @@ title: User Guide
 * [9. Glossary](#9-glossary)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 1. Introduction
 
 Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
@@ -57,7 +57,7 @@ SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic
 
 SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -80,10 +80,10 @@ The [Command Summary](#8-command-summary) section acts as a quick reference poin
 
 Finally, the [Glossary](#9-glossary) section provides explanations for the commonly used terms in this document and SimplyKitchen.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 3. Quick start
 
 This section will guide you in setting up and launching SimplyKitchen on your computer.
@@ -96,7 +96,7 @@ This section will guide you in setting up and launching SimplyKitchen on your co
   ![App window](images/AppWindow.png)
   
   <p style="text-align: center; text-decoration: underline">Figure 1: SimplyKitchen main window</p>
-  
+<div style="page-break-after: always;"></div>
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Problems launching the app?**<br>
@@ -126,10 +126,10 @@ _*For Windows users*_
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
 * Refer to the [Features](#5-features) section in this guide for help on how to use the app.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 4. Application layout
 
 This section provides an introduction to SimplyKitchen's Graphical User Interface (GUI) layout. 
@@ -167,10 +167,10 @@ Priority    | The priority of a food item (i.e. `high`, `medium` or `low`)
 Expiry Date | The expiry date of a food item
 Quantity    | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`. (e.g. `1 loaf`, `3.5 g`)
   
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 5. Features
 
 This section contains information on the features of SimplyKitchen and the respective commands that you can use.
@@ -211,7 +211,7 @@ This section contains information on the features of SimplyKitchen and the respe
 
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.1. Basic commands
 
@@ -254,7 +254,7 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 <p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.1.2. Editing a food item
 
@@ -284,7 +284,7 @@ The constraints for the individual parameters of this command (description, expi
 * `edit 1 d/baked beans e/1-1-2020` edits the food description and expiry date of the 1st food item to be `baked beans` and `01-01-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.50 can` and clears all existing tags.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.1.3. Deleting a food item
 
@@ -300,7 +300,7 @@ The `delete` command deletes a specified food item from your food inventory, so 
 * `list` followed by `delete 2` deletes the 2nd food item in your food inventory.
 * `find d/tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.1.4. Changing the quantity of a food item
 
@@ -333,7 +333,7 @@ If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item)
 * `list` followed by `changeqty 1 a/+1` increases the quantity of the 1st food item in your food inventory by 1.
 * `find d/tuna` followed by `changeqty 2 a/-2.50` decreases the quantity of the 2nd food item from the result of the `find` command by 2.50.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.2. Sorting commands
 
@@ -363,7 +363,7 @@ A possible valid ordering of description is shown in Figure 7.
 
 <p style="text-align: center; text-decoration: underline">Figure 7: Food items sorted by description</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.2.2. Sorting food items by expiry date
 
@@ -382,7 +382,7 @@ A possible valid ordering of expiry date is shown in Figure 8.
 
 <p style="text-align: center; text-decoration: underline">Figure 8: Food items sorted by expiry date</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.2.3. Sorting food items by priority
 
@@ -401,7 +401,7 @@ A possible valid ordering of priority is shown in Figure 9.
 
 <p style="text-align: center; text-decoration: underline">Figure 9: Food items sorted by priority</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.3. Viewing commands
 
@@ -414,7 +414,7 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 **Format:** `list`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.3.2. Finding food items
 
@@ -451,7 +451,7 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 
 <p style="text-align: center; text-decoration: underline">Figure 10: Food list displaying the result of the find command</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.3.3. Viewing expired food items
 
@@ -473,7 +473,7 @@ If you have discarded the expired food item, please remember to delete the assoc
 
 **Format:** `expired`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.4. Miscellaneous commands
 
@@ -490,7 +490,7 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.4.2. Redoing previously undone command
 
@@ -502,7 +502,7 @@ The `redo` command restores your food inventory to a state before an [`undo`](#5
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` followed by `undo` then `redo` will redo the `clear` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.4.3. Clearing all entries
 
@@ -518,7 +518,7 @@ Note that the data saved in your hard disk will be cleared when you use this com
 
 </div>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.4.4. Viewing help
 
@@ -531,7 +531,7 @@ After entering this command, you should see a pop-up window similar to the one s
 
 **Format:** `help`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 5.4.5. Exiting the program
 
@@ -539,16 +539,16 @@ The `exit` command closes the application. This lets you easily exit the applica
 
 **Format:** `exit`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 5.5. Saving the data
 
 Your food inventory data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 6. Upcoming features [coming in v2.0]
 
 ## 6.1. Storage
@@ -557,7 +557,7 @@ Your food inventory data is saved in the hard disk automatically after any comma
 
 Allows storage location information to be tracked for a food item, using the `s/` prefix.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 6.1.2. Moving a food item
  
@@ -565,7 +565,7 @@ Moves a food item from one storage location to another storage location.
 
 **Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 6.2. Sort Command
 
@@ -573,7 +573,7 @@ Moves a food item from one storage location to another storage location.
 
 Sorts the list of food items in reverse order of the order used for the `sortdesc` command.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ### 6.2.2. Checking sorting order
 
@@ -581,7 +581,7 @@ Displays the current sorting order of the food list.
 
 **Format:** `vieworder`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 ## 6.3. Find Command
 
@@ -592,10 +592,10 @@ Allows for food items to match when their fields match partially to the search f
 **Example:**
 * `find d/can` matches food items with descriptions `canned fish` and `cans of beans`.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 7. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another computer?<br>
@@ -621,10 +621,10 @@ Therefore, the food item to be added is considered a duplicate.
 
 <p style="text-align: center; text-decoration: underline">Figure 13: The result box displays an error message when adding a duplicate food item</p>
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 8. Command summary
 
 Action | Format, Examples
@@ -645,10 +645,10 @@ Action | Format, Examples
 **Help** | `help`
 **Exit** | `exit`
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 # 9. Glossary
 
 Term | Definition/Description
@@ -664,6 +664,6 @@ Term | Definition/Description
 **Mainstream OS** | Windows, Linux, Unix, OS-X.
 **Terminal** | A CLI system for Mac OS which allows users to control their Operating System by entering commands.
 
-<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/UserGuide.html#">^ Back to top</a></div>
+[Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
