@@ -83,7 +83,6 @@ This is followed by a section consisting of guides for [Documentation, Logging, 
 Each guide gives specific assistance in the context of the project.
 
 <div style="page-break-after: always;"></div>
-
 The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
 The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
@@ -153,6 +152,7 @@ The sections below give more details of each component.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
+<div style="page-break-after: always;"></div>
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/Ui.java)
 
@@ -194,6 +194,7 @@ The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but 
 
 [Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 ## 4.4. Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
@@ -239,6 +240,7 @@ Classes used by multiple components are in the [`seedu.simplykitchen.commons`](h
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
 # 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
