@@ -222,7 +222,7 @@ The commands in this section can be used to manipulate food items.
 The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
 
-**Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`
+**Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
 * A food item with the same description, expiry date and tags as another food item is considered a duplicate.
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
@@ -428,10 +428,9 @@ The `find` command searches for food items in your food inventory that match the
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note about the description and tag parameters:**<br>
+**:information_source: Note about the parameters:**<br>
 
-Each description in the search query can contain a maximum of 50 characters.<br>
-Each tag in the search query can contain a maximum of 30 characters, including whitespaces.
+The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
 
 </div>
 
@@ -627,7 +626,7 @@ Therefore, the food item to be added is considered a duplicate.
 
 Action | Format, Examples
 -------|------------------
-**Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]…`<br> e.g. `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
+**Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`<br> e.g. `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
 **Edit** | `edit INDEX [d/DESCRIPTION] [e/EXPIRY_DATE] [q/QUANTITY] [p/PRIORITY] [t/TAG]...`<br> e.g. `edit 1 d/baked beans e/1-1-2020 q/1.5 can`
 **Delete** | `delete INDEX`<br> e.g. `delete 3`
 **Change quantity** | `changeqty INDEX a/AMOUNT`<br> e.g. `changeqty 1 a/+1.50`
