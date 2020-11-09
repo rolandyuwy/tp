@@ -67,6 +67,7 @@ public class ModelManager implements Model {
         updateExpiringSortedFoodList();
         expiringFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiringFilteredFoods.setPredicate(getExpiringPredicate());
+
         expiredFilteredFoods = new FilteredList<>(expiringSortedFoods);
         expiredFilteredFoods.setPredicate(getExpiredPredicate());
     }

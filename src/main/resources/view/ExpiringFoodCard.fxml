@@ -23,7 +23,10 @@
             <HBox alignment="CENTER_LEFT" spacing="5">
                 <Label fx:id="description" styleClass="cell_big_label" text="\$first" wrapText="true" />
             </HBox>
-            <FlowPane fx:id="tags" />
+            <FlowPane fx:id="tags">
+                <VBox.margin>
+                    <Insets bottom="2.0" right="2.0" top="2.0" />
+                </VBox.margin></FlowPane>
             <Label fx:id="expiryDate" styleClass="cell_small_label" text="\$expiryDate">
                 <graphic>
                     <ImageView fitHeight="15" fitWidth="15" preserveRatio="true">

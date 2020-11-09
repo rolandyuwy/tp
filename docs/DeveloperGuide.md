@@ -7,7 +7,7 @@ title: Developer Guide
 
 * [1. Introduction](#1-introduction)
 * [2. About this document](#2-about-this-document)
-* [3. Getting up, getting started](#3-setting-up-getting-started)
+* [3. Setting up, getting started](#3-setting-up-getting-started)
 * [4. Design](#4-design)
   * [4.1. Architecture](#41-architecture)
   * [4.2. UI component](#42-ui-component)
@@ -36,43 +36,50 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. Introduction
+# 1. Introduction
 
-SimplyKitchen is a desktop app for food inventory management, optimised for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
-With intuitive and practical features, it can get food management tasks done faster and more efficiently than traditional GUI apps.
+SimplyKitchen is a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
-SimplyKitchen aims to help the domestic individuals who manage their kitchens at home by providing a food inventory management system.
-We have taken into consideration the common problems our target audience may face while managing their kitchens and have created specialised features to address them.
+SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
+With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
 
---------------------------------------------------------------------------------------------------------------------
+With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
+SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic visualization of your food information for the ideal user experience.
 
-## 2. About this document
-
-This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
-
-The [Setting up, getting started](#setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
-
-The [Design](#design) section helps you understand the design of the code base as a whole and its various components.
-This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
-
-The [Implementation](#implementation) section contains details about the implementation of some features in SimplyKitchen.
-It also provides details about design considerations and implementation alternatives.
-This section allows you to understand our thought process and make your own design considerations.
-
-This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#documentation-logging-testing-configuration-and-dev-ops).
-Each guide gives specific assistance in the context of the project.
-
-The [appendix for requirements](#appendix-requirements) section consists of details of the planning stage of the project.
-It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The [glossary](#glossary) and [non-Functional requirements](#non-functional-requirements) provide other key information relevant to the document and the app.
-
-This document ends with an [appendix for instructions for manual testing](#appendix-instructions-for-manual-testing).
+SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny Wastage**!
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 3. Setting up, getting started
+# 2. About this document
+
+This document is a Developer Guide meant to assist project developers in understanding the various aspects in the production of SimplyKitchen.
+The purpose of this document is to describe the architecture and software design decisions of SimplyKitchen.
+
+The [Setting up, getting started](#3-setting-up-getting-started) section guides you in setting up the code base on your computer and helps you begin working on the project.
+
+The [Design](#4-design) section helps you understand the design of the code base as a whole and its various components.
+This section contains effective UML Diagrams which can help you understand the OOP structure of the code and the execution flow of the app.
+
+The [Implementation](#5-implementation) section contains details about the implementation of some features in SimplyKitchen.
+It also provides details about design considerations and implementation alternatives.
+This section allows you to understand our thought process and make your own design considerations.
+
+This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#6-documentation-logging-testing-configuration-and-dev-ops).
+Each guide gives specific assistance in the context of the project.
+
+The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
+It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
+The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
+
+This document ends with an [Appendix for Instructions for Manual Testing](#8-appendix-instructions-for-manual-testing).
+
+<div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+# 3. Setting up, getting started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
@@ -80,9 +87,9 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. Design
+# 4. Design
 
-### 4.1. Architecture
+## 4.1. Architecture
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -126,7 +133,7 @@ The sections below give more details of each component.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 4.2. UI component
+## 4.2. UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -144,7 +151,7 @@ The `UI` component,
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 4.3. Logic component
+## 4.3. Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -166,7 +173,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 4.4. Model component
+## 4.4. Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -187,7 +194,7 @@ The `Model`,
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 4.5. Storage component
+## 4.5. Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -199,7 +206,7 @@ The `Storage` component,
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 4.6. Common classes
+## 4.6. Common classes
 
 Classes used by multiple components are in the `seedu.simplykitchen.commons` package.
 
@@ -207,13 +214,13 @@ Classes used by multiple components are in the `seedu.simplykitchen.commons` pac
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 5. Implementation
+# 5. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### 5.1. Undo/Redo feature
+## 5.1. Undo/Redo feature
 
-#### Implementation
+### Implementation
 
 The feature is implemented with a `VersionedFoodInventory`. The `VersionedFoodInventory` contains the different states of the food inventory. The states are stored in a `foodInventoryStateList` and the current state is tracked with a `currentStatePointer`. It also implements the following methods:
 
@@ -277,9 +284,9 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ![CommitActivityDiagram](images/CommitActivityDiagram.png)
 
-#### Design consideration:
+### Design consideration:
 
-##### Aspect: How undo & redo executes
+#### Aspect: How undo & redo executes
 
 * **Alternative 1 (current choice):** Saves the entire food inventory.
   * Pros: Easy to implement.
@@ -292,9 +299,9 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 5.2. Sort feature
+## 5.2. Sort feature
 
-#### Implementation
+### Implementation
 
 The sort feature consists of three commands, `SortDescCommand`, `SortExpiryCommand` and `SortPriorityCommand` which extend `Command`.
 
@@ -325,7 +332,7 @@ The following sequence diagram illustrates how the command `sortdesc` works:
 
 ![SortDescSequenceDiagram](images/SortDescSequenceDiagram.png)
 
-#### Design consideration:
+### Design consideration:
 
 Comparators used for sorting are stored as static variables in `ComparatorUtil`, allowing for the code to be scalable for future sorting orders and commands.
 
@@ -334,7 +341,7 @@ Sorting information is stored as user preferences, to allow for the information 
 Furthermore, this allows for dynamic updates of the food item list according to the stored sorting preference. In other words,
  when a food item is added or edited by calling `AddCommand` and `EditCommand`, the food item will be sorted dynamically according to the stored sorting mechanism. Thus, there is reduced hassle as the user does not need to sort the list again.
 
-##### Aspect: Permanence of list sorting
+#### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
   * Pros: There is less hassle when refreshing the app, as the specific sorting order preferred by the user is stored.
@@ -346,11 +353,11 @@ Furthermore, this allows for dynamic updates of the food item list according to 
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 5.3. Quantity field in food items
+## 5.3. Quantity field in food items
 
 A `quantity` field for food items is implemented to track the dynamic changes in the quantity of a food in the FoodInventory.
 
-#### Implementation:
+### Implementation:
 
 The `quantity` field has been implemented as a class in the `model.food` package.
 
@@ -359,7 +366,7 @@ The `quantity` field has been implemented as a class in the `model.food` package
 * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
 * If the unit is not provided, a default unit - `unit` - will be given.
 
-#### Implementation rationale:
+### Implementation rationale:
 
 The constraints above have been applied after careful consideration of the needs of the target audience.
 
@@ -374,9 +381,9 @@ The constraints above have been applied after careful consideration of the needs
 * Units are always single words and do not contain special characters or numbers. Hence, these restrictions have been enforced while accepting a quantity from the user.
 * The `unit` field is optional to relieve the user of extra work of giving a unit in intuitive cases. For example, while storing the quantity of fish a unit is intuitively the number of fish.
 
-#### Design consideration:
+### Design consideration:
 
-##### Aspect: Implementation
+#### Aspect: Implementation
 
 * **Alternative 1 (current choice):** Value and unit stored as double and string fields in the Quantity class.
     * Pros: Easy to implement given the tight project timeframe.
@@ -387,11 +394,11 @@ The constraints above have been applied after careful consideration of the needs
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 5.4. Change quantity feature
+## 5.4. Change quantity feature
 
 The change quantity feature allows users to increment or decrement the quantity of a food item by a certain amount.
 
-#### Implementation:
+### Implementation:
 
 The `ChangeQuantityCommandParser` class parses the command by first extracting the index of the food item within the food list displayed to the user.
 
@@ -415,17 +422,17 @@ The following sequence diagram illustrates how the command `changeqty` works:
 
 ![ChangeqtySequenceDiagram](images/ChangeqtySequenceDiagram.png)
 
-#### Design consideration:
+### Design consideration:
 
 Although the quantity of a food item can be changed using the `edit` command, the command will replace the old quantity value with a value supplied by the user.
 This means that users have to calculate the quantity themselves and calculation errors may occur as a result.
 To minimise such errors and improve the intuitiveness of commands, the `changeqty` command allows users to specify **how much the quantity should change by**.
 This allows users to not be burdened by calculations and to focus more on having an accurate inventory stock level.
 
-##### Aspect: Updating a food item's quantity
+#### Aspect: Updating a food item's quantity
 
 * **Alternative 1 (current choice):** Update the quantity value of a food item by calling the `updateQuantityValue` method of the `Quantity` class.
-    * Pros: Easy to implement given the tight project timeframe.
+    * Pros: Easy to implement given the tight project time frame.
     * Cons: All other fields of a `food` object need to be extracted and passed into the `Food` constructor.
 * **Alternative 2:** Use a `Descriptor` class similar to the `EditFoodDescriptor` in the `EditCommand` class.
     * Pros: Improves OOP aspect of the code.
@@ -434,11 +441,11 @@ This allows users to not be burdened by calculations and to focus more on having
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 5.5. Find feature
+## 5.5. Find feature
 
 The find feature allows users to search for food items based on description, expiration date, priority and/or tags.
 
-#### Implementation:
+### Implementation:
 
 The find feature is achieved by setting a `predicate` on the `filteredList` located in `ModelManager`. This can be done using the method `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`, which uses the parameter as the `predicate`. There are four valid predicates, namely `DescriptionContainsKeywordsPredicate`, `ExpirySearchPredicate`, `PrioritySearchPredicate` and `TagSearchPredicate`, all of which implement the `Predicate<Food>` interface. Based on the user's `find` command, each of the `predicate` is generated with the relevant search parameters. Then, the `FindCommand#combinePredicates()` method will combine all the predicates into a single `predicate` and is passed to `ModelManager#updateFilteredFoodList(Predicate<Food> predicate)`.
 
@@ -452,15 +459,15 @@ The following is the class diagram for the Find feature:
 
 ![FindClasseDiagram](images/FindClassDiagram.png)
 
-#### Implementation rationale:
+### Implementation rationale:
 
 Since the user can search for food items based on either the description, expiration date, priority or tags, the `find` command should allow searching for one or more of the above combination. This increases the flexibility in the `find` command, which allows the user to define the specificity of their search.
 
-#### Design consideration:
+### Design consideration:
 
 Each parameter of the search can be mapped to a `predicate`. This allows for scalability in the future as when a new attribute is added to `Food`, a new `predicate` implementing the `Predicate<Food>` interface can be created to search for this field without affecting the `predicates` of the other attributes.
 
-##### Aspect: Implementation
+#### Aspect: Implementation
 
 * <b>Alternative 1 (current choice): </b> The expiry date in the `find` command looks for a single specific expiry date.
     * Pros: Easy to implement and search is more specific.
@@ -473,7 +480,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 6. Documentation, logging, testing, configuration and dev-ops
+# 6. Documentation, logging, testing, configuration and dev-ops
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -485,9 +492,9 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. Appendix: Requirements
+# 7. Appendix: Requirements
 
-### 7.1. Product scope
+## 7.1. Product scope
 
 **Target user profile**:
 
@@ -502,18 +509,16 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 7.2. Glossary
+## 7.2. Glossary
 
 Term | Definition/Description
--------|------------------
+-----|------------------
 **CLI** | Command Line Interface. It is a form of user and computer interaction where the user inputs commands in the form of text. Users will utilise a CLI to input commands into SimplyKitchen.
 **Description** | The description of a food item.
-**Duplicate Food Item** | A food item is considered a duplicate if its description, expiry date and tags are all the same as another food item in the food inventory.
-**Expiring Food Item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
-**Expiry Date** | The expiry date of a food item.
+**Expiring food item** | A food item is "expiring" if its expiry date is from today, to 7 days after today. For instance, if today is 7-11-2020, food items that expire from 7-11-2020 to 14-11-2020 are deemed as "expiring".
+**Expiry date** | The expiry date of a food item.
 **Food inventory** | A complete list of food items stored in Simply Kitchen.
 **GUI** | Graphical User Interface. It is a form of user and computer interaction that allows the user to interact via graphical icons such as buttons, scroll bars and windows. SimplyKitchen has a GUI for the user to interact with.
-**Lexicographical Order** | It is the order used in dictionaries. However, it has additional requirements. Requirements applicable to SimplyKitchen are, namely, capital letters precedes lower-case letters, apostrophes precedes letters, and spaces precedes both apostrophes and letters.
 **Mainstream OS** | Windows, Linux, Unix, OS-X.
 **Priority** | The priority of a food item. The priority field can either be `high`, `medium` or `low`.
 **Quantity** | The quantity of a food item. The quantity consists of 2 entities - `value` and `unit`.
@@ -521,7 +526,7 @@ Term | Definition/Description
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 7.3. User stories
+## 7.3. User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -551,11 +556,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 7.4. Use cases
+## 7.4. Use cases
 
 For all use cases, the **System** is `SimplyKitchen` and the **Actor** is the `User`, unless otherwise specified.
 
-#### UC01: Add a food item
+### UC01: Add a food item
 
 **Guarantees:** The food item is added into the food inventory.
 
@@ -581,7 +586,7 @@ Use case ends.
 
 <br/>
 
-#### UC02: Delete a food item
+### UC02: Delete a food item
 
 **Precondition:** The food item to be deleted is currently in the food inventory.
 
@@ -617,7 +622,7 @@ Use case ends.
 
 <br/>
 
-#### UC03: Edit a food item
+### UC03: Edit a food item
 
 **Precondition:** The food item to be edited is currently in the food inventory.
 
@@ -663,7 +668,7 @@ Use case ends.
 
 <br/>
 
-#### UC04: Change the quantity of a food item
+### UC04: Change the quantity of a food item
 
 **Guarantees:**  The food item has its quantity changed.
 
@@ -707,7 +712,7 @@ Use case ends.
 
 <br/>
 
-#### UC05: Find a food item
+### UC05: Find a food item
 
 **Guarantees:**  All food items in the food inventory that match the query are listed.
 
@@ -733,7 +738,7 @@ Use case ends.
 
 <br/>
 
-#### UC06: List all food items
+### UC06: List all food items
 
 **Guarantees:**  All food items in the food inventory are listed.
 
@@ -747,7 +752,7 @@ Use case ends.
 
 <br/>
 
-#### UC07: Clear all food items
+### UC07: Clear all food items
 
 **Guarantees:**  All food items in the food inventory are cleared.
 
@@ -761,7 +766,7 @@ Use case ends.
 
 <br/>
 
-#### UC08: Sort food items by expiry date
+### UC08: Sort food items by expiry date
 
 **Guarantees:** The food items in the food list are sorted by expiry date.
 
@@ -781,7 +786,7 @@ Use case ends.
 
 <br/>
 
-#### UC09: Sort food items by priority
+### UC09: Sort food items by priority
 
 **Guarantees:** The food items in the food list are sorted by priority.
 
@@ -801,7 +806,7 @@ Use case ends.
 
 <br/>
 
-#### UC10: Sort food items by description
+### UC10: Sort food items by description
 
 **Guarantees:** The food items in the food list are sorted by description.
 
@@ -821,7 +826,7 @@ Use case ends.
 
 <br/>
 
-#### UC11: Undo most recent undoable command
+### UC11: Undo most recent undoable command
 
 **Guarantees** The most recent undoable command (add, delete, edit, sort, clear) requested will be undone.
 
@@ -841,7 +846,7 @@ Use case ends.
 
 <br/>
 
-#### UC12: Redo most recent undo command
+### UC12: Redo most recent undo command
 
 **Guarantees** It redoes the most recent undo command.
 
@@ -863,7 +868,7 @@ Use case ends.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 7.5. Non-Functional requirements
+## 7.5. Non-Functional requirements
 
 * The app should work on any mainstream OS as long as it has Java 11 or above installed.
 * The app should be able to hold up to 1000 food items without a noticeable sluggishness in performance for typical usage.
@@ -874,7 +879,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 8. Appendix: Instructions for manual testing
+# 8. Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
@@ -883,7 +888,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### 8.1. Launch and shutdown
+## 8.1. Launch and shutdown
 
 1. Initial launch
 
@@ -900,7 +905,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 8.2. Deleting a food item
+## 8.2. Deleting a food item
 
 1. Deleting a food item while all food items are being shown
 
@@ -917,7 +922,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 8.3. Sorting the food list
+## 8.3. Sorting the food list
 
 1. Sorting the food list while some or all food items are being shown
 
@@ -935,7 +940,7 @@ testers are expected to do more *exploratory* testing.
 
 <div style="text-align: right"><a href="https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#">^ Back to top</a></div>
 
-### 8.4. Saving data
+## 8.4. Saving data
 
 1. Dealing with missing/corrupted data files
 

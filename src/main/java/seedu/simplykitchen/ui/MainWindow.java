@@ -22,6 +22,8 @@ import seedu.simplykitchen.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
+    private static final double MAX_WINDOW_WIDTH = 1920;
+    private static final double MAX_WINDOW_HEIGHT = 1080;
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -137,8 +139,17 @@ public class MainWindow extends UiPart<Stage> {
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
-        primaryStage.setHeight(guiSettings.getWindowHeight());
-        primaryStage.setWidth(guiSettings.getWindowWidth());
+        double windowWidth = guiSettings.getWindowWidth();
+        double windowHeight = guiSettings.getWindowHeight();
+        if (windowWidth > MAX_WINDOW_WIDTH) {
+            windowWidth = MAX_WINDOW_WIDTH;
+        }
+        if (windowHeight > MAX_WINDOW_HEIGHT) {
+            windowHeight = MAX_WINDOW_HEIGHT;
+        }
+
+        primaryStage.setWidth(windowWidth);
+        primaryStage.setHeight(windowHeight);
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
