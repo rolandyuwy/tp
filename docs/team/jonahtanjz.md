@@ -69,7 +69,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
   * Managed releases `v1.3` - `v1.4` (2 releases) on GitHub
   * Responsible for testing - ensured proper testing and quality assurance of the features of the application.
   * Responsible for integration - versioning of code, maintaining code repository and integrating various parts of the software to create a whole.
-  * Contributed to planning and ideation of the application - product Scope, user stories, use cases and non-functional requirements. 
+  * Contributed to planning and ideation of the application - product scope, user stories, use cases and non-functional requirements. 
 
 ### Community:
   * Reviewed PRs of peers
