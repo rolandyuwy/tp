@@ -16,7 +16,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 ## Summary of contributions
 
-* **Code contributed**: [Link to RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=Sagar&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=sagarsureka&tabRepo=AY2021S1-CS2103T-F13-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+* **Code contributed**: [Link to RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=sagar&sort=groupTitle&sortWithin=title&since=2020-08-14&until=2020-11-09&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Enhancements**:
   * Added a **quantity field** for food items:
@@ -39,7 +39,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 * **Project Management and contribution to team-based tasks**:
   * Participated in the planning of the project idea (Management of food inventory to reduce food wastage).
   * Participated in drafting the initial requirements for SimplyKitchen - *Product Scope, Glossary, User Stories, Use Cases and Non-Functional Requirements.* 
-    This can be found in our [Developer Guide requirements appendix](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#appendix-requirements).
+    This can be found in our [Developer Guide appendix](https://ay2021s1-cs2103t-f13-4.github.io/tp/DeveloperGuide.html#appendix-a-product-scope).
   * Compiled the comments received on the team's User and Developer Guides from peers.
   * Responsible for proper integration of the various parts of the software to form a whole.
   * Responsible for ensuring that the project code maintains high coding standards.

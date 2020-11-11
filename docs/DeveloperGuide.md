@@ -45,6 +45,7 @@ title: Developer Guide
   * [F.3. Changing the quantity of a food item](#f3-changing-the-quantity-of-a-food-item)
   * [F.4. Sorting the food list](#f4-sorting-the-food-list)
   * [F.5. Saving data](#f5-saving-data)
+* [Appendix G: Effort](#appendix-g-effort)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -81,11 +82,12 @@ This section allows you to understand our thought process and make your own desi
 This is followed by a section consisting of guides for [Documentation, Logging, Testing, Configuration and DevOps](#6-documentation-logging-testing-configuration-and-dev-ops).
 Each guide gives specific assistance in the context of the project.
 
-The [Appendix for Requirements](#7-appendix-requirements) section consists of details of the planning stage of the project.
+<div style="page-break-after: always;"></div>
+The [Appendix](#appendix-a-product-scope) section consists of details of the planning stage of the project.
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
-The [Glossary](#72-glossary) and [Non-Functional Requirements](#75-non-functional-requirements) provide other key information relevant to the document and the app.
+The [Glossary](#appendix-b-glossary) and [Non-Functional Requirements](#appendix-e-non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with an [Appendix for Instructions for Manual Testing](#8-appendix-instructions-for-manual-testing).
+This document ends with a brief description of our [effort](#appendix-g-effort) for this project.
 
 [Back to top](#table-of-contents)
 
@@ -98,6 +100,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 # 4. Design
 
@@ -116,7 +119,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
-
+<div style="page-break-after: always;"></div>
 [**`Commons`**](#46-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
@@ -148,7 +151,7 @@ The sections below give more details of each component.
 ## 4.2. UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
-
+<div style="page-break-after: always;"></div>
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/ui/Ui.java)
 
@@ -166,7 +169,7 @@ The `UI` component,
 ## 4.3. Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
-
+<div style="page-break-after: always;"></div>
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-F13-4/tp/blob/master/src/main/java/seedu/simplykitchen/logic/Logic.java)
 
@@ -189,6 +192,7 @@ The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but 
 </div>
 
 [Back to top](#table-of-contents)
+<div style="page-break-after: always;"></div>
 
 ## 4.4. Model component
 
@@ -234,6 +238,7 @@ Classes used by multiple components are in the [`seedu.simplykitchen.commons`](h
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 # 5. Implementation
 
@@ -276,7 +281,7 @@ If a command fails its execution, it will not call `Model#commitFoodInventory()`
 Step 4. The user now decides that adding the food item was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoFoodInventory()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous food inventory state, and restores the food inventory to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
-
+<div style="page-break-after: always;"></div>
 <div markdown="span" class="alert alert-info">
 
 **:information_source: Note:**<br>
@@ -308,7 +313,7 @@ If the `currentStatePointer` is at index `foodInventoryStateList.size() - 1`, po
 </div>
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the food inventory, such as `list`, will usually not call `Model#commitFoodInventory()`, `Model#undoFoodInventory()` or `Model#redoFoodInventory()`. Thus, the `foodInventoryStateList` remains unchanged.
-
+<div style="page-break-after: always;"></div>
 ![UndoRedoState4](images/UndoRedoState4.png)
 
 Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Since the `currentStatePointer` is not pointing at the end of the `foodInventoryStateList`, all food inventory states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add d/Donut …​` command.
@@ -318,7 +323,7 @@ Step 6. The user executes `clear`, which calls `Model#commitFoodInventory()`. Si
 The following activity diagram summarizes what happens when a user executes a new command:
 
 ![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
+<div style="page-break-after: always;"></div>
 ### Design consideration:
 
 #### Aspect: How undo & redo executes
@@ -354,7 +359,7 @@ and items of the same priority and expiry date sorted by description.
 
 When the sort commands are executed by calling `SortDescCommand#execute(Model model)` or `SortExpiryCommand#execute(Model model)` or `SortPriorityCommand#execute(Model model)`, 
 the `VersionedFoodInventory` attribute in `model` is sorted, which hence permanently sorts the `ObservableList<Food>` attribute in `UniqueFoodList`.
-
+<div style="page-break-after: always;"></div>
 This is done so by calling `model#sortFoodInventory(Comparator<Food>... comparators)` method in `model` which takes in a variable number of relevant `comparators` in order to sort the food list.
 
 Following which, `model#setSortingComparators(Comparator<Food>[] sortingComparators)` and `userPref#setSortingComparatorsDescription(String sortingComparatorsDescription)` 
@@ -376,15 +381,14 @@ Sorting information is stored as user preferences, to allow for the information 
 
 Furthermore, this allows for dynamic updates of the food item list according to the stored sorting preference. In other words,
  when a food item is added or edited by calling `AddCommand` and `EditCommand`, the food item will be sorted dynamically according to the stored sorting mechanism. Thus, there is reduced hassle as the user does not need to sort the list again.
-
+<div style="page-break-after: always;"></div>
 #### Aspect: Permanence of list sorting
 
 * **Alternative 1 (current choice):** Permanently sort lists.
   * Pros: There is less hassle when refreshing the app, as the specific sorting order preferred by the user is stored.
   * Cons: If the user wishes to sort displayed lists temporarily, they may only achieve this by sorting, then undoing the command, which may be a hassle.
-
 * **Alternative 2:** Lists are always sorted by description by default, and sorting by priority or expiry date are reflected in displayed lists temporarily.
-  * Pros: The user is able to sort the lists temporarily if they prefer to do so.
+  * Pros: The user is able to sort the lists temporarily if they prefer to do so.<div style="page-break-after: always;"></div>
   * Cons: Sorting is not permanent, thus lists stored are sorted by description by default, which is not desirable if the user has other preferred sorting orders.
 
 [Back to top](#table-of-contents)
@@ -401,7 +405,7 @@ The `quantity` field has been implemented as a class in the `model.food` package
 * The `value` is a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
 * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, space and special characters are not permitted.
 * If the unit is not provided, a default unit - `unit` - will be given.
-
+<div style="page-break-after: always;"></div>
 ### Implementation rationale:
 
 The constraints above have been applied after careful consideration of the needs of the target audience.
@@ -429,6 +433,7 @@ The constraints above have been applied after careful consideration of the needs
     * Cons: Unnecessarily complicates the code.
 
 [Back to top](#table-of-contents)
+<div style="page-break-after: always;"></div>
 
 ## 5.4. Change quantity feature
 
@@ -453,7 +458,7 @@ The method will calculate the new `quantity` and throw a `CommandException` if t
 
 * The `oldQuantity#updateQuantityValue` method is called within the `changeQuantityCommand#updateFoodQuantity` method.
 * In the `updateQuantityValue` method, `BigDecimal` is used to do arithmetic operations on the old quantity's value and the `amount` to be incremented/decremented by. This is due to accuracy errors when performing arithmetic operations on double values.
-
+<div style="page-break-after: always;"></div>
 The following sequence diagram illustrates how the command `changeqty` works:
 
 ![ChangeqtySequenceDiagram](images/ChangeqtySequenceDiagram.png)
@@ -542,6 +547,7 @@ Each parameter of the search can be mapped to a `predicate`. This allows for sca
 **Value proposition**: With SimplyKitchen, food inventory management is made easy.
 
 [Back to top](#table-of-contents)
+<div style="page-break-after: always;"></div>
 
 # Appendix B: Glossary
 
@@ -559,6 +565,7 @@ Term | Definition/Description
 **Tag** | Tags are additional information that can be tagged to food items.
 
 [Back to top](#table-of-contents)
+<div style="page-break-after: always;"></div>
 
 # Appendix C: User stories
 
@@ -859,6 +866,7 @@ Use case ends.
 Use case ends.
 
 <br/>
+<div style="page-break-after: always;"></div>
 
 ## D.11. UC11: Undo most recent undoable command
 
@@ -901,6 +909,7 @@ Use case ends.
 <br/>
 
 [Back to top](#table-of-contents)
+<div style="page-break-after: always;"></div>
 
 # Appendix E: Non-Functional requirements
 
@@ -1015,6 +1024,43 @@ These instructions only provide a starting point for testers to work on; testers
       
    3. Test case: Remove any of the other fields - `expiryDate`, `priority`, `quantity`, `tagged` - from a food item in the `foodInventory.json` file.<br>
       Expected: Similar to previous.
+
+[Back to top](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+
+# Appendix G: Effort
+
+Overall, our team is satisfied to create SimplyKitchen as a product that is both intuitive and user-friendly for our target audience, domestic individuals who manage their food inventory at home.
+Throughout this fulfilling journey, our team has cultivated a good project system and has been able to meet the deadlines of our tasks.
+Our team has managed to contribute about 12kLOC, roughly the same amount as that of developing AB3.<br>
+
+The `Food` model in SimplyKitchen is more complex as compared to the `Person` model in AB3.
+The `Food` model has attributes such as `Expiry Date` and `Quantity` where ensuring validation of the inputs was complex.
+For example, the `Quantity` class includes a compulsory value and an optional unit.
+Parsing of the quantity input needs to take into account many different constraints such as the size limit, the number of decimal places, the length of the unit and the characters allowed in the unit.
+Restricting the inputs to these various conditions was tedious but necessary and helpful to the user.<br>
+ 
+A challenge our group had faced was to be concise with the constraints and functionality of our `add` and `find` commands in the User Guide.
+Due to the many parameters of these two commands, our explanations were detailed but quite long.
+We had to strike a balance between being concise while ensuring that the users can take full advantage of our commands so that they can have an enriching experience using our application to manage their food inventory.<br>
+
+Another key challenge for our group was to decide on the type of sorting to implement in SimplyKitchen.
+To preserve the CLI nature of the application, we decided to introduce three new sorting commands to sort food items based on the expiry date, description and priority.
+Sorting by description proved to be difficult as we decided to enhance sorting by lexicographical order to account for uppercase and lowercase characters.
+This enables the user to sort the list more intuitively. This way, users would not have items with descriptions differing by the casing of the first characters (e.g. “apple” and “Apple juice”) far apart in the list with a lexicographical order.<br>
+
+We also implemented many new commands such as `changeqty`, `undo`, `redo`, and so on.
+These new commands brought about new ways to interact with the application unlike AB3.
+For example, the `changeqty` command relieves users of the burden of having to calculate a new quantity of the food item every time he or she buys/uses/discards food items.<br>
+
+In terms of UI, a significant change we made which catered very well to our target audience was the creation of a pop-up window to display the list of expired food items.
+This pop-up window can also be called by using the `expired` command.
+Additionally, a side panel showing the list of food items that are expiring within a week was added to the main application window.
+We have to ensure that this side panel is constantly updated whenever the user adds/edits a food item that expires within a week from the current date, which was slightly challenging.<br>
+
+Each of these challenges was learning experiences for our team members.
+As a team, we are glad to have overcome these challenges to create an impressive, immersive and lasting product, SimplyKitchen.<br>
 
 [Back to top](#table-of-contents)
 
