@@ -232,7 +232,7 @@ You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
-* A food item with the same description, expiry date and tags as another food item is considered a duplicate. Duplicates cannot be added to the food inventory.
+* Duplicates cannot be added to the food inventory. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
 * The description accepts `alphanumeric` characters, `whitespaces` and `apostrophes`. 
   * Descriptions with only whitespace(s) or apostrophe(s) are not allowed.
