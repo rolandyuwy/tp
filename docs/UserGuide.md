@@ -520,6 +520,14 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 
 **Format:** `undo`
 
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
+
 **Examples:**
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
@@ -533,6 +541,14 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 The `redo` command restores your food inventory to a state before an [`undo`](#541-undoing-previous-command) command was executed. This lets you easily redo commands that were incorrectly undone.
 
 **Format:** `redo`
+
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
 
 **Examples:**
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
