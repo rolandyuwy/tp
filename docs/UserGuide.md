@@ -225,6 +225,8 @@ The commands in this section are the basic commands used to manipulate food item
 
 ### 5.1.1. Adding a food item
 
+(Contributed by Cheng Hin)
+
 The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
 
@@ -267,6 +269,8 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 ### 5.1.2. Editing a food item
 
+(Contributed by Cheng Hin)
+
 The `edit` command edits the details of an existing food item in your food inventory.
 If an entry is incorrect, you can easily edit the entry without deleting and re-adding the food item.
 
@@ -298,6 +302,8 @@ The constraints for the individual parameters of this command (description, expi
 <div style="page-break-after: always;"></div>
 
 ### 5.1.3. Deleting a food item
+
+(Contributed by Cheng Hin)
 
 The `delete` command deletes a specified food item from your food inventory, so that you can stop tracking it.
 
@@ -507,6 +513,8 @@ These are additional commands you can use to enhance your experience with Simply
 
 ### 5.4.1. Undoing previous command
 
+(Contributed by Cheng Hin)
+
 The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
 Undoable commands are commands that modify your food inventory's content ([`add`](#511-adding-a-food-item), [`edit`](#512-editing-a-food-item), [`delete`](#513-deleting-a-food-item) , [`changeqty`](#514-changing-the-quantity-of-a-food-item) and [`clear`](#543-clearing-all-entries)) and commands that sort food items ([`sortdesc`](#521-sorting-food-items-by-description), [`sortexpiry`](#522-sorting-food-items-by-expiry-date), [`sortpriority`](#523-sorting-food-items-by-priority)).
 
@@ -519,6 +527,8 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 [Back to top](#table-of-contents)
 
 ### 5.4.2. Redoing previously undone command
+
+(Contributed by Cheng Hin)
 
 The `redo` command restores your food inventory to a state before an [`undo`](#541-undoing-previous-command) command was executed. This lets you easily redo commands that were incorrectly undone.
 
@@ -657,6 +667,8 @@ Therefore, the food item to be added is considered a duplicate.
 
 # 8. Command summary
 
+(Contributed by Cheng Hin)
+
 Action | Format, Examples
 -------|------------------
 **Add** | `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`<br> e.g. `add d/cereal e/31-10-2020 q/2 p/medium t/corn flakes`
@@ -681,6 +693,8 @@ Action | Format, Examples
 <div style="page-break-after: always;"></div>
 
 # 9. Glossary
+
+(Contributed by Cheng Hin)
 
 Term | Definition/Description
 -----|------------------
