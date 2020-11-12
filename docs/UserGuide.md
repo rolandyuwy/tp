@@ -11,32 +11,31 @@ title: User Guide
 * [4. Application layout](#4-application-layout)
 * [5. Features](#5-features)
   * [5.1. Basic commands](#51-basic-commands)
-    * [5.1.1. Adding a food item](#511-adding-a-food-item)
-    * [5.1.2. Editing a food item](#512-editing-a-food-item)
-    * [5.1.3. Deleting a food item](#513-deleting-a-food-item)
-    * [5.1.4. Changing the quantity of a food item](#514-changing-the-quantity-of-a-food-item)
+    * [5.1.1. Adding a food item `add`](#511-adding-a-food-item)
+    * [5.1.2. Editing a food item `edit`](#512-editing-a-food-item)
+    * [5.1.3. Deleting a food item `delete`](#513-deleting-a-food-item)
+    * [5.1.4. Changing the quantity of a food item `changeqty`](#514-changing-the-quantity-of-a-food-item)
   * [5.2. Sorting commands](#52-sorting-commands)  
-    * [5.2.1. Sorting food items by description](#521-sorting-food-items-by-description)
-    * [5.2.2. Sorting food items by expiry date](#522-sorting-food-items-by-expiry-date)
-    * [5.2.3. Sorting food items by priority](#523-sorting-food-items-by-priority)
+    * [5.2.1. Sorting food items by description `sortdesc`](#521-sorting-food-items-by-description)
+    * [5.2.2. Sorting food items by expiry date `sortexpiry`](#522-sorting-food-items-by-expiry-date)
+    * [5.2.3. Sorting food items by priority `sortpriority`](#523-sorting-food-items-by-priority)
   * [5.3. Viewing commands](#53-viewing-commands)    
-    * [5.3.1. Listing all food items](#531-listing-all-food-items)
-    * [5.3.2. Finding food items](#532-finding-food-items)
-    * [5.3.3. Viewing expired food items](#533-viewing-expired-food-items)
+    * [5.3.1. Listing all food items `list`](#531-listing-all-food-items)
+    * [5.3.2. Finding food items `find`](#532-finding-food-items)
+    * [5.3.3. Viewing expired food items `expired`](#533-viewing-expired-food-items)
   * [5.4. Miscellaneous commands](#54-miscellaneous-commands)
-    * [5.4.1. Undoing previous command](#541-undoing-previous-command)
-    * [5.4.2. Redoing previously undone command](#542-redoing-previously-undone-command)     
-    * [5.4.3. Clearing all entries](#543-clearing-all-entries)
-    * [5.4.4. Viewing help](#544-viewing-help)
-    * [5.4.5. Exiting the program](#545-exiting-the-program)
+    * [5.4.1. Undoing previous command `undo`](#541-undoing-previous-command)
+    * [5.4.2. Redoing previously undone command `redo`](#542-redoing-previously-undone-command)     
+    * [5.4.3. Clearing all entries `clear`](#543-clearing-all-entries)
+    * [5.4.4. Viewing help `help`](#544-viewing-help)
+    * [5.4.5. Exiting the program `exit`](#545-exiting-the-program)
   * [5.5. Saving the data](#55-saving-the-data)
 * [6. Upcoming features](#6-upcoming-features-coming-in-v20)
   * [6.1. Storage](#61-storage)
     * [6.1.1. Adding a storage location for a food item](#611-adding-a-storage-location-for-a-food-item)
     * [6.1.2. Moving a food item ](#612-moving-a-food-item)
   * [6.2. Sort command](#62-sort-command)
-    * [6.2.1. Sorting by descending description](#621-sorting-by-descending-description)
-    * [6.2.2. Checking sorting order](#622-checking-sorting-order)
+    * [6.2.1. Checking sorting order](#621-checking-sorting-order)
   * [6.3. Find command](#63-find-command)
     * [6.3.1. Finding food items based on partial search fields](#631-finding-food-items-based-on-partial-search-fields)
 * [7. Frequently asked questions (FAQs)](#7-frequently-asked-questions-faqs)
@@ -611,13 +610,7 @@ Moves a food item from one storage location to another storage location.
 
 ## 6.2. Sort Command
 
-### 6.2.1. Sorting by descending description
-
-Sorts the list of food items in reverse order of the order used for the `sortdesc` command.
-
-[Back to top](#table-of-contents)
-
-### 6.2.2. Checking sorting order
+### 6.2.1. Checking sorting order
 
 Displays the current sorting order of the food list.
 
