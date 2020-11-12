@@ -225,13 +225,12 @@ You can then access the food item later on for editing, deleting etc.
 
 * Duplicates cannot be added to the food inventory. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
-* The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
+* The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
   * The `value` is compulsory. The maximum value allowed is 100,000.00.
   * The `unit` is optional. If not provided, the default unit - `unit` - will be given.
 * The priority parameter is case insensitive, and can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `LOW`.
 * A food item can have any number of tags (including 0).
-  * Tags with only whitespace(s) are not allowed.
   * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
 <div style="page-break-after: always;"></div>
 
@@ -263,7 +262,6 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * It edits the food item at the specified `INDEX`.
   * The index refers to the index number shown in the displayed food list.
   * The index **must be a positive integer** 1, 2, 3, …
-* You must specify at least one parameter (other than the `INDEX`) for this command to be valid.
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
@@ -313,7 +311,6 @@ Use this command if you have bought new food items or used/discarded some existi
 * The amount is the quantity of a food item you want to change by.
   * The amount is a non-zero signed number with a maximum of 2 decimal places. It should be more than -100,000.00 and less than +100,000.00, but not 0.
   * Indicate a positive or negative sign before the value to show increment or decrement respectively.
-  * Do not add a whitespace between the sign and the value (e.g. `+1` is acceptable but not `+ 1`).
 * Do not specify the unit of the food item. The existing unit will be used instead.
 
 <div style="page-break-after: always;"></div>
@@ -431,7 +428,6 @@ The `find` command searches for food items in your food inventory that match the
 
 **Format:** `find [d/DESCRIPTION [MORE_DESCRIPTIONS]...] [e/EXPIRY DATE] [p/PRIORITY] [t/TAG]...`
 
-* You must specify at least one parameter for this command to be valid.
 * The search is case-insensitive (e.g `fish` will match `Fish`).
 * Only full words in description will be matched (e.g. `fis` will not match `fish`).
 * Food items with description matching at least one keyword (i.e `OR` search) will be returned (e.g. `fish` will return `Fish Cake`, `Tuna Fish`).
@@ -447,13 +443,12 @@ The constraints for the individual parameters of this command (each description 
 </div>
 
 **Examples:**
-* `find d/chocolate` can return `Chocolate Pie` and `Chocolate Cake`.
 * `find d/apple tuna` can return `Apple Pie` and `Tuna Can`.
 * `find e/30-12-2020` returns all food items with expiry date on `30-12-2020`.
 * `find d/apple p/high` can return `Apple Pie` and `Apple Jam` if both items have a `HIGH` priority.
 <div style="page-break-after: always;"></div>
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
-* `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with either `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` or have either `cat` or `dog` as tags.
+* `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` and have either `cat` or `dog` as tags.
 
 The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is shown in Figure 10.
 
