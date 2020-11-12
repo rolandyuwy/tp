@@ -35,8 +35,7 @@ title: User Guide
     * [6.1.1. Adding a storage location for a food item](#611-adding-a-storage-location-for-a-food-item)
     * [6.1.2. Moving a food item ](#612-moving-a-food-item)
   * [6.2. Sort command](#62-sort-command)
-    * [6.2.1. Sorting by descending description](#621-sorting-by-descending-description)
-    * [6.2.2. Checking sorting order](#622-checking-sorting-order)
+    * [6.2.1. Checking sorting order](#621-checking-sorting-order)
   * [6.3. Find command](#63-find-command)
     * [6.3.1. Finding food items based on partial search fields](#631-finding-food-items-based-on-partial-search-fields)
 * [7. Frequently asked questions (FAQs)](#7-frequently-asked-questions-faqs)
@@ -611,13 +610,7 @@ Moves a food item from one storage location to another storage location.
 
 ## 6.2. Sort Command
 
-### 6.2.1. Sorting by descending description
-
-Sorts the list of food items in reverse order of the order used for the `sortdesc` command.
-
-[Back to top](#table-of-contents)
-
-### 6.2.2. Checking sorting order
+### 6.2.1. Checking sorting order
 
 Displays the current sorting order of the food list.
 
