@@ -30,17 +30,9 @@ title: User Guide
     * [5.4.4. Viewing help `help`](#544-viewing-help)
     * [5.4.5. Exiting the program `exit`](#545-exiting-the-program)
   * [5.5. Saving the data](#55-saving-the-data)
-* [6. Upcoming features](#6-upcoming-features-coming-in-v20)
-  * [6.1. Storage](#61-storage)
-    * [6.1.1. Adding a storage location for a food item](#611-adding-a-storage-location-for-a-food-item)
-    * [6.1.2. Moving a food item ](#612-moving-a-food-item)
-  * [6.2. Sort command](#62-sort-command)
-    * [6.2.1. Checking sorting order](#621-checking-sorting-order)
-  * [6.3. Find command](#63-find-command)
-    * [6.3.1. Finding food items based on partial search fields](#631-finding-food-items-based-on-partial-search-fields)
-* [7. Frequently asked questions (FAQs)](#7-frequently-asked-questions-faqs)
-* [8. Command summary](#8-command-summary)
-* [9. Glossary](#9-glossary)
+* [6. Frequently asked questions (FAQs)](#6-frequently-asked-questions-faqs)
+* [7. Command summary](#7-command-summary)
+* [8. Glossary](#8-glossary)
 
 <div style="page-break-after: always;"></div> 
 
@@ -583,50 +575,8 @@ Your food inventory data is saved in the hard disk automatically after any comma
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
 
-# 6. Upcoming features [coming in v2.0]
-
-## 6.1. Storage
-
-### 6.1.1. Adding a storage location for a food item
-
-Allows storage location information to be tracked for a food item, using the `s/` prefix.
-
-[Back to top](#table-of-contents)
-
-### 6.1.2. Moving a food item
- 
-Moves a food item from one storage location to another storage location.
-
-**Format:** `move s/SOURCE_LOCATION s/DESTINATION_LOCATION`
-
-[Back to top](#table-of-contents)
-
-## 6.2. Sort Command
-
-### 6.2.1. Checking sorting order
-
-Displays the current sorting order of the food list.
-
-**Format:** `vieworder`
-
-[Back to top](#table-of-contents)
-
-## 6.3. Find Command
-
-### 6.3.1. Finding food items based on partial search fields
-
-Allows for food items to match when their fields match partially to the search field.
-
-**Example:**
-* `find d/can` matches food items with descriptions `canned fish` and `cans of beans`.
-
-[Back to top](#table-of-contents)
-
---------------------------------------------------------------------------------------------------------------------
-
-# 7. Frequently asked questions (FAQs)
+# 6. Frequently asked questions (FAQs)
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the application in the other computer and overwrite the empty data file it creates with the data file in your previous SimplyKitchen home folder.
@@ -656,7 +606,7 @@ Therefore, the food item to be added is considered a duplicate.
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
-# 8. Command summary
+# 7. Command summary
 
 Action | Format, Examples
 -------|------------------
@@ -681,7 +631,7 @@ Action | Format, Examples
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
-# 9. Glossary
+# 8. Glossary
 
 Term | Definition/Description
 -----|------------------
