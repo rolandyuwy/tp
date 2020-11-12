@@ -526,7 +526,7 @@ Note that the undo/redo history will be cleared when you exit the application!
 
 ![Undo success](images/UndoSuccess.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful. </p>
+<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -550,7 +550,7 @@ Note that the undo/redo history will be cleared when you exit the application!
 
 ![Redo success](images/RedoSuccess.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful. </p>
+<p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful</p>
 
 [Back to top](#table-of-contents)
 
