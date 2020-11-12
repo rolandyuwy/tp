@@ -224,7 +224,7 @@ You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
-* A food item with the same description, expiry date and tags as another food item is considered a duplicate. Duplicates cannot be added to the food inventory.
+* Duplicates cannot be added to the food inventory. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
@@ -268,7 +268,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate, and you cannot edit a food item into a duplicate.
+* You cannot edit a food item into a duplicate. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 
 <div markdown="block" class="alert alert-info">
 
@@ -501,9 +501,21 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 
 **Format:** `undo`
 
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
+
 **Examples:**
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
+
+![Undo success](images/UndoSuccess.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -513,9 +525,21 @@ The `redo` command restores your food inventory to a state before an [`undo`](#5
 
 **Format:** `redo`
 
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
+
 **Examples:**
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` followed by `undo` then `redo` will redo the `clear` command.
+
+![Redo success](images/RedoSuccess.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -540,11 +564,11 @@ Note that the data saved in your hard disk will be cleared when you use this com
 ### 5.4.4. Viewing help
 
 The `help` command shows a help message explaining how to access the user guide.
-After entering this command, you should see a pop-up window similar to the one shown in Figure 12.
+After entering this command, you should see a pop-up window similar to the one shown in Figure 14.
 
 ![help message](images/HelpMessage.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 12: A pop-up window displaying the URL to the User Guide</p>
+<p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide</p>
 
 **Format:** `help`
 
@@ -631,13 +655,13 @@ Allows for food items to match when their fields match partially to the search f
 * The capitalisation of the characters in the `description` or `tag` is ignored while checking for duplicates.
 * The `priority` and `quantity` of food items are not considered while checking for duplicates.<br>
 
-Figure 13 shows what the application will look like if you try to add a duplicate food item.
+Figure 15 shows what the application will look like if you try to add a duplicate food item.
 In this case, the `description`, `expiry date` and `tag` of the food item to be added is the same as the food item already inside the food inventory.
 Therefore, the food item to be added is considered a duplicate.
 
 ![Example of a duplicate food item](images/DuplicateFood.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 13: The result box displays an error message when adding a duplicate food item</p>
+<p style="text-align: center; text-decoration: underline">Figure 15: The result box displays an error message when adding a duplicate food item</p>
 
 [Back to top](#table-of-contents)
 
