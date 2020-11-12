@@ -279,7 +279,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate, and you cannot edit a food item into a duplicate.
+* You cannot edit a food item into a duplicate. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 
 <div markdown="block" class="alert alert-info">
 
