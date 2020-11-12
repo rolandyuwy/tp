@@ -209,12 +209,6 @@ This section contains information on the features and commands of SimplyKitchen.
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/dog`.
 
-* Parameters without an ellipsis can only appear once.<br>
-  e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
-
-* Extra whitespaces leading and succeeding a parameter will be ignored.<br>
-  e.g. The description parameter `d/    cashew  nuts   ` will be stored as `d/cashew  nuts`.
-
 </div>
 
 [Back to top](#table-of-contents)
@@ -232,18 +226,13 @@ You can then access the food item later on for editing, deleting etc.
 
 * A food item with the same description, expiry date and tags as another food item is considered a duplicate. Duplicates cannot be added to the food inventory.
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
-* The description accepts `alphanumeric` characters, `whitespaces` and `apostrophes`. 
-  * Descriptions with only whitespace(s) or apostrophe(s) are not allowed.
-* The description and tag are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
-  * The `value` is compulsory. It must be a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
-  * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, spaces and special characters are not allowed. If not provided, the default unit - `unit` - will be given.
-    The maximum length of the quantity unit is 20 characters, including whitespaces.
+  * The `value` is compulsory. The maximum value allowed is 100,000.00.
+  * The `unit` is optional. If not provided, the default unit - `unit` - will be given.
 * The priority parameter is case insensitive, and can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `LOW`.
-* The tag can contain `alphanumeric` characters, `whitespaces` and these special characters: `#$%&-()`.
+* A food item can have any number of tags (including 0).
   * Tags with only whitespace(s) are not allowed.
-  * A food item can have any number of tags (including 0).
   * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
 <div style="page-break-after: always;"></div>
 
