@@ -280,6 +280,8 @@ The constraints for the individual parameters of this command (description, expi
 
 ### 5.1.3. Deleting a food item: `delete`
 
+_(Contributed by Song Yi)_
+
 The `delete` command deletes a specified food item from your food inventory, so that you can stop tracking it.
 
 **Format:** `delete INDEX`
@@ -295,6 +297,8 @@ The `delete` command deletes a specified food item from your food inventory, so 
 [Back to top](#table-of-contents)
 
 ### 5.1.4. Changing the quantity of a food item: `changeqty`
+
+_(Contributed by Song Yi)_
 
 The `changeqty` command changes the quantity of an existing food item in your food inventory without you having to calculate it yourself.
 Use this command if you have bought new food items or used/discarded some existing food items.
@@ -458,6 +462,8 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 
 ### 5.3.3. Viewing expired food items: `expired`
 
+_(Contributed by Song Yi)_
+
 When you launch the application, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
 If there are any expired food items, a pop-up window similar to the one shown in Figure 11 will appear with the list of expired food item(s).
 If you want to see the pop-up window while using the application, you can use the `expired` command.
@@ -537,6 +543,8 @@ Note that the undo/redo history will be cleared when you exit the application!
 
 ### 5.4.3. Clearing all entries: `clear`
 
+_(Contributed by Song Yi)_
+
 The `clear` command clears all entries from your food inventory. This lets you easily clear the sample data, or start on a clean food inventory.
 
 **Format:** `clear`
@@ -552,6 +560,8 @@ Note that the data saved in your hard disk will be cleared when you use this com
 [Back to top](#table-of-contents)
 
 ### 5.4.4. Viewing help: `help`
+
+_(Contributed by Song Yi)_
 
 The `help` command shows a help message explaining how to access the user guide.
 After entering this command, you should see a pop-up window similar to the one shown in Figure 14.
