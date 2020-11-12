@@ -87,7 +87,7 @@ The [Appendix](#appendix-a-product-scope) section consists of details of the pla
 It gives an idea of the requirements of the target audience of SimplyKitchen, along with use cases of how they will use the app.
 The [Glossary](#appendix-b-glossary) and [Non-Functional Requirements](#appendix-e-non-functional-requirements) provide other key information relevant to the document and the app.
 
-This document ends with a brief description of our [effort](#appendix-f-instructions-for-manual-testing) for this project.
+This document ends with a brief description of our [effort](#appendix-g-effort) for this project.
 
 [Back to top](#table-of-contents)
 
