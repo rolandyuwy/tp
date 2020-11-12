@@ -54,22 +54,20 @@ SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny W
 
 # 2. About this document
 
-This document is a User Guide meant to assist users in using SimplyKitchen for food inventory management.
+This is a User Guide meant to assist you in using SimplyKitchen for food inventory management.
 
 The [Quick Start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
 
 The [Application Layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
 
-The [Features](#5-features) section contains all features of SimplyKitchen for your understanding.
-It provides the description, purpose, format, conditions and examples for each feature.
+The [Features](#5-features) section describes all the features of SimplyKitchen.
+It provides the purpose, format, conditions and examples for each feature.
 
-The [Upcoming Features](#6-upcoming-features-coming-in-v20) section provides a peek on the future expansion plans for SimplyKitchen.
+The [FAQs](#6-frequently-asked-questions-faqs) section contains some Frequently Asked Questions about SimplyKitchen.
 
-The [FAQs](#7-frequently-asked-questions-faqs) section contains some Frequently Asked Questions about SimplyKitchen.
+The [Command Summary](#7-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-The [Command Summary](#8-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
-
-Finally, the [Glossary](#9-glossary) section provides explanations for the commonly used terms in this document and SimplyKitchen.
+Finally, the [Glossary](#8-glossary) section provides explanations for the commonly used terms in this document and SimplyKitchen.
 
 [Back to top](#table-of-contents)
 
@@ -88,19 +86,21 @@ This section will guide you in setting up and launching SimplyKitchen on your co
   ![App window](images/AppWindow.png)
   
   <p style="text-align: center; text-decoration: underline">Figure 1: SimplyKitchen main window</p>
+
 <div style="page-break-after: always;"></div>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Problems launching the app?**<br>
 
 In case the application does not start after you double-click on the `SimplyKitchen.jar` file, try doing the following based on your computer's Operating System:
 
-_*For Mac OS users*_
+_For Mac OS users:_
 
 * Launch the terminal and navigate to your SimplyKitchen _home folder_, or right-click on the folder and click on _New Terminal at Folder_.
 * Enter `java -jar SimplyKitchen.jar` into the terminal.
 
-_*For Windows users*_
+_For Windows users:_
 
 * Launch the command prompt and navigate to your SimplyKitchen _home folder_.
 * Enter `java -jar SimplyKitchen.jar` into the command prompt.
@@ -113,7 +113,7 @@ _*For Windows users*_
  
   ![Pop up window of expired food items](images/ExpiredPopUpWindow.png)
 
-  <p style="text-align: center; text-decoration: underline">Figure 2: The SimplyKitchen pop-up window displays all the expired food items</p>
+  <p style="text-align: center; text-decoration: underline">Figure 2: The SimplyKitchen pop-up window displays all the expired food items.</p>
 
 * Start using the application by typing a command in the command box at the bottom. For example, typing `help` and then pressing `Enter` will open the help window.
 * Refer to the [Features](#5-features) section in this guide for help on how to use the app.
@@ -121,6 +121,7 @@ _*For Windows users*_
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 # 4. Application layout
@@ -134,6 +135,7 @@ Figure 3 details the main components:
 <p style="text-align: center; text-decoration: underline">Figure 3: Main components of SimplyKitchen</p>
 
 <div style="page-break-after: always;"></div>
+
 The table below provides the descriptions of the main components:
 
 Component           | Description
@@ -166,6 +168,7 @@ Quantity    | The quantity of a food item. The quantity consists of 2 entities -
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 # 5. Features
@@ -215,7 +218,7 @@ You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
-* Duplicates cannot be added to the food inventory. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
+* Duplicates cannot be added to the food inventory. (Please head to the [glossary](#8-glossary) for an explanation for duplicate food items.)
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
@@ -234,11 +237,11 @@ The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/cont
 
 ![Before executing the add command](images/AddCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the add command being typed into the command box</p>
+<p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the add command being typed into the command box.</p>
 
 ![After executing the add command](images/AddCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list</p>
+<p style="text-align: center; text-decoration: underline">Figure 6: The red box shows the new food item being added to the food list.</p>
 
 [Back to top](#table-of-contents)
 
@@ -257,13 +260,13 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* You cannot edit a food item into a duplicate. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
+* You cannot edit a food item into a duplicate. (Please head to the [glossary](#8-glossary) for an explanation for duplicate food items.)
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note about the parameters:**<br>
 
-The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
+The constraints for the individual parameters of this command (description, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item-add) command.
 
 </div>
 
@@ -298,7 +301,8 @@ Use this command if you have bought new food items or used/discarded some existi
 
 **Format:** `changeqty INDEX a/AMOUNT`
 
-* The index refers to the index number shown in the displayed food list.
+* It changes the quantity of the food item at the specified `INDEX`.
+  * The index refers to the index number shown in the displayed food list.
   * The index **must be a positive integer** 1, 2, 3, …
 * The amount is the quantity of a food item you want to change by.
   * The amount is a non-zero signed number with a maximum of 2 decimal places. It should be more than -100,000.00 and less than +100,000.00, but not 0.
@@ -311,11 +315,11 @@ Use this command if you have bought new food items or used/discarded some existi
 
 **:information_source: Constraint on the size of amount:**<br>
 
-Choose an amount such that the **final** quantity of the food item is not less than or equal to 0, or more than 100,000.
+Choose an amount such that the **final** quantity of the food item is not less than or equal to 0, or more than 100,000.00.
 
-For example, you have already added 5 grams of flour in your food inventory with the [`add`](#511-adding-a-food-item) command.
-You can use the `changeqty` command to add 0.01 to 99,995.00 grams of flour or subtract 0.01 to 4.99 grams of flour.
-If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item) command instead.
+For example, you have already added 50,000.00 grams of flour in your food inventory with the [`add`](#511-adding-a-food-item-add) command.
+You can use the `changeqty` command to add 0.01 to 50,000.00 grams of flour or subtract 0.01 to 49,999.99 grams of flour.
+If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item-delete) command instead.
 
 </div>
 
@@ -331,7 +335,7 @@ The commands in this section can be used to sort the food list. The sorting orde
 
 Before the list of food items is sorted for the first time, it will be ordered by `description` by default. 
 
-Refer to the [Sorting food items by description`](#521-sorting-food-items-by-description) section for a detailed explanation of sorting by description.
+Refer to the [Sorting food items by description`](#521-sorting-food-items-by-description-sortdesc) section for a detailed explanation of sorting by description.
 
 ### 5.2.1. Sorting food items by description: `sortdesc`
 
@@ -430,7 +434,7 @@ The `find` command searches for food items in your food inventory that match the
 
 **:information_source: Note about the parameters:**<br>
 
-The constraints for the individual parameters of this command (each description in the descriptions parameter, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item) command.
+The constraints for the individual parameters of this command (each description in the descriptions parameter, expiry date, quantity, priority and tags) are the same as those for the [`add`](#511-adding-a-food-item-add) command.
 
 </div>
 
@@ -466,7 +470,7 @@ If you want to see the pop-up window while using the application, you can use th
 
 **:information_source: Updating your food inventory:**<br>
 
-If you have discarded the expired food item, please remember to delete the associated food item from the application using the [`delete`](#513-deleting-a-food-item) command.
+If you have discarded the expired food item, please remember to delete the associated food item from the application using the [`delete`](#513-deleting-a-food-item-delete) command.
 
 </div>
 
@@ -483,7 +487,7 @@ These are additional commands you can use to enhance your experience with Simply
 ### 5.4.1. Undoing previous command: `undo`
 
 The `undo` command restores your food inventory to a state before an undoable command was executed. This lets you easily correct mistakes made on your food inventory.
-Undoable commands are commands that modify your food inventory's content ([`add`](#511-adding-a-food-item), [`edit`](#512-editing-a-food-item), [`delete`](#513-deleting-a-food-item) , [`changeqty`](#514-changing-the-quantity-of-a-food-item) and [`clear`](#543-clearing-all-entries)) and commands that sort food items ([`sortdesc`](#521-sorting-food-items-by-description), [`sortexpiry`](#522-sorting-food-items-by-expiry-date), [`sortpriority`](#523-sorting-food-items-by-priority)).
+Undoable commands are commands that modify your food inventory's content ([`add`](#511-adding-a-food-item-add), [`edit`](#512-editing-a-food-item-edit), [`delete`](#513-deleting-a-food-item-delete) , [`changeqty`](#514-changing-the-quantity-of-a-food-item-changeqty) and [`clear`](#543-clearing-all-entries-clear)) and commands that sort food items ([`sortdesc`](#521-sorting-food-items-by-description-sortdesc), [`sortexpiry`](#522-sorting-food-items-by-expiry-date-sortexpiry), [`sortpriority`](#523-sorting-food-items-by-priority-sortpriority)).
 
 **Format:** `undo`
 
@@ -501,13 +505,13 @@ Note that the undo/redo history will be cleared when you exit the application!
 
 ![Undo success](images/UndoSuccess.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful</p>
+<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful.</p>
 
 [Back to top](#table-of-contents)
 
 ### 5.4.2. Redoing previously undone command: `redo`
 
-The `redo` command restores your food inventory to a state before an [`undo`](#541-undoing-previous-command) command was executed. This lets you easily redo commands that were incorrectly undone.
+The `redo` command restores your food inventory to a state before an [`undo`](#541-undoing-previous-command-undo) command was executed. This lets you easily redo commands that were incorrectly undone.
 
 **Format:** `redo`
 
@@ -554,7 +558,7 @@ After entering this command, you should see a pop-up window similar to the one s
 
 ![help message](images/HelpMessage.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide</p>
+<p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide.</p>
 
 **Format:** `help`
 
@@ -599,11 +603,12 @@ Therefore, the food item to be added is considered a duplicate.
 
 ![Example of a duplicate food item](images/DuplicateFood.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 15: The result box displays an error message when adding a duplicate food item</p>
+<p style="text-align: center; text-decoration: underline">Figure 15: The result box displays an error message when adding a duplicate food item.</p>
 
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 # 7. Command summary
@@ -629,6 +634,7 @@ Action | Format, Examples
 [Back to top](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 # 8. Glossary
