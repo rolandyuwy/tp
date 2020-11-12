@@ -11,32 +11,31 @@ title: User Guide
 * [4. Application layout](#4-application-layout)
 * [5. Features](#5-features)
   * [5.1. Basic commands](#51-basic-commands)
-    * [5.1.1. Adding a food item](#511-adding-a-food-item)
-    * [5.1.2. Editing a food item](#512-editing-a-food-item)
-    * [5.1.3. Deleting a food item](#513-deleting-a-food-item)
-    * [5.1.4. Changing the quantity of a food item](#514-changing-the-quantity-of-a-food-item)
+    * [5.1.1. Adding a food item `add`](#511-adding-a-food-item)
+    * [5.1.2. Editing a food item `edit`](#512-editing-a-food-item)
+    * [5.1.3. Deleting a food item `delete`](#513-deleting-a-food-item)
+    * [5.1.4. Changing the quantity of a food item `changeqty`](#514-changing-the-quantity-of-a-food-item)
   * [5.2. Sorting commands](#52-sorting-commands)  
-    * [5.2.1. Sorting food items by description](#521-sorting-food-items-by-description)
-    * [5.2.2. Sorting food items by expiry date](#522-sorting-food-items-by-expiry-date)
-    * [5.2.3. Sorting food items by priority](#523-sorting-food-items-by-priority)
+    * [5.2.1. Sorting food items by description `sortdesc`](#521-sorting-food-items-by-description)
+    * [5.2.2. Sorting food items by expiry date `sortexpiry`](#522-sorting-food-items-by-expiry-date)
+    * [5.2.3. Sorting food items by priority `sortpriority`](#523-sorting-food-items-by-priority)
   * [5.3. Viewing commands](#53-viewing-commands)    
-    * [5.3.1. Listing all food items](#531-listing-all-food-items)
-    * [5.3.2. Finding food items](#532-finding-food-items)
-    * [5.3.3. Viewing expired food items](#533-viewing-expired-food-items)
+    * [5.3.1. Listing all food items `list`](#531-listing-all-food-items)
+    * [5.3.2. Finding food items `find`](#532-finding-food-items)
+    * [5.3.3. Viewing expired food items `expired`](#533-viewing-expired-food-items)
   * [5.4. Miscellaneous commands](#54-miscellaneous-commands)
-    * [5.4.1. Undoing previous command](#541-undoing-previous-command)
-    * [5.4.2. Redoing previously undone command](#542-redoing-previously-undone-command)     
-    * [5.4.3. Clearing all entries](#543-clearing-all-entries)
-    * [5.4.4. Viewing help](#544-viewing-help)
-    * [5.4.5. Exiting the program](#545-exiting-the-program)
+    * [5.4.1. Undoing previous command `undo`](#541-undoing-previous-command)
+    * [5.4.2. Redoing previously undone command `redo`](#542-redoing-previously-undone-command)     
+    * [5.4.3. Clearing all entries `clear`](#543-clearing-all-entries)
+    * [5.4.4. Viewing help `help`](#544-viewing-help)
+    * [5.4.5. Exiting the program `exit`](#545-exiting-the-program)
   * [5.5. Saving the data](#55-saving-the-data)
 * [6. Upcoming features](#6-upcoming-features-coming-in-v20)
   * [6.1. Storage](#61-storage)
     * [6.1.1. Adding a storage location for a food item](#611-adding-a-storage-location-for-a-food-item)
     * [6.1.2. Moving a food item ](#612-moving-a-food-item)
   * [6.2. Sort command](#62-sort-command)
-    * [6.2.1. Sorting by descending description](#621-sorting-by-descending-description)
-    * [6.2.2. Checking sorting order](#622-checking-sorting-order)
+    * [6.2.1. Checking sorting order](#621-checking-sorting-order)
   * [6.3. Find command](#63-find-command)
     * [6.3.1. Finding food items based on partial search fields](#631-finding-food-items-based-on-partial-search-fields)
 * [7. Frequently asked questions (FAQs)](#7-frequently-asked-questions-faqs)
@@ -209,12 +208,6 @@ This section contains information on the features and commands of SimplyKitchen.
 * Ellipsis after a parameter indicates that multiple entries of that parameter can be given.<br>
   e.g. In `[t/TAG]...`, the command can have zero or more tags, such as `t/spicy t/dog`.
 
-* Parameters without an ellipsis can only appear once.<br>
-  e.g. `d/Apple Jam d/Apple Juice` and `p/low p/medium` are not allowed.
-
-* Extra whitespaces leading and succeeding a parameter will be ignored.<br>
-  e.g. The description parameter `d/    cashew  nuts   ` will be stored as `d/cashew  nuts`.
-
 </div>
 
 [Back to top](#table-of-contents)
@@ -230,20 +223,15 @@ You can then access the food item later on for editing, deleting etc.
 
 **Format:** `add d/DESCRIPTION e/EXPIRY_DATE q/QUANTITY [p/PRIORITY] [t/TAG]...`
 
-* A food item with the same description, expiry date and tags as another food item is considered a duplicate. Duplicates cannot be added to the food inventory.
+* Duplicates cannot be added to the food inventory. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 * The description and tag can contain a maximum of 50 and 30 characters respectively, including whitespaces.
-* The description accepts `alphanumeric` characters, `whitespaces` and `apostrophes`. 
-  * Descriptions with only whitespace(s) or apostrophe(s) are not allowed.
-* The description and tag are case-insensitive (i.e `d/Apple e/30-12-2020 q/1 t/Red` is the same item as `d/apple e/30-12-2020 q/2 t/red`).
 * The expiry date must be in the format of `DD-MM-YYYY` or `DD/MM/YYYY`. The year must be between 2020 and 2120, both inclusive.
 * The quantity consists of 2 entities - `value` and `unit`. The `value` should come before the `unit`.
-  * The `value` is compulsory. It must be a positive number with a maximum of 2 decimal places. The maximum value allowed is 100,000.00.
-  * The `unit` is optional. If provided, it must consist of only alphabets. Numbers, spaces and special characters are not allowed. If not provided, the default unit - `unit` - will be given.
-    The maximum length of the quantity unit is 20 characters, including whitespaces.
+  * The `value` is compulsory. The maximum value allowed is 100,000.00.
+  * The `unit` is optional. If not provided, the default unit - `unit` - will be given.
 * The priority parameter is case insensitive, and can either be `high`, `medium` or `low` and is optional. If a priority is not specified, the default priority will be set to `LOW`.
-* The tag can contain `alphanumeric` characters, `whitespaces` and these special characters: `#$%&-()`.
+* A food item can have any number of tags (including 0).
   * Tags with only whitespace(s) are not allowed.
-  * A food item can have any number of tags (including 0).
   * If multiple of the same tags are entered, only the first tag will be added (i.e For `t/Frozen t/frozen t/FROZEN`, only `Frozen` will be added to the food item).
 <div style="page-break-after: always;"></div>
 
@@ -279,7 +267,7 @@ If an entry is incorrect, you can easily edit the entry without deleting and re-
 * Existing values will be replaced with the values you input.
 * When editing tags, the existing tags of the food item will be removed i.e adding of tags is not cumulative.
   * You can remove all the tags of a food item by typing `t/` without specifying any tags after it.
-* Similar to the [add](#511-adding-a-food-item) command, a food item with the same description, expiry date and tags as another food item is considered a duplicate, and you cannot edit a food item into a duplicate.
+* You cannot edit a food item into a duplicate. (Please head to the [glossary](#9-glossary) for an explanation for duplicate food items.)
 
 <div markdown="block" class="alert alert-info">
 
@@ -512,9 +500,21 @@ Undoable commands are commands that modify your food inventory's content ([`add`
 
 **Format:** `undo`
 
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
+
 **Examples:**
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
+
+![Undo success](images/UndoSuccess.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -524,9 +524,21 @@ The `redo` command restores your food inventory to a state before an [`undo`](#5
 
 **Format:** `redo`
 
+<div markdown="span" class="alert alert-danger">
+
+**:exclamation: Warning:**<br>
+
+Note that the undo/redo history will be cleared when you exit the application!
+
+</div>
+
 **Examples:**
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` followed by `undo` then `redo` will redo the `clear` command.
+
+![Redo success](images/RedoSuccess.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -551,11 +563,11 @@ Note that the data saved in your hard disk will be cleared when you use this com
 ### 5.4.4. Viewing help
 
 The `help` command shows a help message explaining how to access the user guide.
-After entering this command, you should see a pop-up window similar to the one shown in Figure 12.
+After entering this command, you should see a pop-up window similar to the one shown in Figure 14.
 
 ![help message](images/HelpMessage.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 12: A pop-up window displaying the URL to the User Guide</p>
+<p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide</p>
 
 **Format:** `help`
 
@@ -598,13 +610,7 @@ Moves a food item from one storage location to another storage location.
 
 ## 6.2. Sort Command
 
-### 6.2.1. Sorting by descending description
-
-Sorts the list of food items in reverse order of the order used for the `sortdesc` command.
-
-[Back to top](#table-of-contents)
-
-### 6.2.2. Checking sorting order
+### 6.2.1. Checking sorting order
 
 Displays the current sorting order of the food list.
 
@@ -642,13 +648,13 @@ Allows for food items to match when their fields match partially to the search f
 * The capitalisation of the characters in the `description` or `tag` is ignored while checking for duplicates.
 * The `priority` and `quantity` of food items are not considered while checking for duplicates.<br>
 
-Figure 13 shows what the application will look like if you try to add a duplicate food item.
+Figure 15 shows what the application will look like if you try to add a duplicate food item.
 In this case, the `description`, `expiry date` and `tag` of the food item to be added is the same as the food item already inside the food inventory.
 Therefore, the food item to be added is considered a duplicate.
 
 ![Example of a duplicate food item](images/DuplicateFood.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 13: The result box displays an error message when adding a duplicate food item</p>
+<p style="text-align: center; text-decoration: underline">Figure 15: The result box displays an error message when adding a duplicate food item</p>
 
 [Back to top](#table-of-contents)
 
