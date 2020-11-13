@@ -245,9 +245,8 @@ Before the command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the add command being typed into the command box.</p>
 
-<br><br>
-Outcome:
 
+Outcome:
 After the command is executed:
 
 ![After executing the add command](images/AddCommandAfter.png)
