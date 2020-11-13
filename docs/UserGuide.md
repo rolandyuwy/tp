@@ -433,6 +433,7 @@ Before the `sortdesc` command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 13: The red box shows the sort by description command being typed into the command box.</p>
 
+<br><br>
 Outcome:
 
 After the `sortdesc` command is executed:
@@ -613,6 +614,7 @@ Before the `expired` command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 23: The red box shows the expired command being typed into the command box.</p>
 
+<br><br>
 Outcome:
 
 After the `expired` command is executed:
@@ -666,6 +668,7 @@ Before the `undo` command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 25: The red box shows the undo command being typed into the command box.</p>
 
+<br><br>
 Outcome:
 
 After the `undo` command is executed:
@@ -704,6 +707,7 @@ Before the `redo` command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 27: The red box shows the redo command being typed into the command box.</p>
 
+<br><br>
 Outcome:
 
 After the `redo` command is executed:
@@ -728,13 +732,14 @@ Steps:
 1. Type `clear` in the _Command Box_.
 2. Press `Enter` to execute.
 
-Outcome:
-
 Before the `clear` command is executed:
 
 ![Before executing the clear command](images/ClearCommandBefore.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 29: The red box shows the clear command being typed into the command box.</p>
+
+<br><br>
+Outcome:
 
 After the `clear` command is executed:
 
@@ -771,6 +776,7 @@ Before the `help` command is executed:
 
 <p style="text-align: center; text-decoration: underline">Figure 31: The red box shows the help command being typed into the command box.</p>
 
+<br><br>
 Outcome:
 
 After the `help` command is executed:
