@@ -286,7 +286,7 @@ The constraints for the individual parameters of this command (description, expi
 * `edit 2 d/canned tuna q/0.5 can t/` edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.50 can` and clears all existing tags.
 
 Steps:
-1. Type `edit 2 d/canned tuna q/0.5 can t/` in the _Command Box_.
+1. Type `edit 2 p/high e/25-11-2020` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Before the `edit` command is executed:
@@ -341,7 +341,7 @@ After the `delete` command is executed:
 
 ![After executing the delete command](images/DeleteCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 10: The red box shows the new food item being added to the food list.</p>
+<p style="text-align: center; text-decoration: underline">Figure 10: The red box shows the message after the food item is deleted.</p>
 
 [Back to top](#table-of-contents)
 
@@ -381,7 +381,7 @@ If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item-
 * `find d/tuna` followed by `changeqty 2 a/-2.50` decreases the quantity of the 2nd food item from the result of the `find` command by 2.50.
 
 Steps:
-1. Type `changeqty 2 a/-2.50` in the _Command Box_.
+1. Type `changeqty 3 a/-0.5` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Before the `changeqty` command is executed:
@@ -431,7 +431,7 @@ Before the `sortdesc` command is executed:
 
 ![Before executing the sortdesc command](images/SortdescCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 13: The red box shows the sort command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 13: The red box shows the sort by description command being typed into the command box.</p>
 
 Outcome:
 
@@ -462,7 +462,7 @@ Before the `sortexpiry` command is executed:
 
 ![Before executing the sortexpiry command](images/SortexpiryCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 15: The red box shows the sort command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 15: The red box shows the sort by expiry date command being typed into the command box.</p>
 
 <br><br>
 Outcome:
@@ -494,7 +494,7 @@ Before the `sortpriority` command is executed:
 
 ![Before executing the sortpriority command](images/SortpriorityCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 17: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 17: The red box shows the sort by priority command being typed into the command box.</p>
 
 <br><br>
 Outcome:
@@ -528,7 +528,7 @@ Before the `list` command is executed:
 
 ![Before executing the list command](images/ListCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 19: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 19: The red box shows the list command being typed into the command box.</p>
 
 <br><br>
 Outcome:
@@ -537,7 +537,7 @@ After the `sortpriority` command is executed:
 
 ![Sorting by priority](images/ListCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 20: All food items are listed</p>
+<p style="text-align: center; text-decoration: underline">Figure 20: Shows food list with all food items listed.</p>
 
 [Back to top](#table-of-contents)
 
@@ -571,14 +571,14 @@ The constraints for the individual parameters of this command (each description 
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` and have either `cat` or `dog` as tags.
 
 Steps:
-1. Type `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` in the _Command Box_.
+1. Type `find e/1-11-2021` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Before the `find` command is executed:
 
 ![Before executing the find command](images/FindCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the find command being typed into the command box.</p>
 
 <br><br>
 Outcome:
@@ -587,7 +587,7 @@ After the `find` command is executed:
 
 ![After executing the find command](images/FindCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 22: Food list displaying the result of the find command</p>
+<p style="text-align: center; text-decoration: underline">Figure 22: Shows the food list displaying the result of the find command</p>
 
 [Back to top](#table-of-contents)
 
@@ -607,13 +607,19 @@ Steps:
 1. Type `expired` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Before the `expired` command is executed:
+
+![Before executing the expired command](images/ExpiredCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 23: The red box shows the expired command being typed into the command box.</p>
+
 Outcome:
 
 After the `expired` command is executed:
 
 ![Pop up window of expired food items](images/ExpiredPopUpWindow.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 23: A pop-up window listing all the expired food items</p>
+<p style="text-align: center; text-decoration: underline">Figure 24: A pop-up window listing all the expired food items</p>
 
 <div markdown="block" class="alert alert-info">
 
@@ -658,7 +664,7 @@ Before the `undo` command is executed:
 
 ![Before executing the undo command](images/UndoCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 24: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 25: The red box shows the undo command being typed into the command box.</p>
 
 Outcome:
 
@@ -666,7 +672,7 @@ After the `undo` command is executed:
 
 ![Undo success](images/UndoSuccess.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 25: The result box will display "Undo success!" if undo was successful.</p>
+<p style="text-align: center; text-decoration: underline">Figure 26: The result box will display "Undo success!" if undo was successful.</p>
 
 [Back to top](#table-of-contents)
 
@@ -696,15 +702,15 @@ Before the `redo` command is executed:
 
 ![Before executing the redo command](images/RedoCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 26: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 27: The red box shows the redo command being typed into the command box.</p>
 
 Outcome:
 
 After the `redo` command is executed:
 
-![Redo success](images/RedoSuccess.png)
+![After executing the redo command](images/RedoCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 27: The result box will display "Redo success!" if redo was successful</p>
+<p style="text-align: center; text-decoration: underline">Figure 28: The result box will display "Redo success!" if redo was successful</p>
 
 [Back to top](#table-of-contents)
 
@@ -728,13 +734,13 @@ Before the `clear` command is executed:
 
 ![Before executing the clear command](images/ClearCommandBefore.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 28: The red box shows the add command being typed into the command box.</p>
+<p style="text-align: center; text-decoration: underline">Figure 29: The red box shows the clear command being typed into the command box.</p>
 
 After the `clear` command is executed:
 
 ![After executing the clear command](images/ClearCommandAfter.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 29: The result box will display "Redo success!" if redo was successful</p>
+<p style="text-align: center; text-decoration: underline">Figure 30: The food list is cleared.</p>
 
 <div markdown="span" class="alert alert-danger">
 
@@ -759,13 +765,19 @@ Steps:
 1. Type `help` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Before the `help` command is executed:
+
+![Before executing the help command](images/HelpCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 31: The red box shows the help command being typed into the command box.</p>
+
 Outcome:
 
 After the `help` command is executed:
 
 ![help message](images/HelpMessage.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 30: A pop-up window displaying the URL to the User Guide.</p>
+<p style="text-align: center; text-decoration: underline">Figure 32: A pop-up window displaying the URL to the User Guide.</p>
 
 [Back to top](#table-of-contents)
 
@@ -778,6 +790,10 @@ The `exit` command closes the application. This lets you easily exit the applica
 Steps:
 1. Type `exit` in the _Command Box_.
 2. Press `Enter` to execute.
+
+![exit command](images/ExitCommand.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 33: The red box shows the exit command being typed into the command box.</p>
 
 [Back to top](#table-of-contents)
 
