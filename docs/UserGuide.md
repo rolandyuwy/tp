@@ -213,6 +213,7 @@ This section contains information on the features and commands of SimplyKitchen.
 The commands in this section are the basic commands used to manipulate food items.
 
 ### 5.1.1. Adding a food item: `add`
+_(Contributed by Jonah)_
 
 The `add` command stores a food item in your food inventory, so that you can start tracking it.
 You can then access the food item later on for editing, deleting etc.
@@ -680,6 +681,7 @@ Therefore, the food item to be added is considered a duplicate.
 <div style="page-break-after: always;"></div>
 
 # 7. Command summary
+_(Contributed by Jonah)_
 
 Action | Format, Examples
 -------|------------------
