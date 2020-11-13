@@ -431,7 +431,7 @@ Note that sorting is permanent. Thus, the sorting order of your food list will r
 
 Before the list of food items is sorted for the first time, it will be ordered by `description` by default. 
 
-Refer to the [Sorting food items by description`](#521-sorting-food-items-by-description-sortdesc) section for a detailed explanation of sorting by description.
+Refer to the [Sorting food items by description](#521-sorting-food-items-by-description-sortdesc) section for a detailed explanation of sorting by description.
 
 ### 5.2.1. Sorting food items by description: `sortdesc`
 _(Contributed by Roland Yu)_
