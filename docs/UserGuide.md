@@ -247,6 +247,7 @@ Before the command is executed:
 
 
 Outcome:
+
 After the command is executed:
 
 ![After executing the add command](images/AddCommandAfter.png)
