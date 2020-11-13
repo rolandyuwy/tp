@@ -7,8 +7,8 @@ title: User Guide
 _(Contributed by all members)_
 * [1. Introduction](#1-introduction)
 * [2. About this document](#2-about-this-document)
-    *[2.1. Main sections](#21-main-sections)
-    *[2.2. Symbols](#22-symbols)
+  * [2.1. Main sections](#21-main-sections)
+  * [2.2. Symbols](#22-symbols)
 * [3. Quick start](#3-quick-start)
 * [4. Application layout](#4-application-layout)
 * [5. Features](#5-features)
@@ -77,7 +77,7 @@ The [FAQs](#6-frequently-asked-questions-faqs) section contains some **Frequentl
 
 The [Command Summary](#7-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-Finally, the [Glossary](#8-glossary) section provides explanations for the commonly used terms in this document and in th SimplyKitchen application.
+Finally, the [Glossary](#8-glossary) section provides explanations for the commonly used terms in this document and in the SimplyKitchen application.
 
 [Back to top](#table-of-contents)
 
@@ -160,7 +160,7 @@ Figure 3 details the main components:
 
 <div style="page-break-after: always;"></div>
 
-The table below provides the descriptions of the main components:
+The table below provides the descriptions of the main components of the application:
 
 Component           | Description
 --------------------|-----------------------------------------------------------------------------------------
