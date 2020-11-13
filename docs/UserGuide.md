@@ -779,14 +779,6 @@ Steps:
 1. Type `exit` in the _Command Box_.
 2. Press `Enter` to execute.
 
-Outcome:
-
-After the `exit` command is executed:
-
-![Exit app](images/HelpMessage.png)
-
-<p style="text-align: center; text-decoration: underline">Figure 31: A pop-up window displaying the URL to the User Guide.</p>
-
 [Back to top](#table-of-contents)
 
 ## 5.5. Saving the data
