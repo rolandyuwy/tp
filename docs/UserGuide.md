@@ -305,7 +305,7 @@ The constraints for the individual parameters of this command (description, expi
 
 **Steps:**
 1. Type `edit 2 p/high e/25-11-2020` in the _Command Box_. See Figure 7.
-2. Press `Enter` to execute. See Figure 8.
+2. Press `Enter` to execute. See Figure 8. Note that the priority has been changed to `HIGH` and the expiry date is changed to `25-11-2020`.
 
 ![Before executing the edit command](images/EditCommandBefore.png)
 
@@ -336,7 +336,7 @@ The `delete` command deletes a specified food item from your food inventory, so 
 
 **Steps:**
 1. Type `delete 2` in the _Command Box_. See Figure 9.
-2. Press `Enter` to execute. See Figure 10.
+2. Press `Enter` to execute. See Figure 10. Note that the banana pie is deleted.
 
 ![Before executing the delete command](images/DeleteCommandBefore.png)
 
@@ -384,7 +384,7 @@ If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item-
 
 **Steps:**
 1. Type `changeqty 3 a/-0.5` in the _Command Box_. See Figure 11.
-2. Press `Enter` to execute. See Figure 12.
+2. Press `Enter` to execute. See Figure 12. Note that the quantity of the chocolate cake is decreased by `0.50 lb`.
 
 ![Before executing the changeqty command](images/ChangeqtyCommandBefore.png)
 
@@ -651,7 +651,7 @@ Note that the undo/redo history will be cleared when you exit the application!
 
 **Steps:**
 1. Type `redo` in the _Command Box_. See Figure 27.
-2. Press `Enter` to execute. See Figure 28.
+2. Press `Enter` to execute. See Figure 28. Note that the apple pie has been re-deleted.
 
 ![Before executing the redo command](images/RedoCommandBefore.png)
 
