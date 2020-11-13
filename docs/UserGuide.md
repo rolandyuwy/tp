@@ -239,11 +239,15 @@ Steps:
 1. Type `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/contains nuts` in the _Command Box_.
 2. Press `Enter` to execute.
 
-The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/contains nuts` is shown in Figure 5 and Figure 6.
+Before the command is executed:
 
 ![Before executing the add command](images/AddCommandBefore.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 5: The red box shows the add command being typed into the command box.</p>
+
+Outcome:
+
+After the command is executed:
 
 ![After executing the add command](images/AddCommandAfter.png)
 
@@ -284,6 +288,17 @@ Steps:
 1. Type `edit 2 d/canned tuna q/0.5 can t/` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Outcome:
+Before the command is executed:
+![Before executing the add command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 7: The red box shows the add command being typed into the command box.</p>
+
+After the command is executed:
+![After executing the add command](images/AddCommandAfter.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 8: The red box shows the new food item being added to the food list.</p>
+
 [Back to top](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
@@ -307,6 +322,17 @@ The `delete` command deletes a specified food item from your food inventory, so 
 Steps:
 1. Type `delete 2` in the _Command Box_.
 2. Press `Enter` to execute.
+
+Outcome:
+Before the command is executed:
+![Before executing the add command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 9: The red box shows the add command being typed into the command box.</p>
+
+After the command is executed:
+![After executing the add command](images/AddCommandAfter.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 10: The red box shows the new food item being added to the food list.</p>
 
 [Back to top](#table-of-contents)
 
@@ -349,6 +375,17 @@ Steps:
 1. Type `changeqty 2 a/-2.50` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Outcome:
+Before the `changeqty` command is executed:
+![Before executing the add command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 11: The red box shows the add command being typed into the command box.</p>
+
+After the `changeqty` command is executed:
+![After executing the add command](images/AddCommandAfter.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 12: The red box shows the new food item being added to the food list.</p>
+
 [Back to top](#table-of-contents)
 
 ## 5.2. Sorting commands
@@ -377,13 +414,16 @@ Steps:
 1. Type `sortdesc` in the _Command Box_.
 2. Press `Enter` to execute.
 
-**Example:**
+Outcome:
+Before the `sortdesc` command is executed:
+![Before executing the sortdesc command](images/AddCommandBefore.png)
 
-A possible valid ordering of description is shown in Figure 7.
+<p style="text-align: center; text-decoration: underline">Figure 13: The red box shows the add command being typed into the command box.</p>
 
+After the `sortdesc` command is executed:
 ![Sorting by description](images/SortDescCommand.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 7: Food items sorted by description</p>
+<p style="text-align: center; text-decoration: underline">Figure 14: Food items sorted by description</p>
 
 [Back to top](#table-of-contents)
 
@@ -402,13 +442,16 @@ Steps:
 1. Type `sortexpiry` in the _Command Box_.
 2. Press `Enter` to execute.
 
-**Example:**
+Outcome:
+Before the `sortexpiry` command is executed:
+![Before executing the sortexpiry command](images/AddCommandBefore.png)
 
-A possible valid ordering of expiry date is shown in Figure 8.
+<p style="text-align: center; text-decoration: underline">Figure 15: The red box shows the add command being typed into the command box.</p>
 
+After the `sortexpiry` command is executed:
 ![Sorting by expiry date](images/SortExpiryCommand.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 8: Food items sorted by expiry date</p>
+<p style="text-align: center; text-decoration: underline">Figure 16: Food items sorted by expiry date</p>
 
 [Back to top](#table-of-contents)
 
@@ -427,13 +470,16 @@ Steps:
 1. Type `sortpriority` in the _Command Box_.
 2. Press `Enter` to execute.
 
-**Example:**
+Outcome:
+Before the `sortpriority` command is executed:
+![Before executing the sortpriority command](images/AddCommandBefore.png)
 
-A possible valid ordering of priority is shown in Figure 9.
+<p style="text-align: center; text-decoration: underline">Figure 17: The red box shows the add command being typed into the command box.</p>
 
+After the `sortpriority` command is executed:
 ![Sorting by priority](images/SortPriorityCommand.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 9: Food items sorted by priority</p>
+<p style="text-align: center; text-decoration: underline">Figure 18: Food items sorted by priority</p>
 
 [Back to top](#table-of-contents)
 
@@ -453,6 +499,17 @@ This command is suitable if you want to get a glimpse of all your food items cur
 Steps:
 1. Type `list` in the _Command Box_.
 2. Press `Enter` to execute.
+
+Outcome:
+Before the `list` command is executed:
+![Before executing the list command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 19: The red box shows the add command being typed into the command box.</p>
+
+After the `sortpriority` command is executed:
+![Sorting by priority](images/AddCommandAfter.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 20: All food items are listed</p>
 
 [Back to top](#table-of-contents)
 
@@ -489,11 +546,16 @@ Steps:
 1. Type `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` in the _Command Box_.
 2. Press `Enter` to execute.
 
-The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is shown in Figure 10.
+Outcome:
+Before the `find` command is executed:
+![Before executing the find command](images/AddCommandBefore.png)
 
+<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the add command being typed into the command box.</p>
+
+After the `find` command is executed:
 ![After executing the find command](images/FindCommand.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 10: Food list displaying the result of the find command</p>
+<p style="text-align: center; text-decoration: underline">Figure 22: Food list displaying the result of the find command</p>
 
 [Back to top](#table-of-contents)
 
@@ -504,12 +566,22 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 _(Contributed by Song Yi and Jonah)_
 
 When you launch the application, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
-If there are any expired food items, a pop-up window similar to the one shown in Figure 11 will appear with the list of expired food item(s).
+If there are any expired food items, a pop-up window similar to the one shown in Figure 23 will appear with the list of expired food item(s).
 If you want to see the pop-up window while using the application, you can use the `expired` command.
+
+**Format:** `expired`
+
+Steps:
+1. Type `expired` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome:
+
+After the `expired` command is executed:
 
 ![Pop up window of expired food items](images/ExpiredPopUpWindow.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 11: A pop-up window listing all the expired food items</p>
+<p style="text-align: center; text-decoration: underline">Figure 23: A pop-up window listing all the expired food items</p>
 
 <div markdown="block" class="alert alert-info">
 
@@ -518,12 +590,6 @@ If you want to see the pop-up window while using the application, you can use th
 If you have discarded the expired food item, please remember to delete the associated food item from the application using the [`delete`](#513-deleting-a-food-item-delete) command.
 
 </div>
-
-**Format:** `expired`
-
-Steps:
-1. Type `expired` in the _Command Box_.
-2. Press `Enter` to execute.
 
 [Back to top](#table-of-contents)
 
@@ -556,9 +622,19 @@ Steps:
 1. Type `undo` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Outcome:
+
+Before the `undo` command is executed:
+
+![Before executing the find command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the add command being typed into the command box.</p>
+
+After the `undo` command is executed:
+
 ![Undo success](images/UndoSuccess.png)
 
-<p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful.</p>
+<p style="text-align: center; text-decoration: underline">Figure 25: The result box will display "Undo success!" if undo was successful.</p>
 
 [Back to top](#table-of-contents)
 
@@ -584,6 +660,16 @@ Steps:
 1. Type `redo` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Outcome:
+
+Before the `redo` command is executed:
+
+![Before executing the find command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the add command being typed into the command box.</p>
+
+After the `redo` command is executed:
+
 ![Redo success](images/RedoSuccess.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful</p>
@@ -599,6 +685,20 @@ _(Contributed by Song Yi)_
 The `clear` command clears all entries from your food inventory. This lets you easily clear the sample data, or start on a clean food inventory.
 
 **Format:** `clear`
+
+Outcome:
+
+Before the `redo` command is executed:
+
+![Before executing the find command](images/AddCommandBefore.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 21: The red box shows the add command being typed into the command box.</p>
+
+After the `redo` command is executed:
+
+![Redo success](images/RedoSuccess.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 13: The result box will display "Redo success!" if redo was successful</p>
 
 <div markdown="span" class="alert alert-danger">
 
@@ -617,15 +717,19 @@ _(Contributed by Song Yi)_
 The `help` command shows a help message explaining how to access the user guide.
 After entering this command, you should see a pop-up window similar to the one shown in Figure 14.
 
+**Format:** `help`
+
 Steps:
 1. Type `help` in the _Command Box_.
 2. Press `Enter` to execute.
 
+Outcome:
+
+After the `help` command is executed:
+
 ![help message](images/HelpMessage.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide.</p>
-
-**Format:** `help`
 
 [Back to top](#table-of-contents)
 
@@ -633,11 +737,19 @@ Steps:
 
 The `exit` command closes the application. This lets you easily exit the application from the CLI.
 
+**Format:** `exit`
+
 Steps:
 1. Type `exit` in the _Command Box_.
 2. Press `Enter` to execute.
 
-**Format:** `exit`
+Outcome:
+
+After the `exit` command is executed:
+
+![help message](images/HelpMessage.png)
+
+<p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide.</p>
 
 [Back to top](#table-of-contents)
 
