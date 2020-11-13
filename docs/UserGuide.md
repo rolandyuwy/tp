@@ -88,7 +88,7 @@ The table below provides the descriptions of the symbols used in this document:
 | Symbol |  Description |
 |----------|-------------|
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | - Notes about command format<br>- Additional information that may be relevant to you |
-|<div markdown="block" class="alert alert-danger"> :warning: </div> | - Warning: Information you should pay particular attention about  |
+|<div markdown="block" class="alert alert-danger"> :exclamation: </div> | - Warning: Information you should pay particular attention about  |
 |<div markdown="block" class="alert alert-warning"> :bulb: </div> | - Tip: Information that may be helpful to you |
 
 [Back to top](#table-of-contents)
