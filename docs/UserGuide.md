@@ -7,6 +7,8 @@ title: User Guide
 _(Contributed by all members)_
 * [1. Introduction](#1-introduction)
 * [2. About this document](#2-about-this-document)
+    *[2.1. Main sections](#21-main-sections)
+    *[2.2. Symbols](#22-symbols)
 * [3. Quick start](#3-quick-start)
 * [4. Application layout](#4-application-layout)
 * [5. Features](#5-features)
@@ -39,10 +41,12 @@ _(Contributed by all members)_
 # 1. Introduction
 _(Contributed by all members)_
 
-Welcome to SimplyKitchen, a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
+Welcome to SimplyKitchen! :cake:
+
+SimplyKitchen is a desktop application for food inventory management suited for **household individuals who manage their kitchens' food items**.
 
 SimplyKitchen is developed by 5 dedicated students who hope to assist and alleviate the problems you might encounter while managing your food inventory.
-With intuitive and practical features, SimplyKitchen can get your food management tasks done faster and more efficiently!
+With intuitive and practical features, SimplyKitchen can get your food management tasks done **faster and more efficiently**!
 
 With a Command Line Interface (CLI), SimplyKitchen is best suited to those who can type fast and prefer using a keyboard.
 SimplyKitchen also uses a Graphical User Interface (GUI) to provide an aesthetic visualization of your food information for the ideal user experience.
@@ -56,20 +60,36 @@ SimplyKitchen hopes to empower you to work towards a **Tidy Kitchen, with Tiny W
 # 2. About this document
 _(Contributed by all members)_
 
-This is a User Guide meant to assist you in using SimplyKitchen for food inventory management.
+## 2.1. Main sections
 
-The [Quick Start](#3-quick-start) section guides you in setting up and launching the SimplyKitchen application on your computer.
+This purpose of this User Guide is to provide you all the information you need when using our application in a clear and concise manner.
+Our User Guide is structured in a way to help you navigate to relevant sections easily. You may click on the hyperlinks to 
+quickly jump to different sections of this document.
+
+The [Quick Start](#3-quick-start) section guides you in **setting up and launching** the SimplyKitchen application on your computer.
 
 The [Application Layout](#4-application-layout) section provides an overview of how the application looks like on your computer.
 
 The [Features](#5-features) section describes all the features of SimplyKitchen.
-It provides the purpose, format, conditions and examples for each feature.
+It provides the **purpose**, **command format**, **command conditions** and **step-by-step examples** for each feature.
 
-The [FAQs](#6-frequently-asked-questions-faqs) section contains some Frequently Asked Questions about SimplyKitchen.
+The [FAQs](#6-frequently-asked-questions-faqs) section contains some **Frequently Asked Questions** about SimplyKitchen.
 
 The [Command Summary](#7-command-summary) section acts as a quick reference point for all the features of SimplyKitchen.
 
-Finally, the [Glossary](#8-glossary) section provides explanations for the commonly used terms in this document and SimplyKitchen.
+Finally, the [Glossary](#8-glossary) section provides explanations for the commonly used terms in this document and in th SimplyKitchen application.
+
+[Back to top](#table-of-contents)
+
+## 2.2. Symbols 
+
+The table below provides the descriptions of the symbols used in this document:
+
+| Symbol |  Description |
+|----------|-------------|
+|<div markdown="block" class="alert alert-info"> :information_source: </div>  | - Notes about command format<br>- Additional information that may be relevant to you |
+|<div markdown="block" class="alert alert-danger"> :warning: </div> | - Warning: Information you should pay particular attention about  |
+|<div markdown="block" class="alert alert-warning"> :bulb: </div> | - Tip: Information that may be helpful to you |
 
 [Back to top](#table-of-contents)
 
