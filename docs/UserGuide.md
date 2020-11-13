@@ -172,6 +172,7 @@ Quantity    | The quantity of a food item. The quantity consists of 2 entities -
 <div style="page-break-after: always;"></div>
 
 # 5. Features
+_(Contributed by Jonah)_
 
 This section contains information on the features and commands of SimplyKitchen.
 
@@ -233,6 +234,10 @@ You can then access the food item later on for editing, deleting etc.
 * `add d/Canned tuna e/1-1-2021 q/1.5 can p/low` adds an item having description `Canned tuna`, expiry date `01-01-2021`, quantity `1.50 can` and priority `LOW`.
 * `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/contains nuts` adds an item having description `Banana pie`, expiry date `20-11-2020`, quantity `2.00 unit`, priority `MEDIUM`, and tags `$15` and `contains nuts`.
 
+Steps:
+1. Type `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/contains nuts` in the _Command Box_.
+2. Press `Enter` to execute.
+
 The result of executing `add d/Banana pie e/20-11-2020 q/2 p/medium t/$15 t/contains nuts` is shown in Figure 5 and Figure 6.
 
 ![Before executing the add command](images/AddCommandBefore.png)
@@ -274,6 +279,10 @@ The constraints for the individual parameters of this command (description, expi
 * `edit 1 d/baked beans e/1-1-2020` edits the food description and expiry date of the 1st food item to be `baked beans` and `01-01-2020` respectively.
 * `edit 2 d/canned tuna q/0.5 can t/` edits the food description of the 2nd food item to be `canned tuna`, quantity to `0.50 can` and clears all existing tags.
 
+Steps:
+1. Type `edit 2 d/canned tuna q/0.5 can t/` in the _Command Box_.
+2. Press `Enter` to execute.
+
 [Back to top](#table-of-contents)
 
 <div style="page-break-after: always;"></div>
@@ -293,6 +302,10 @@ The `delete` command deletes a specified food item from your food inventory, so 
 **Examples:**
 * `list` followed by `delete 2` deletes the 2nd food item in your food inventory.
 * `find d/tuna` followed by `delete 1` deletes the 1st food item from the result of the `find` command.
+
+Steps:
+1. Type `delete 2` in the _Command Box_.
+2. Press `Enter` to execute.
 
 [Back to top](#table-of-contents)
 
@@ -331,6 +344,10 @@ If you have used up all the flour, use the [`delete`](#513-deleting-a-food-item-
 * `list` followed by `changeqty 1 a/+1` increases the quantity of the 1st food item in your food inventory by 1.
 * `find d/tuna` followed by `changeqty 2 a/-2.50` decreases the quantity of the 2nd food item from the result of the `find` command by 2.50.
 
+Steps:
+1. Type `changeqty 2 a/-2.50` in the _Command Box_.
+2. Press `Enter` to execute.
+
 [Back to top](#table-of-contents)
 
 ## 5.2. Sorting commands
@@ -355,6 +372,10 @@ The `sortdesc` command sorts the list of food items by description, allowing you
 
 <div style="page-break-after: always;"></div>
 
+Steps:
+1. Type `sortdesc` in the _Command Box_.
+2. Press `Enter` to execute.
+
 **Example:**
 
 A possible valid ordering of description is shown in Figure 7.
@@ -376,6 +397,10 @@ The `sortexpiry` command sorts the list of food items by expiry date from oldest
 * Food items of the same expiry date will be sorted by priority from high to low.
 * Food items of the same expiry date and same priority will be sorted by description.
 
+Steps:
+1. Type `sortexpiry` in the _Command Box_.
+2. Press `Enter` to execute.
+
 **Example:**
 
 A possible valid ordering of expiry date is shown in Figure 8.
@@ -396,6 +421,10 @@ The `sortpriority` command sorts the list of food items by priority from high to
 
 * Food items of the same priority will be sorted by expiry date from oldest to newest.
 * Food items of the same priority and same expiry date will be sorted by description.
+
+Steps:
+1. Type `sortpriority` in the _Command Box_.
+2. Press `Enter` to execute.
 
 **Example:**
 
@@ -420,9 +449,14 @@ This command is suitable if you want to get a glimpse of all your food items cur
 
 **Format:** `list`
 
+Steps:
+1. Type `list` in the _Command Box_.
+2. Press `Enter` to execute.
+
 [Back to top](#table-of-contents)
 
 ### 5.3.2. Finding food items: `find`
+_(Contributed by Jonah)_
 
 The `find` command searches for food items in your food inventory that match the search query and displays the result on your food list. You can easily find a specific food item, or a group of food items.
 
@@ -450,6 +484,10 @@ The constraints for the individual parameters of this command (each description 
 * `find t/cat t/dog` returns all food items with the tag `cat` or `dog`.
 * `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` returns food items with `biscuits` in their descriptions, `MEDIUM` priorities, expiry dates of `30-12-2020` and have either `cat` or `dog` as tags.
 
+Steps:
+1. Type `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` in the _Command Box_.
+2. Press `Enter` to execute.
+
 The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is shown in Figure 10.
 
 ![After executing the find command](images/FindCommand.png)
@@ -462,7 +500,7 @@ The result of executing `find d/biscuits p/medium e/30-12-2020 t/cat t/dog` is s
 
 ### 5.3.3. Viewing expired food items: `expired`
 
-_(Contributed by Song Yi)_
+_(Contributed by Song Yi and Jonah)_
 
 When you launch the application, it checks for any expired food items present in your food inventory. This lets you easily see what food items have expired.
 If there are any expired food items, a pop-up window similar to the one shown in Figure 11 will appear with the list of expired food item(s).
@@ -481,6 +519,10 @@ If you have discarded the expired food item, please remember to delete the assoc
 </div>
 
 **Format:** `expired`
+
+Steps:
+1. Type `expired` in the _Command Box_.
+2. Press `Enter` to execute.
 
 [Back to top](#table-of-contents)
 
@@ -509,6 +551,10 @@ Note that the undo/redo history will be cleared when you exit the application!
 * `delete 1` followed by `undo` will reverse the `delete` command.
 * `delete 1` followed by `clear` then `undo` will reverse the `clear` command.
 
+Steps:
+1. Type `undo` in the _Command Box_.
+2. Press `Enter` to execute.
+
 ![Undo success](images/UndoSuccess.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 12: The result box will display "Undo success!" if undo was successful.</p>
@@ -532,6 +578,10 @@ Note that the undo/redo history will be cleared when you exit the application!
 **Examples:**
 * `add d/Donut p/medium e/21-2-2021` followed by `undo` then `redo` will reverse the state to when the food item was added.
 * `clear` followed by `undo` then `redo` will redo the `clear` command.
+
+Steps:
+1. Type `redo` in the _Command Box_.
+2. Press `Enter` to execute.
 
 ![Redo success](images/RedoSuccess.png)
 
@@ -566,6 +616,10 @@ _(Contributed by Song Yi)_
 The `help` command shows a help message explaining how to access the user guide.
 After entering this command, you should see a pop-up window similar to the one shown in Figure 14.
 
+Steps:
+1. Type `help` in the _Command Box_.
+2. Press `Enter` to execute.
+
 ![help message](images/HelpMessage.png)
 
 <p style="text-align: center; text-decoration: underline">Figure 14: A pop-up window displaying the URL to the User Guide.</p>
@@ -577,6 +631,10 @@ After entering this command, you should see a pop-up window similar to the one s
 ### 5.4.5. Exiting the program: `exit`
 
 The `exit` command closes the application. This lets you easily exit the application from the CLI.
+
+Steps:
+1. Type `exit` in the _Command Box_.
+2. Press `Enter` to execute.
 
 **Format:** `exit`
 
